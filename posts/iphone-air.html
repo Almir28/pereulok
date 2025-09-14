@@ -12,10 +12,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
 <script>
-  // Force light theme for this post
-  (() => { document.documentElement.classList.remove('dark'); localStorage.setItem('theme','light'); })();
+  // Применяем тему до отрисовки (чтение из localStorage / prefers-color-scheme)
+  (() => {
+    const stored = localStorage.getItem('theme');
+    const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const t = stored || prefers;
+    if (t === 'dark') document.documentElement.classList.add('dark');
+  })();
   // avoid nav fade flash
-  window.addEventListener('pageshow',()=>document.body.classList.remove('fade-out')); 
+  window.addEventListener('pageshow',()=>document.body.classList.remove('fade-out'));
 </script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/css/custom.css">

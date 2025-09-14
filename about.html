@@ -221,7 +221,11 @@
 
 <script src="/js/main.js" defer></script>
 <script>
-  // smooth page transition on internal links
+  // Ensure page is visible after Safari bfcache restore
+  window.addEventListener('pageshow', ()=>{
+    document.body.classList.remove('fade-out');
+  });
+  // Smooth page transition on internal links
   document.querySelectorAll('a[href]').forEach(link=>{
     if(link.host===window.location.host){
       link.addEventListener('click',function(e){
