@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120" fill="none" aria-labelledby="title desc" role="img">
+  <title id="title">Pereuloq</title>
+  <desc id="desc">Новый тёмный логотип Pereuloq: круглая метка с переулком и современная словмарка.</desc>
+  <defs>
+    <radialGradient id="markGradD" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF8A8A"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </radialGradient>
+    <filter id="blurSoftD" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <!-- Glow shadow -->
+  <g transform="translate(16,16)" opacity=".22" filter="url(#blurSoftD)">
+    <circle cx="44" cy="44" r="44" fill="#EF4444"/>
+  </g>
+
+  <!-- Round mark -->
+  <g transform="translate(16,16)">
+    <circle cx="44" cy="44" r="44" fill="url(#markGradD)"/>
+    <rect x="28" y="22" width="6" height="44" rx="3" fill="#ffffff"/>
+    <rect x="54" y="22" width="6" height="44" rx="3" fill="#ffffff"/>
+    <rect x="28" y="22" width="32" height="6" rx="3" fill="#ffffff"/>
+    <circle cx="60" cy="30" r="4" fill="#ffffff" opacity=".95"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(120,34)">
+    <text x="0" y="36" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto" font-weight="800" font-size="44" fill="#F3F4F6" letter-spacing="0.5">Pereuloq</text>
+    <text x="2" y="64" font-family="Inter, system-ui" font-weight="600" font-size="14" fill="#9CA3AF" letter-spacing=".18em">ЖУРНАЛ О МЫСЛЯХ И СОБЫТИЯХ</text>
+  </g>
+</svg>
