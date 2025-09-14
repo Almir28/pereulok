@@ -139,6 +139,31 @@ if (location.hash === '#lenta') {
   items.forEach((el) => grid.appendChild(el));
 })();
 
+// Apply formatted dates from data-published
+(() => {
+  const fmt = (iso) => {
+    const d = new Date(iso);
+    if (isNaN(d)) return '';
+    try {
+      return new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
+    } catch {
+      return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+  };
+  const apply = (root) => {
+    root.querySelectorAll('[data-published]').forEach((node) => {
+      const iso = node.getAttribute('data-published');
+      const dateEl = node.querySelector('.card-date');
+      if (iso && dateEl) dateEl.textContent = fmt(iso);
+    });
+  };
+  apply(document);
+  // Also reapply inside the newspaper overlay when opened
+  document.getElementById('lentaOverlay')?.addEventListener('transitionend', (e) => {
+    if (e.target === e.currentTarget && !e.currentTarget.classList.contains('hidden')) apply(e.currentTarget);
+  });
+})();
+
 // Lenta overlay: sort blocks marked with data-sort="published"
 (() => {
   const containers = document.querySelectorAll('#lentaOverlay [data-sort="published"]');
