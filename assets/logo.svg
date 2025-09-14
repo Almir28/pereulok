@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120" fill="none" aria-labelledby="title desc" role="img">
-  <title id="title">Pereulok</title>
-  <desc id="desc">Новый логотип Pereulok: круглая метка с переулком и современная словмарка.</desc>
+  <title id="title">Pereuloq</title>
+  <desc id="desc">Новый логотип Pereuloq: круглая метка с переулком и современная словмарка.</desc>
   <defs>
     <radialGradient id="markGrad" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#FF7A7A"/>
@@ -30,7 +30,7 @@
 
   <!-- Wordmark modern -->
   <g transform="translate(120,34)">
-    <text x="0" y="36" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto" font-weight="800" font-size="44" fill="#111827" letter-spacing="0.5">Pereulok</text>
+    <text x="0" y="36" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto" font-weight="800" font-size="44" fill="#111827" letter-spacing="0.5">Pereuloq</text>
     <text x="2" y="64" font-family="Inter, system-ui" font-weight="600" font-size="14" fill="#6B7280" letter-spacing=".18em">ЖУРНАЛ О МЫСЛЯХ И СОБЫТИЯХ</text>
   </g>
 </svg>

@@ -123,3 +123,33 @@ document.addEventListener('keydown', (e) => {
 if (location.hash === '#lenta') {
   setTimeout(() => openLenta(), 0);
 }
+
+// Image Lightbox for zoomable images
+(() => {
+  let lb, lbImg;
+  const ensure = () => {
+    if (lb) return lb;
+    lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.innerHTML = `<button class="close" aria-label="Закрыть">Esc</button><figure><img alt="" /></figure>`;
+    document.body.appendChild(lb);
+    lbImg = lb.querySelector('img');
+    const close = () => lb.classList.remove('open');
+    lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+    lb.querySelector('.close')?.addEventListener('click', close);
+    lbImg?.addEventListener('click', close);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    return lb;
+  };
+  document.addEventListener('click', (e) => {
+    const t = e.target;
+    if (!(t instanceof HTMLElement)) return;
+    const img = t.closest('img[data-zoomable]');
+    if (img) {
+      const overlay = ensure();
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt || '';
+      overlay.classList.add('open');
+    }
+  }, true);
+})();
