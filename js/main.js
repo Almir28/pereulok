@@ -124,6 +124,108 @@ if (location.hash === '#lenta') {
   setTimeout(() => openLenta(), 0);
 }
 
+// Lenta: sort editorial cards by data-published (newest first)
+(() => {
+  const grid = document.querySelector('#latest .editorial-grid');
+  if (!grid) return;
+  const items = Array.from(grid.querySelectorAll('.editorial-item'));
+  if (!items.length) return;
+  const parse = (el) => {
+    const v = el.getAttribute('data-published');
+    const t = v ? Date.parse(v) : NaN;
+    return isNaN(t) ? 0 : t;
+  };
+  items.sort((a, b) => parse(b) - parse(a));
+  items.forEach((el) => grid.appendChild(el));
+})();
+
+// Lenta overlay: sort blocks marked with data-sort="published"
+(() => {
+  const containers = document.querySelectorAll('#lentaOverlay [data-sort="published"]');
+  if (!containers.length) return;
+  const parse = (el) => {
+    const v = el?.getAttribute('data-published');
+    const t = v ? Date.parse(v) : NaN;
+    return isNaN(t) ? 0 : t;
+  };
+  containers.forEach((container) => {
+    const isUL = container.tagName.toLowerCase() === 'ul';
+    const children = Array.from(container.children);
+    children.sort((a, b) => {
+      const elA = isUL ? a.querySelector('a[href^="/posts/"]') : a;
+      const elB = isUL ? b.querySelector('a[href^="/posts/"]') : b;
+      return parse(elB) - parse(elA);
+    });
+    children.forEach((child) => container.appendChild(child));
+  });
+})();
+
+// Lenta: filters (by category) on main page
+(() => {
+  const filters = document.getElementById('lentaFilters');
+  const grid = document.querySelector('#latest .editorial-grid');
+  if (!filters || !grid) return;
+  const items = Array.from(grid.querySelectorAll('.editorial-item'));
+
+  const setActive = (btn) => {
+    Array.from(filters.querySelectorAll('.filter-chip')).forEach(b => b.classList.toggle('is-active', b === btn));
+  };
+
+  filters.addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-chip');
+    if (!btn) return;
+    const val = btn.getAttribute('data-filter') || 'all';
+    setActive(btn);
+    const items = Array.from(grid.querySelectorAll('.editorial-item'));
+    items.forEach((it) => {
+      const cat = (it.getAttribute('data-cat') || 'all').toLowerCase();
+      const match = val === 'all' || cat === val;
+      it.classList.toggle('hidden', !match);
+    });
+  }, true);
+})();
+
+// Auto-excerpt: fill missing card excerpts from post meta description
+(() => {
+  const cards = Array.from(document.querySelectorAll('a.card[href^="/posts/"]'));
+  const hasExcerpt = (card) => !!card.querySelector('.card-excerpt');
+  const getInfoContainer = (card) => card.querySelector('.p-6, .p-8') || card;
+  cards.forEach(async (card) => {
+    if (hasExcerpt(card)) return;
+    try {
+      const res = await fetch(card.href, { credentials: 'same-origin' });
+      if (!res.ok) return;
+      const html = await res.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const meta = doc.querySelector('meta[name="description"]');
+      const text = (meta?.getAttribute('content') || '').trim();
+      if (!text) return;
+      const p = document.createElement('p');
+      p.className = 'card-excerpt mt-2 text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2';
+      p.textContent = text;
+      getInfoContainer(card).appendChild(p);
+    } catch (e) { /* ignore network/parse errors */ }
+  });
+})();
+
+// Lenta overlay: simple search filter
+(() => {
+  const input = document.getElementById('lentaSearch');
+  if (!input || !lentaOverlay) return;
+  const scope = lentaOverlay.querySelector('.modal');
+  if (!scope) return;
+  const items = Array.from(scope.querySelectorAll('.grid a.group, .grid a[href^="/posts/"]'));
+  const apply = () => {
+    const q = input.value.trim().toLowerCase();
+    items.forEach(el => {
+      const t = el.textContent?.toLowerCase() || '';
+      const show = !q || t.includes(q);
+      el.classList.toggle('hidden', !show);
+    });
+  };
+  input.addEventListener('input', apply);
+})();
+
 // Image Lightbox for zoomable images
 (() => {
   let lb, lbImg;

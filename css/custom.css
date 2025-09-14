@@ -28,6 +28,16 @@ html, body { overflow-x: hidden; }
 .editorial-item .title { transition: color .2s ease; }
 .editorial-item:hover .title { color: rgb(239 68 68); }
 
+/* Line clamp helpers (Tailwind plugin-free) */
+.line-clamp-2 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.line-clamp-3 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+
+/* Lenta filter chips */
+.filter-chip { border-radius: 9999px; border: 1px solid rgba(0,0,0,.1); padding: .375rem .75rem; font-size: .75rem; line-height: 1; cursor: pointer; }
+.dark .filter-chip { border-color: rgba(255,255,255,.18); }
+.filter-chip.is-active { background: #0a0a0a; color: #fff; border-color: transparent; }
+.dark .filter-chip.is-active { background: rgb(220 38 38); }
+
 /* Modal / newspaper UI */
 .modal-backdrop { background: radial-gradient(1200px 600px at 10% -10%, rgba(239,68,68,.15), transparent 40%), rgba(0,0,0,.35); backdrop-filter: blur(16px) saturate(1.2); -webkit-backdrop-filter: blur(16px) saturate(1.2); }
 .modal { opacity: 0; transform: translateY(16px) scale(.98); transition: opacity .35s ease, transform .45s cubic-bezier(.22,1,.36,1); }
