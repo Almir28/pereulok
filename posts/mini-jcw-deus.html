@@ -15,6 +15,7 @@
   (() => { const s = localStorage.getItem('theme'); const p = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light'; const t = s||p; if(t==='dark') document.documentElement.classList.add('dark'); })();
   
 </script>
+<script>tailwind.config = { darkMode: 'class' }</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/css/custom.css">
 <style>

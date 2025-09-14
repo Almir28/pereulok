@@ -18,16 +18,22 @@
     const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     const t = stored || prefers;
     if (t === 'dark') document.documentElement.classList.add('dark');
+    const meta = document.createElement('meta');
+    meta.name = 'theme-color';
+    meta.content = t === 'dark' ? '#111111' : '#ffffff';
+    document.head.appendChild(meta);
   })();
   // avoid nav fade flash
   window.addEventListener('pageshow',()=>document.body.classList.remove('fade-out'));
 </script>
+<script>tailwind.config = { darkMode: 'class' }</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/css/custom.css">
 <style>
   body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; }
   h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
   .panel { background: #fff; }
+  .dark .panel { background: #111; }
   .tag { color: rgb(239 68 68); border-color: rgba(239,68,68,.35); }
   /* Subtle reveal */
   .fx-reveal { opacity: 0; transform: translateY(18px) scale(.985); transition: opacity .7s ease, transform .8s cubic-bezier(.22,1,.36,1); }

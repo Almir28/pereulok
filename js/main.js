@@ -280,3 +280,27 @@ if (location.hash === '#lenta') {
     }
   }, true);
 })();
+
+// Sync browser UI (theme-color) with current theme
+(() => {
+  const ensureMeta = () => {
+    let m = document.querySelector('meta[name="theme-color"]');
+    if (!m) {
+      m = document.createElement('meta');
+      m.setAttribute('name', 'theme-color');
+      document.head.appendChild(m);
+    }
+    return m;
+  };
+  const update = () => {
+    const dark = document.documentElement.classList.contains('dark');
+    ensureMeta().setAttribute('content', dark ? '#111111' : '#ffffff');
+  };
+  update();
+  document.getElementById('themeToggle')?.addEventListener('click', () => {
+    // wait until class toggled by existing handler
+    setTimeout(update, 0);
+  });
+  window.matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener?.('change', update);
+})();
