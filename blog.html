@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Блог — Pereuloq</title>
+  <meta name="description" content="Личный блог Almir — заметки, технологии, путешествия." />
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <script>
+    // Apply theme before paint for no-FOUT
+    (() => {
+      const stored = localStorage.getItem('theme');
+      const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const t = stored || prefers;
+      if (t === 'dark') document.documentElement.classList.add('dark');
+      const meta = document.createElement('meta');
+      meta.name = 'theme-color';
+      meta.content = t === 'dark' ? '#111111' : '#ffffff';
+      document.head.appendChild(meta);
+    })();
+  </script>
+  <script>tailwind = { config: { darkMode: 'class' } }</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/custom.css">
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; }
+    h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+    .fade-out { opacity: 0; transition: opacity .4s ease; }
+  </style>
+</head>
+<body class="bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100">
+  <div id="app"></div>
+
+  <!-- React UMD -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+  <!-- App -->
+  <script type="module">
+    import { posts as initialPosts } from '/js/blog-posts.js';
+
+    const { useEffect, useMemo, useState } = React;
+
+    const cx = (...c) => c.filter(Boolean).join(' ');
+
+    function useTheme() {
+      const [theme, setTheme] = useState(() => {
+        const s = localStorage.getItem('theme');
+        if (s) return s;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      });
+      useEffect(() => {
+        const root = document.documentElement;
+        if (theme === 'dark') root.classList.add('dark'); else root.classList.remove('dark');
+        localStorage.setItem('theme', theme);
+      }, [theme]);
+      return [theme, setTheme];
+    }
+
+    function ThemeToggle({ theme, onChange }) {
+      return (
+        React.createElement('button', {
+          className: 'inline-flex items-center gap-2 rounded-xl border border-neutral-200 dark:border-neutral-700 px-3 py-2 text-sm hover:bg-neutral-50 dark:hover:bg-neutral-800 transition',
+          onClick: () => onChange(theme === 'dark' ? 'light' : 'dark'),
+          title: 'Сменить тему'
+        },
+        theme === 'dark' ? (
+          React.createElement('span', { className: 'inline-flex items-center gap-2' },
+            React.createElement('svg', { xmlns: 'http://www.w3.org/2000/svg', className: 'h-4 w-4', viewBox: '0 0 24 24', fill: 'currentColor' },
+              React.createElement('path', { d: 'M21.64 13A9 9 0 1111 2.36 7 7 0 0021.64 13z' })
+            ),
+            'Тёмная'
+          )
+        ) : (
+          React.createElement('span', { className: 'inline-flex items-center gap-2' },
+            React.createElement('svg', { xmlns: 'http://www.w3.org/2000/svg', className: 'h-4 w-4', viewBox: '0 0 24 24', fill: 'currentColor' },
+              React.createElement('path', { d: 'M12 18a6 6 0 100-12 6 6 0 000 12zm0 4a1 1 0 011 1H11a1 1 0 011-1zm11-9a1 1 0 010 2H22a1 1 0 010-2h1zM2 13a1 1 0 010-2h1a1 1 0 010 2H2zm17.657 6.657a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 011.414-1.414l.707.707zM5.05 6.464A1 1 0 016.464 5.05l.707.707A1 1 0 115.757 7.17l-.707-.707zM18.364 5.05a1 1 0 011.414 1.414l-.707.707A1 1 0 1117.657 5.757l.707-.707zM5.757 18.243a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 111.414-1.414l.707.707z' })
+            ),
+            'Светлая'
+          )
+        ))
+      );
+    }
+
+    function Header() {
+      const [theme, setTheme] = useTheme();
+      return (
+        React.createElement('header', { className: 'sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-neutral-900/70 border-b border-neutral-200/70 dark:border-neutral-800/70' },
+          React.createElement('div', { className: 'mx-auto max-w-4xl px-4' },
+            React.createElement('div', { className: 'flex h-16 items-center justify-between' },
+              React.createElement('a', { href: '/', className: 'flex items-center gap-3' },
+                React.createElement('picture', null,
+                  React.createElement('source', { srcSet: '/assets/logo-dark.svg', media: '(prefers-color-scheme: dark)' }),
+                  React.createElement('img', { src: '/assets/logo.svg', alt: 'Pereuloq', className: 'h-9 md:h-10 w-auto select-none' })
+                )
+              ),
+              React.createElement('nav', { className: 'hidden md:flex items-center gap-6 text-sm' },
+                React.createElement('a', { href: '#about', className: 'text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white transition' }, 'Обо мне'),
+                React.createElement('a', { href: '#posts', className: 'text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white transition' }, 'Посты'),
+                React.createElement('a', { href: '#contacts', className: 'text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white transition' }, 'Контакты'),
+                React.createElement('a', { href: 'https://github.com/pereuloq', target: '_blank', className: 'text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white transition' }, 'GitHub')
+              ),
+              React.createElement(ThemeToggle, { theme, onChange: setTheme })
+            )
+          )
+        )
+      );
+    }
+
+    function Hero() {
+      return (
+        React.createElement('section', { className: 'mx-auto max-w-4xl px-4 mt-8 md:mt-12' },
+          React.createElement('div', { className: 'rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/70 shadow-soft overflow-hidden' },
+            React.createElement('div', { className: 'relative h-28 md:h-36' },
+              React.createElement('div', { className: 'absolute inset-0 opacity-70' },
+                React.createElement('div', { className: 'absolute -top-24 -left-24 h-72 w-72 rounded-full blur-3xl bg-indigo-500/10' }),
+                React.createElement('div', { className: 'absolute -bottom-20 -right-16 h-72 w-72 rounded-full blur-3xl bg-indigo-500/10' })
+              )
+            ),
+            React.createElement('div', { className: 'px-6 md:px-8 -mt-10 pb-6 md:pb-8' },
+              React.createElement('div', { className: 'flex items-start gap-4' },
+                React.createElement('img', { src: 'https://i.pravatar.cc/160?img=12', alt: 'Almir', className: 'w-20 h-20 md:w-24 md:h-24 rounded-2xl object-cover border border-white/70 dark:border-neutral-800/70 bg-white' }),
+                React.createElement('div', { className: 'flex-1 min-w-0' },
+                  React.createElement('h1', { className: 'text-2xl md:text-3xl font-serif font-bold tracking-tight' }, 'Almir'),
+                  React.createElement('p', { className: 'mt-2 text-sm md:text-base text-neutral-600 dark:text-neutral-300' }, 'Swift Developer · путешествия · бизнес · заметки о технологиях и продукте'),
+                  React.createElement('div', { className: 'mt-3 text-xs text-neutral-500 flex items-center gap-3' },
+                    React.createElement('span', null, '@pereuloq'),
+                    React.createElement('span', null, '·'),
+                    React.createElement('a', { href: 'mailto:hello@pereuloq.ru', className: 'hover:text-black dark:hover:text-white transition' }, 'hello@pereuloq.ru')
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+
+    function formatDate(iso) {
+      const d = new Date(iso);
+      return d.toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    function readingTime(text) {
+      const w = (text || '').trim().split(/\s+/).filter(Boolean).length;
+      const m = Math.max(1, Math.round(w / 200));
+      return `${m} мин чтения`;
+    }
+
+    function ShareButtons({ title, url, className }) {
+      const share = async () => {
+        try {
+          if (navigator.share) {
+            await navigator.share({ title, url });
+          } else {
+            await navigator.clipboard.writeText(url);
+            alert('Ссылка скопирована');
+          }
+        } catch {}
+      };
+      const encoded = encodeURIComponent(url);
+      const text = encodeURIComponent(title);
+      return (
+        React.createElement('div', { className: cx('flex items-center gap-2', className) },
+          React.createElement('a', { href: `https://t.me/share/url?url=${encoded}&text=${text}`, target: '_blank', className: 'inline-flex h-9 w-9 items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition', title: 'Поделиться в Telegram' },
+            React.createElement('svg', { xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 24 24', className: 'h-4 w-4', fill: 'currentColor' },
+              React.createElement('path', { d: 'M9.999 15.999l-.5 3.5c.714 0 1.026-.307 1.401-.675l3.364-3.238 6.971 5.088c1.277.704 2.188.334 2.522-1.184L24 4c.407-1.878-1.056-2.62-2.309-2.064L1.4 9.456C-.431 10.25-.422 11.35 1.07 11.8l4.8 1.5L19.2 6.003c.907-.551 1.739-.248 1.058.354' })
+            )
+          ),
+          React.createElement('a', { href: `https://twitter.com/intent/tweet?url=${encoded}&text=${text}`, target: '_blank', className: 'inline-flex h-9 w-9 items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition', title: 'Поделиться в X' },
+            React.createElement('svg', { xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 24 24', className: 'h-4 w-4', fill: 'currentColor' },
+              React.createElement('path', { d: 'M18.244 2H21l-6.52 7.455L22 22h-6.828l-4.86-6.35L4.6 22H2l7.08-8.084L2 2h6.984l4.44 5.86L18.244 2zm-1.196 18h1.66L7.054 4h-1.8l11.794 16z' })
+            )
+          ),
+          React.createElement('button', { onClick: share, className: 'inline-flex h-9 px-3 items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition text-sm', title: 'Скопировать ссылку' }, 'Поделиться')
+        )
+      );
+    }
+
+    function ContentBlock({ block }) {
+      switch (block.type) {
+        case 'h2':
+          return React.createElement('h2', { className: 'mt-6 text-xl md:text-2xl font-semibold tracking-tight' }, block.text);
+        case 'h3':
+          return React.createElement('h3', { className: 'mt-5 text-lg md:text-xl font-semibold' }, block.text);
+        case 'quote':
+          return React.createElement('blockquote', { className: 'mt-5 border-l-4 border-indigo-400/60 dark:border-indigo-500/50 pl-4 italic text-neutral-700 dark:text-neutral-200' }, block.text, block.cite ? React.createElement('cite', { className: 'not-italic block mt-2 text-sm text-neutral-500' }, '— ', block.cite) : null);
+        case 'img':
+          return React.createElement('figure', { className: 'mt-5' },
+            React.createElement('img', { src: block.src, alt: block.alt || '', className: 'w-full rounded-2xl border border-neutral-200 dark:border-neutral-800' }),
+            block.alt ? React.createElement('figcaption', { className: 'mt-2 text-xs text-neutral-500' }, block.alt) : null
+          );
+        default:
+          return React.createElement('p', { className: 'mt-4 text-[16px] md:text-[17px] leading-7 md:leading-8 text-neutral-800 dark:text-neutral-200' }, block.text);
+      }
+    }
+
+    function PostCard({ post }) {
+      const fullText = useMemo(() => post.content.filter(b => b.type === 'p').map(b => b.text).join(' '), [post]);
+      const url = `${location.origin}${location.pathname}#${post.id}`;
+      return (
+        React.createElement('article', { id: post.id, className: 'relative group rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/70 shadow-soft p-5 md:p-7' },
+          React.createElement('div', { className: 'md:absolute md:-left-16 md:top-4 md:sticky md:self-start md:h-0 hidden md:flex' },
+            React.createElement(ShareButtons, { title: post.title, url, className: 'md:flex-col' })
+          ),
+          React.createElement('header', { className: 'flex flex-wrap items-center gap-x-3 gap-y-1' },
+            React.createElement('div', { className: 'text-xs font-semibold text-indigo-600 dark:text-indigo-400' }, post.tags?.[0] || 'Заметка'),
+            React.createElement('span', { className: 'text-xs text-neutral-500' }, '·'),
+            React.createElement('time', { className: 'text-xs text-neutral-500' }, formatDate(post.date)),
+            React.createElement('span', { className: 'text-xs text-neutral-500' }, '·'),
+            React.createElement('span', { className: 'text-xs text-neutral-500' }, readingTime(fullText))
+          ),
+          React.createElement('h2', { className: 'mt-2 text-2xl md:text-3xl font-semibold tracking-tight' }, post.title),
+          React.createElement('div', { className: 'mt-2' }, post.content.map((b, i) => React.createElement(ContentBlock, { key: i, block: b }))),
+          React.createElement('div', { className: 'mt-5 md:hidden' }, React.createElement(ShareButtons, { title: post.title, url }))
+        )
+      );
+    }
+
+    function Feed({ posts }) {
+      return (
+        React.createElement('section', { id: 'posts', className: 'mx-auto max-w-3xl px-4 mt-8 md:mt-10 space-y-6 md:space-y-8' },
+          posts.map(p => React.createElement(PostCard, { key: p.id, post: p }))
+        )
+      );
+    }
+
+    function Footer() {
+      return (
+        React.createElement('footer', { id: 'contacts', className: 'mt-16 md:mt-20 border-t border-neutral-200 dark:border-neutral-800' },
+          React.createElement('div', { className: 'mx-auto max-w-4xl px-4 py-8 text-sm text-neutral-600 dark:text-neutral-300 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6 justify-between' },
+            React.createElement('div', null, '© ', new Date().getFullYear(), ' Almir — Pereuloq'),
+            React.createElement('div', { className: 'flex items-center gap-4' },
+              React.createElement('a', { href: 'mailto:hello@pereuloq.ru', className: 'hover:text-black dark:hover:text-white transition' }, 'Email'),
+              React.createElement('a', { href: 'https://t.me/pereuloq', target: '_blank', className: 'hover:text-black dark:hover:text-white transition' }, 'Telegram'),
+              React.createElement('a', { href: 'https://github.com/pereuloq', target: '_blank', className: 'hover:text-black dark:hover:text-white transition' }, 'GitHub')
+            )
+          )
+        )
+      );
+    }
+
+    function App() {
+      const [posts] = useState(initialPosts);
+      return (
+        React.createElement(React.Fragment, null,
+          React.createElement(Header, null),
+          React.createElement(Hero, null),
+          React.createElement(Feed, { posts }),
+          React.createElement(Footer, null)
+        )
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('app')).render(React.createElement(App));
+  </script>
+</body>
+</html>
+

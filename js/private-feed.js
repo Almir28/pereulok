@@ -72,12 +72,12 @@
   const imageGrid = (imgs=[]) => {
     if (!imgs.length) return '';
     if (imgs.length === 1) {
-      return `<img class="mt-3" src="${imgs[0]}" alt="" loading="lazy" decoding="async">`;
+      return `<img class="mt-3 rounded-2xl border border-neutral-200 dark:border-neutral-800" src="${imgs[0]}" alt="" loading="lazy" decoding="async">`;
     }
     const three = imgs.length === 3;
     const items = imgs.map((src, i) => {
       const span = three && i === 2 ? ' col-span-2' : '';
-      return `<img class="w-full h-auto${span}" src="${src}" alt="" loading="lazy" decoding="async">`;
+      return `<img class="w-full h-auto rounded-2xl border border-neutral-200 dark:border-neutral-800${span}" src="${src}" alt="" loading="lazy" decoding="async">`;
     }).join('');
     return `<div class="mt-3 grid grid-cols-2 gap-3">${items}</div>`;
   };
@@ -86,17 +86,17 @@
     const text = autoLink(escapeHTML(p.text)).replace(/\n/g, '<br>');
     const dateLabel = fmtDate(p.date);
     return `
-      <article class="post p-4 md:p-5">
+      <article class="post rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/70 shadow-soft p-5 md:p-6">
         <div class="flex items-start gap-3">
           <img class="avatar" src="${p.avatar || AVATAR}" alt="Almir">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 text-sm">
-              <span class="font-semibold">Almir</span>
-              <span class="text-neutral-500">@pereuloq</span>
-              <span class="text-neutral-400">·</span>
-              <time class="text-neutral-500" datetime="${p.date}">${dateLabel}</time>
+            <div class="flex items-center gap-2 text-[12px] text-neutral-500">
+              <span class="font-semibold text-neutral-800 dark:text-neutral-200">Almir</span>
+              <span>@pereuloq</span>
+              <span>·</span>
+              <time datetime="${p.date}">${dateLabel}</time>
             </div>
-            <div class="mt-2 whitespace-pre-wrap">${text}</div>
+            <div class="mt-2 text-[15px] md:text-[16px] leading-7 text-neutral-800 dark:text-neutral-200 whitespace-pre-wrap">${text}</div>
             ${imageGrid(p.images)}
           </div>
         </div>
