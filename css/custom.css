@@ -119,3 +119,16 @@ img[data-zoomable] { cursor: zoom-in; }
 .lightbox figure { margin: 0; }
 .lightbox img { max-width: min(94vw, 1600px); max-height: 92vh; border-radius: 1rem; box-shadow: 0 20px 60px -20px rgba(0,0,0,.6); cursor: zoom-out; }
 .lightbox .close { position: absolute; top: 14px; right: 14px; background: rgba(0,0,0,.5); color: #fff; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; padding: 6px 10px; font-size: 12px; }
+
+/* Private wall: subtle hover per post inside glass timeline */
+#timeline .post { transition: background-color .2s ease; }
+@media (hover:hover) and (pointer:fine) {
+  #timeline .post:hover { background: rgba(0,0,0,.03); }
+  .dark #timeline .post:hover { background: rgba(255,255,255,.04); }
+}
+
+/* Tabs for private wall */
+.tab { border-radius: 9999px; border: 1px solid rgba(0,0,0,.08); padding: .4rem .8rem; font-size: .8rem; background: rgba(255,255,255,.7); }
+.dark .tab { border-color: rgba(255,255,255,.14); background: rgba(23,23,23,.7); }
+.tab.is-active { background: #0a0a0a; color: #fff; border-color: transparent; }
+.dark .tab.is-active { background: rgb(220 38 38); }
