@@ -1,14 +1,17 @@
-// Theme toggle
-const themeBtn = document.getElementById('themeToggle');
-themeBtn?.addEventListener('click', () => {
-  const isDark = document.documentElement.classList.toggle('dark');
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-});
-
-// Mobile nav
-document.getElementById('menuBtn')?.addEventListener('click', () => {
-  document.getElementById('mobileNav')?.classList.toggle('hidden');
-});
+// Mobile drawer nav (global)
+(() => {
+  const btn = document.getElementById('menuBtn');
+  const nav = document.getElementById('mobileNav');
+  if (!btn || !nav) return;
+  const panel = nav.querySelector('.mnav-panel');
+  const closeBtn = nav.querySelector('#mnavClose');
+  const open = () => { nav.classList.remove('hidden'); requestAnimationFrame(()=> nav.classList.add('open')); document.body.style.overflow = 'hidden'; };
+  const close = () => { nav.classList.remove('open'); setTimeout(()=>{ nav.classList.add('hidden'); document.body.style.overflow=''; }, 220); };
+  btn.addEventListener('click', open);
+  closeBtn?.addEventListener('click', close);
+  nav.addEventListener('click', (e) => { if (e.target === nav || e.target.classList.contains('mnav-backdrop')) close(); });
+  document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && !nav.classList.contains('hidden')) close(); });
+})();
 
 // Preloader: hide when content loaded
 window.addEventListener('load', () => {
@@ -279,28 +282,4 @@ if (location.hash === '#lenta') {
       overlay.classList.add('open');
     }
   }, true);
-})();
-
-// Sync browser UI (theme-color) with current theme
-(() => {
-  const ensureMeta = () => {
-    let m = document.querySelector('meta[name="theme-color"]');
-    if (!m) {
-      m = document.createElement('meta');
-      m.setAttribute('name', 'theme-color');
-      document.head.appendChild(m);
-    }
-    return m;
-  };
-  const update = () => {
-    const dark = document.documentElement.classList.contains('dark');
-    ensureMeta().setAttribute('content', dark ? '#111111' : '#ffffff');
-  };
-  update();
-  document.getElementById('themeToggle')?.addEventListener('click', () => {
-    // wait until class toggled by existing handler
-    setTimeout(update, 0);
-  });
-  window.matchMedia('(prefers-color-scheme: dark)')
-    .addEventListener?.('change', update);
 })();

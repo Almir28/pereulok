@@ -11,15 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#ffffff">
 <script>
-  // Применяем тему до отрисовки (читаем из localStorage / prefers-color-scheme)
-  (() => {
-    const stored = localStorage.getItem('theme');
-    const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    const t = stored || prefers;
-    if (t === 'dark') document.documentElement.classList.add('dark');
-  })();
-  window.addEventListener('pageshow',()=>document.body.classList.remove('fade-out'));
+  window.addEventListener('pageshow', () => document.body.classList.remove('fade-out'));
 </script>
 <script>tailwind.config = { darkMode: 'class' }</script>
 <script src="https://cdn.tailwindcss.com"></script>

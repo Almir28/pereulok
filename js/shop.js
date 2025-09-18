@@ -84,6 +84,33 @@ function buildCategoryMenu() {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
 }
 
+// Mobile bottom-sheet categories
+function buildCategorySheet() {
+  const sheet = document.getElementById('catSheet');
+  const list = document.getElementById('catSheetList');
+  const openBtn = document.getElementById('catFab');
+  const closeBtn = document.getElementById('catSheetClose');
+  if (!sheet || !list || !openBtn) return;
+  const all = [{ id: 'all', name: 'Все' }, ...categories];
+  list.innerHTML = all.map(c => (
+    `<button data-cat="${c.id}" class="h-11 w-full inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-200 dark:border-neutral-700 text-sm hover:bg-neutral-50 dark:hover:bg-neutral-800">${c.name}</button>`
+  )).join('');
+  const open = () => { sheet.classList.remove('hidden'); requestAnimationFrame(()=> sheet.classList.add('open')); document.body.style.overflow = 'hidden'; };
+  const close = () => { sheet.classList.remove('open'); setTimeout(()=>{ sheet.classList.add('hidden'); document.body.style.overflow=''; }, 220); };
+  openBtn.addEventListener('click', open);
+  closeBtn?.addEventListener('click', close);
+  sheet.addEventListener('click', (e)=>{ if (e.target === sheet || e.target.classList.contains('sheet-backdrop')) close(); });
+  list.addEventListener('click', (e)=>{
+    const btn = e.target.closest('button[data-cat]');
+    if (!btn) return;
+    state.cat = btn.dataset.cat;
+    setActiveCategory(state.cat);
+    renderHomeSections();
+    close();
+  });
+  document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && !sheet.classList.contains('hidden')) close(); });
+}
+
 function getFilteredSorted() {
   let list = products.slice();
   if (state.onlyPre) list = list.filter(p => p.preorder);
@@ -212,25 +239,17 @@ function renderPromos() {
 }
 
 function renderHomeSections() {
-  const popular16 = products.slice().sort((a,b)=>(b.popularity||0)-(a.popularity||0)).slice(0,16);
-  const new16 = products.slice().sort((a,b)=>(b.addedAt||0)-(a.addedAt||0)).slice(0,16);
-  const pre16 = (products.filter(p=>p.preorder).length ? products.filter(p=>p.preorder) : products).slice(0,16);
+  let pool = products.slice();
+  if (state.cat !== 'all') pool = pool.filter(p => p.category === state.cat);
+  if (state.q) {
+    const q = state.q.toLowerCase();
+    pool = pool.filter(p => (p.title + ' ' + p.short + ' ' + p.description).toLowerCase().includes(q));
+  }
+  const popular16 = pool.slice().sort((a,b)=>(b.popularity||0)-(a.popularity||0)).slice(0,16);
+  const new16 = pool.slice().sort((a,b)=>(b.addedAt||0)-(a.addedAt||0)).slice(0,16);
   const set = (id,list)=>{ const el = document.getElementById(id); if (el) el.innerHTML = list.map(tileCard).join(''); };
   set('popularGrid', popular16);
   set('newGrid', new16);
-  set('preGrid', pre16);
-
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('button[data-view]');
-    if (!btn) return;
-    const v = btn.getAttribute('data-view');
-    state.cat = 'all'; state.q = '';
-    if (v === 'popular') { state.onlyPre = false; state.sort = 'popular'; }
-    else if (v === 'new') { state.onlyPre = false; state.sort = 'new'; }
-    else if (v === 'pre') { state.onlyPre = true; state.sort = 'new'; }
-    renderGrid();
-    document.getElementById('grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
 }
 
 function buildCats() {
@@ -259,15 +278,7 @@ function renderGrid() {
 }
 
 function attachControls() {
-  $('#search')?.addEventListener('input', (e) => {
-    state.q = e.target.value;
-    // update both grid and top popular section as quick search result
-    renderGrid();
-    const q = state.q.trim().toLowerCase();
-    const list = q ? products.filter(p => (p.title + ' ' + p.short + ' ' + p.description).toLowerCase().includes(q)) : products.slice().sort((a,b)=>(b.popularity||0)-(a.popularity||0));
-    const el = document.getElementById('popularGrid');
-    if (el) el.innerHTML = list.slice(0,18).map(tileCard).join('');
-  });
+  $('#search')?.addEventListener('input', (e) => { state.q = e.target.value; renderHomeSections(); renderGrid(); });
   $('#sort')?.addEventListener('change', (e) => { state.sort = e.target.value; renderGrid(); });
 }
 
@@ -302,13 +313,14 @@ document.addEventListener('click', (e) => {
   }
 });
 
-function init() {
-  // category UI removed from header; keep functions no-op if elements absent
-  renderPromos();
-  renderHomeSections();
-  attachControls();
-  renderGrid();
-  $('#year').textContent = String(new Date().getFullYear());
-}
+  function init() {
+    // category UI removed from header; keep functions no-op if elements absent
+    renderPromos();
+    buildCategorySheet();
+    renderHomeSections();
+    attachControls();
+    renderGrid();
+    $('#year').textContent = String(new Date().getFullYear());
+  }
 
 document.addEventListener('DOMContentLoaded', init);

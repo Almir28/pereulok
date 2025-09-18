@@ -11,27 +11,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#ffffff">
 <script>
-  // Apply theme before paint
-  (() => {
-    const stored = localStorage.getItem('theme');
-    const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    const t = stored || prefers;
-    if (t === 'dark') document.documentElement.classList.add('dark');
-    const meta = document.createElement('meta');
-    meta.name = 'theme-color';
-    meta.content = t === 'dark' ? '#111111' : '#ffffff';
-    document.head.appendChild(meta);
-  })();
   // avoid flash on nav fade
-  window.addEventListener('pageshow', ()=>{ document.body.classList.remove('fade-out'); });
+  window.addEventListener('pageshow', () => { document.body.classList.remove('fade-out'); });
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a[href]');
     if (!a || a.host !== location.host) return;
     if (a.target === '_blank' || a.href.includes('#')) return;
     e.preventDefault();
     document.body.classList.add('fade-out');
-    setTimeout(()=>location.href=a.href, 120);
+    setTimeout(() => { location.href = a.href; }, 120);
   });
 </script>
 <script>tailwind.config = { darkMode: 'class' }</script>
@@ -66,7 +56,6 @@
       <nav class="hidden md:flex items-center gap-6 text-sm">
         <a href="/" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Главная</a>
         <a href="/#lenta" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Лента</a>
-        <a href="/blog.html" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Блог</a>
         <a href="/shop.html" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Магазин</a>
         <a href="/about.html" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">О проекте</a>
       </nav>
@@ -80,14 +69,25 @@
       </div>
     </div>
   </div>
-  <div id="mobileNav" class="md:hidden hidden border-t border-neutral-200 dark:border-neutral-700 bg-white/80 dark:bg-neutral-900/80 backdrop-blur">
-    <nav class="mx-auto max-w-6xl px-4 py-3 flex flex-col gap-2 text-sm">
-      <a href="/" class="text-neutral-800 dark:text-neutral-200">Главная</a>
-      <a href="/#lenta" class="text-neutral-800 dark:text-neutral-200">Лента</a>
-      <a href="/blog.html" class="text-neutral-800 dark:text-neutral-200">Блог</a>
-      <a href="/shop.html" class="text-neutral-800 dark:text-neutral-200">Магазин</a>
-      <a href="/about.html" class="text-neutral-800 dark:text-neutral-200">О проекте</a>
-      <a href="/private.html" class="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-orange-500 to-red-600 text-white px-4 py-2.5 font-semibold">Закрытые мысли</a>
+  <div id="mobileNav" class="fixed inset-0 z-[60] md:hidden hidden">
+    <div class="mnav-backdrop absolute inset-0 bg-black/45"></div>
+    <nav class="mnav-panel absolute top-0 right-0 h-full w-[86vw] max-w-sm bg-white dark:bg-neutral-900 border-l border-neutral-200 dark:border-neutral-800 p-6 flex flex-col gap-4">
+      <div class="nav-curtain" aria-hidden="true"></div>
+      <div class="flex items-center justify-between mb-2">
+        <div class="flex items-center gap-2">
+          <img src="/assets/logo.svg" class="h-7 w-7 dark:hidden" alt="Pereuloq">
+          <img src="/assets/logo-dark.svg" class="h-7 w-7 hidden dark:block" alt="Pereuloq">
+          <span class="text-sm text-neutral-600 dark:text-neutral-300">Меню</span>
+        </div>
+        <button id="mnavClose" class="rounded-xl border border-neutral-200 dark:border-neutral-700 p-2" aria-label="Закрыть">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <a href="/" class="rounded-xl px-3 py-2 text-base hover:bg-neutral-100 dark:hover:bg-neutral-800">Главная</a>
+      <a href="/#lenta" class="rounded-xl px-3 py-2 text-base hover:bg-neutral-100 dark:hover:bg-neutral-800">Лента</a>
+      <a href="/shop.html" class="rounded-xl px-3 py-2 text-base hover:bg-neutral-100 dark:hover:bg-neutral-800">Магазин</a>
+      <a href="/about.html" class="rounded-xl px-3 py-2 text-base hover:bg-neutral-100 dark:hover:bg-neutral-800">О проекте</a>
+      <a href="/private.html" class="mt-2 inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-orange-500 to-red-600 text-white px-4 py-2.5 font-semibold">Закрытые мысли</a>
     </nav>
   </div>
 </header>

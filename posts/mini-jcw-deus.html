@@ -11,10 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
-<script>
-  (() => { const s = localStorage.getItem('theme'); const p = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light'; const t = s||p; if(t==='dark') document.documentElement.classList.add('dark'); })();
-  
-</script>
+<meta name="theme-color" content="#ffffff">
 <script>tailwind.config = { darkMode: 'class' }</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/css/custom.css">
@@ -41,10 +38,6 @@
         <a href="/about.html" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">О проекте</a>
       </nav>
       <div class="flex items-center gap-2">
-        <button id="themeToggle" class="inline-flex items-center rounded-xl border border-neutral-200 dark:border-neutral-700 px-3 py-1.5 text-xs font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition">
-          <span class="hidden dark:inline">Светлая</span>
-          <span class="dark:hidden">Тёмная</span> тема
-        </button>
         <button id="menuBtn" class="md:hidden inline-flex items-center rounded-xl border border-neutral-200 dark:border-neutral-700 p-2 text-neutral-800 dark:text-neutral-200" aria-label="menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
