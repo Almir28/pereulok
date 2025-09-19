@@ -1,3 +1,184 @@
+const FEED_ENDPOINT = '/posts/index.json';
+const feedReady = renderDynamicFeed();
+
+async function renderDynamicFeed() {
+  const featuredContainer = document.getElementById('featuredGrid');
+  const latestGrid = document.getElementById('latestGrid');
+  const overlayHero = document.getElementById('overlayHero');
+  const overlayList = document.getElementById('overlayList');
+  if (!featuredContainer || !latestGrid) return;
+
+  try {
+    const res = await fetch(FEED_ENDPOINT, { cache: 'no-cache' });
+    if (!res.ok) throw new Error(`Feed request failed: ${res.status}`);
+    const raw = await res.json();
+    if (!Array.isArray(raw)) throw new Error('Feed payload is not an array');
+
+    const posts = raw
+      .map((post) => ({
+        ...post,
+        url: `/posts/${post.slug}.html`,
+        dateValue: Date.parse(post.date)
+      }))
+      .filter((post) => !Number.isNaN(post.dateValue))
+      .sort((a, b) => b.dateValue - a.dateValue);
+
+    const formatFullDate = (iso) => safeFormatDate(iso, { day: 'numeric', month: 'long', year: 'numeric' });
+
+    renderFeatured(posts.filter((p) => p.featured), featuredContainer, formatFullDate);
+    renderLatest(posts, latestGrid, formatFullDate);
+    renderOverlay(posts, overlayHero, overlayList, formatFullDate);
+
+    document.dispatchEvent(new CustomEvent('feed:rendered', { detail: { posts } }));
+  } catch (err) {
+    console.error('[lenta] не удалось отрисовать ленту', err);
+  }
+}
+
+function safeFormatDate(iso, options) {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return '';
+  try {
+    return new Intl.DateTimeFormat('ru-RU', options).format(date);
+  } catch {
+    return date.toLocaleDateString('ru-RU', options);
+  }
+}
+
+function renderFeatured(posts, container, formatDate) {
+  if (!container) return;
+  container.innerHTML = '';
+  if (!posts.length) {
+    container.closest('section')?.classList.add('hidden');
+    return;
+  }
+  container.closest('section')?.classList.remove('hidden');
+  posts.forEach((post) => container.appendChild(createFeaturedCard(post, formatDate)));
+}
+
+function renderLatest(posts, container, formatDate) {
+  if (!container) return;
+  container.innerHTML = '';
+  posts.forEach((post) => container.appendChild(createGridCard(post, formatDate)));
+}
+
+function renderOverlay(posts, heroContainer, listContainer, formatDate) {
+  if (!heroContainer && !listContainer) return;
+  const [hero, ...rest] = posts;
+  if (heroContainer) {
+    heroContainer.innerHTML = '';
+    if (hero) heroContainer.appendChild(createOverlayHero(hero, formatDate));
+  }
+  if (listContainer) {
+    listContainer.innerHTML = '';
+    const pool = rest.slice(0, 9);
+    pool.forEach((post) => listContainer.appendChild(createOverlayCard(post, formatDate)));
+  }
+}
+
+function createFeaturedCard(post, formatDate) {
+  const card = document.createElement('a');
+  card.href = post.url;
+  card.className = 'card group overflow-hidden rounded-3xl border border-neutral-200 dark:border-neutral-800 transition glass glass-border shadow-soft bg-white/70 dark:bg-neutral-900/60';
+  card.setAttribute('data-published', post.date);
+  card.dataset.cat = post.category;
+  card.innerHTML = `
+    <div class="aspect-16-9">
+      <img src="${post.image}" alt="${post.imageAlt || ''}" loading="lazy" decoding="async">
+    </div>
+    <div class="p-6">
+      <div class="text-xs text-red-600 font-semibold">${post.categoryLabel}</div>
+      <h3 class="mt-2 text-lg font-semibold group-hover:text-red-600 transition">${post.title}</h3>
+      <p class="card-excerpt mt-2 text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2">${post.excerpt}</p>
+      <div class="card-date mt-4 text-xs text-neutral-500">${formatDate(post.date)}</div>
+    </div>
+  `;
+  return card;
+}
+
+function createGridCard(post, formatDate) {
+  const layoutConfig = {
+    feature: {
+      wrapper: 'md:col-span-4 md:row-span-1',
+      media: 'relative aspect-16-9 md:aspect-auto md:h-[300px]',
+      content: 'px-6 pt-5 pb-4 md:px-8 md:pt-6 md:pb-4',
+      withGradient: true,
+      shadow: true
+    },
+    tall: {
+      wrapper: 'md:col-span-2 md:row-span-1',
+      media: 'relative h-56 md:h-[300px]',
+      content: 'px-6 pt-5 pb-4',
+      withGradient: false,
+      shadow: false
+    },
+    standard: {
+      wrapper: 'md:col-span-3 md:row-span-1',
+      media: 'relative aspect-16-9',
+      content: 'p-6',
+      withGradient: false,
+      shadow: true
+    }
+  };
+
+  const cfg = layoutConfig[post.layout] || layoutConfig.standard;
+  const card = document.createElement('a');
+  card.href = post.url;
+  card.className = `editorial-item card ${cfg.wrapper} glass glass-border bg-white/70 dark:bg-neutral-900/60${cfg.shadow ? ' shadow-soft' : ''}`;
+  card.setAttribute('data-published', post.date);
+  card.dataset.cat = post.category;
+  card.setAttribute('data-layout', post.layout || 'standard');
+  card.innerHTML = `
+    <div class="${cfg.media}">
+      <img src="${post.image}" alt="${post.imageAlt || ''}" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">
+      ${cfg.withGradient ? '<div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent"></div>' : ''}
+    </div>
+    <div class="${cfg.content}">
+      <div class="text-xs text-red-600 font-semibold">${post.categoryLabel}</div>
+      <h3 class="title mt-2 text-xl md:text-2xl font-semibold">${post.title}</h3>
+      <p class="card-excerpt mt-3 text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2">${post.excerpt}</p>
+      <div class="card-date mt-3 text-xs text-neutral-500">${formatDate(post.date)}</div>
+    </div>
+  `;
+  return card;
+}
+
+function createOverlayHero(post, formatDate) {
+  const hero = document.createElement('a');
+  hero.href = post.url;
+  hero.className = 'group block md:col-span-2';
+  hero.setAttribute('data-published', post.date);
+  hero.dataset.cat = post.category;
+  hero.innerHTML = `
+    <div class="rounded-3xl overflow-hidden">
+      <img class="w-full h-[320px] md:h-[420px] object-cover group-hover:scale-[1.03] transition-transform duration-700" src="${post.image}" alt="${post.imageAlt || ''}" loading="lazy" decoding="async">
+    </div>
+    <div class="mt-4 text-red-600 text-xs font-semibold">${post.categoryLabel}</div>
+    <h3 class="mt-1 text-3xl md:text-4xl font-serif font-bold leading-snug group-hover:text-red-600">${post.title}</h3>
+    <p class="mt-3 text-neutral-600 dark:text-neutral-300">${post.excerpt}</p>
+    <div class="card-date mt-3 text-xs text-neutral-500">${formatDate(post.date)}</div>
+  `;
+  return hero;
+}
+
+function createOverlayCard(post, formatDate) {
+  const card = document.createElement('a');
+  card.href = post.url;
+  card.className = 'group block rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-900/70 p-4 md:p-5 hover:border-red-200/60 dark:hover:border-red-700/40 transition-colors';
+  card.setAttribute('data-published', post.date);
+  card.dataset.cat = post.category;
+  card.innerHTML = `
+    <div class="overflow-hidden rounded-xl">
+      <img class="w-full h-40 md:h-44 object-cover group-hover:scale-[1.03] transition-transform duration-500" src="${post.image}" alt="${post.imageAlt || ''}" loading="lazy" decoding="async">
+    </div>
+    <div class="mt-3 text-red-600 text-xs font-semibold">${post.categoryLabel}</div>
+    <h4 class="mt-2 font-serif text-xl font-semibold leading-snug group-hover:text-red-600">${post.title}</h4>
+    <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300 line-clamp-3">${post.excerpt}</p>
+    <div class="card-date mt-3 text-xs text-neutral-500">${formatDate(post.date)}</div>
+  `;
+  return card;
+}
+
 // Mobile drawer nav (global)
 (() => {
   const btn = document.getElementById('menuBtn');
@@ -127,8 +308,7 @@ if (location.hash === '#lenta') {
   setTimeout(() => openLenta(), 0);
 }
 
-// Lenta: sort editorial cards by data-published (newest first)
-(() => {
+function initFeedSort() {
   const grid = document.querySelector('#latest .editorial-grid');
   if (!grid) return;
   const items = Array.from(grid.querySelectorAll('.editorial-item'));
@@ -136,85 +316,51 @@ if (location.hash === '#lenta') {
   const parse = (el) => {
     const v = el.getAttribute('data-published');
     const t = v ? Date.parse(v) : NaN;
-    return isNaN(t) ? 0 : t;
+    return Number.isNaN(t) ? 0 : t;
   };
   items.sort((a, b) => parse(b) - parse(a));
   items.forEach((el) => grid.appendChild(el));
-})();
+}
 
-// Apply formatted dates from data-published
-(() => {
-  const fmt = (iso) => {
-    const d = new Date(iso);
-    if (isNaN(d)) return '';
-    try {
-      return new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
-    } catch {
-      return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
-    }
-  };
-  const apply = (root) => {
+function initFormattedDates() {
+  const apply = (root = document) => {
     root.querySelectorAll('[data-published]').forEach((node) => {
       const iso = node.getAttribute('data-published');
       const dateEl = node.querySelector('.card-date');
-      if (iso && dateEl) dateEl.textContent = fmt(iso);
+      if (iso && dateEl) dateEl.textContent = safeFormatDate(iso, { day: 'numeric', month: 'long', year: 'numeric' });
     });
   };
   apply(document);
-  // Also reapply inside the newspaper overlay when opened
-  document.getElementById('lentaOverlay')?.addEventListener('transitionend', (e) => {
-    if (e.target === e.currentTarget && !e.currentTarget.classList.contains('hidden')) apply(e.currentTarget);
+  const overlay = document.getElementById('lentaOverlay');
+  overlay?.addEventListener('transitionend', (e) => {
+    if (e.target === overlay && !overlay.classList.contains('hidden')) apply(overlay);
   });
-})();
+}
 
-// Lenta overlay: sort blocks marked with data-sort="published"
-(() => {
-  const containers = document.querySelectorAll('#lentaOverlay [data-sort="published"]');
-  if (!containers.length) return;
-  const parse = (el) => {
-    const v = el?.getAttribute('data-published');
-    const t = v ? Date.parse(v) : NaN;
-    return isNaN(t) ? 0 : t;
-  };
-  containers.forEach((container) => {
-    const isUL = container.tagName.toLowerCase() === 'ul';
-    const children = Array.from(container.children);
-    children.sort((a, b) => {
-      const elA = isUL ? a.querySelector('a[href^="/posts/"]') : a;
-      const elB = isUL ? b.querySelector('a[href^="/posts/"]') : b;
-      return parse(elB) - parse(elA);
-    });
-    children.forEach((child) => container.appendChild(child));
-  });
-})();
 
-// Lenta: filters (by category) on main page
-(() => {
+function initFilters() {
   const filters = document.getElementById('lentaFilters');
   const grid = document.querySelector('#latest .editorial-grid');
   if (!filters || !grid) return;
-  const items = Array.from(grid.querySelectorAll('.editorial-item'));
 
   const setActive = (btn) => {
-    Array.from(filters.querySelectorAll('.filter-chip')).forEach(b => b.classList.toggle('is-active', b === btn));
+    Array.from(filters.querySelectorAll('.filter-chip')).forEach((b) => b.classList.toggle('is-active', b === btn));
   };
 
   filters.addEventListener('click', (e) => {
     const btn = e.target.closest('.filter-chip');
     if (!btn) return;
-    const val = btn.getAttribute('data-filter') || 'all';
+    const val = (btn.getAttribute('data-filter') || 'all').toLowerCase();
     setActive(btn);
-    const items = Array.from(grid.querySelectorAll('.editorial-item'));
-    items.forEach((it) => {
+    Array.from(grid.querySelectorAll('.editorial-item')).forEach((it) => {
       const cat = (it.getAttribute('data-cat') || 'all').toLowerCase();
       const match = val === 'all' || cat === val;
       it.classList.toggle('hidden', !match);
     });
   }, true);
-})();
+}
 
-// Auto-excerpt: fill missing card excerpts from post meta description
-(() => {
+function initAutoExcerpt() {
   const cards = Array.from(document.querySelectorAll('a.card[href^="/posts/"]'));
   const hasExcerpt = (card) => !!card.querySelector('.card-excerpt');
   const getInfoContainer = (card) => card.querySelector('.p-6, .p-8') || card;
@@ -232,27 +378,35 @@ if (location.hash === '#lenta') {
       p.className = 'card-excerpt mt-2 text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2';
       p.textContent = text;
       getInfoContainer(card).appendChild(p);
-    } catch (e) { /* ignore network/parse errors */ }
+    } catch (e) {
+      // ignore network/parse errors
+    }
   });
-})();
+}
 
-// Lenta overlay: simple search filter
-(() => {
+function initOverlaySearch() {
   const input = document.getElementById('lentaSearch');
   if (!input || !lentaOverlay) return;
   const scope = lentaOverlay.querySelector('.modal');
   if (!scope) return;
-  const items = Array.from(scope.querySelectorAll('.grid a.group, .grid a[href^="/posts/"]'));
+  const getItems = () => Array.from(scope.querySelectorAll('.grid a.group, .grid a[href^="/posts/"]'));
   const apply = () => {
     const q = input.value.trim().toLowerCase();
-    items.forEach(el => {
+    getItems().forEach((el) => {
       const t = el.textContent?.toLowerCase() || '';
-      const show = !q || t.includes(q);
-      el.classList.toggle('hidden', !show);
+      el.classList.toggle('hidden', !!q && !t.includes(q));
     });
   };
   input.addEventListener('input', apply);
-})();
+}
+
+feedReady.finally(() => {
+  initFeedSort();
+  initFormattedDates();
+  initFilters();
+  initAutoExcerpt();
+  initOverlaySearch();
+});
 
 // Image Lightbox for zoomable images
 (() => {
