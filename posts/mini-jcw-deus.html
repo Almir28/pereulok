@@ -38,17 +38,31 @@
         <a href="/about.html" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">О проекте</a>
       </nav>
       <div class="flex items-center gap-2">
-        <button id="menuBtn" class="md:hidden inline-flex items-center rounded-xl border border-neutral-200 dark:border-neutral-700 p-2 text-neutral-800 dark:text-neutral-200" aria-label="menu">
+        <button id="menuBtn" class="md:hidden inline-flex items-center rounded-xl border border-neutral-200 dark:border-neutral-700 p-2 text-neutral-800 dark:text-neutral-200" aria-label="menu" aria-expanded="false">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
     </div>
   </div>
-  <div id="mobileNav" class="md:hidden hidden border-t border-neutral-200 dark:border-neutral-700 bg-white/80 dark:bg-neutral-900/80 backdrop-blur">
-    <nav class="mx-auto max-w-6xl px-4 py-3 flex flex-col gap-2 text-sm">
-      <a href="/" class="text-neutral-800 dark:text-neutral-200">Главная</a>
-      <a href="/#lenta" class="text-neutral-800 dark:text-neutral-200">Лента</a>
-      <a href="/about.html" class="text-neutral-800 dark:text-neutral-200">О проекте</a>
+  <div id="menuOverlay" class="fixed inset-0 z-[60] md:hidden hidden"></div>
+  <div id="mobileNav" class="fixed top-0 left-0 z-[70] h-full md:hidden hidden">
+    <nav class="menu-drawer__panel flex h-full w-min min-w-[75vw] max-w-sm flex-col justify-between gap-6 px-6 py-7 text-neutral-900 dark:text-neutral-50">
+      <div class="flex items-center justify-between">
+        <span class="text-[11px] uppercase tracking-[0.28em] text-neutral-500 dark:text-neutral-400">Навигация</span>
+        <button id="mobileClose" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200/70 dark:border-neutral-700 bg-neutral-100/80 dark:bg-neutral-800/80 text-neutral-700 dark:text-neutral-100" aria-label="Закрыть меню">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="flex flex-col gap-2 text-lg font-semibold">
+        <a href="/" class="menu-drawer__link">Главная</a>
+        <a href="/#lenta" class="menu-drawer__link">Лента</a>
+        <a href="/shop.html" class="menu-drawer__link">Магазин</a>
+        <a href="/about.html" class="menu-drawer__link">О проекте</a>
+      </div>
+      <div class="space-y-3 text-center text-xs text-neutral-500 dark:text-neutral-400">
+        <p>Платная стена — живые наблюдения и быстрые решения. Возвращайся, когда нужен фокус без шума.</p>
+        <a href="/private.html" class="menu-drawer__cta">Закрытые мысли</a>
+      </div>
     </nav>
   </div>
 </header>

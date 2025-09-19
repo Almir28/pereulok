@@ -181,17 +181,45 @@ function createOverlayCard(post, formatDate) {
 
 // Mobile drawer nav (global)
 (() => {
-  const btn = document.getElementById('menuBtn');
-  const nav = document.getElementById('mobileNav');
-  if (!btn || !nav) return;
-  const panel = nav.querySelector('.mnav-panel');
-  const closeBtn = nav.querySelector('#mnavClose');
-  const open = () => { nav.classList.remove('hidden'); requestAnimationFrame(()=> nav.classList.add('open')); document.body.style.overflow = 'hidden'; };
-  const close = () => { nav.classList.remove('open'); setTimeout(()=>{ nav.classList.add('hidden'); document.body.style.overflow=''; }, 220); };
-  btn.addEventListener('click', open);
-  closeBtn?.addEventListener('click', close);
-  nav.addEventListener('click', (e) => { if (e.target === nav || e.target.classList.contains('mnav-backdrop')) close(); });
-  document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && !nav.classList.contains('hidden')) close(); });
+  const trigger = document.getElementById('menuBtn');
+  const drawer = document.getElementById('mobileNav');
+  const overlay = document.getElementById('menuOverlay');
+  const closeBtn = document.getElementById('mobileClose');
+  if (!trigger || !drawer || !overlay || !closeBtn) return;
+  const links = drawer.querySelectorAll('a');
+  const body = document.body;
+  const TRANSITION = 300;
+
+  const openMenu = () => {
+    drawer.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+    requestAnimationFrame(() => {
+      drawer.classList.add('is-active');
+      overlay.classList.add('is-active');
+    });
+    trigger.setAttribute('aria-expanded', 'true');
+    body.style.overflow = 'hidden';
+  };
+
+  const closeMenu = () => {
+    drawer.classList.remove('is-active');
+    overlay.classList.remove('is-active');
+    trigger.setAttribute('aria-expanded', 'false');
+    body.style.overflow = '';
+    setTimeout(() => {
+      if (drawer.classList.contains('is-active')) return;
+      drawer.classList.add('hidden');
+      overlay.classList.add('hidden');
+    }, TRANSITION);
+  };
+
+  trigger.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  links.forEach(link => link.addEventListener('click', closeMenu));
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
+  });
 })();
 
 // Preloader: hide when content loaded
