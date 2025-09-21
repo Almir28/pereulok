@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pereuloq — MINI JCW × Deus Ex Machina</title>
+<meta name="description" content="MINI John Cooper Works × Deus Ex Machina — специальный проект. Полная статья в стиле Pereuloq." />
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#ffffff">
+<script>tailwind.config = { darkMode: 'class' }</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/custom.css">
+<style>
+  body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; }
+  h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+</style>
+
+</head>
+<body class="bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100">
+
+<header class="sticky-header sticky top-0 z-50 relative backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-neutral-900/70 border-b border-neutral-200/60 dark:border-neutral-800/70">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="flex h-16 items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <picture>
+          <source srcset="/assets/logo-dark.svg" media="(prefers-color-scheme: dark)">
+          <img src="/assets/logo.svg" alt="Pereuloq" class="h-10 md:h-12 w-auto select-none">
+        </picture>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Главная</a>
+        <a href="/#lenta" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Лента</a>
+        <a href="/about.html" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">О проекте</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button id="menuBtn" class="md:hidden inline-flex items-center rounded-xl border border-neutral-200 dark:border-neutral-700 p-2 text-neutral-800 dark:text-neutral-200" aria-label="menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="menuOverlay" class="fixed inset-0 z-[60] md:hidden hidden"></div>
+  <div id="mobileNav" class="fixed top-0 left-0 z-[70] h-full md:hidden hidden">
+    <nav class="menu-drawer__panel flex h-full w-min min-w-[75vw] max-w-sm flex-col justify-between gap-6 px-6 py-7 text-neutral-900 dark:text-neutral-50">
+      <div class="flex items-center justify-between">
+        <span class="text-[11px] uppercase tracking-[0.28em] text-neutral-500 dark:text-neutral-400">Навигация</span>
+        <button id="mobileClose" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200/70 dark:border-neutral-700 bg-neutral-100/80 dark:bg-neutral-800/80 text-neutral-700 dark:text-neutral-100" aria-label="Закрыть меню">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="flex flex-col gap-2 text-lg font-semibold">
+        <a href="/" class="menu-drawer__link">Главная</a>
+        <a href="/#lenta" class="menu-drawer__link">Лента</a>
+        <a href="/shop.html" class="menu-drawer__link">Магазин</a>
+        <a href="/about.html" class="menu-drawer__link">О проекте</a>
+      </div>
+      <div class="space-y-3 text-center text-xs text-neutral-500 dark:text-neutral-400">
+        <p>Платная стена — живые наблюдения и быстрые решения. Возвращайся, когда нужен фокус без шума.</p>
+        <a href="/private.html" class="menu-drawer__cta">Закрытые мысли</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Header progress bar -->
+<div class="pointer-events-none fixed top-0 left-0 right-0 h-0.5">
+  <div id="scrollProgress" class="h-full w-full bg-red-500/80 dark:bg-red-500/70 origin-left scale-x-0" style="transform: scaleX(0);"></div>
+  
+</div>
+
+<main class="mx-auto max-w-3xl px-4">
+  <article class="mt-10 md:mt-14">
+    <div class="text-xs text-red-600 font-semibold">События</div>
+    <h1 class="mt-2 text-3xl md:text-5xl font-serif font-black leading-tight">MINI John Cooper Works × Deus Ex Machina</h1>
+    <div class="mt-2 flex flex-wrap items-center gap-2 text-xs text-neutral-500">
+      <span class="rounded-full border border-neutral-200 dark:border-neutral-700 px-2.5 py-1">14 сентября 2025</span>
+      <span class="rounded-full border border-neutral-200 dark:border-neutral-700 px-2.5 py-1">5 мин чтения</span>
+    </div>
+    <p class="mt-3 text-neutral-600 dark:text-neutral-300">Два уникальных шоукара, созданных вместе с Deus. Кастомный дизайн, механический характер и вдохновение серф культурой и мотоспортом.</p>
+
+    <!-- Hero видео (full-bleed, автоплей) -->
+    <div class="mt-4 full-bleed video-hero reveal">
+      <video class="w-full h-full" autoplay muted loop playsinline controls preload="auto" poster="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_fullwidth_/leftPar/image_item/damImage.narrow.2880w.j_1756879239152.jpg">
+        <source src="https://www.mini.com/content/dam/MINI/marketCOM/common/assets/images/content/mini-jcw-x-deus-ex-machina/mini-deus-ex-machina-intro.mp4" type="video/mp4" />
+        Ваш браузер не поддерживает видео.
+      </video>
+    </div>
+
+    <!-- Основной текст статьи -->
+    <div class="reading paper paper-border glass glass-border shadow-soft mt-6 p-6 md:p-8 reveal">
+      <p class="lead"><strong>MINI JCW × Deus Ex Machina.</strong> Два мира. Два автомобиля. Одна общая страсть.</p>
+      <p>MINI совместно с лайфстайл‑брендом Deus Ex Machina представляют два уникальных шоу‑кара John Cooper Works. Отдавая дань богатой гоночной истории MINI, оба автомобиля выражают общую любовь к автоспорту и кастомизации — каждый построен вокруг собственных дизайна, функции и творческого новаторства.</p>
+      <p>С глубоким уважением к ремеслу, культуре и сообществам, которые их формируют, партнёрство MINI John Cooper Works и Deus Ex Machina воплотилось в двух индивидуальных экземплярах — движущихся выражениях стиля жизни, где любовь к скорости встречается с креативностью и продуманным дизайном. Эти машины созданы не только ради характеристик, но и ради людей, которые живут и дышат автоспортом.</p>
+
+      <blockquote>«Модели MINI всегда отличались сочетанием креативного дизайна и гоночной динамики, — объясняет Штефан Рихманн, руководитель MINI. — Благодаря сотрудничеству с Deus Ex Machina мы выводим эту философию на новый уровень и задаём новые захватывающие тренды для поклонников и энтузиастов автоспорта. Партнёров объединяет страсть к машинам, инновациям и творчеству, а также подлинные отношения со своим сообществом».</blockquote>
+
+      <figure class="mt-6">
+        <img data-zoomable class="rounded-2xl w-full" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_fullwidth_/leftPar/image_item/damImage.narrow.2880w.j_1756879239152.jpg" alt="MINI JCW × DEUS — общий вид, белая «X» на крыше" fetchpriority="high" decoding="async">
+        <figcaption class="text-xs text-neutral-500 mt-2">Представленные автомобили — концепт‑кары и не предназначены для продажи.</figcaption>
+      </figure>
+
+      <p><strong>Аскетичный, функциональный и графичный подход.</strong> Оба концепта основаны на MINI John Cooper Works: первый — электрический MINI JCW мощностью до 190 кВт/258 л.с., второй — JCW с бензиновым двигателем 170 кВт/231 л.с. Крыша каждого украшена крупной белой «X» — объединяющим элементом и знаком ко‑креатива: совместного процесса между двумя иконичными брендами — MINI JCW × DEUS.</p>
+
+      <blockquote>«В этой необычной коллаборации мы показываем два автомобиля, напоминающих о гоночной истории и успехах MINI. Каждая деталь создана с ремесленной точностью и экспертизой. В результате получились уникальные характеры, при этом их родство ясно читается через выразительную графику и общий дизайн‑язык», — говорит Хольгер Хамф, руководитель MINI Design.</blockquote>
+
+      <figure class="mt-6">
+        <img data-zoomable class="rounded-2xl w-full" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_fullwidth__1615878111/leftPar/image_item/damImage.narrow.1640w.j_1756879239303.jpg" alt="Механический характер кокпита: видимые швы, тумблеры и рычаги" loading="lazy" decoding="async">
+      </figure>
+
+      <p>Видимые швы, выразительные тумблеры и традиционные рычаги подчёркивают механический характер кокпитов. Материалы и цвета образуют сильные контрасты — осознанный отказ от глянца. Вместо совершенства — подлинность: дизайнеры говорят о «сыром, ручном подходе», который прославляет «красоту несовершенства». Снаружи — выразительная графика с номерами, геометрией и яркими цветами — оммаж гоночной истории MINI.</p>
+
+      <figure class="mt-6">
+        <img data-zoomable class="rounded-2xl w-full" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_fullwidth__652249248/leftPar/image_item/damImage.narrow.1640w.j_1756879239461.jpg" alt="Пара шоу‑каров: родственные по духу, противоположные по энергии" loading="lazy" decoding="async">
+      </figure>
+
+      <p><strong>Два one‑off — парой:</strong> родственные по духу, противоположные по энергии. Один — рождён у побережья: серфборды, солёные брызги и ритм пляжной жизни. Другой — выкован на трассе: низкий, быстрый и питаемый любовью к скорости и точности.</p>
+
+      <div class="mt-10 full-bleed">
+        <div class="grid sm:grid-cols-2 gap-6 md:gap-8">
+          <img data-zoomable class="rounded-3xl w-full h-[26rem] md:h-[32rem] object-cover" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_grid_row_1_580147185/leftPar/image_item/damImage.narrow.1120w.j_1756879239606.jpg" alt="The Skeg — электрический, побережный характер, вид 1" loading="lazy" decoding="async">
+          <img data-zoomable class="rounded-3xl w-full h-[26rem] md:h-[32rem] object-cover" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_grid_row_1_580147185/rightPar/image_item/damImage.narrow.1120w.j_1756879239724.jpg" alt="The Skeg — электрический, побережный характер, вид 2" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <h2 class="mt-8">The Skeg — изящный, электрический, устремлённый к побережью</h2>
+      <p>Электрический шоу‑кар The Skeg — чистый, минималистичный и тихий бунтарь, вдохновлённый материалами, технологиями и философией мира сёрфинга: стеклопластик, ускорение и минимализм.</p>
+      <p>Кузов производит смелое первое впечатление яркой жёлто‑серебристой расцветкой — отсылка к прогрессивному взгляду MINI на электромобили. Широкие крылья, подсвеченная решётка и спойлер на крыше заостряют силуэт, а полупрозрачные панели из стеклопластика облегчают автомобиль на 15% и улучшают аэродинамику.</p>
+      <p>Сзади Flex Tip Surf Spoiler откликается на поток воздуха, как доска на гребень волны: форма, вдохновлённая вогнутым днищем серфборда, перенаправляет поток, создаёт прижимную силу и превращает дизайн в функцию.</p>
+      <p>Стяжные ремни на крыше отсылают к знакомому ритуалу — закреплять доску после сессии, и одновременно становятся фирменной деталью новой семьи MINI, повторяясь акцентом на торпедо и на шестичасовой спице руля.</p>
+      <p>Кастомные элементы из стеклопластика на крыше, спереди, сзади и в салоне создают игру света: полупрозрачные, прочные и меняющиеся в зависимости от времени суток. Панель приборов напрямую заимствует конструкцию серфборда: лёгкая, упругая и визуально выразительная.</p>
+
+      <div class="mt-10 full-bleed">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <img data-zoomable class="rounded-3xl w-full h-[22rem] md:h-[28rem] object-cover" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_grid_row_1_1249899555/leftPar/image_item_182499651/damImage.narrow.1120w.j_1756879239893.jpg" alt="The Skeg — детали экстерьера, вид 1" loading="lazy" decoding="async">
+          <img data-zoomable class="rounded-3xl w-full h-[22rem] md:h-[28rem] object-cover" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_grid_row_1_1249899555/rightPar/image_item/damImage.narrow.1120w.j_1756879239979.jpg" alt="The Skeg — детали экстерьера, вид 2" loading="lazy" decoding="async">
+          <img data-zoomable class="rounded-3xl w-full h-[22rem] md:h-[28rem] object-cover" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_grid_row_1_1249899555/rightPar/image_item_941516885/damImage.narrow.1120w.j_1756879240050.jpg" alt="The Skeg — интерьер и элементы из стеклопластика" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <h3 class="mt-8">Интерьер The Skeg</h3>
+      <p>Внутри аналоговые органы управления освобождены от всего лишнего — простые, тактильные и функциональные, в духе серф‑культуры, где важнее цель, чем полировка. Машина напоминает мобильный серф‑шоп: лотки из стеклопластика для гидрокостюмов — практичное решение, переносящее плажный образ жизни в салон.</p>
+      <p>Неопреновая обивка лёгких ковшей — гибкая, водоотталкивающая и удобная — создаёт тактильную связь с океаном. Стеклопластиковая панель приборов переносит технологии постройки досок в автоиндустрию. Увеличенная «X» возвращается визуальным якорем, а шильдики Deus Collection и 3D‑печать в консоли служат тонкими маркерами общей культуры — основанной на ремесле, связи и тяге к пути.</p>
+
+      <div class="mt-10 full-bleed">
+        <div class="grid sm:grid-cols-2 gap-6 md:gap-8">
+          <img data-zoomable class="rounded-3xl w-full h-[26rem] md:h-[32rem] object-cover" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_grid_row_1_1677961541/leftPar/image_item/damImage.narrow.1120w.j_1756879240186.jpg" alt="The Machina — экстерьер, вид 1" loading="lazy" decoding="async">
+          <img data-zoomable class="rounded-3xl w-full h-[26rem] md:h-[32rem] object-cover" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_grid_row_1_1677961541/rightPar/image_item/damImage.narrow.1120w.j_1756879240261.jpg" alt="The Machina — экстерьер, вид 2" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <h2 class="mt-8">The Machina — громкий, приземистый, на ДВС</h2>
+      <p>The Machina — John Cooper Works с компактным, но брутальным механическим характером и гоночной кровью. Вдохновлён эстетикой мотоспорта — это про чистую гоночную страсть и аутентичную функциональность.</p>
+      <p><strong>Экстерьер:</strong> фирменные элементы с отсылками к гоночной сцене. Окраска красно‑бело‑чёрной гаммой с акцентами и надписью Deus на корме производит мгновенный эффект. Классические расширители крыльев — уважение к наследию, баланс формы и функции. Четыре дополнительных «раллийных» фонаря на капоте — дань корням; каждый кастомный модуль несёт тонкий брендинг Deus и добавляет и производительность, и характерный образ.</p>
+      <p>Сзади диффузор вдохновлён JCW, летавшим по легендарной «Северной петле». Помимо агрессивной посадки, он оптимизирует поток и стабильность, а центральный выхлоп становится и функциональным, и визуальным центром, усиливающим звук и присутствие двигателя.</p>
+      <p>Спереди кастомная решётка и перфорированные окантовки фар улучшают охлаждение, а фирменная световая подпись MINI John Cooper Works и воздухозаборники укореняют машину в высокопроизводительной линейке MINI. Завершает образ спойлер в духе Can‑Am — смелый кусок ностальгии, возвращающий во времена, когда инновации в гонках толкали и дизайн, и инженерию.</p>
+
+      <div class="mt-10 full-bleed">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+          <img data-zoomable class="rounded-3xl w-full h-[20rem] md:h-[26rem] object-cover" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_grid_row_1_586609202/leftPar/image_item_182499651/damImage.narrow.1120w.j_1756879240411.jpg" alt="Machina — детали экстерьера 1" loading="lazy" decoding="async">
+          <img data-zoomable class="rounded-3xl w-full h-[20rem] md:h-[26rem] object-cover" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_grid_row_1_586609202/rightPar/image_item_941516885/damImage.narrow.1120w.j_1756879240612.jpg" alt="Machina — детали экстерьера 2" loading="lazy" decoding="async">
+          <img data-zoomable class="rounded-3xl w-full h-[20rem] md:h-[26rem] object-cover" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_grid_row_1_586609202/leftPar/image_item/damImage.narrow.1120w.j_1756879240483.jpg" alt="Machina — детали экстерьера 3" loading="lazy" decoding="async">
+          <img data-zoomable class="rounded-3xl w-full h-[20rem] md:h-[26rem] object-cover" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_grid_row_1_586609202/rightPar/image_item_941516885_1920576762/damImage.narrow.1120w.j_1756879240702.jpg" alt="Machina — детали экстерьера 4" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <h3 class="mt-8">Интерьер The Machina</h3>
+      <p>В салоне шоу‑кара JCW красно‑бело‑чёрная палитра держит строй: лаконично, целенаправленно и по‑гоночному. Пятиточечные ремни фиксируют водителя и становятся частью опыта — буквально оборачивают тело точностью.</p>
+      <p>Полированные алюминиевые пластины на полу — не только про сцепление, но и про утилитарную эстетику, знакомую по кастомным мото‑мастерским Deus — от Сиднея до Venice Beach и Чангу — связывая машину единым языком производительности и ремесла.</p>
+      <p>Лёгкость заложена в каждой поверхности: облегчённые карты дверей с белыми «X», вощёная ткань торпедо с «живой» патиной, открытый каркас‑роллкейдж над головой — одновременно про структуру и про стейтмент. Управляющая арматура говорит языком прямоты: каждый тумблер и кнопка — с ясной функцией. Гидравлический ручник с крупным рычагом — прямое соединение «мысль‑действие», манифест контроля.</p>
+
+      <h2 class="mt-8">Сконцентрированная креативность</h2>
+      <p>Вместе с командой MINI над выразительной внешней графикой обоих шоу‑каров работал креативный директор Deus, Карби Такуэлл, и широкая креативная коалиция под руководством Мэтта Уиллея — в дополнение к работе Designworks. Результат отражает впечатляющую динамику дизайна и нестандартные решения в обеих машинах.</p>
+      <blockquote>«У Deus давнее творческое партнёрство с Мэттом — основанное на уважении к силе дизайна и искусства. Его участие было для нас очевидным: он плотно работал со мной и командой Deus над нашим первым проектом, который в 2024‑м мы перенесли на кузов MINI», — Карби Такуэлл, сооснователь и креативный директор Deus.</blockquote>
+
+      <p><strong>Deus × Matt Willey: очарование исторических гонок.</strong> Карби Такуэлл и Мэтт Уиллей сотрудничают с 2015 года. Их объединяет увлечение классическими ливреями: в 2022‑м они создали исторический Mini Cooper S с особой раскраской по дизайну Уиллея — с отсылкой к победам MINI на «Монте‑Карло», включая номер 37 Пэдди Хопкирка в 1964‑м — первую общую победу британского малыша в легендарном ралли.</p>
+
+      <figure class="mt-6">
+        <img data-zoomable class="rounded-2xl w-full" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_fullwidth__361706586/leftPar/image_item/damImage.narrow.1640w.j_1756879241061.jpg" alt="Графика Deus × Matt Willey — оммаж гоночной истории" loading="lazy" decoding="async">
+      </figure>
+
+      <h2 class="mt-8">Общее видение — в ткани</h2>
+      <p>В партнёрство вплетена капсульная коллекция одежды MINI × Deus Ex Machina, запуск — 8 сентября 2025 на IAA в Мюнхене, затем глобально на e‑commerce и в рознице Deus. Ассортимент опирается на ДНК обоих брендов — точную инженерию, вне времени стиль и внимание к деталям. Качественные материалы и продуманное кроение задают планку, а каждый предмет отражает ремесленный подход Deus и их репутацию, соединяющую лайфстайл и наследие.</p>
+      <p>Кульминация кампании — мировая премьера на IAA Mobility 2025 и эксклюзивная ночь MINI JCW × DEUS 6 сентября в павильоне MINI. Коллаборация будет представлена там до 14 сентября. Эксклюзивная коллекция MINI × DEUS поступит в продажу в тех же пространствах, а также онлайн на каналах DEUS и в их магазинах.</p>
+
+      <p class="text-xs text-neutral-500 mt-6">Источник: mini.com — материал адаптирован для Pereuloq.</p>
+    </div>
+
+    <!-- Дополнительные визуалы -->
+    <div class="mt-6 grid md:grid-cols-2 gap-4 reveal">
+      <img class="rounded-2xl w-full h-56 object-cover" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_fullwidth__1615878111/leftPar/image_item/damImage.narrow.1640w.j_1756879239303.jpg" alt="Кокпит — механический характер" loading="lazy" decoding="async">
+      <img class="rounded-2xl w-full h-56 object-cover" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_fullwidth__652249248/leftPar/image_item/damImage.narrow.1640w.j_1756879239461.jpg" alt="Два шоу‑кара — общий кадр" loading="lazy" decoding="async">
+    </div>
+
+    <div class="mt-10 flex items-center justify-between">
+      <a href="/" class="text-sm text-red-600 hover:opacity-90 font-semibold">← На главную</a>
+      <a href="#top" class="text-sm text-neutral-500 hover:text-neutral-700">Наверх ↑</a>
+    </div>
+  </article>
+</main>
+
+<footer class="mt-16">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="rounded-3xl glass glass-border shadow-soft p-6 md:p-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="/assets/logo.svg" class="h-8 w-auto dark:hidden" alt="Pereuloq">
+          <img src="/assets/logo-dark.svg" class="h-8 w-auto hidden dark:block" alt="Pereuloq">
+          <span class="text-sm text-neutral-600 dark:text-neutral-300">Журнал о мыслях и событиях</span>
+        </div>
+        <nav class="flex flex-wrap gap-4 text-sm">
+          <a href="/" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Главная</a>
+          <a href="/#lenta" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Лента</a>
+          <a href="/about.html" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">О проекте</a>
+          <a href="/private.html" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Приват</a>
+        </nav>
+      </div>
+      <div class="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+        <p>© 2025 Pereuloq • Almir Khialov</p>
+        <p class="flex items-center gap-2"><span class="text-neutral-500">Партнёрство и реклама:</span> <a href="mailto:hello@example.com" class="hover:text-red-600">hello@example.com</a> <span>·</span> <a href="#" class="hover:text-red-600">Telegram</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>

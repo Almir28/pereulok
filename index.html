@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pereuloq — Журнал о мыслях и событиях</title>
+<meta name="description" content="Pereuloq — блог-лента с заметками и событиями." />
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#ffffff">
+<script>tailwind.config = { darkMode: 'class' }</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/custom.css">
+<style>
+  body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; }
+  h1, h2, h3, .font-serif {
+    font-family: 'Playfair Display', serif;
+  }
+</style>
+
+<style>
+  .fade-out {
+    opacity: 0;
+    transition: opacity .4s ease;
+  }
+</style>
+
+</head>
+<body class="bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100">
+
+<header class="sticky-header sticky top-0 z-50 relative backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-neutral-900/70 border-b border-neutral-200/60 dark:border-neutral-800/70">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="flex h-16 items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <picture>
+          <source srcset="/assets/logo-dark.svg" media="(prefers-color-scheme: dark)">
+          <img src="/assets/logo.svg" alt="Pereuloq" class="h-10 md:h-12 w-auto select-none">
+        </picture>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Главная</a>
+        <a href="#lenta" data-open-lenta class="nav-link text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Лента</a>
+        <a href="/shop.html" class="nav-link text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Магазин</a>
+        <a href="/about.html" class="nav-link text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">О проекте</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="/private.html" class="hidden md:inline-flex rounded-xl bg-gradient-to-r from-orange-500 to-red-600 text-white px-4 py-2 text-sm font-semibold hover:opacity-90">Закрытые мысли</a>
+        <button id="menuBtn" class="md:hidden inline-flex items-center rounded-xl border border-neutral-200 dark:border-neutral-700 p-2 text-neutral-800 dark:text-neutral-200" aria-label="menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="menuOverlay" class="fixed inset-0 z-[60] md:hidden hidden"></div>
+  <div id="mobileNav" class="fixed top-0 left-0 z-[70] h-full md:hidden hidden">
+    <nav class="menu-drawer__panel flex h-full w-min min-w-[75vw] max-w-sm flex-col justify-between gap-6 px-6 py-7 text-neutral-900 dark:text-neutral-50">
+      <div class="flex items-center justify-between">
+        <span class="text-[11px] uppercase tracking-[0.28em] text-neutral-500 dark:text-neutral-400">Навигация</span>
+        <button id="mobileClose" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200/70 dark:border-neutral-700 bg-neutral-100/80 dark:bg-neutral-800/80 text-neutral-700 dark:text-neutral-100" aria-label="Закрыть меню">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="flex flex-col gap-2 text-lg font-semibold">
+        <a href="/" class="menu-drawer__link">Главная</a>
+        <a href="#lenta" data-open-lenta class="menu-drawer__link">Лента</a>
+        <a href="/shop.html" class="menu-drawer__link">Магазин</a>
+        <a href="/about.html" class="menu-drawer__link">О проекте</a>
+      </div>
+      <div class="space-y-3 text-center text-xs text-neutral-500 dark:text-neutral-400">
+        <p>Платная стена — живые наблюдения и быстрые решения. Возвращайся, когда нужен фокус без шума.</p>
+        <a href="/private.html" class="menu-drawer__cta">Закрытые мысли</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- Header progress bar -->
+<div class="pointer-events-none fixed top-0 left-0 right-0 h-0.5">
+  <div id="scrollProgress" class="h-full w-full bg-red-500/80 dark:bg-red-500/70 origin-left scale-x-0" style="transform: scaleX(0);"></div>
+  
+</div>
+
+<main class="mx-auto max-w-6xl px-4">
+  <!-- Preloader -->
+  <div id="preloader" class="fixed inset-0 bg-white dark:bg-neutral-900 flex items-center justify-center z-[60]">
+    <div class="flex items-center gap-3">
+      <img src="/assets/logo.svg" class="h-8 w-auto animate-pulse" alt="Pereuloq">
+      <div class="h-2 w-24 bg-neutral-200 dark:bg-neutral-800 rounded overflow-hidden">
+        <div class="h-full w-1/3 bg-red-500 animate-[loader_1.2s_ease-in-out_infinite]"></div>
+      </div>
+    </div>
+  </div>
+  <style>
+    @keyframes loader {
+      0% { transform: translateX(-100%); }
+      50% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
+
+  <!-- Hero -->
+  <section class="mt-10 md:mt-14">
+    <div id="hero" class="rounded-3xl border border-neutral-200 dark:border-neutral-800 p-8 md:p-12 bg-white/70 dark:bg-neutral-900/60 overflow-hidden relative glass glass-border shadow-soft">
+      <div class="absolute inset-0 pointer-events-none opacity-70">
+        <!-- subtle moving gradient spotlight -->
+        <div id="spot" class="absolute -top-24 -left-24 h-72 w-72 rounded-full blur-3xl bg-red-500/10"></div>
+      </div>
+      <div class="max-w-2xl relative z-10">
+        <span class="inline-flex items-center rounded-full bg-white dark:bg-neutral-900 border border-red-200/70 dark:border-red-800/60 px-3 py-1 text-xs font-semibold text-red-600">Журнал Pereuloq</span>
+        <h1 class="mt-4 text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">Технологии, разработка и события без шума</h1>
+        <p class="mt-4 text-neutral-600 dark:text-neutral-300 max-w-xl">Pereuloq — журнал о разработке и технологиях. Короткие материалы, понятная навигация и чистый дизайн. Главное из мира продуктов и событий в одном месте.</p>
+        <div class="mt-6 flex items-center gap-3">
+          <a href="#latest" class="rounded-xl bg-black text-white dark:bg-red-600 px-4 py-2.5 text-sm font-semibold hover:opacity-90">Читать ленту</a>
+          <a href="/about.html" class="rounded-xl border border-neutral-200 dark:border-neutral-700 px-4 py-2.5 text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-neutral-800">О проекте</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured -->
+  <section class="mt-12 reveal">
+    <h2 class="text-xl font-semibold">Избранное</h2>
+    <div id="featuredGrid" class="mt-6 grid md:grid-cols-2 gap-6"></div>
+  </section>
+
+  <!-- Latest (Editorial) -->
+  <section id="latest" class="mt-12 reveal">
+    <h2 class="text-xl font-semibold">Лента</h2>
+    <!-- Filters -->
+    <div id="lentaFilters" class="mt-4 flex flex-wrap gap-2 sticky top-16 z-10">
+      <button type="button" class="filter-chip is-active text-neutral-700 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800">Все</button>
+      <button type="button" data-filter="tech" class="filter-chip text-neutral-700 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800">Технологии</button>
+      <button type="button" data-filter="events" class="filter-chip text-neutral-700 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800">События</button>
+      <button type="button" data-filter="music" class="filter-chip text-neutral-700 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800">Музыка</button>
+      <button type="button" data-filter="science" class="filter-chip text-neutral-700 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800">Наука</button>
+      <button type="button" data-filter="business" class="filter-chip text-neutral-700 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800">Бизнес</button>
+    </div>
+    <div id="latestGrid" class="mt-6 grid grid-cols-1 md:grid-cols-6 gap-6 editorial-grid cv-auto"></div>
+  </section>
+
+
+
+  
+
+</main>
+
+<!-- Lenta Newspaper UI Overlay -->
+<div id="lentaOverlay" class="fixed inset-0 hidden z-[70]">
+  <div class="absolute inset-0 modal-backdrop"></div>
+  <div class="relative h-full overflow-y-auto py-8">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="modal paper paper-border rounded-3xl p-6 md:p-10 shadow-soft">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <div class="inline-flex items-center gap-2 text-xs tracking-widest uppercase text-red-600 font-semibold">Газетный режим</div>
+            <h2 class="mt-2 text-3xl md:text-5xl font-serif font-black leading-tight">Лента Pereuloq</h2>
+            <p class="mt-3 text-neutral-600 dark:text-neutral-300 max-w-2xl">Крупные заголовки, большие фотографии и быстрый обзор всех материалов.</p>
+          </div>
+          <button id="closeLenta" class="rounded-xl border border-neutral-200 dark:border-neutral-700 px-3 py-2 text-sm hover:bg-neutral-50 dark:hover:bg-neutral-800">Закрыть</button>
+        </div>
+
+        <div class="mt-6">
+          <input id="lentaSearch" type="search" placeholder="Поиск по ленте..." class="w-full md:w-96 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white/80 dark:bg-neutral-900/70 px-4 py-2.5 text-sm focus:outline-none focus:border-red-400 dark:focus:border-red-600" />
+        </div>
+
+        <div class="mt-8 space-y-10">
+          <section>
+            <div id="overlayHero" class="grid gap-6 md:grid-cols-2 md:items-end"></div>
+          </section>
+          <section>
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="text-xl font-semibold">Последние материалы</h3>
+              <span class="text-xs text-neutral-400 dark:text-neutral-500">Обновляется автоматически</span>
+            </div>
+            <div id="overlayList" class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Back-to-top button -->
+<button id="toTop" aria-label="Наверх" class="fixed bottom-6 right-6 z-50 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-200 p-3 shadow-lg transition glass glass-border">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+  </svg>
+  </button>
+
+<footer class="mt-16">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="rounded-3xl glass glass-border shadow-soft p-6 md:p-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="/assets/logo.svg" class="h-8 w-auto dark:hidden" alt="Pereuloq">
+          <img src="/assets/logo-dark.svg" class="h-8 w-auto hidden dark:block" alt="Pereuloq">
+          <span class="text-sm text-neutral-600 dark:text-neutral-300">Журнал о мыслях и событиях</span>
+        </div>
+        <nav class="flex flex-wrap gap-4 text-sm">
+          <a href="/" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Главная</a>
+          <a href="/#lenta" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Лента</a>
+          <a href="/about.html" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">О проекте</a>
+          <a href="/private.html" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Приват</a>
+        </nav>
+      </div>
+      <div class="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+        <p>© 2025 Pereuloq • Almir Khialov</p>
+        <p class="flex items-center gap-2">
+          <span class="text-neutral-500">Партнёрство и реклама:</span>
+          <a href="mailto:hello@example.com" class="hover:text-red-600">hello@example.com</a>
+          <span>·</span>
+          <a href="#" class="hover:text-red-600">Telegram</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js" defer></script>
+<script>
+  // Smooth fade navigation + fix for Safari bfcache
+  const isIOS = /iP(hone|od|ad)/.test(navigator.platform) || (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  document.querySelectorAll('a[href]').forEach(link=>{
+    if(link.host===window.location.host){
+      link.addEventListener('click',function(e){
+        if(link.target==='_blank' || link.href.includes('#'))return;
+        e.preventDefault();
+        if (isIOS && isSafari) { window.location = link.href; return; }
+        document.body.classList.add('fade-out');
+        setTimeout(()=>window.location=link.href,120);
+      });
+    }
+  });
+  window.addEventListener('pageshow', ()=>{
+    // ensure page is visible when restored from bfcache
+    document.body.classList.remove('fade-out');
+  });
+</script>
+</body>
+</html>

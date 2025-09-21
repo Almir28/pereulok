@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1404 768" role="img" aria-labelledby="title desc">
+  <title id="title">Партнёрство NVIDIA и Intel</title>
+  <desc id="desc">Два цветных блока с логотипными подписями NVIDIA и Intel на тёмном фоне.</desc>
+  <rect width="1404" height="768" fill="#050505" />
+  <rect width="702" height="768" fill="#76b900" />
+  <rect x="702" width="702" height="768" fill="#0068b5" />
+  <rect x="700" width="4" height="768" fill="#050505" opacity="0.45" />
+  <g fill="#ffffff" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="700" text-anchor="middle">
+    <text x="351" y="360" font-size="160" letter-spacing="4">NVIDIA</text>
+    <text x="1053" y="360" font-size="160" letter-spacing="2">intel</text>
+  </g>
+  <g fill="#f4f4f4" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">
+    <text x="351" y="450" font-size="32" letter-spacing="2">$5 млрд инвестиций</text>
+    <text x="1053" y="450" font-size="32" letter-spacing="1">совместный х86 APU</text>
+  </g>
+</svg>

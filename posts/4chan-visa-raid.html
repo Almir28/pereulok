@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pereuloq — Операция «Засорить туалет» на 4chan</title>
+<meta name="description" content="Что известно о флешмобе 4chan, который пытается сорвать переезд индийских айтишников в США после резкого роста цены рабочей визы." />
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<script>
+  (() => {
+    const stored = localStorage.getItem('theme');
+    const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const t = stored || prefers;
+    if (t === 'dark') document.documentElement.classList.add('dark');
+  })();
+</script>
+<script>tailwind.config = { darkMode: 'class' }</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/custom.css">
+<style>
+  body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; }
+  h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+  .panel { background: #fff; }
+  .hero-photo { object-fit: cover; object-position: center; }
+  .tag-cloud span { border-radius: 999px; border: 1px solid rgba(239,68,68,.25); padding: .35rem .8rem; font-size: .75rem; }
+</style>
+
+</head>
+<body class="bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100">
+
+<header class="sticky-header sticky top-0 z-50 relative backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-neutral-900/70 border-b border-neutral-200/60 dark:border-neutral-800/70">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="flex h-16 items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <picture>
+          <source srcset="/assets/logo-dark.svg" media="(prefers-color-scheme: dark)">
+          <img src="/assets/logo.svg" alt="Pereuloq" class="h-10 md:h-12 w-auto select-none">
+        </picture>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Главная</a>
+        <a href="/#lenta" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Лента</a>
+        <a href="/about.html" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">О проекте</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="/" class="rounded-xl border border-neutral-200 dark:border-neutral-800 px-3 py-1.5 text-xs text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800">Назад</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="pointer-events-none fixed top-0 left-0 right-0 h-0.5">
+  <div id="scrollProgress" class="h-full w-full bg-red-500/80 dark:bg-red-500/70 origin-left" style="transform: scaleX(0);"></div>
+  
+</div>
+
+<main class="panel">
+  <section class="full-bleed">
+    <img class="w-full h-[54vh] md:h-[66vh] hero-photo" src="https://s0.rbk.ru/v6_top_pics/resized/960xH/media/img/1/07/347219113181071.webp" alt="Табло в аэропорту и пассажиры с багажом" loading="lazy" decoding="async" />
+  </section>
+
+  <article class="mx-auto max-w-3xl px-4 py-8 md:py-12 reading">
+    <div class="flex flex-wrap items-center gap-2 text-xs text-neutral-500">
+      <span class="rounded-full border border-neutral-300 dark:border-neutral-700 px-2.5 py-1">Бизнес</span>
+      <span class="rounded-full border border-neutral-300 dark:border-neutral-700 px-2.5 py-1">19 сентября 2025</span>
+      <span class="rounded-full border border-neutral-300 dark:border-neutral-700 px-2.5 py-1">4 мин чтения</span>
+    </div>
+    <h1 class="mt-3 text-3xl md:text-4xl font-serif font-black leading-tight">Операция «Засорить туалет»: как 4chan пытается удержать индийских айтишников от США</h1>
+    <p class="lead mt-3">На имиджборде 4chan появилась координация по блокировке перелётов в США. Участники массово выкупают билеты из Индии, чтобы поднять цену и не дать инженерам успеть оформить документы до вступления в силу нового визового сбора.</p>
+
+    <section class="mt-6">
+      <h2 class="text-2xl font-serif font-semibold">Что стало триггером</h2>
+      <p class="mt-4">Администрация Дональда Трампа сегодня подняла плату за рабочую визу категории H‑1B — с $1 000 до $100 000. Решение вступает в силу через сутки, и компании получили короткое окно, чтобы отправить иностранцев в США по прежней цене.</p>
+      <p class="mt-4">Американские корпорации, у которых бэк-офисы распределены между Бангалором и Хайдарабадом, срочно собирают сотрудников и выдают им маршруты — по сути, это «последний рейс» до резкого подорожания иммиграции.</p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-2xl font-serif font-semibold">Как выглядит операция 4chan</h2>
+      <p class="mt-4">На досках /pol/ и /biz/ стартовала операция с говорящим названием <strong>Clog the Toilet</strong> («Засорить туалет»). Участники синхронно бронируют любые перелёты Индия → США, выбирают возвратные тарифы и держат бронь до самого дедлайна. Это легально, но резко сокращает доступные места.</p>
+      <ul class="mt-4 list-disc list-inside space-y-2 text-neutral-700 dark:text-neutral-200">
+        <li>Популярные маршруты через Дубай и Доху ушли в waitlist уже к полудню.</li>
+        <li>Цена эконом-класса на Дели — Нью-Йорк подскочила с $900 до $5 000 за несколько часов.</li>
+        <li>По перепискам в тредах видно, что часть бронирований делает одна и та же группа добровольцев, работающих по Google-таблице.</li>
+      </ul>
+      <p class="mt-4">Одновременно аноны «заливают» в соцсети скриншоты с очередями в визовых центрах, чтобы создать эффект паники. Их задача — сорвать корпоративные чартеры и вынудить компании переносить сотрудников на зимние слоты, когда сбор уже вырастет.</p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-2xl font-serif font-semibold">Что говорят компании</h2>
+      <p class="mt-4">Технологические гиганты из Сиэтла и Сан-Франциско в срочном порядке перебронируют служебные полёты через Европу. По данным местных брокеров, часть рейсов Delta и United выкупили целиком, а остальным остаётся лотерея из пересадок и цен под $4–5 тысяч.</p>
+      <p class="mt-4">Рекрутеры признают, что даже успевшие прилететь инженеры окажутся «на паузе»: внутри корпораций готовят резервные планы на удалёнку и обсуждают компенсации за оплату новой пошлины. Никто не хочет платить $100 000 из своего бюджета, и это усиливает нервозность вокруг американского рынка труда.</p>
+    </section>
+
+    <section class="mt-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/60 p-6">
+      <h2 class="text-xl font-serif font-semibold">К чему всё идёт</h2>
+      <p class="mt-4 text-sm text-neutral-600 dark:text-neutral-300">Даже если флешмоб продержится считанные часы, он уже поднял стоимость перелётов и усложнил логику релокаций. Следите за реакцией Госдепа: если власти посчитают это вмешательством в визовый процесс, вероятны временные ограничения на бронирования и дополнительные проверки для всех пассажиров из Индии. Корпорациям же придётся пересматривать планы найма и более агрессивно разворачивать команды в других странах.</p>
+    </section>
+
+    <div class="mt-10 flex items-center justify-between text-sm">
+      <a href="/" class="text-red-600 hover:opacity-90 font-semibold">← На главную</a>
+      <a href="#top" class="text-neutral-500 hover:text-neutral-700">Наверх ↑</a>
+    </div>
+  </article>
+</main>
+
+<footer class="mt-16">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="rounded-3xl glass glass-border shadow-soft p-6 md:p-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="/assets/logo.svg" class="h-8 w-auto dark:hidden" alt="Pereuloq">
+          <img src="/assets/logo-dark.svg" class="h-8 w-auto hidden dark:block" alt="Pereuloq">
+          <span class="text-sm text-neutral-600 dark:text-neutral-300">Журнал о мыслях и событиях</span>
+        </div>
+        <nav class="flex flex-wrap gap-4 text-sm">
+          <a href="/" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Главная</a>
+          <a href="/#lenta" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Лента</a>
+          <a href="/about.html" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">О проекте</a>
+          <a href="/private.html" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Приват</a>
+        </nav>
+      </div>
+      <div class="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+        <p>© 2025 Pereuloq • Almir Khialov</p>
+        <p class="flex items-center gap-2"><span class="text-neutral-500">Партнёрство и реклама:</span> <a href="mailto:hello@example.com" class="hover:text-red-600">hello@example.com</a> <span>·</span> <a href="#" class="hover:text-red-600">Telegram</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>

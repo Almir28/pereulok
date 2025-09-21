@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pereuloq — iPhone Air</title>
+<meta name="description" content="iPhone Air. Самый тонкий iPhone с мощностью Pro внутри." />
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#ffffff">
+<script>
+  // avoid nav fade flash
+  window.addEventListener('pageshow', () => document.body.classList.remove('fade-out'));
+</script>
+<script>tailwind.config = { darkMode: 'class' }</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/custom.css">
+<style>
+  body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; }
+  h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+  .panel { background: #fff; }
+  .dark .panel { background: #111; }
+  .tag { color: rgb(239 68 68); border-color: rgba(239,68,68,.35); }
+  /* Subtle reveal */
+  .fx-reveal { opacity: 0; transform: translateY(18px) scale(.985); transition: opacity .7s ease, transform .8s cubic-bezier(.22,1,.36,1); }
+  .fx-reveal.show { opacity: 1; transform: translateY(0) scale(1); }
+  .fx-scale { transform: scale(1.06); will-change: transform, opacity; }
+  .hero-wrap { height: 84vh; max-height: 980px; min-height: 520px; }
+  .hero-wrap img { object-fit: cover; }
+  @media (max-width: 768px) { .hero-wrap { height: 68vh; min-height: 420px; } }
+  .section-visual img { width: 100%; height: auto; border-radius: 1.25rem; }
+  .full-bleed img { width: 100%; height: 70vh; object-fit: cover; }
+  @media (max-width: 768px) { .full-bleed img { height: 44vh; } }
+  .spec-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1rem; }
+  @media (max-width: 768px) { .spec-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+  .spec { border: 1px solid rgba(0,0,0,.08); border-radius: .75rem; padding: .9rem; text-align: center; }
+</style>
+
+</head>
+<body class="bg-white text-neutral-900">
+
+<header class="sticky-header sticky top-0 z-50 relative backdrop-blur supports-[backdrop-filter]:bg-white/80 border-b border-neutral-200">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="flex h-16 items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <picture>
+          <img src="/assets/logo.svg" alt="Pereuloq" class="h-10 md:h-12 w-auto select-none">
+        </picture>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/" class="text-neutral-700 hover:text-black">Главная</a>
+        <a href="/#lenta" class="text-neutral-700 hover:text-black">Лента</a>
+        <a href="/about.html" class="text-neutral-700 hover:text-black">О проекте</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="/" class="rounded-xl border border-neutral-200 px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50">Назад</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- прогресс прокрутки -->
+<div class="pointer-events-none fixed top-0 left-0 right-0 h-0.5">
+  <div id="scrollProgress" class="h-full w-full bg-red-500/80 origin-left" style="transform: scaleX(0);"></div>
+  
+</div>
+
+<main class="panel">
+  <!-- Hero -->
+  <section class="full-bleed hero-wrap flex items-end justify-center">
+    <img class="w-full h-full fx-scale" src="https://www.apple.com/v/iphone-air/a/images/overview/welcome/hero_endframe__e89wrlp1kjee_xlarge_2x.jpg" alt="iPhone Air самый тонкий iPhone">
+  </section>
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <span class="tag inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold">iPhone Air</span>
+    <h1 class="mt-4 text-3xl md:text-5xl font-serif font-black leading-tight">Самый тонкий iPhone. С мощностью Pro внутри.</h1>
+    <div class="mt-2 flex flex-wrap items-center gap-2 text-xs text-neutral-500">
+      <span class="rounded-full border border-neutral-200 px-2.5 py-1">Технологии</span>
+      <span class="rounded-full border border-neutral-200 px-2.5 py-1">Сентябрь 2025</span>
+      <span class="rounded-full border border-neutral-200 px-2.5 py-1">5 мин чтения</span>
+    </div>
+  </section>
+
+  <!-- Design -->
+  <section class="mx-auto max-w-4xl px-4 fx-reveal">
+    <h2 class="text-2xl md:text-4xl font-serif font-extrabold leading-tight">Дизайн<br>Так чувствуется будущее.</h2>
+    <p class="mt-4 text-neutral-700">Совершенно новый iPhone Air настолько тонкий и легкий что почти исчезает в руке. Толщина 5,6 мм и вес 165 г. Это самый тонкий iPhone. При этом большой дисплей 6,5 дюйма и мощный чип A19 Pro. Это парадокс который ощущаешь в руках.</p>
+    <figure class="mt-6 section-visual">
+      <img class="rounded-2xl w-full h-auto" src="https://www.apple.com/v/iphone-air/a/images/overview/design/hero_design__xv9gyjqhdiai_large_2x.jpg" alt="iPhone Air дизайн" />
+    </figure>
+  </section>
+
+  <!-- Cameras Intro -->
+  <section class="mx-auto max-w-6xl px-4 mt-14 fx-reveal">
+    <div class="grid md:grid-cols-5 gap-6 items-start">
+      <div class="md:col-span-2">
+        <h2 class="text-2xl md:text-4xl font-serif font-extrabold leading-tight">Камеры<br>Новая фронтальная. Новая основная.<br>Новая камера.</h2>
+      </div>
+      <div class="md:col-span-3">
+        <div class="spec-grid">
+          <div class="spec"><div class="text-2xl font-bold">18 МП</div><div class="text-xs text-neutral-500 mt-1">Фронтальная камера Center Stage</div></div>
+          <div class="spec"><div class="text-2xl font-bold">48 МП</div><div class="text-xs text-neutral-500 mt-1">Основная камера Fusion</div></div>
+          <div class="spec"><div class="text-2xl font-bold">4K 60</div><div class="text-xs text-neutral-500 mt-1">Dolby Vision</div></div>
+          <div class="spec"><div class="text-2xl font-bold">4</div><div class="text-xs text-neutral-500 mt-1">объектива в кармане</div></div>
+        </div>
+        <p class="mt-4 text-neutral-700">Совершенно новая система камер позволяет делать отличные селфи портреты и пейзажи а также записывать видео уровня Pro.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 mt-8 fx-reveal">
+    <div class="grid md:grid-cols-2 gap-6 items-center">
+      <figure>
+        <img class="rounded-2xl w-full h-auto" src="https://www.apple.com/v/iphone-air/a/images/overview/camera/center_stage_hw__b7h41ddg1fg2_large_2x.png" alt="Фронтальная камера 18 МП Center Stage">
+      </figure>
+      <div>
+        <h3 class="text-xl md:text-2xl font-semibold">Фронтальная камера 18 МП с Center Stage. Полная свобода кадра.</h3>
+        <p class="mt-3 text-neutral-700">Новая фронтальная камера дает гибкие способы кадрирования фото и видео. Нажмите чтобы расширить угол зрения и поверните телефон из портретной в альбомную ориентацию не двигая iPhone. Когда к кадру присоединяются друзья поле зрения расширяется чтобы всем хватило места.</p>
+        <p class="mt-3 text-neutral-700">Искусственный интеллект автоматически подстраивает кадр чтобы вы были по центру на виртуальных встречах и звонках FaceTime.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 mt-10 fx-reveal">
+    <h3 class="text-xl md:text-2xl font-semibold">Улыбнитесь. Любимая камера в мире.</h3>
+    <p class="mt-3 text-neutral-700">За десятилетие инноваций в железе и софте iPhone стал любимой камерой в мире. iPhone Air продолжает эту линию благодаря системе Fusion на 48 МП которая работает как несколько продвинутых камер в одном корпусе. Снимайте в очень высоком разрешении 48 МП для максимальной детализации или 24 МП по умолчанию. Используйте двукратный телеобъектив чтобы приблизить с отличной четкостью.</p>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 mt-10 fx-reveal">
+    <div class="grid md:grid-cols-3 gap-6">
+      <figure class="md:col-span-2">
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/iphone-air/a/images/overview/camera/portrait__cb1a6tfkrhg2_large_2x.jpg" alt="Портреты нового поколения" />
+        <figcaption class="mt-2 text-sm text-neutral-500">Портреты нового поколения. Превращайте фото в портреты после съемки.</figcaption>
+      </figure>
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/iphone-air/a/images/overview/camera/photographic_styles__eyhfprnk5uwm_large_2x.jpg" alt="Стиль съемки нового поколения" />
+        <figcaption class="mt-2 text-sm text-neutral-500">Стиль съемки нового поколения. Выбирайте пресеты включая новый режим Яркий чтобы настроить тон цвет и вид ваших фото.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 mt-10 fx-reveal">
+    <div class="grid md:grid-cols-2 gap-6">
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/iphone-air/a/images/overview/camera/night_mode__ekkrl7fkx3u6_large_2x.jpg" alt="Съемка при слабом освещении и Ночной режим" />
+        <figcaption class="mt-2 text-sm text-neutral-500">Съемка при слабом освещении и Ночной режим. Большой сенсор и светлая диафрагма в системе Fusion позволяют захватывать больше деталей и делать кадры ярче даже в темноте.</figcaption>
+      </figure>
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/iphone-air/a/images/overview/camera/audio_mix__bie9zat2jmj6_large_2x.jpg" alt="Профессиональные видео с Audio Mix" />
+        <figcaption class="mt-2 text-sm text-neutral-500">Профессиональные видео. Запись до 4K 60 кадров в секунду или режим Действие для стабилизации. Audio Mix позволяет настроить звучание голосов.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 mt-10 fx-reveal">
+    <div class="grid md:grid-cols-2 gap-6 items-center">
+      <div>
+        <h3 class="text-xl md:text-2xl font-semibold">Двукратный телеобъектив. Приближайте тему съемки с отличной детализацией.</h3>
+        <p class="mt-3 text-neutral-700">Используйте двукратный телеобъектив чтобы ближе подойти к теме кадра и сохранить впечатляющую четкость и точность цвета.</p>
+      </div>
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/iphone-air/a/images/overview/camera/optical_zoom__gcy0da85tq62_large_2x.jpg" alt="Двукратный телеобъектив" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 mt-10 fx-reveal">
+    <div class="grid md:grid-cols-2 gap-6 items-center">
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/iphone-air/a/images/overview/camera/clean_up__gil5nsup62em_large_2x.jpg" alt="Очистка кадра" />
+      </figure>
+      <div>
+        <h3 class="text-xl md:text-2xl font-semibold">Очистка кадра. Убирайте лишние объекты из фото.</h3>
+        <p class="mt-3 text-neutral-700">Уберите отвлекающие элементы такие как предметы люди или фон чтобы внимание оставалось на главном.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 mt-10 fx-reveal">
+    <div class="grid md:grid-cols-2 gap-6 items-center">
+      <div>
+        <h2 class="text-2xl md:text-4xl font-serif font-extrabold leading-tight">Производительность и батарея<br>Мощность в новом свете.</h2>
+        <p class="mt-4 text-neutral-700">iPhone Air создан для производительности уровня Pro в самом тонком iPhone. Благодаря нашему новому чипу A19 Pro и его эффективности возможности вроде Очистки в Фото Apple Intelligence и требовательных игр работают плавно и легко.</p>
+        <h3 class="mt-4 text-xl md:text-2xl font-semibold">Чип A19 Pro и модем C1X. Очень быстро и очень эффективно.</h3>
+        <p class="mt-3 text-neutral-700">A19 Pro дает самый быстрый процессор среди смартфонов и приносит наш самый продвинутый графический процессор. Каждое ядро GPU получает встроенный нейроускоритель. Производительность CPU выше до 40 процентов чем у чипа в iPhone 14 Pro. С модемом C1X iPhone Air становится самым энергоэффективным iPhone.</p>
+      </div>
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/iphone-air/a/images/overview/performance_battery/battery_life__b0jdnkk6mqgi_large_2x.jpg" alt="Время работы батареи" />
+        <figcaption class="mt-2 text-sm text-neutral-500">Время работы на весь день это только начало. До 27 часов воспроизведения видео. До 50 процентов заряда за 30 минут.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 mt-12 fx-reveal">
+    <figure>
+      <img class="rounded-2xl w-full h-64 sm:h-96 md:h-[520px] object-cover" src="https://www.apple.com/v/iphone-air/a/images/overview/shared_features/hero_features_right__b3160bcapo3m_large_2x.jpg" alt="Общие возможности" />
+    </figure>
+    <p class="mt-4 text-neutral-700 max-w-3xl">Новые модели iPhone приносят много полезного. Инструменты Apple Intelligence помогают в повседневных задачах. Более высокая производительность и надежность с Wi Fi 7 Bluetooth 6 и Thread благодаря новому беспроводному чипу N1. Быстрые и безопасные соединения с 5G и eSIM. Функции безопасности для спокойствия.</p>
+    <div class="mt-8 flex items-center justify-between">
+      <a href="/" class="text-sm text-red-600 hover:opacity-90 font-semibold">← На главную</a>
+      <a href="#top" class="text-sm text-neutral-500 hover:text-neutral-700">Наверх ↑</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="mt-16">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="rounded-3xl glass glass-border shadow-soft p-6 md:p-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="/assets/logo.svg" class="h-8 w-auto" alt="Pereuloq">
+          <span class="text-sm text-neutral-600">Журнал о мыслях и событиях</span>
+        </div>
+        <nav class="flex flex-wrap gap-4 text-sm">
+          <a href="/" class="text-neutral-600 hover:text-black">Главная</a>
+          <a href="/#lenta" class="text-neutral-600 hover:text-black">Лента</a>
+          <a href="/about.html" class="text-neutral-600 hover:text-black">О проекте</a>
+          <a href="/private.html" class="text-neutral-600 hover:text-black">Приват</a>
+        </nav>
+      </div>
+      <div class="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-neutral-500">
+        <p>© 2025 Pereuloq • Almir Khialov</p>
+        <p class="flex items-center gap-2"><span class="text-neutral-500">Партнёрство и реклама:</span> <a href="mailto:hello@example.com" class="hover:text-red-600">hello@example.com</a> <span>·</span> <a href="#" class="hover:text-red-600">Telegram</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js" defer></script>
+<script>
+  // Reveal sections
+  const fxIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); fxIO.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.fx-reveal').forEach(el=>fxIO.observe(el));
+</script>
+</body>
+</html>

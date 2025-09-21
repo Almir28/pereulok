@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth dark">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pereuloq — iPhone 17 Pro</title>
+<meta name="description" content="iPhone 17 Pro. Цельный корпус, новые камеры, высокая производительность и рекордная автономность." />
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#000000">
+<script>tailwind.config = { darkMode: 'class' }</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/custom.css">
+<style>
+  body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; }
+  h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+  /* Чёрная тема страницы */
+  body { background: #000; color: #e5e5e5; }
+  header.sticky-header { background: rgba(0,0,0,.8); }
+  .panel { background: #000; }
+  .tag { color: rgb(239 68 68); border-color: rgba(239,68,68,.35); }
+  /* Apple‑подобные анимации появления и скролла */
+  .fx-reveal { opacity: 0; transform: translateY(18px) scale(.985); transition: opacity .7s ease, transform .8s cubic-bezier(.22,1,.36,1); }
+  .fx-reveal.show { opacity: 1; transform: translateY(0) scale(1); }
+  .fx-scale { transform: scale(1.08); will-change: transform, opacity; }
+  .fx-parallax { transform: translateY(0); will-change: transform; }
+  .hero-wrap { height: 88vh; max-height: 980px; min-height: 520px; }
+  .hero-wrap img { object-fit: cover; }
+  @media (max-width: 640px) { .hero-wrap { height: 76vh; min-height: 420px; } }
+</style>
+
+</head>
+<body class="dark:bg-black dark:text-neutral-100">
+
+<header class="sticky-header sticky top-0 z-50 relative border-b border-neutral-800">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="flex h-16 items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <picture>
+          <source srcset="/assets/logo-dark.svg" media="(prefers-color-scheme: dark)">
+          <img src="/assets/logo.svg" alt="Pereuloq" class="h-10 md:h-12 w-auto select-none">
+        </picture>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/" class="text-neutral-300 hover:text-white">Главная</a>
+        <a href="/#lenta" class="text-neutral-300 hover:text-white">Лента</a>
+        <a href="/about.html" class="text-neutral-300 hover:text-white">О проекте</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="/" class="rounded-xl border border-neutral-800 px-3 py-1.5 text-xs text-neutral-200 hover:bg-neutral-900">Назад</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- прогресс прокрутки -->
+<div class="pointer-events-none fixed top-0 left-0 right-0 h-0.5">
+  <div id="scrollProgress" class="h-full w-full bg-red-500/80 origin-left" style="transform: scaleX(0);"></div>
+</div>
+
+<main class="panel">
+  <!-- Hero -->
+  <section class="full-bleed hero-wrap flex items-end justify-center">
+    <img class="w-full h-full fx-scale" src="https://www.apple.com/v/iphone-17-pro/a/images/overview/welcome/hero_endframe__xdzisdq1ppem_xlarge_2x.jpg" alt="iPhone 17 Pro — цельный корпус">
+  </section>
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <span class="tag inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold">iPhone 17 Pro</span>
+    <h1 class="mt-4 text-3xl md:text-5xl font-serif font-black leading-tight">Цельный корпус. Весомый аргумент сам по себе.</h1>
+    <div class="mt-2 flex flex-wrap items-center gap-2 text-xs text-neutral-400">
+      <span class="rounded-full border border-neutral-700 px-2.5 py-1">Технологии</span>
+      <span class="rounded-full border border-neutral-700 px-2.5 py-1">14 сентября 2025</span>
+      <span class="rounded-full border border-neutral-700 px-2.5 py-1">6 мин чтения</span>
+    </div>
+    <p class="mt-4 text-neutral-300">Цельный алюминиевый корпус, новая система камер, мощный A девятнадцать Про и рекордная автономность. Всё для заметного шага вперёд.</p>
+  </section>
+
+  <!-- Cameras intro -->
+  <section class="full-bleed">
+    <img class="w-full h-[72vh] md:h-[82vh] object-cover fx-scale" src="https://www.apple.com/v/iphone-17-pro/a/images/overview/cameras/intro/camera_hero_endframe__eap4grnpqa2q_xlarge_2x.jpg" alt="Камеры iPhone 17 Pro — крупный план">
+  </section>
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <h2 class="text-2xl md:text-4xl font-serif font-bold">Большой шаг вперёд в зуме.</h2>
+    <p class="mt-4">До восьмикратного зума с качеством, близким к оптическому. Все задние камеры сорок восемь мегапикселей.</p>
+    <p class="mt-4">Система камер iPhone семнадцать Про несёт инновации, которые работают на дальних расстояниях. Телеобъектив получил следующее поколение тетрапризмы и датчик больше на пятьдесят шесть процентов. При эквивалентном фокусном расстоянии двести миллиметров восьмикратный зум делает этот Телеобъектив самым длинным среди iPhone и даёт шестнадцатикратный суммарный диапазон приближения. Это расширяет творческие возможности и добавляет длину к вашим композициям.</p>
+  </section>
+
+  <section class="full-bleed">
+    <img class="w-full h-[60vh] md:h-[72vh] object-cover fx-scale" src="https://www.apple.com/v/iphone-17-pro/a/images/overview/cameras/zoom/200mm__c8kya18imsqe_large_2x.jpg" alt="Эквивалент двести миллиметров">
+  </section>
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <h3 class="text-xl md:text-3xl font-serif font-bold">Как будто восемь профессиональных объективов в кармане.</h3>
+    <p class="mt-3">По умолчанию снимки двадцать четыре мегапикселя с высоким разрешением.</p>
+  </section>
+
+  <section class="full-bleed">
+    <img class="w-full h-[72vh] md:h-[82vh] object-cover fx-scale" src="https://www.apple.com/v/iphone-17-pro/a/images/overview/cameras/lenses/pro_camera_system_v02_statics_endframe__hwtzkm6umyaa_xlarge_2x.jpg" alt="Профессиональная система камер">
+  </section>
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <h3 class="text-xl md:text-2xl font-semibold">Система камер</h3>
+    <ul class="mt-4 space-y-2 text-neutral-300">
+      <li><strong>Главная камера сорок восемь мегапикселей Fusion.</strong> Фокусные расстояния двадцать четыре и сорок восемь миллиметров. Диафрагма один точка семьдесят восемь. Квадро пиксель два целых сорок четыре микрометра суммарно, один целых двадцать два микрометра индивидуально.</li>
+      <li><strong>Ультраширокая камера сорок восемь мегапикселей Fusion.</strong> Тринадцать миллиметров, макро. Диафрагма два точка два. Квадро пиксель один целых четыре десятых микрометра суммарно, ноль целых семь десятых индивидуально.</li>
+      <li><strong>Телеобъектив сорок восемь мегапикселей Fusion.</strong> Сто и двести миллиметров. Четырёхкратное и восьмикратное приближение. Диафрагма два точка восемь. Квадро пиксель один целых четыре десятых микрометра суммарно, ноль целых семь десятых индивидуально.</li>
+    </ul>
+  </section>
+
+  <section class="full-bleed">
+    <img class="w-full h-[60vh] md:h-[72vh] object-cover fx-scale" src="https://www.apple.com/v/iphone-17-pro/a/images/overview/cameras/photo/night_mode__dksu23l8q2eu_large_2x.jpg" alt="Ночной режим и низкая освещенность">
+  </section>
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <p>Съёмка при слабом освещении и Ночной режим. Резкие, детальные и яркие кадры с естественными цветами даже когда темно.</p>
+  </section>
+
+  <section class="full-bleed">
+    <img class="w-full h-[60vh] md:h-[72vh] object-cover fx-scale" src="https://www.apple.com/v/iphone-17-pro/a/images/overview/cameras/photo/48mp__ef1q7ifdp9yu_large_2x.jpg" alt="Все задние камеры сорок восемь мегапикселей">
+  </section>
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <p>Все задние камеры сорок восемь мегапикселей. Камеры Pro Fusion дают больше деталей на любом расстоянии и при любом свете.</p>
+  </section>
+
+  <section class="full-bleed">
+    <img class="w-full h-[60vh] md:h-[72vh] object-cover fx-scale" src="https://www.apple.com/v/iphone-17-pro/a/images/overview/cameras/photo/uw48mp__c9n4j00eyfo2_large_2x.jpg" alt="Ультраширокая камера и макро">
+  </section>
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <p>Ультраширокая камера снимает мощные перспективы. Макро кадры завораживают, широкие планы выглядят впечатляюще.</p>
+  </section>
+
+  <section class="full-bleed">
+    <img class="w-full h-[60vh] md:h-[72vh] object-cover fx-scale" src="https://www.apple.com/v/iphone-17-pro/a/images/overview/cameras/photo/photographic_styles__boatmzba74ty_large_2x.jpg" alt="Фотографические стили">
+  </section>
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <p>Обновлённые Фотографические стили. Можно выбирать пресеты. В том числе новый вариант Яркий. Настройте тон и цвет под себя.</p>
+  </section>
+
+  <section class="full-bleed">
+    <img class="w-full h-[60vh] md:h-[72vh] object-cover fx-scale" src="https://www.apple.com/v/iphone-17-pro/a/images/overview/cameras/photo/clean_up__f464pvxvb66i_large_2x.jpg" alt="Функция Clean Up">
+  </section>
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <p>Функция Clean Up помогает удалять лишние объекты и фоновые помехи на фото.</p>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <h2 class="text-2xl md:text-4xl font-serif font-bold">Фронтальная камера восемнадцать мегапикселей Center Stage.</h2>
+    <p class="mt-4">Кадрирование становится гибким. Можно расширить угол, повернуть кадр из портретной ориентации в альбомную без перемещения телефона. Когда к селфи присоединяются друзья, поле зрения расширяется, чтобы все поместились.</p>
+  </section>
+  <section class="full-bleed">
+    <img class="w-full h-[60vh] md:h-[72vh] object-cover fx-scale" src="https://www.apple.com/v/iphone-17-pro/a/images/overview/cameras/new-camera-features/hw__bpyheb9jkbw2_large_2x.png" alt="Новый квадратный сенсор">
+  </section>
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <p>Новый квадратный сенсор открывает режимы приближения и поворота. Так проще строить кадр для селфи и видео. Он помогает автоматически уместить всех в групповых снимках.</p>
+  </section>
+
+  <section class="full-bleed">
+    <img class="w-full h-[60vh] md:h-[72vh] object-cover fx-scale" src="https://www.apple.com/v/iphone-17-pro/a/images/overview/cameras/pro-video/prores__da2ay2urzh4y_large_2x.jpg" alt="ProRes RAW на iPhone 17 Pro">
+  </section>
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <p>ProRes RAW. Впервые смартфон поддерживает этот профессиональный кодек, разработанный Apple. Он даёт максимум контроля и качества.</p>
+    <p class="mt-4">Профессиональные процессы. Поддержка широкого цветового охвата с Apple Log два. Трансляционные частоты кадров. Запись open gate.</p>
+    <p class="mt-4">Genlock и таймкод. Это обеспечивает очень точную синхронизацию видео. Полезно и для контент‑криэйторов, и для кинопроизводства. Поддерживается через новый Blackmagic Camera ProDock.</p>
+    <p class="mt-4">Dolby Vision 4K сто двадцать кадров в секунду добавляет кинематографическое качество. Высокое разрешение сочетается с высокой частотой.</p>
+  </section>
+
+  <section class="full-bleed">
+    <img class="w-full h-[72vh] md:h-[82vh] object-cover fx-scale" src="https://www.apple.com/v/iphone-17-pro/a/images/overview/performance/chip/performance-hero_endframe__vjbf9905pmq2_xlarge_2x.jpg" alt="Производительность и охлаждение">
+  </section>
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <h2 class="text-2xl md:text-4xl font-serif font-bold">Новые масштабы мощности.</h2>
+    <p class="mt-4">Чем бы вы ни занимались, сложной графикой или большими медиапроектами, iPhone семнадцать Про работает очень быстро. Система охлаждения с паровой камерой, сваренной лазером, и цельная алюминиевая конструкция вместе эффективно отводят тепло от чипа A девятнадцать Про. Это позволяет держать высокую производительность дольше. Прорыв в термоуправлении лежит в основе самого мощного iPhone.</p>
+  </section>
+
+  <section class="full-bleed">
+    <img class="w-full h-[60vh] md:h-[72vh] object-cover fx-scale" src="https://www.apple.com/v/iphone-17-pro/a/images/overview/performance/battery/battery__fc7m9oxxh7yy_xlarge_2x.jpg" alt="Аккумулятор и автономность">
+  </section>
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <h2 class="text-2xl md:text-4xl font-serif font-bold">Автономность на рекордном уровне.</h2>
+    <p class="mt-4">Новая внутренняя компоновка освобождает место для батареи. У iPhone семнадцать Про Макс лучшая автономность среди iPhone. По сравнению с пятнадцать Про Макс прибавка до четырёх часов на одном заряде. От долгого воспроизведения видео до ночной работы, телефон готов к сверхурочной смене.</p>
+    <p class="mt-4">До тридцати трёх часов воспроизведения видео на iPhone семнадцать Про. До тридцати девяти часов на iPhone семнадцать Про Макс. До пятидесяти процентов за двадцать минут с мощным адаптером питания.</p>
+  </section>
+
+  <section class="full-bleed">
+    <img class="w-full h-[60vh] md:h-[72vh] object-cover fx-scale" src="https://www.apple.com/v/iphone-17-pro/a/images/overview/shared-features/hero_features_middle__calo9u012as2_large_2x.jpg" alt="Общие функции">
+  </section>
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <h2 class="text-2xl md:text-4xl font-serif font-bold">В семье iPhone всё необходимое.</h2>
+    <p class="mt-4">Новые модели получают полезные возможности Apple Intelligence. Есть визуальный ассистент и инструменты письма. Поддерживаются быстрые и безопасные соединения Wi Fi семь, Bluetooth шесть, связь пятого поколения и eSIM. Для безопасности есть Сообщения через спутник. Всё чтобы было спокойнее каждый день.</p>
+    <p class="text-xs text-neutral-500 mt-6">Источник изображений и фактов: apple.com. Материал адаптирован для Pereuloq.</p>
+  </section>
+</main>
+
+<footer class="mt-8 md:mt-12">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="rounded-3xl border border-neutral-800 p-6 md:p-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="/assets/logo-dark.svg" class="h-8 w-auto" alt="Pereuloq">
+          <span class="text-sm text-neutral-400">Журнал о мыслях и событиях</span>
+        </div>
+        <nav class="flex flex-wrap gap-4 text-sm">
+          <a href="/" class="text-neutral-400 hover:text-white">Главная</a>
+          <a href="/#lenta" class="text-neutral-400 hover:text-white">Лента</a>
+          <a href="/about.html" class="text-neutral-400 hover:text-white">О проекте</a>
+        </nav>
+      </div>
+      <div class="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-neutral-400">
+        <p>© 2025 Pereuloq • Almir Khialov</p>
+        <p class="flex items-center gap-2"><span class="text-neutral-500">Партнёрство и реклама:</span> <a href="mailto:hello@example.com" class="hover:text-red-500">hello@example.com</a> <span>·</span> <a href="#" class="hover:text-red-500">Telegram</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js" defer></script>
+<script>
+  // Простые Apple‑подобные эффекты: масштаб и проявление на скролле
+  const scaler = () => {
+    document.querySelectorAll('.fx-scale').forEach(el => {
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      const mid = (r.top + r.bottom) / 2;
+      const d = Math.abs(mid - vh / 2) / (vh / 2); // 0 в центре, 1 у краёв
+      const s = 1 + 0.06 * Math.max(0, 1 - d);     // до +6% в центре
+      const o = 0.7 + 0.3 * Math.max(0, 1 - d);
+      el.style.transform = `scale(${s})`;
+      el.style.opacity = o.toFixed(3);
+    });
+  };
+  const io2 = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io2.unobserve(e.target);} });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fx-reveal').forEach(el=>io2.observe(el));
+  window.addEventListener('scroll', scaler, { passive: true });
+  window.addEventListener('resize', scaler);
+  scaler();
+</script>
+</body>
+</html>

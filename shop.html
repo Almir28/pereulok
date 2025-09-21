@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Магазин — Pereuloq</title>
+  <meta name="description" content="Онлайн-магазин Pereuloq: подписки, цифровые услуги и доступы." />
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#ffffff">
+  <script>tailwind = { config: { darkMode: 'class' } }</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/custom.css">
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; }
+    h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+    /* Apple‑like store tiles */
+    .store-hero { display: grid; gap: 1rem; }
+    @media (min-width: 768px) { .store-hero { grid-template-columns: 1fr 1fr; } }
+    .tile { position: relative; overflow: hidden; border-radius: 1.5rem; border: 1px solid rgba(0,0,0,.08); }
+    .dark .tile { border-color: rgba(255,255,255,.12); }
+    .tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); transition: transform .8s cubic-bezier(.22,1,.36,1); }
+    .tile:hover img { transform: scale(1.08); }
+    .tile .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.25) 30%, transparent 65%); }
+    .tile .copy { position: relative; z-index: 2; padding: 2rem; color: #fff; }
+    .tile .headline { font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem); font-weight: 800; letter-spacing: -.01em; }
+    .tile .subhead { margin-top: .5rem; opacity: .9; }
+    .tile .cta { margin-top: 1rem; display: inline-flex; align-items: center; gap:.5rem; border-radius: 999px; padding:.55rem 1rem; font-weight: 600; }
+    .cta-dark { background: #fff; color: #000; }
+    .cta-light { background: #0a0a0a; color:#fff; }
+    /* Horizontal rows */
+    .row { display: grid; grid-auto-flow: column; grid-auto-columns: 62%; gap: .9rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .2rem; }
+    @media (min-width: 640px) { .row { grid-auto-columns: 32%; } }
+    @media (min-width: 1024px) { .row { grid-auto-columns: 24%; } }
+    .row > * { scroll-snap-align: start; }
+    .no-scrollbar::-webkit-scrollbar{ display: none; } .no-scrollbar{ -ms-overflow-style: none; scrollbar-width: none; }
+    /* Extra aspect helper for taller images */
+    .aspect-4-5 { position: relative; width: 100%; padding-bottom: 125%; overflow: hidden; border-radius: 12px; }
+    .aspect-4-5 > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    /* Promo strip (thin) */
+    .promo-strip { position: relative; min-height: 56px; border-radius: 14px; display: grid; align-items: center; overflow: hidden; }
+    @media (min-width: 768px){ .promo-strip { min-height: 64px; } }
+    .promo-strip .bg { position:absolute; inset:0; background: linear-gradient(90deg, rgba(99,102,241,.12), rgba(99,102,241,.04)); }
+    .dark .promo-strip .bg { background: linear-gradient(90deg, rgba(99,102,241,.18), rgba(99,102,241,.05)); }
+    .promo-strip .copy { position:relative; z-index:2; display:flex; gap:.8rem; align-items:center; padding:.6rem 1rem; }
+    .promo-strip .title { font-weight:600; }
+    .promo-strip .btn { border-radius:999px; padding:.4rem .9rem; font-weight:600; }
+    /* Category dropdown animation */
+    .menu-pop { opacity: 0; transform: translateY(-6px) scale(.98); transition: opacity .2s ease, transform .25s cubic-bezier(.22,1,.36,1); }
+    .menu-pop.show { opacity: 1; transform: translateY(0) scale(1); }
+    /* Mobile drawer */
+    /* Bottom sheet */
+    #catSheet.open { opacity: 1; }
+    #catSheet.open .sheet-panel { transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100">
+
+  <header class="sticky-header sticky top-0 z-50 relative backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-neutral-900/70 border-b border-neutral-200/60 dark:border-neutral-800/70">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="flex h-16 items-center justify-between">
+        <a href="/" class="flex items-center gap-3">
+          <picture>
+            <source srcset="/assets/logo-dark.svg" media="(prefers-color-scheme: dark)">
+            <img src="/assets/logo.svg" alt="Pereuloq" class="h-10 md:h-12 w-auto select-none">
+          </picture>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="/" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Главная</a>
+          <a href="/about.html" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">О проекте</a>
+          <a href="/shop.html" class="text-neutral-900 dark:text-white font-semibold">Магазин</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <a href="/private.html" class="hidden md:inline-flex rounded-xl bg-gradient-to-r from-orange-500 to-red-600 text-white px-4 py-2 text-sm font-semibold hover:opacity-90">Закрытые мысли</a>
+          <button id="menuBtn" class="md:hidden inline-flex items-center rounded-xl border border-neutral-200 dark:border-neutral-700 p-2 text-neutral-800 dark:text-neutral-200" aria-label="menu" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Global mobile drawer menu -->
+    <div id="menuOverlay" class="fixed inset-0 z-[60] md:hidden hidden"></div>
+    <div id="mobileNav" class="fixed top-0 left-0 z-[70] h-full md:hidden hidden">
+      <nav class="menu-drawer__panel flex h-full w-min min-w-[75vw] max-w-sm flex-col justify-between gap-6 px-6 py-7 text-neutral-900 dark:text-neutral-50">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] uppercase tracking-[0.28em] text-neutral-500 dark:text-neutral-400">Навигация</span>
+          <button id="mobileClose" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200/70 dark:border-neutral-700 bg-neutral-100/80 dark:bg-neutral-800/80 text-neutral-700 dark:text-neutral-100" aria-label="Закрыть меню">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+        <div class="flex flex-col gap-2 text-lg font-semibold">
+          <a href="/" class="menu-drawer__link">Главная</a>
+          <a href="/#lenta" class="menu-drawer__link">Лента</a>
+          <a href="/shop.html" class="menu-drawer__link">Магазин</a>
+          <a href="/private.html" class="menu-drawer__link">Приват</a>
+        </div>
+        <div class="space-y-3 text-center text-xs text-neutral-500 dark:text-neutral-400">
+          <p>Платная стена — живые наблюдения и быстрые решения. Возвращайся, когда нужен фокус без шума.</p>
+          <a href="/private.html" class="menu-drawer__cta">Закрытые мысли</a>
+        </div>
+      </nav>
+    </div>
+</header>
+
+  <main class="mx-auto max-w-7xl px-4">
+    
+
+    <!-- Shop Topbar: catalog + search + quick links -->
+    <section class="mt-4">
+      <div class="relative rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/70 shadow-soft p-3 md:p-4">
+        <div class="flex items-center gap-3">
+          <!-- Mobile categories button (consistent size) -->
+          <button id="catFab" class="sm:hidden inline-flex items-center gap-2 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white/80 dark:bg-neutral-900/80 h-10 px-3 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800" aria-haspopup="true" aria-expanded="false" aria-controls="catSheet" title="Категории">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5h4v4H5V5zm10 0h4v4h-4V5zM5 15h4v4H5v-4zm10 0h4v4h-4v-4zM10 10h4v4h-4v-4z"/></svg>
+            <span>Категории</span>
+          </button>
+          <div class="relative flex-1">
+            <input id="search" type="search" placeholder="Поиск по товарам" class="w-full rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white/90 dark:bg-neutral-900/80 pl-12 pr-4 py-2.5 text-sm focus:outline-none focus:border-indigo-400 dark:focus:border-indigo-500" />
+            <img src="/assets/logo.svg" alt="Pereuloq" class="absolute left-3 top-1/2 -translate-y-1/2 h-6 w-6 select-none">
+          </div>
+          <select id="sort" class="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white/90 dark:bg-neutral-900/80 px-3 py-2.5 text-sm focus:outline-none focus:border-indigo-400 dark:focus:border-indigo-500">
+            <option value="popular">Популярные</option>
+            <option value="new">Новые</option>
+            <option value="price-asc">Цена ↑</option>
+            <option value="price-desc">Цена ↓</option>
+          </select>
+        </div>
+        <!-- removed chips and dropdown per request -->
+      </div>
+    </section>
+
+    <!-- Thin promo strip (non-intrusive) -->
+    <section class="mt-4">
+      <a id="promoStrip" class="promo-strip block border border-neutral-200 dark:border-neutral-800 bg-white/60 dark:bg-neutral-900/60">
+        <!-- injected by JS -->
+      </a>
+    </section>
+
+    <!-- Mobile categories bottom sheet -->
+    <div id="catSheet" class="fixed inset-0 z-[55] hidden opacity-0 transition-opacity duration-200 sm:hidden">
+      <div class="sheet-backdrop absolute inset-0 bg-black/45"></div>
+      <div class="sheet-panel absolute bottom-0 left-0 right-0 bg-white dark:bg-neutral-900 rounded-t-2xl border-t border-neutral-200 dark:border-neutral-800 p-4 transform translate-y-full transition-transform duration-300 ease-out">
+        <div class="flex items-center justify-between mb-2">
+          <div class="text-sm text-neutral-500">Категории</div>
+          <button id="catSheetClose" class="rounded-xl border border-neutral-200 dark:border-neutral-700 p-2" aria-label="Закрыть">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+        <div id="catSheetList" class="grid grid-cols-2 gap-2"></div>
+      </div>
+    </div>
+
+    <!-- Popular section (16 items, 8 x 2) -->
+    <section class="mt-6">
+      <div class="rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/70 shadow-soft p-4 md:p-6">
+        <div class="flex items-center justify-between">
+          <h2 class="text-lg md:text-xl font-semibold">Популярные</h2>
+          <button data-view="popular" class="text-sm text-indigo-600 dark:text-indigo-400 hover:underline">Все</button>
+        </div>
+        <div id="popularGrid" class="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-x-2 gap-y-6 md:gap-x-3 md:gap-y-8"></div>
+      </div>
+    </section>
+
+    <!-- New section (16 items, 8 x 2) -->
+    <section class="mt-6">
+      <div class="rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/70 shadow-soft p-4 md:p-6">
+        <div class="flex items-center justify-between">
+          <h2 class="text-lg md:text-xl font-semibold">Новинки</h2>
+          <button data-view="new" class="text-sm text-indigo-600 dark:text-indigo-400 hover:underline">Все</button>
+        </div>
+        <div id="newGrid" class="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-x-2 gap-y-6 md:gap-x-3 md:gap-y-8"></div>
+      </div>
+    </section>
+
+    <!-- Removed: Предзаказы и Все товары -->
+  </main>
+
+  <footer class="mt-16 md:mt-20 border-t border-neutral-200 dark:border-neutral-800">
+    <div class="mx-auto max-w-6xl px-4 py-8 text-sm text-neutral-600 dark:text-neutral-300 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6 justify-between">
+      <div>© <span id="year"></span> Pereuloq</div>
+      <div class="flex items-center gap-4">
+        <a href="mailto:hello@example.com" class="hover:text-black dark:hover:text-white transition">Email</a>
+        <a href="https://t.me/pereuloq" target="_blank" class="hover:text-black dark:hover:text-white transition">Telegram</a>
+        <a href="/about.html" class="hover:text-black dark:hover:text-white transition">О проекте</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product modal -->
+  <div id="productModal" class="fixed inset-0 hidden items-center justify-center z-50">
+    <div class="absolute inset-0 bg-black/50" data-close></div>
+    <div class="relative max-w-xl w-[92vw] rounded-2xl p-6 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-2xl">
+      <button class="absolute top-3 right-3 rounded-full p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" data-close>&times;</button>
+      <div class="flex gap-5">
+        <img id="mImg" src="" alt="" class="w-36 h-36 rounded-xl object-cover">
+        <div class="flex-1">
+          <h3 id="mTitle" class="text-lg font-semibold"></h3>
+          <p id="mDesc" class="mt-2 text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2"></p>
+          <div class="mt-3 flex items-center gap-3">
+            <span id="mPrice" class="text-xl font-bold"></span>
+            <button id="buyBtn" class="rounded-xl bg-indigo-600 text-white px-4 py-2 font-medium hover:opacity-90">Купить</button>
+          </div>
+          <div id="mTags" class="mt-4 flex flex-wrap gap-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // hide scrollbars for chips on WebKit
+    document.addEventListener('DOMContentLoaded', () => {
+      const style = document.createElement('style');
+      style.textContent = `.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}`;
+      document.head.appendChild(style);
+
+    });
+  </script>
+  <script src="/js/main.js" defer></script>
+  <script type="module" src="/js/shop.js"></script>
+</body>
+</html>

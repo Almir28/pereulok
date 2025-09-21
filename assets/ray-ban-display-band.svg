@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
+  <title id="title">Ray-Ban Display — браслет</title>
+  <desc id="desc">Минималистичная иллюстрация браслета-управления Ray-Ban Display.</desc>
+  <defs>
+    <linearGradient id="bandBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e6edf5" />
+      <stop offset="100%" stop-color="#d1d9e5" />
+    </linearGradient>
+    <linearGradient id="bandBody" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5a5f66" />
+      <stop offset="50%" stop-color="#6b7078" />
+      <stop offset="100%" stop-color="#4a4f57" />
+    </linearGradient>
+    <linearGradient id="bandHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c7cccf" />
+      <stop offset="100%" stop-color="#888" />
+    </linearGradient>
+  </defs>
+  <rect width="960" height="720" fill="url(#bandBg)" />
+  <g transform="translate(160 140) rotate(-8 320 220)">
+    <path d="M140 40h260c52 0 100 28 126 74l40 70c24 42 24 94 0 136l-40 70c-26 46-74 74-126 74H140c-70 0-128-58-128-128V168C12 98 70 40 140 40Z" fill="url(#bandBody)" />
+    <path d="M168 80h204c42 0 80 22 100 58l32 56c16 28 16 62 0 90l-32 56c-20 36-58 58-100 58H168c-52 0-96-42-96-96V176c0-54 44-96 96-96Z" fill="url(#bandHighlight)" opacity="0.35" />
+    <g fill="#f4f4f4" opacity="0.55">
+      <rect x="396" y="184" width="36" height="96" rx="16" />
+      <rect x="352" y="204" width="36" height="96" rx="16" />
+      <rect x="308" y="224" width="36" height="96" rx="16" />
+    </g>
+    <path d="M140 40c-74 0-128 60-128 134v56c0 74 54 134 128 134" fill="none" stroke="#2e3236" stroke-width="26" stroke-linecap="round" opacity="0.4" />
+  </g>
+</svg>

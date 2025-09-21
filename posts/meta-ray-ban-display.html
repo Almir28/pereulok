@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pereuloq — Meta* Ray-Ban Display</title>
+<meta name="description" content="Ray-Ban Display — умные очки Meta* с дисплеем 600×600, камерой на 12 Мп, ассистентом и браслетом с ЭМГ-жестами." />
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<script>
+  // Применяем тему до отрисовки
+  (() => {
+    const stored = localStorage.getItem('theme');
+    const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const t = stored || prefers;
+    if (t === 'dark') document.documentElement.classList.add('dark');
+  })();
+</script>
+<script>tailwind.config = { darkMode: 'class' }</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/custom.css">
+<style>
+  body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; }
+  h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+  .panel { background: #fff; }
+  .hero-photo { object-fit: cover; object-position: center; }
+  .note { font-size: .75rem; line-height: 1.2; }
+</style>
+
+</head>
+<body class="bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100">
+
+<header class="sticky-header sticky top-0 z-50 relative backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-neutral-900/70 border-b border-neutral-200/60 dark:border-neutral-800/70">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="flex h-16 items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <picture>
+          <source srcset="/assets/logo-dark.svg" media="(prefers-color-scheme: dark)">
+          <img src="/assets/logo.svg" alt="Pereuloq" class="h-10 md:h-12 w-auto select-none">
+        </picture>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Главная</a>
+        <a href="/#lenta" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Лента</a>
+        <a href="/about.html" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">О проекте</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="/" class="rounded-xl border border-neutral-200 dark:border-neutral-800 px-3 py-1.5 text-xs text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800">Назад</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- прогресс прокрутки -->
+<div class="pointer-events-none fixed top-0 left-0 right-0 h-0.5">
+  <div id="scrollProgress" class="h-full w-full bg-red-500/80 dark:bg-red-500/70 origin-left" style="transform: scaleX(0);"></div>
+  
+</div>
+
+<main class="panel">
+  <!-- Hero -->
+  <section class="full-bleed">
+    <img class="w-full h-[54vh] md:h-[66vh] hero-photo" src="https://lookaside.fbsbx.com/elementpath/media/?media_id=24004233599259375&version=1755662094&transcode_extension=webp" alt="Ray-Ban Display — карта внутри линзы" loading="lazy" decoding="async" />
+  </section>
+
+  <article class="mx-auto max-w-3xl px-4 py-8 md:py-12 reading">
+    <div class="flex flex-wrap items-center gap-2 text-xs text-neutral-500">
+      <span class="rounded-full border border-neutral-300 dark:border-neutral-700 px-2.5 py-1">Технологии</span>
+      <span class="rounded-full border border-neutral-300 dark:border-neutral-700 px-2.5 py-1">18 сентября 2025</span>
+      <span class="rounded-full border border-neutral-300 dark:border-neutral-700 px-2.5 py-1">4 мин чтения</span>
+    </div>
+    <h1 class="mt-3 text-3xl md:text-4xl font-serif font-black leading-tight">Meta* представила Ray-Ban Display — очки с экраном в линзе</h1>
+    <p class="lead mt-3">В Ray-Ban Display уместились дисплей 600×600, камера на 12 Мп, массив микрофонов, динамики, ассистент и аккумулятор. Масса — всего 69 граммов.</p>
+
+    <p class="mt-6">Очки показывают контент прямо в правой линзе с частотой 30 Гц. Через ассистента Meta* можно запросить карту, уведомления, тексты и подсказки для навигации. Фотографии снимаются в разрешении 3024×4032 пикселей, видео — в 1080p 30 FPS.</p>
+
+    <section class="mt-8 grid gap-6 md:grid-cols-2">
+      <div class="rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/60 p-6">
+        <h2 class="text-xl font-serif font-semibold">Что внутри</h2>
+        <ul class="mt-4 space-y-2 text-sm text-neutral-600 dark:text-neutral-300">
+          <li>— дисплей 600×600 с частотой 30 Гц и прозрачным зеркалом в линзе;</li>
+          <li>— камера 12 Мп + видео 1080p 30 FPS;</li>
+          <li>— микрофоны для голосового ввода и шумоподавления;</li>
+          <li>— динамики, направленные на ушные раковины;</li>
+          <li>— ассистент Meta* для голосового управления.</li>
+        </ul>
+      </div>
+      <figure class="rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/50">
+        <img src="https://lookaside.fbsbx.com/elementpath/media/?media_id=1779432012781707&version=1755668840&transcode_extension=webp" alt="Ray-Ban Display — очки и футляр" class="w-full" loading="lazy" decoding="async" />
+      </figure>
+    </section>
+
+    <p class="mt-8">Для точного управления Meta* предлагает браслет с датчиками ЭМГ. Он считывает микродвижения пальцев: можно масштабировать карту, листать рилсы, смахивать уведомления или запускать запись видео, не поднимая руку к оправе.</p>
+    <p>Очки держатся до шести часов на одном заряде. Чехол-аккумулятор добавит сутки, а браслет, по заверениям компании, работает до 18 часов.</p>
+
+    <div class="mt-8 grid gap-6 md:grid-cols-2">
+      <figure class="rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60">
+        <img src="https://lookaside.fbsbx.com/elementpath/media/?media_id=762402772820039&version=1755668836&transcode_extension=webp" alt="Ray-Ban Display — браслет и очки" class="w-full" loading="lazy" decoding="async" />
+      </figure>
+      <div class="rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/80 dark:bg-neutral-900/60 p-6 flex flex-col justify-between">
+        <div>
+          <h2 class="text-xl font-serif font-semibold">Цена и старт продаж</h2>
+          <p class="mt-4 text-sm text-neutral-600 dark:text-neutral-300">Ray-Ban Display будут стоить $800. Предзаказы уже открыты, а продажи в США намечены на 30 сентября.</p>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <a href="https://www.youtube.com/watch?v=Mkl2VBsHtE0" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-neutral-200 dark:border-neutral-700 px-4 py-2 text-xs font-semibold text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800">Презентация</a>
+          <a href="https://www.youtube.com/watch?v=fLzqcRteb0M" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-neutral-200 dark:border-neutral-700 px-4 py-2 text-xs font-semibold text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800">Демонстрация браслета</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="mt-6 text-sm text-neutral-600 dark:text-neutral-300">Meta* показала два ролика: официальный тизер очков и отдельную демонстрацию браслета управления. Ссылки ведут прямо на YouTube.</p>
+
+    <section class="mt-10 grid gap-4 md:grid-cols-3">
+      <figure class="rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60">
+        <img src="https://lookaside.fbsbx.com/elementpath/media/?media_id=1307008030943376&version=1755662093&transcode_extension=webp" alt="Ray-Ban Display — сбоку" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60">
+        <img src="https://lookaside.fbsbx.com/elementpath/media/?media_id=683300704722036&version=1755668824&transcode_extension=webp" alt="Ray-Ban Display — браслет крупным планом" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60">
+        <img src="https://lookaside.fbsbx.com/elementpath/media/?media_id=782264787647636&version=1755668842&transcode_extension=webp" alt="Ray-Ban Display — комплект на столе" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+      </figure>
+    </section>
+
+    <p class="mt-8">Meta* позиционирует очки как полноценное ИИ-устройство. Все запросы решает ассистент, но для работы в офлайн-режиме Ray-Ban Display нужно подключить к смартфону. Чтобы использовать ассистента в тишине, без сторонних звуков, компания советует надеть тот самый браслет.</p>
+
+    <div class="mt-12 rounded-3xl border border-red-200/60 dark:border-red-800/60 bg-red-50/60 dark:bg-red-900/20 p-5">
+      <p class="note text-red-600 dark:text-red-300">*Meta признана экстремистской организацией в РФ. Деятельность компании запрещена на территории страны.</p>
+    </div>
+
+    <div class="mt-10 flex items-center justify-between text-sm">
+      <a href="/" class="text-red-600 hover:opacity-90 font-semibold">← На главную</a>
+      <a href="#top" class="text-neutral-500 hover:text-neutral-700">Наверх ↑</a>
+    </div>
+  </article>
+</main>
+
+<footer class="mt-16">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="rounded-3xl glass glass-border shadow-soft p-6 md:p-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="/assets/logo.svg" class="h-8 w-auto dark:hidden" alt="Pereuloq">
+          <img src="/assets/logo-dark.svg" class="h-8 w-auto hidden dark:block" alt="Pereuloq">
+          <span class="text-sm text-neutral-600 dark:text-neutral-300">Журнал о мыслях и событиях</span>
+        </div>
+        <nav class="flex flex-wrap gap-4 text-sm">
+          <a href="/" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Главная</a>
+          <a href="/#lenta" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Лента</a>
+          <a href="/about.html" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">О проекте</a>
+          <a href="/private.html" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Приват</a>
+        </nav>
+      </div>
+      <div class="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+        <p>© 2025 Pereuloq • Almir Khialov</p>
+        <p class="flex items-center gap-2"><span class="text-neutral-500">Партнёрство и реклама:</span> <a href="mailto:hello@example.com" class="hover:text-red-600">hello@example.com</a> <span>·</span> <a href="#" class="hover:text-red-600">Telegram</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Приват — Pereuloq</title>
+<meta name="description" content="Приватная лента Pereuloq. Доступ по паролю для подписчиков." />
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#ffffff">
+<script>
+  // avoid flash on nav fade
+  window.addEventListener('pageshow', () => { document.body.classList.remove('fade-out'); });
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a || a.host !== location.host) return;
+    if (a.target === '_blank' || a.href.includes('#')) return;
+    e.preventDefault();
+    document.body.classList.add('fade-out');
+    setTimeout(() => { location.href = a.href; }, 120);
+  });
+</script>
+<script>tailwind.config = { darkMode: 'class' }</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/custom.css">
+<style>
+  body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; }
+  h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+  .fade-out { opacity: 0; transition: opacity .4s ease; }
+  /* Private gate */
+  .gate { min-height: calc(100svh - 64px); display: grid; place-items: center; }
+  .shake { animation: shake .35s ease both; }
+  @keyframes shake { 10%{ transform: translateX(-4px);} 30%{ transform: translateX(4px);} 50%{ transform: translateX(-3px);} 70%{ transform: translateX(3px);} 90%{ transform: translateX(-2px);} 100%{ transform: translateX(0);} }
+  .hidden-by-gate { filter: blur(6px) saturate(.9); pointer-events: none; user-select: none; }
+  .post img { border-radius: 1rem; }
+</style>
+
+</head>
+<body class="bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100">
+
+<header class="sticky-header sticky top-0 z-50 relative backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-neutral-900/70 border-b border-neutral-200/60 dark:border-neutral-800/70">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="flex h-16 items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <picture>
+          <source srcset="/assets/logo-dark.svg" media="(prefers-color-scheme: dark)">
+          <img src="/assets/logo.svg" alt="Pereuloq" class="h-10 md:h-12 w-auto select-none">
+        </picture>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Главная</a>
+        <a href="/#lenta" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Лента</a>
+        <a href="/shop.html" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Магазин</a>
+        <a href="/about.html" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">О проекте</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="/private.html" class="hidden md:inline-flex rounded-xl bg-gradient-to-r from-orange-500 to-red-600 text-white px-4 py-2 text-sm font-semibold hover:opacity-90">Закрытые мысли</a>
+        <button id="menuBtn" class="md:hidden inline-flex items-center rounded-xl border border-neutral-200 dark:border-neutral-700 p-2 text-neutral-800 dark:text-neutral-200" aria-label="menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="menuOverlay" class="fixed inset-0 z-[60] md:hidden hidden"></div>
+  <div id="mobileNav" class="fixed top-0 left-0 z-[70] h-full md:hidden hidden">
+    <nav class="menu-drawer__panel flex h-full w-min min-w-[75vw] max-w-sm flex-col justify-between gap-6 px-6 py-7 text-neutral-900 dark:text-neutral-50">
+      <div class="flex items-center justify-between">
+        <span class="text-[11px] uppercase tracking-[0.28em] text-neutral-500 dark:text-neutral-400">Навигация</span>
+        <button id="mobileClose" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200/70 dark:border-neutral-700 bg-neutral-100/80 dark:bg-neutral-800/80 text-neutral-700 dark:text-neutral-100" aria-label="Закрыть меню">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="flex flex-col gap-2 text-lg font-semibold">
+        <a href="/" class="menu-drawer__link">Главная</a>
+        <a href="/blog.html" class="menu-drawer__link">Лента</a>
+        <a href="/shop.html" class="menu-drawer__link">Магазин</a>
+        <a href="/private.html" class="menu-drawer__link">Закрытый раздел</a>
+      </div>
+      <div class="space-y-3 text-center text-xs text-neutral-500 dark:text-neutral-400">
+        <p>Платная стена — живые наблюдения и быстрые решения. Возвращайся, когда нужен фокус без шума.</p>
+        <a href="/private.html" class="menu-drawer__cta">Закрытые мысли</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Header progress bar -->
+<div class="pointer-events-none fixed top-0 left-0 right-0 h-0.5">
+  <div id="scrollProgress" class="h-full w-full bg-red-500/80 dark:bg-red-500/70 origin-left scale-x-0" style="transform: scaleX(0);"></div>
+  
+</div>
+
+<main class="mx-auto max-w-6xl px-4">
+  <!-- Gate (Password screen) -->
+  <section id="gate" class="gate">
+    <div class="relative w-full max-w-xl">
+      <div class="absolute -top-24 -left-28 h-72 w-72 rounded-full blur-3xl bg-red-500/10"></div>
+      <div class="absolute -bottom-24 -right-16 h-72 w-72 rounded-full blur-3xl bg-red-500/10"></div>
+      <div class="relative rounded-3xl glass glass-border shadow-soft p-8 md:p-10">
+        <div class="flex items-center justify-between">
+          <h1 class="text-2xl md:text-3xl font-serif font-bold inline-flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a5 5 0 00-5 5v3H6a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2v-8a2 2 0 00-2-2h-1V7a5 5 0 00-5-5zm3 8H9V7a3 3 0 016 0v3z"/></svg>
+            Приватная лента
+          </h1>
+          <span class="text-xs rounded-full border border-red-200 dark:border-red-800 px-2 py-1 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300">Доступ по паролю</span>
+        </div>
+
+        <div class="mt-4 rounded-2xl border border-amber-200 dark:border-amber-800 bg-amber-50/70 dark:bg-amber-900/20 p-4 flex items-start gap-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-600 mt-0.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.5a.75.75 0 00-1.5 0v4.25c0 .414.336.75.75.75h3a.75.75 0 000-1.5h-2.25V6.5z" clip-rule="evenodd"/></svg>
+          <p class="text-sm text-neutral-800 dark:text-neutral-200"><span class="font-semibold">Подписка — 199 ₽/мес.</span> Оплатите в Telegram‑боте и получите действующий пароль сразу после оплаты.</p>
+        </div>
+
+        <div class="mt-4 flex flex-wrap gap-3">
+          <a href="https://t.me/pereuloq_subscribe" target="_blank" class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-red-600 text-white px-4 py-2.5 text-sm font-semibold hover:opacity-90 shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.5 12.75l-1 3.75 3.75-1L19 9l-8.5 3.75z"/><path fill-rule="evenodd" d="M12 2.25C6.615 2.25 2.25 6.615 2.25 12S6.615 21.75 12 21.75 21.75 17.385 21.75 12 17.385 2.25 12 2.25zM4.5 12A7.5 7.5 0 1012 4.5 7.509 7.509 0 004.5 12z" clip-rule="evenodd"/></svg>
+            Оплатить в Telegram
+          </a>
+        </div>
+
+        <form id="gateForm" class="mt-6" autocomplete="off" novalidate>
+          <label for="pass" class="block text-sm font-medium">Пароль</label>
+          <p class="mt-1 text-xs text-neutral-500">Код из Telegram — 4 цифры</p>
+          <div class="mt-3 flex items-center gap-2">
+            <input id="pass" name="pass" type="password" inputmode="numeric" pattern="\d{4}" maxlength="4" placeholder="• • • •" autocomplete="one-time-code" aria-describedby="gateError" class="w-36 md:w-44 text-center tracking-[.4em] rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white/80 dark:bg-neutral-900/70 px-3 py-2.5 text-lg focus:outline-none focus:border-red-400 dark:focus:border-red-600" />
+            <button type="submit" class="rounded-xl bg-black text-white dark:bg-red-600 px-4 py-2.5 text-sm font-semibold hover:opacity-90">Войти</button>
+          </div>
+          <p id="gateError" class="mt-2 text-sm text-red-600 hidden">Неверный пароль. Попробуйте ещё раз.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Private Feed -->
+  <section id="feed" class="mt-10 md:mt-12 hidden-by-gate">
+    <div class="max-w-2xl mx-auto">
+      <div class="flex items-end justify-between">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-serif font-bold">Личная стена</h2>
+          <p class="mt-2 text-neutral-600 dark:text-neutral-300">Все заметки в одном месте. Листайте ленту.</p>
+        </div>
+        <button id="logoutBtn" class="rounded-xl border border-neutral-200 dark:border-neutral-700 px-3 py-2 text-sm hover:bg-neutral-50 dark:hover:bg-neutral-800">Закрыть приватную сессию</button>
+      </div>
+
+      <!-- Profile header (compact, premium) -->
+      <section class="mt-6 relative overflow-hidden rounded-3xl border border-neutral-900/60 bg-neutral-950 text-neutral-100 shadow-[0_24px_60px_-35px_rgba(255,0,0,0.45)]">
+        <div class="absolute inset-0">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(239,68,68,0.18),_transparent_55%),radial-gradient(circle_at_bottom_right,_rgba(248,113,113,0.1),_transparent_60%)]"></div>
+          <div class="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-bl from-white/10 via-transparent to-transparent"></div>
+        </div>
+        <div class="relative px-5 md:px-7 py-6">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+            <div class="text-center md:text-left space-y-2 md:space-y-3">
+              <div class="inline-flex items-center gap-2 rounded-full border border-red-500/40 bg-red-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-red-200">Private access</div>
+              <h2 class="mt-1 text-2xl md:text-[28px] font-serif font-semibold tracking-tight text-white">Личная стена</h2>
+              <p class="text-sm text-neutral-300 md:max-w-xl">Мини-журнал для поддержки Pereuloq: рабочие решения, backstage, ссылки, которые не выходят в открытые материалы. Прочитал — сделал выводы — оставил внутри клуба.</p>
+            </div>
+            <div class="w-full md:w-auto mt-3 md:mt-0">
+              <div class="rounded-2xl border border-white/12 bg-white/6 px-4 py-3 flex flex-wrap items-center justify-center gap-3 md:flex-col md:items-end md:justify-end text-sm text-neutral-100">
+                <div class="flex items-center gap-3">
+                  <div class="rounded-xl bg-white/10 px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/80">Обновление</div>
+                  <time id="lastUpdate" class="text-sm text-neutral-200">—</time>
+                </div>
+                <div class="flex items-center gap-3 text-sm text-neutral-200">
+                  <span class="text-[11px] uppercase tracking-[0.22em] text-neutral-400">Записей</span>
+                  <span class="text-xl font-semibold text-white"><span id="postCount">0</span></span>
+                </div>
+              </div>
+              <p class="mt-2 text-xs text-neutral-500 text-center md:text-right">Без шума, только наблюдения и заметки для своих.</p>
+            </div>
+          </div>
+          <div class="mt-4 flex flex-wrap justify-center md:justify-start gap-2">
+            <button data-tab="all" class="tab is-active">Стена</button>
+            <button data-tab="media" class="tab">Медиа</button>
+            <button data-tab="about" class="tab">Обо мне</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Subscribe note -->
+      <div class="mt-3 rounded-2xl border border-dashed border-neutral-300 dark:border-neutral-700 p-4 text-sm text-neutral-600 dark:text-neutral-300">
+        Поддержи проект: подписка 199 ₽/мес → 
+        <a href="https://t.me/pereuloq_subscribe" target="_blank" class="font-semibold text-red-600">Telegram‑бот</a>
+      </div>
+
+      <!-- About pane (toggle) -->
+      <section id="aboutPane" class="mt-6 hidden rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/70 p-5">
+        <h3 class="text-lg font-semibold">Кто я</h3>
+        <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">Работаю над Pereuloq. Люблю ясный интерфейс, аккуратные детали и тёплые тексты.</p>
+        <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">Связь: <a href="mailto:hello@example.com" class="text-red-600 underline underline-offset-2">hello@example.com</a></p>
+      </section>
+
+      <!-- Timeline (cards, spacing) -->
+      <div id="timeline" class="mt-6 space-y-4"></div>
+      <div id="loader" class="mt-4 flex items-center justify-center text-sm text-neutral-500 hidden">
+        <svg width="18" height="18" viewBox="0 0 24 24" class="animate-spin mr-2"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity=".25"/><path d="M22 12a10 10 0 0 1-10 10" stroke="currentColor" stroke-width="4" fill="none"/></svg>
+        Загрузка…
+      </div>
+      <div id="sentinel" class="h-8"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="mt-16">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="rounded-3xl glass glass-border shadow-soft p-6 md:p-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="/assets/logo.svg" class="h-8 w-auto dark:hidden" alt="Pereuloq">
+          <img src="/assets/logo-dark.svg" class="h-8 w-auto hidden dark:block" alt="Pereuloq">
+          <span class="text-sm text-neutral-600 dark:text-neutral-300">Журнал о мыслях и событиях</span>
+        </div>
+        <nav class="flex flex-wrap gap-4 text-sm">
+          <a href="/" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Главная</a>
+          <a href="/#lenta" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Лента</a>
+          <a href="/about.html" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">О проекте</a>
+          <a href="/private.html" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Приват</a>
+        </nav>
+      </div>
+      <div class="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+        <p>© 2025 Pereuloq • Almir Khialov</p>
+        <p class="flex items-center gap-2"><span class="text-neutral-500">Партнёрство и реклама:</span> <a href="mailto:hello@example.com" class="hover:text-red-600">hello@example.com</a> <span>·</span> <a href="#" class="hover:text-red-600">Telegram</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js" defer></script>
+<script src="/js/private-feed.js" defer></script>
+<script>
+  // Gate logic: simple client-side password check
+  (function(){
+    const PASS = '7209';
+    const KEY = 'privateUnlocked';
+    const gate = document.getElementById('gate');
+    const feed = document.getElementById('feed');
+    const form = document.getElementById('gateForm');
+    const input = document.getElementById('pass');
+    const err = document.getElementById('gateError');
+    const logout = document.getElementById('logoutBtn');
+
+    const unlocked = () => localStorage.getItem(KEY) === '1';
+    const apply = () => {
+      const ok = unlocked();
+      if (ok) {
+        gate.style.display = 'none';
+        feed.classList.remove('hidden-by-gate');
+        // notify feed renderer
+        setTimeout(() => window.dispatchEvent(new CustomEvent('private:unlocked')), 0);
+      } else {
+        gate.style.display = '';
+        feed.classList.add('hidden-by-gate');
+      }
+    };
+    apply();
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = (input?.value || '').trim();
+      if (val === PASS) {
+        localStorage.setItem(KEY, '1');
+        err?.classList.add('hidden');
+        apply();
+        // smooth scroll to top of feed
+        setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 10);
+      } else {
+        err?.classList.remove('hidden');
+        input?.classList.add('shake');
+        setTimeout(()=>input?.classList.remove('shake'), 380);
+        input?.select?.();
+      }
+    });
+
+    logout?.addEventListener('click', () => {
+      localStorage.removeItem(KEY);
+      input.value = '';
+      apply();
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+  })();
+</script>
+</body>
+</html>
