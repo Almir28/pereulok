@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pereuloq — Apple Watch Ultra 3</title>
+<meta name="description" content="Apple Watch Ultra 3. Личный зверь для спорта и приключений. Яркий дисплей, титан, защита и долгая батарея." />
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#ffffff">
+<script>
+  window.addEventListener('pageshow', () => document.body.classList.remove('fade-out'));
+</script>
+<script>tailwind.config = { darkMode: 'class' }</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/custom.css">
+<style>
+  body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; }
+  h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+  .panel { background: #fff; }
+  .tag { color: rgb(239 68 68); border-color: rgba(239,68,68,.35); }
+  .fx-reveal { opacity: 0; transform: translateY(18px) scale(.985); transition: opacity .7s ease, transform .8s cubic-bezier(.22,1,.36,1); }
+  .fx-reveal.show { opacity: 1; transform: translateY(0) scale(1); }
+  .fx-scale { transform: scale(1.04); will-change: transform, opacity; }
+  .hero-wrap { height: 72vh; max-height: 880px; min-height: 420px; }
+  .hero-wrap img { object-fit: cover; }
+  @media (max-width: 768px) { .hero-wrap { height: 52vh; min-height: 320px; } }
+</style>
+
+</head>
+<body id="top" class="bg-white text-neutral-900">
+
+<header class="sticky-header sticky top-0 z-50 relative backdrop-blur supports-[backdrop-filter]:bg-white/80 border-b border-neutral-200">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="flex h-16 items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <picture>
+          <img src="/assets/logo.svg" alt="Pereuloq" class="h-10 md:h-12 w-auto select-none">
+        </picture>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/" class="text-neutral-700 hover:text-black">Главная</a>
+        <a href="/#lenta" class="text-neutral-700 hover:text-black">Лента</a>
+        <a href="/about.html" class="text-neutral-700 hover:text-black">О проекте</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="/" class="rounded-xl border border-neutral-200 px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50">Назад</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- прогресс прокрутки -->
+<div class="pointer-events-none fixed top-0 left-0 right-0 h-0.5">
+  <div id="scrollProgress" class="h-full w-full bg-red-500/80 origin-left" style="transform: scaleX(0);"></div>
+  
+</div>
+
+<main class="panel">
+  <!-- Hero -->
+  <section class="full-bleed hero-wrap flex items-center justify-center overflow-hidden">
+    <img class="w-full h-full fx-scale" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/product-viewer/product_durability__fjxsjypa2e6i_large_2x.jpg" alt="Apple Watch Ultra 3 титан и прочность" fetchpriority="high" decoding="async">
+  </section>
+  <section class="mx-auto max-w-4xl px-4 py-10 md:py-16 fx-reveal">
+    <span class="tag inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold">Apple Watch Ultra 3</span>
+    <h1 class="mt-4 text-3xl md:text-5xl font-serif font-black leading-tight">Личный зверь.</h1>
+    <p class="mt-3 text-neutral-700">Сверх яркий дисплей, титан, сапфировое стекло, высокая защита от воды и пыли, быстрый модем и долгая батарея. Готов ко всему.</p>
+    <div class="mt-2 flex flex-wrap items-center gap-2 text-xs text-neutral-500">
+      <span class="rounded-full border border-neutral-200 px-2.5 py-1">Технологии</span>
+      <span class="rounded-full border border-neutral-200 px-2.5 py-1">15 сентября 2025</span>
+      <span class="rounded-full border border-neutral-200 px-2.5 py-1">6 мин чтения</span>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section class="mx-auto max-w-6xl px-4 fx-reveal">
+    <h2 class="text-2xl md:text-4xl font-serif font-extrabold leading-tight">Главное</h2>
+    <div class="mt-6 grid md:grid-cols-3 gap-6">
+      <div class="rounded-2xl border border-neutral-200 p-5">
+        <h3 class="font-semibold">Дисплей</h3>
+        <p class="mt-2 text-neutral-700 text-sm">Широкие углы и повышенная яркость под углом. Энергоэффективная LTPO технология показывает бегущие секунды на циферблатах.</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 p-5">
+        <h3 class="font-semibold">Батарея</h3>
+        <p class="mt-2 text-neutral-700 text-sm">До 42 часов обычного использования и до 72 часов в режиме низкого энергопотребления.</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 p-5">
+        <h3 class="font-semibold">Прочность</h3>
+        <p class="mt-2 text-neutral-700 text-sm">Корпус из титана и сапфировое стекло. Материалы для долгой службы.</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 p-5">
+        <h3 class="font-semibold">Вода и пыль</h3>
+        <p class="mt-2 text-neutral-700 text-sm">Класс WR100 для погружений до 40 метров и скоростных водных видов. Пылезащита IP6X.</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 p-5">
+        <h3 class="font-semibold">Кнопка Действие</h3>
+        <p class="mt-2 text-neutral-700 text-sm">Быстрый физический контроль. Старт тренировки, отметка сегмента, фонарик и другое.</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 p-5">
+        <h3 class="font-semibold">Ремешки</h3>
+        <p class="mt-2 text-neutral-700 text-sm">Четыре стильных и универсальных ремешка для спорта и города.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Running -->
+  <section class="mx-auto max-w-6xl px-4 mt-10 md:mt-14 fx-reveal">
+    <div class="grid md:grid-cols-5 gap-6 items-start">
+      <div class="md:col-span-2">
+        <h2 class="text-2xl md:text-4xl font-serif font-extrabold leading-tight">Бег
+          <br><span class="text-neutral-800">Оптимизируй каждый шаг.</span></h2>
+      </div>
+      <div class="md:col-span-3">
+        <p class="text-neutral-700">Ultra 3 дает умные метрики, точный двухдиапазонный GPS, пользовательские тренировки и нового напарника Workout Buddy. А с модемом 5G можно полагаться на связь там, где сеть слабая.</p>
+        <p class="mt-3 text-neutral-700">Это лучший GPS среди спортивных часов.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 mt-8 fx-reveal">
+    <div class="grid md:grid-cols-2 gap-6 items-center">
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/running/action_button_startframe__esph9qb3cfe6_large_2x.jpg" alt="Кнопка Действие быстрый старт" loading="lazy" decoding="async">
+      </figure>
+      <div>
+        <h3 class="text-xl md:text-2xl font-semibold">Начинай одним нажатием.</h3>
+        <p class="mt-3 text-neutral-700">Кнопка Действие настраивается и дает моментальный контроль. Управляй тренировкой, переходи к интервалу, отмечай сегменты и другое. Точно и удобно.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 mt-10 fx-reveal">
+    <div class="grid md:grid-cols-3 gap-6">
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/running/running_5g__5ll87hrde76q_large_2x.jpg" alt="Связь 5G на пробежке" loading="lazy" decoding="async">
+        <figcaption class="mt-2 text-sm text-neutral-500">Только часы на руке. Звонки, музыка, подкасты и оплата на бегу. Новый модем 5G и антенна дают лучшую связь в местах со слабым приемом.</figcaption>
+      </figure>
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/running/running_metrics__c929jxhk5i4i_large_2x.jpg" alt="Продвинутые метрики бега" loading="lazy" decoding="async">
+        <figcaption class="mt-2 text-sm text-neutral-500">Следи за мощностью бега и каденсом. В Пользовательских тренировках добавляй интервалы работы и отдыха и цель по темпу для улицы. Оценка VO2 max после пробежки.</figcaption>
+      </figure>
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/running/running_training_load__fvtt2z7f3m6a_large_2x.jpg" alt="Нагрузка тренировки" loading="lazy" decoding="async">
+        <figcaption class="mt-2 text-sm text-neutral-500">Контроль нагрузки. Понимание влияния тренировок со временем помогает планировать когда ускоряться а когда отдыхать.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 mt-10 fx-reveal">
+    <div class="grid md:grid-cols-3 gap-6">
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/running/running_zones__fmll16li75e2_large_2x.jpg" alt="Зоны пульса" loading="lazy" decoding="async">
+        <figcaption class="mt-2 text-sm text-neutral-500">Зоны пульса. Быстро оценивай интенсивность. Зоны рассчитываются автоматически и персонализируются по данным здоровья.</figcaption>
+      </figure>
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/running/running_route__zet784io2rmy_large_2x.jpg" alt="Маршрут гонки и Пейсер" loading="lazy" decoding="async">
+        <figcaption class="mt-2 text-sm text-neutral-500">Маршрут гонки и Пейсер. Беги против своего лучшего времени и держи темп по цели дистанции и времени.</figcaption>
+      </figure>
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/running/running_workout_buddy__cnimtgypraj6_large_2x.jpg" alt="Напарник по тренировкам" loading="lazy" decoding="async">
+        <figcaption class="mt-2 text-sm text-neutral-500">Workout Buddy. С помощью Apple Intelligence на iPhone рядом дает персональную голосовую мотивацию на основе твоих данных тренировок и истории.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 mt-10 fx-reveal">
+    <div class="grid md:grid-cols-2 gap-6">
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/running/running_media__fa0e39p26umq_large_2x.jpg" alt="Музыка и подкасты для тренировки" loading="lazy" decoding="async">
+        <figcaption class="mt-2 text-sm text-neutral-500">Музыка для тебя. Apple Music подбирает плейлист по типу тренировки и твоим предпочтениям. Можно выбрать и подкасты.</figcaption>
+      </figure>
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/running/running_strava__buxyhdfx27g2_large_2x.jpg" alt="Strava и Live Segments" loading="lazy" decoding="async">
+        <figcaption class="mt-2 text-sm text-neutral-500">Strava. Отслеживай прогресс и мотивируйся Live Segments. Данные тренировки синхронизируются с Фитнес на iPhone.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Battery -->
+  <section class="mx-auto max-w-6xl px-4 mt-10 md:mt-14 fx-reveal">
+    <h2 class="text-2xl md:text-4xl font-serif font-extrabold leading-tight">Аккумулятор на выносливость</h2>
+    <p class="mt-3 text-neutral-700 max-w-3xl">Ultra 3 работает еще дольше. Быстрая зарядка за 15 минут дает до 12 часов обычного использования. До 42 часов обычного использования. До 72 часов в режиме низкого энергопотребления. До 14 часов тренировки на улице с полным GPS и измерением пульса. До 35 часов с GPS и LTE в экономном режиме с более редкими измерениями.</p>
+  </section>
+
+  <!-- Satellite -->
+  <section class="mx-auto max-w-6xl px-4 mt-10 md:mt-14 fx-reveal">
+    <h2 class="text-2xl md:text-4xl font-serif font-extrabold leading-tight">На ходу. Связь через спутник.</h2>
+    <p class="mt-3 text-neutral-700 max-w-3xl">Когда ты вне сотовой сети и Wi Fi Ultra 3 помогает оставаться на связи благодаря встроенной спутниковой коммуникации. Можно обратиться в экстренные службы прямо с запястья.</p>
+    <p class="mt-3 text-neutral-700 max-w-3xl">Служба SOS по спутнику. Несколько касаний и часы собирают важные данные подключаются к спутнику и связывают с экстренными службами.</p>
+    <p class="mt-3 text-neutral-700 max-w-3xl">Сообщения. Пиши через спутник чтобы оставаться на связи. Доступны тексты эмодзи и Tapback.</p>
+    <p class="mt-3 text-neutral-700 max-w-3xl">Где Я. Поделись местоположением через спутник чтобы близкие знали где ты. Перед выходом добавь контакты для доступа к локации в парной iPhone или прямо на часах.</p>
+  </section>
+
+  <!-- More sports -->
+  <section class="mx-auto max-w-6xl px-4 mt-10 md:mt-14 fx-reveal">
+    <h2 class="text-2xl md:text-4xl font-serif font-extrabold leading-tight">Еще больше спорта</h2>
+    <p class="mt-3 text-neutral-700 max-w-3xl">Ultra 3 прокачивает любой вид. На велосипеде следит за скоростью и эффективностью. В воде отслеживает отрезки стиль и считает дистанцию.</p>
+    <div class="mt-6 grid md:grid-cols-3 gap-6">
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/more-sports/more_zones__fipwj3eq91u2_large_2x.jpg" alt="Зоны мощности FTP" loading="lazy" decoding="async">
+        <figcaption class="mt-2 text-sm text-neutral-500">Зонирование по мощности. Подключи поверметр чтобы оценить FTP и видеть текущую мощность время в зоне и среднюю мощность.</figcaption>
+      </figure>
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/more-sports/more_mirror__gluqtvzpd4q6_large_2x.jpg" alt="Метрики велотренировки на iPhone" loading="lazy" decoding="async">
+        <figcaption class="mt-2 text-sm text-neutral-500">Метрики на iPhone. Тренировка с велосипедом появляется как Живая активность чтобы смотреть удобнее на руле.</figcaption>
+      </figure>
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/more-sports/more_views__dur4jtihtd4y_large_2x.jpg" alt="Виды тренировки" loading="lazy" decoding="async">
+        <figcaption class="mt-2 text-sm text-neutral-500">Виды тренировки. Выводи нужные метрики на первый план и переключайся между ими вращая колесико.</figcaption>
+      </figure>
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/more-sports/more_metrics__dodw0ja7f70i_large_2x.jpg" alt="Мультиспорт трек" loading="lazy" decoding="async">
+        <figcaption class="mt-2 text-sm text-neutral-500">Мультиспорт. Часы понимают переходы между плаванием велосипедом и бегом и записывают сегменты.</figcaption>
+      </figure>
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/more-sports/more_detection__85zsiu2hmeai_large_2x.jpg" alt="Определение стиля плавания" loading="lazy" decoding="async">
+        <figcaption class="mt-2 text-sm text-neutral-500">В бассейне автоматически определяется стиль плавания считаются сеты дистанция и темп дается SWOLF для оценки эффективности.</figcaption>
+      </figure>
+      <figure>
+        <img class="rounded-2xl w-full h-64 sm:h-80 md:h-[420px] object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/more-sports/more_next__dayz7scma2s2_large_2x.jpg" alt="Экран Up Next" loading="lazy" decoding="async">
+        <figcaption class="mt-2 text-sm text-neutral-500">Up Next. В Пользовательских тренировках видно что осталось в текущем интервале и что будет дальше.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Adventure & Safety & Health -->
+  <section class="mx-auto max-w-6xl px-4 mt-10 md:mt-14 fx-reveal">
+    <h2 class="text-2xl md:text-4xl font-serif font-extrabold leading-tight">Приключения. Безопасность. Здоровье.</h2>
+    <p class="mt-3 text-neutral-700 max-w-3xl">Для горных маршрутов и дайвинга Ultra 3 дает мощный компас и полноценный дайв компьютер. Можно легко брать меньше и быть готовым к большому.</p>
+    <div class="mt-6 rounded-2xl overflow-hidden">
+      <img class="w-full h-64 sm:h-96 md:h-[520px] object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/safety/safety_hero__b23icntx4v36_xlarge_2x.jpg" alt="Безопасность в Apple Watch Ultra 3" loading="lazy" decoding="async">
+    </div>
+    <p class="mt-4 text-neutral-700 max-w-3xl">Функции безопасности помогают, когда нужно. Ultra 3 может обратиться за помощью даже если iPhone недоступен.</p>
+    <h3 class="mt-6 text-xl md:text-2xl font-semibold">Здоровье</h3>
+    <p class="mt-2 text-neutral-700 max-w-3xl">От ЭКГ до показателей здоровья Ultra 3 дает целостную картину чтобы ты оставался в курсе. И делает следующий шаг в заботе о сердце благодаря уведомлениям о гипертонии.</p>
+    <h4 class="mt-4 font-semibold">Уведомления о хроническом повышенном давлении</h4>
+    <p class="mt-2 text-neutral-700 max-w-3xl">Гипертония часто незаметна и может не выявиться на одном приеме. Ultra 3 может определить паттерны и уведомить тебя, если видит признаки. Алгоритм использует данные оптического сенсора, анализируя реакцию сосудов на удары сердца за периоды до 30 дней. Подтверждено исследованиями и клинической проверкой.</p>
+    <p class="mt-2 text-neutral-700 max-w-3xl">Можно вести журнал давления в приложении Здоровье на iPhone, чтобы обсудить результаты с врачом.</p>
+  </section>
+
+  <!-- Versatility -->
+  <section class="mx-auto max-w-6xl px-4 mt-10 md:mt-14 fx-reveal">
+    <h2 class="text-2xl md:text-4xl font-serif font-extrabold leading-tight">Универсальность</h2>
+    <p class="mt-3 text-neutral-700 max-w-3xl">Ultra 3 легко меняет роли из спортивных часов в умные. От переговорной к боксу или от дайвинга к ужину. Звонки сообщения музыка и оплата на ходу. При этом метрики здоровья и функции безопасности всегда рядом на всякий случай.</p>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 mt-10 fx-reveal">
+    <div class="mt-8 flex items-center justify-between">
+      <a href="/" class="text-sm text-red-600 hover:opacity-90 font-semibold">← На главную</a>
+      <a href="#top" class="text-sm text-neutral-500 hover:text-neutral-700">Наверх ↑</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="mt-16">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="rounded-3xl glass glass-border shadow-soft p-6 md:p-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="/assets/logo.svg" class="h-8 w-auto" alt="Pereuloq">
+          <span class="text-sm text-neutral-600">Журнал о мыслях и событиях</span>
+        </div>
+        <nav class="flex flex-wrap gap-4 text-sm">
+          <a href="/" class="text-neutral-600 hover:text-black">Главная</a>
+          <a href="/#lenta" class="text-neutral-600 hover:text-black">Лента</a>
+          <a href="/about.html" class="text-neutral-600 hover:text-black">О проекте</a>
+          <a href="/private.html" class="text-neutral-600 hover:text-black">Приват</a>
+        </nav>
+      </div>
+      <div class="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-neutral-500">
+        <p>© 2025 Pereuloq • Almir Khialov</p>
+        <p class="flex items-center gap-2"><span class="text-neutral-500">Партнёрство и реклама:</span> <a href="mailto:hello@example.com" class="hover:text-red-600">hello@example.com</a> <span>·</span> <a href="#" class="hover:text-red-600">Telegram</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js" defer></script>
+<script>
+  const fxIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); fxIO.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.fx-reveal').forEach(el=>fxIO.observe(el));
+</script>
+</body>
+</html>
