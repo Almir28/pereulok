@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Магазин — Pereuloq</title>
+  <meta name="description" content="Магазин Pereuloq: цифровые продукты, подписки, шаблоны и услуги с поиском и категориями.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="store">
+  <div class="cursor" id="CUR"></div>
+  <div class="cursor-ring" id="CRING"></div>
+
+  <header class="hdr" id="HDR">
+    <div class="hdr-inner">
+      <a class="logo" href="index.html" aria-label="Pereuloq"><span class="logo-main">Pereuloq</span><span class="logo-dot"></span></a>
+      <nav aria-label="Основная навигация">
+        <a class="nav-link" data-nav="home" href="index.html">Главная</a>
+        <a class="nav-link" data-nav="feed" href="feed.html">Лента</a>
+        <a class="nav-link" data-nav="store" href="store.html">Магазин</a>
+        <a class="nav-link" data-nav="about" href="about.html">О проекте</a>
+      </nav>
+      <div class="hdr-right">
+        <button class="hdr-theme" id="THEME_BTN" type="button" aria-label="Сменить тему">☽</button>
+        <a class="hdr-btn" href="private.html">Private</a>
+        <button class="hdr-menu" id="MOBILE_MENU_BTN" type="button" aria-label="Открыть меню">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-panel" id="MOBILE_PANEL">
+    <a data-nav="home" href="index.html">Главная</a>
+    <a data-nav="feed" href="feed.html">Лента</a>
+    <a data-nav="store" href="store.html">Магазин</a>
+    <a data-nav="about" href="about.html">О проекте</a>
+    <a data-nav="private" href="private.html">Private</a>
+  </div>
+
+  <main class="store-page">
+    <div class="wrap">
+      <section class="store-hero">
+        <div class="sh-left">
+          <h1 class="feed-title">Магазин <em>Pereuloq</em></h1>
+          <p>Категории, поиск и карточки цифровых продуктов живут на отдельной странице.</p>
+        </div>
+      </section>
+
+      <div class="store-cats" id="STORE_CATS"></div>
+      <div class="store-search-row">
+        <label class="store-search" for="STORE_SEARCH">
+          <span class="store-search-icon">⌕</span>
+          <input class="store-search-inp" id="STORE_SEARCH" type="search" placeholder="Найти цифровой продукт">
+        </label>
+      </div>
+      <div class="store-promos" id="STORE_PROMOS"></div>
+      <section class="prod-grid" id="PROD_GRID" aria-label="Список товаров"></section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="ft-top">
+        <div><div class="ft-logo-wrap"><span class="ft-logo-text">Pereuloq</span><span class="ft-logo-dot"></span></div><p class="ft-tagline">Отдельный статический магазин для GitHub Pages.</p></div>
+        <div><div class="ft-col-label">Навигация</div><div class="ft-links"><a class="ft-link" href="index.html">Главная</a><a class="ft-link" href="feed.html">Лента</a><a class="ft-link" href="about.html">О проекте</a></div></div>
+        <div><div class="ft-col-label">Категории</div><div class="ft-links"><a class="ft-link" href="store.html">Ключи</a><a class="ft-link" href="store.html">Подписки</a><a class="ft-link" href="store.html">Шаблоны</a></div></div>
+        <div><div class="ft-col-label">Связь</div><div class="ft-links"><a class="ft-link" href="mailto:hello@pereuloq.ru">hello@pereuloq.ru</a><a class="ft-link" href="private.html">Private</a></div></div>
+      </div>
+      <div class="ft-bottom"><div class="ft-copy">© 2026 Pereuloq</div><div class="ft-legal"><a class="ft-legal-link" href="feed.html">Лента</a><a class="ft-legal-link" href="README.md">Deploy</a></div></div>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="PROD_MODAL">
+    <div class="modal">
+      <button class="modal-close" type="button" data-close-modal="PROD_MODAL" aria-label="Закрыть">✕</button>
+      <div class="modal-grid" id="MODAL_CONTENT"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="TOAST"><span id="T_I"></span><span id="T_M"></span></div>
+  <script src="js/main.js"></script>
+</body>
+</html>

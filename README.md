@@ -1,82 +1,77 @@
 # Pereuloq
 
-Статическая версия сайта Pereuloq для GitHub Pages: главная, отдельная лента, отдельный магазин, страницы продуктов и статьи.
+Pereuloq — полностью статический сайт для GitHub Pages: только HTML, CSS и vanilla JavaScript.
 
-## Что работает на GitHub Pages
+## Структура проекта
 
-- `/` - главная страница нового дизайна.
-- `/feed/` - отдельная лента с новостями, обновлениями, рекламой, видео и постами.
-- `/shop/` - магазин с категориями, поиском и сеткой цифровых продуктов.
-- `/shop/[productId]/` - карточка продукта с `Contact Seller` и `Buy`.
-- `/post/[slug]/` - статические страницы статей.
-
-## Что убрано из GitHub-версии
-
-GitHub Pages не запускает Node.js-сервер, поэтому из активной сборки убраны:
-
-- админ-панель `/admin`;
-- API routes `/api/*`;
-- server-side cookies;
-- Stripe checkout;
-- Sanity Studio.
-
-Покупка в магазине теперь работает как статическая кнопка связи/заказа через email.
+- `index.html` — главная страница со слайдером, тикером и избранными материалами.
+- `feed.html` — отдельная лента с фильтрами: новости, обновления, реклама, видео и посты.
+- `store.html` — отдельный магазин с категориями, поиском и модальной карточкой продукта.
+- `about.html` — страница о проекте.
+- `private.html` — статическая private-страница с клиентским доступом по паролю.
+- `css/style.css` — дизайн-система из `update2.html`.
+- `js/main.js` — тема, hero-слайдер, тикер, фильтры ленты, поиск магазина, категории, модалки.
+- `assets/`, `posts/`, `data/` — статические ассеты и существующий контент.
 
 ## Локальный запуск
 
-```bash
-npm install
-npm run dev
-```
-
-Открой `http://localhost:3000`.
-
-## Статическая сборка
+Сборка не нужна. Запусти обычный статический сервер:
 
 ```bash
-npm run build
+python3 -m http.server 3002
 ```
 
-Next.js соберет статический сайт в папку `out`.
+Открой:
+
+```text
+http://127.0.0.1:3002/
+```
+
+## Как собрать проект
+
+Для GitHub Pages отдельной сборки нет: сайт уже собран как набор статических файлов.
+
+Проверить файлы перед загрузкой можно так:
+
+```bash
+mkdir -p _site
+cp -R assets css js posts data _site/
+cp *.html CNAME yandex_*.html _site/ 2>/dev/null || true
+```
+
+Папку `_site` можно удалить после проверки.
 
 ## Деплой через GitHub Pages
 
-В проект добавлен workflow:
+Workflow уже настроен:
 
 ```text
 .github/workflows/pages.yml
 ```
 
-После пуша в `main` GitHub Actions автоматически:
+В GitHub:
 
-1. установит зависимости;
-2. соберет статический сайт;
-3. положит `CNAME` в `out`;
-4. опубликует сайт через GitHub Pages.
+1. Открой репозиторий.
+2. Перейди в `Settings -> Pages`.
+3. В `Source` выбери `GitHub Actions`.
+4. Сделай push в ветку `main`.
+5. Открой вкладку `Actions` и дождись успешного деплоя.
 
-## Настройка GitHub
+## Домен pereuloq.ru
 
-В репозитории открой:
-
-```text
-Settings -> Pages
-```
-
-Выбери:
+В проекте есть файл:
 
 ```text
-Source: GitHub Actions
+CNAME
 ```
 
-В поле custom domain укажи:
+Внутри:
 
 ```text
 pereuloq.ru
 ```
 
-## DNS в Reg.ru
-
-Для GitHub Pages в DNS-зоне домена `pereuloq.ru` нужны A-записи:
+В Reg.ru в DNS-зоне домена укажи A-записи для корня домена:
 
 ```text
 A @ 185.199.108.153
@@ -91,18 +86,39 @@ A @ 185.199.111.153
 CNAME www swiftdev028.github.io.
 ```
 
-Если репозиторий будет не у `SwiftDev028`, замени `swiftdev028.github.io.` на имя нужного GitHub-аккаунта.
+Если сайт будет опубликован не в аккаунте `SwiftDev028`, замени `swiftdev028.github.io.` на нужный GitHub Pages host.
 
-## Публикация изменений
+## Переменные окружения
+
+Эта версия полностью статическая и не использует backend, поэтому переменные окружения на GitHub Pages не нужны.
+
+Не храни реальные пароли, ключи или admin-секреты в HTML/JS: публичные статические файлы видны всем. Если позже понадобится настоящий admin/private доступ, его нужно делать через сервер или внешний сервис авторизации.
+
+## Загрузка на обычный хостинг
+
+Если деплоить не через GitHub Pages, а вручную на хостинг, загрузи в публичную папку сайта:
+
+```text
+index.html
+feed.html
+store.html
+about.html
+private.html
+shop.html
+product.html
+blog.html
+CNAME
+assets/
+css/
+js/
+posts/
+data/
+```
+
+Для публикации через GitHub:
 
 ```bash
 git add .
-git commit -m "Prepare static GitHub Pages site"
+git commit -m "Integrate static Pereuloq redesign"
 git push origin main
-```
-
-После пуша смотри прогресс в GitHub:
-
-```text
-Repository -> Actions
 ```

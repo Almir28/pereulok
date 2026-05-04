@@ -1,400 +1,170 @@
 <!doctype html>
-<html lang="ru" class="scroll-smooth">
+<html lang="ru" data-theme="dark">
 <head>
-
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Pereuloq — Журнал о мыслях и событиях</title>
-<meta name="description" content="Pereuloq — блог-лента с заметками и событиями." />
-<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
-<meta name="theme-color" content="#ffffff">
-<script>tailwind.config = { darkMode: 'class' }</script>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="/css/custom.css">
-<style>
-  body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; }
-  h1, h2, h3, .font-serif {
-    font-family: 'Playfair Display', serif;
-  }
-</style>
-
-<style>
-  .fade-out {
-    opacity: 0;
-    transition: opacity .4s ease;
-  }
-</style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pereuloq — Журнал о технологиях и событиях</title>
+  <meta name="description" content="Pereuloq — премиальный статический журнал с отдельной лентой и магазином цифровых продуктов.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100">
+<body data-page="home">
+  <div class="cursor" id="CUR"></div>
+  <div class="cursor-ring" id="CRING"></div>
+  <div class="read-progress" id="READ_BAR"></div>
 
-<header class="sticky-header sticky top-0 z-50 relative backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-neutral-900/70 border-b border-neutral-200/60 dark:border-neutral-800/70">
-  <div class="mx-auto max-w-6xl px-4">
-    <div class="flex h-16 items-center justify-between">
-      <a href="/" class="flex items-center gap-3">
-        <picture>
-          <source srcset="/assets/logo-dark.svg" media="(prefers-color-scheme: dark)">
-          <img src="/assets/logo.svg" alt="Pereuloq" class="h-10 md:h-12 w-auto select-none">
-        </picture>
+  <header class="hdr" id="HDR">
+    <div class="hdr-inner">
+      <a class="logo" href="index.html" aria-label="Pereuloq">
+        <span class="logo-main">Pereuloq</span>
+        <span class="logo-dot"></span>
       </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="/" class="text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Главная</a>
-        <a href="#lenta" data-open-lenta class="nav-link text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Лента</a>
-        <a href="/shop.html" class="nav-link text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">Магазин</a>
-        <a href="/about.html" class="nav-link text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">О проекте</a>
+      <nav aria-label="Основная навигация">
+        <a class="nav-link" data-nav="home" href="index.html">Главная</a>
+        <a class="nav-link" data-nav="feed" href="feed.html">Лента</a>
+        <a class="nav-link" data-nav="store" href="store.html">Магазин</a>
+        <a class="nav-link" data-nav="about" href="about.html">О проекте</a>
       </nav>
-      <div class="flex items-center gap-2">
-        <a href="/private.html" class="hidden md:inline-flex rounded-xl bg-gradient-to-r from-orange-500 to-red-600 text-white px-4 py-2 text-sm font-semibold hover:opacity-90">Закрытые мысли</a>
-        <button id="menuBtn" class="md:hidden inline-flex items-center rounded-xl border border-neutral-200 dark:border-neutral-700 p-2 text-neutral-800 dark:text-neutral-200" aria-label="menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
+      <div class="hdr-right">
+        <button class="hdr-theme" id="THEME_BTN" type="button" aria-label="Сменить тему">☽</button>
+        <a class="hdr-btn" href="private.html">Private</a>
+        <button class="hdr-menu" id="MOBILE_MENU_BTN" type="button" aria-label="Открыть меню">☰</button>
       </div>
     </div>
+  </header>
+
+  <div class="mobile-panel" id="MOBILE_PANEL">
+    <a data-nav="home" href="index.html">Главная</a>
+    <a data-nav="feed" href="feed.html">Лента</a>
+    <a data-nav="store" href="store.html">Магазин</a>
+    <a data-nav="about" href="about.html">О проекте</a>
+    <a data-nav="private" href="private.html">Private</a>
   </div>
-  <div id="mobileNav" class="fixed inset-0 z-[60] md:hidden hidden">
-    <div class="mnav-backdrop absolute inset-0 bg-black/45"></div>
-    <nav class="mnav-panel absolute top-0 right-0 h-full w-[86vw] max-w-sm bg-white dark:bg-neutral-900 border-l border-neutral-200 dark:border-neutral-800 p-6 flex flex-col gap-4">
-      <div class="nav-curtain" aria-hidden="true"></div>
-      <div class="flex items-center justify-between mb-2">
-        <div class="flex items-center gap-2">
-          <img src="/assets/logo.svg" class="h-7 w-7 dark:hidden" alt="Pereuloq">
-          <img src="/assets/logo-dark.svg" class="h-7 w-7 hidden dark:block" alt="Pereuloq">
-          <span class="menu-title text-xs font-semibold uppercase tracking-[0.24em]">Меню</span>
-        </div>
-        <button id="mnavClose" class="rounded-xl border border-neutral-200 dark:border-neutral-700 p-2" aria-label="Закрыть">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg>
-        </button>
+
+  <main>
+    <section class="hero">
+      <div class="hero-slides-wrap" id="SLIDES_WRAP"></div>
+      <div class="hero-controls" id="HERO_CTRL"></div>
+      <div class="hero-progress"><div class="hero-progress-bar" id="HERO_BAR"></div></div>
+      <div class="ticker">
+        <div class="ticker-tag"><span class="live-dot"></span>Сейчас</div>
+        <div class="ticker-scroll" id="TICKER"></div>
       </div>
-      <a href="/" class="menu-link text-base">Главная</a>
-      <a href="#lenta" data-open-lenta class="menu-link text-base">Лента</a>
-      <a href="/shop.html" class="menu-link text-base">Магазин</a>
-      <a href="/about.html" class="menu-link text-base">О проекте</a>
-      <a href="/private.html" class="mt-3 inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-orange-500 to-red-600 text-white px-4 py-2.5 text-sm font-semibold shadow-sm">Закрытые мысли</a>
-    </nav>
-  </div>
-</header>
-<!-- Header progress bar -->
-<div class="pointer-events-none fixed top-0 left-0 right-0 h-0.5">
-  <div id="scrollProgress" class="h-full w-full bg-red-500/80 dark:bg-red-500/70 origin-left scale-x-0" style="transform: scaleX(0);"></div>
-  
-</div>
+    </section>
 
-<main class="mx-auto max-w-6xl px-4">
-  <!-- Preloader -->
-  <div id="preloader" class="fixed inset-0 bg-white dark:bg-neutral-900 flex items-center justify-center z-[60]">
-    <div class="flex items-center gap-3">
-      <img src="/assets/logo.svg" class="h-8 w-auto animate-pulse" alt="Pereuloq">
-      <div class="h-2 w-24 bg-neutral-200 dark:bg-neutral-800 rounded overflow-hidden">
-        <div class="h-full w-1/3 bg-red-500 animate-[loader_1.2s_ease-in-out_infinite]"></div>
+    <section class="featured-section">
+      <div class="wrap">
+        <div class="section-header">
+          <span class="sh-num">01</span>
+          <span class="sh-title">Избранное</span>
+          <span class="sh-line"></span>
+          <a class="sh-more" href="feed.html">Все статьи →</a>
+        </div>
+        <div class="feat-grid" id="FEAT_GRID"></div>
       </div>
-    </div>
-  </div>
-  <style>
-    @keyframes loader {
-      0% { transform: translateX(-100%); }
-      50% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-  </style>
+    </section>
 
-  <!-- Hero -->
-  <section class="mt-10 md:mt-14">
-    <div id="hero" class="rounded-3xl border border-neutral-200 dark:border-neutral-800 p-8 md:p-12 bg-white/70 dark:bg-neutral-900/60 overflow-hidden relative glass glass-border shadow-soft">
-      <div class="absolute inset-0 pointer-events-none opacity-70">
-        <!-- subtle moving gradient spotlight -->
-        <div id="spot" class="absolute -top-24 -left-24 h-72 w-72 rounded-full blur-3xl bg-red-500/10"></div>
-      </div>
-      <div class="max-w-2xl relative z-10">
-        <span class="inline-flex items-center rounded-full bg-white dark:bg-neutral-900 border border-red-200/70 dark:border-red-800/60 px-3 py-1 text-xs font-semibold text-red-600">Журнал Pereuloq</span>
-        <h1 class="mt-4 text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">Технологии, разработка и события без шума</h1>
-        <p class="mt-4 text-neutral-600 dark:text-neutral-300 max-w-xl">Pereuloq — журнал о разработке и технологиях. Короткие материалы, понятная навигация и чистый дизайн. Главное из мира продуктов и событий в одном месте.</p>
-        <div class="mt-6 flex items-center gap-3">
-          <a href="#latest" class="rounded-xl bg-black text-white dark:bg-red-600 px-4 py-2.5 text-sm font-semibold hover:opacity-90">Читать ленту</a>
-          <a href="/about.html" class="rounded-xl border border-neutral-200 dark:border-neutral-700 px-4 py-2.5 text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-neutral-800">О проекте</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured -->
-  <section class="mt-12 reveal">
-    <h2 class="text-xl font-semibold">Избранное</h2>
-    <div class="mt-6 grid md:grid-cols-2 gap-6">
-      <a href="/posts/mini-jcw-deus.html" class="card group overflow-hidden rounded-3xl border border-neutral-200 dark:border-neutral-800 transition glass glass-border shadow-soft" data-published="2025-09-12">
-        <div class="aspect-16-9">
-          <img src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_fullwidth_/leftPar/image_item/damImage.narrow.2880w.j_1756879239152.jpg" alt="MINI JCW × Deus Ex Machina">
-        </div>
-        <div class="p-6">
-          <div class="text-xs text-red-600 font-semibold">События</div>
-          <h3 class="mt-2 text-lg font-semibold group-hover:text-red-600 transition">MINI JCW × Deus Ex Machina</h3>
-          <p class="card-excerpt mt-2 text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2">Два мира. Два авто. Одна страсть.</p>
-          <div class="card-date mt-4 text-xs text-neutral-500">12 сентября 2025</div>
-        </div>
-      </a>
-      <a href="/posts/iphone-17-pro.html" class="card group overflow-hidden rounded-3xl border border-neutral-200 dark:border-neutral-800 transition glass glass-border shadow-soft" data-published="2025-09-13">
-        <div class="aspect-16-9">
-          <img src="https://www.apple.com/v/iphone-17-pro/a/images/overview/welcome/hero_endframe__xdzisdq1ppem_xlarge_2x.jpg" alt="iPhone 17 Pro — цельный корпус">
-        </div>
-        <div class="p-6">
-          <div class="text-xs text-red-600 font-semibold">Технологии</div>
-          <h3 class="mt-2 text-lg font-semibold group-hover:text-red-600 transition">iPhone 17 Pro</h3>
-          <p class="card-excerpt mt-2 text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2">Чёрный пост с эффектами как у Apple. Камеры, мощность и автономность.</p>
-          <div class="card-date mt-4 text-xs text-neutral-500">13 сентября 2025</div>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- Latest (Editorial) -->
-  <section id="latest" class="mt-12 reveal">
-    <h2 class="text-xl font-semibold">Лента</h2>
-    <!-- Filters -->
-    <div id="lentaFilters" class="mt-4 flex flex-wrap gap-2 sticky top-16 z-10">
-      <button type="button" class="filter-chip is-active text-neutral-700 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800">Все</button>
-      <button type="button" data-filter="tech" class="filter-chip text-neutral-700 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800">Технологии</button>
-      <button type="button" data-filter="events" class="filter-chip text-neutral-700 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800">События</button>
-      <button type="button" data-filter="music" class="filter-chip text-neutral-700 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800">Музыка</button>
-    </div>
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-6 gap-6 editorial-grid cv-auto">
-      <!-- Large feature spanning -->
-      <a href="/posts/iphone-17-pro.html" data-cat="tech" data-published="2025-09-13" class="editorial-item card md:col-span-4 md:row-span-1 glass glass-border shadow-soft bg-white/70 dark:bg-neutral-900/60">
-        <div class="relative aspect-16-9 md:aspect-auto md:h-[300px]">
-          <img src="https://www.apple.com/v/iphone-17-pro/a/images/overview/welcome/hero_endframe__xdzisdq1ppem_xlarge_2x.jpg" alt="iPhone 17 Pro — цельный корпус" class="absolute inset-0 w-full h-full object-cover" decoding="async" sizes="(max-width: 767px) 100vw, 66vw">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent"></div>
-        </div>
-        <div class="px-6 pt-5 pb-4 md:px-8 md:pt-6 md:pb-4">
-          <div class="text-xs text-red-600 font-semibold">Технологии</div>
-          <h3 class="title mt-2 text-2xl md:text-3xl font-semibold">iPhone 17 Pro</h3>
-          <p class="card-excerpt mt-3 text-sm md:text-base text-neutral-600 dark:text-neutral-300 line-clamp-2">Цельный корпус, новая система камер, высокая производительность и автономность.</p>
-          <div class="card-date mt-3 text-xs text-neutral-500">13 сентября 2025</div>
-        </div>
-      </a>
-
-      <!-- Tall card (MINI) -->
-      <a href="/posts/mini-jcw-deus.html" data-cat="events" data-published="2025-09-12" class="editorial-item card md:col-span-2 md:row-span-1 glass glass-border bg-white/70 dark:bg-neutral-900/60">
-        <div class="relative h-56 md:h-[300px]">
-          <img src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_fullwidth_/leftPar/image_item/damImage.narrow.2880w.j_1756879239152.jpg" alt="MINI JCW × Deus Ex Machina" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" sizes="(max-width: 767px) 100vw, 33vw">
-        </div>
-        <div class="px-6 pt-5 pb-4">
-          <div class="text-xs text-red-600 font-semibold">События</div>
-          <h3 class="title mt-2 text-xl md:text-2xl font-semibold">MINI John Cooper Works × Deus Ex Machina</h3>
-          <p class="card-excerpt mt-3 text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2">Спецпроект. Полный текст, фото и видео — на нашей странице.</p>
-          <div class="card-date mt-3 text-xs text-neutral-500">12 сентября 2025</div>
-        </div>
-      </a>
-
-      <!-- New: iPhone Air -->
-      <a href="/posts/iphone-air.html" data-cat="tech" data-published="2025-09-14" class="editorial-item card md:col-span-3 md:row-span-1 glass glass-border shadow-soft bg-white/70 dark:bg-neutral-900/60">
-        <div class="relative aspect-16-9">
-          <img src="https://www.apple.com/v/iphone-air/a/images/overview/welcome/hero_endframe__e89wrlp1kjee_xlarge_2x.jpg" alt="iPhone Air самый тонкий iPhone" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" sizes="(max-width: 767px) 100vw, 33vw">
-        </div>
-        <div class="p-6">
-          <div class="text-xs text-red-600 font-semibold">Технологии</div>
-          <h3 class="title mt-2 text-xl md:text-2xl font-semibold">iPhone Air</h3>
-          <p class="card-excerpt mt-3 text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2">Самый тонкий iPhone. С мощностью Pro внутри.</p>
-          <div class="card-date mt-4 text-xs text-neutral-500">14 сентября 2025</div>
-        </div>
-      </a>
-
-      <!-- New: Apple Watch Ultra 3 -->
-      <a href="/posts/apple-watch-ultra-3.html" data-cat="tech" data-published="2025-09-15" class="editorial-item card md:col-span-3 md:row-span-1 glass glass-border shadow-soft bg-white/70 dark:bg-neutral-900/60">
-        <div class="relative aspect-16-9">
-          <img src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/product-viewer/product_durability__fjxsjypa2e6i_large_2x.jpg" alt="Apple Watch Ultra 3 титан и прочность" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" sizes="(max-width: 767px) 100vw, 33vw">
-        </div>
-        <div class="p-6">
-          <div class="text-xs text-red-600 font-semibold">Технологии</div>
-          <h3 class="title mt-2 text-xl md:text-2xl font-semibold">Apple Watch Ultra 3</h3>
-          <p class="card-excerpt mt-3 text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2">Личный зверь для спорта и приключений. Яркий дисплей, титан и долгая батарея.</p>
-          <div class="card-date mt-4 text-xs text-neutral-500">15 сентября 2025</div>
-        </div>
-      </a>
-
-      <!-- New: Justin Bieber — SWAG II -->
-      <a href="/posts/justin-bieber-swag-ii.html" data-cat="music" data-published="2025-09-16" class="editorial-item card md:col-span-3 md:row-span-1 glass glass-border shadow-soft bg-white/70 dark:bg-neutral-900/60">
-        <div class="relative aspect-16-9">
-          <img src="https://specials-images.forbesimg.com/imageserve/68bac50f75adabb2f21b963b/Justin-Bieber-press-photo-for--SWAG-II-/960x0.jpg?cropX1=127&cropX2=1310&cropY1=207&cropY2=996" alt="Justin Bieber — SWAG II (2025)" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" sizes="(max-width: 767px) 100vw, 33vw">
-        </div>
-        <div class="p-6">
-          <div class="text-xs text-red-600 font-semibold">Музыка</div>
-          <h3 class="title mt-2 text-xl md:text-2xl font-semibold">Justin Bieber SWAG II</h3>
-          <p class="card-excerpt mt-3 text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2">23 трека альтернативного R&B: удачные моменты есть, но формула растянута — много материала и мало идей.</p>
-          <div class="card-date mt-4 text-xs text-neutral-500">16 сентября 2025</div>
-        </div>
-      </a>
-
-      
-    </div>
-  </section>
-
-
-
-  
-
-</main>
-
-<!-- Lenta Newspaper UI Overlay -->
-<div id="lentaOverlay" class="fixed inset-0 hidden z-[70]">
-  <div class="absolute inset-0 modal-backdrop"></div>
-  <div class="relative h-full overflow-y-auto py-8">
-    <div class="mx-auto max-w-6xl px-4">
-      <div class="modal paper paper-border rounded-3xl p-6 md:p-10 shadow-soft">
-        <div class="flex items-start justify-between gap-4">
+    <section class="lower-section">
+      <div class="wrap">
+        <div class="lower-grid">
           <div>
-            <div class="inline-flex items-center gap-2 text-xs tracking-widest uppercase text-red-600 font-semibold">Газетный режим</div>
-            <h2 class="mt-2 text-3xl md:text-5xl font-serif font-black leading-tight">Лента Pereuloq</h2>
-            <p class="mt-3 text-neutral-600 dark:text-neutral-300 max-w-2xl">Крупные заголовки, широкие поля, большие фотографии — для удобного чтения и быстрого обзора.</p>
+            <div class="section-header">
+              <span class="sh-num">02</span>
+              <span class="sh-title">Последние материалы</span>
+              <span class="sh-line"></span>
+            </div>
+            <div class="latest-list" id="LIST_ARTS"></div>
           </div>
-          <button id="closeLenta" class="rounded-xl border border-neutral-200 dark:border-neutral-700 px-3 py-2 text-sm hover:bg-neutral-50 dark:hover:bg-neutral-800">Закрыть</button>
-        </div>
-
-        <!-- Overlay search -->
-        <div class="mt-6">
-          <input id="lentaSearch" type="search" placeholder="Поиск по ленте..." class="w-full md:w-96 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white/80 dark:bg-neutral-900/70 px-4 py-2.5 text-sm focus:outline-none focus:border-red-400 dark:focus:border-red-600" />
-        </div>
-
-        <!-- Newspaper grid -->
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-12 gap-8 cv-auto">
-          <!-- Hero article -->
-          <article class="md:col-span-7">
-                <a href="/posts/justin-bieber-swag-ii.html" class="group block" data-published="2025-09-14">
-              <div class="rounded-2xl overflow-hidden">
-                <img class="w-full h-[320px] md:h-[420px] object-cover group-hover:scale-[1.03] transition-transform duration-700" src="https://specials-images.forbesimg.com/imageserve/68bac50f75adabb2f21b963b/Justin-Bieber-press-photo-for--SWAG-II-/960x0.jpg?cropX1=127&cropX2=1310&cropY1=207&cropY2=996" alt="Justin Bieber SWAG II 2025" loading="lazy" decoding="async">
-              </div>
-              <div class="mt-4 text-red-600 text-xs font-semibold">Музыка</div>
-              <h3 class="mt-1 text-3xl md:text-4xl font-serif font-bold leading-snug">Justin Bieber SWAG II</h3>
-              <p class="mt-3 text-neutral-600 dark:text-neutral-300 dropcap">SWAG II вышел с задержкой, появился поэтапно; два диска и двадцать три новых трека — кратко о релизе и впечатлениях.</p>
-            </a>
-          </article>
-
-          <!-- Sidebar list -->
-          <aside class="md:col-span-5">
-            <ul class="space-y-6" data-sort="published">
-              <li>
-                <a href="/posts/justin-bieber-swag-ii.html" class="group flex gap-4" data-published="2025-09-14">
-                  <img class="w-28 h-20 md:w-32 md:h-24 rounded-lg object-cover" src="https://imageio.forbes.com/specials-images/imageserve/68ba8aae217fdce7c8b93d5f/-SWAG-II--album-cover-via-Justin-Bieber---lilbieber--Instagram/0x0.png?format=png&crop=1808,1807,x0,y0,safe&width=640" alt="Justin Bieber — SWAG II превью" loading="lazy" decoding="async">
-                  <div>
-                    <div class="text-red-600 text-xs font-semibold">Музыка</div>
-                    <h4 class="font-serif text-xl font-semibold leading-snug group-hover:text-red-600">Justin Bieber SWAG II</h4>
-                    <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2">Два часа альтернативного R&B: редкие вспышки тонут в ровном звучании.</p>
-                    <div class="card-date text-xs text-neutral-500 mt-1">16 сентября 2025</div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="/posts/mini-jcw-deus.html" class="group flex gap-4" data-published="2025-09-12">
-                  <img class="w-28 h-20 md:w-32 md:h-24 rounded-lg object-cover" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_fullwidth_/leftPar/image_item/damImage.narrow.2880w.j_1756879239152.jpg" alt="MINI JCW × Deus — превью" loading="lazy" decoding="async">
-                  <div>
-                    <div class="text-red-600 text-xs font-semibold">События</div>
-                    <h4 class="font-serif text-xl font-semibold leading-snug group-hover:text-red-600">MINI JCW × Deus Ex Machina</h4>
-                    <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2">Два шоукара, созданных вместе с Deus. Кастомный дизайн и механический характер.</p>
-                    <div class="card-date text-xs text-neutral-500 mt-1">12 сентября 2025</div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="/posts/apple-watch-ultra-3.html" class="group flex gap-4" data-published="2025-09-14">
-                  <img class="w-28 h-20 md:w-32 md:h-24 rounded-lg object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/product-viewer/product_durability__fjxsjypa2e6i_large_2x.jpg" alt="Apple Watch Ultra 3 превью">
-                  <div>
-                    <div class="text-red-600 text-xs font-semibold">Технологии</div>
-                    <h4 class="font-serif text-xl font-semibold leading-snug group-hover:text-red-600">Apple Watch Ultra 3</h4>
-                    <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2">Дисплей, титан, защита, спутник и долгая батарея.</p>
-                    <div class="card-date text-xs text-neutral-500 mt-1">15 сентября 2025</div>
-                  </div>
-                </a>
-              </li>
-            </ul>
+          <aside class="sidebar-box">
+            <div class="sb-head">Популярное</div>
+            <div class="sb-items" id="SB_ITEMS"></div>
           </aside>
+        </div>
+      </div>
+    </section>
 
-          <!-- Two columns beneath -->
-          <section class="md:col-span-12 grid md:grid-cols-2 gap-8" data-sort="published">
-            <a href="/posts/iphone-17-pro.html" class="group block" data-published="2025-09-13">
-              <img class="rounded-2xl w-full h-60 object-cover" src="https://www.apple.com/v/iphone-17-pro/a/images/overview/welcome/hero_endframe__xdzisdq1ppem_xlarge_2x.jpg" alt="iPhone 17 Pro — цельный корпус" loading="lazy" decoding="async">
-              <h4 class="mt-4 font-serif text-2xl font-bold leading-snug group-hover:text-red-600">iPhone 17 Pro</h4>
-              <p class="mt-2 text-neutral-600 dark:text-neutral-300">Чёрная тема, камеры и производительность — краткий обзор.</p>
-            </a>
-            <a href="/posts/mini-jcw-deus.html" class="group block" data-published="2025-09-12">
-              <img class="rounded-2xl w-full h-60 object-cover" src="https://www.mini.com/en_MS/home/progress/mini-jcw-x-deus-ex-machina/jcr:content/main/par/product_editorial/productEditorialPar/editorial_fullwidth_/leftPar/image_item/damImage.narrow.2880w.j_1756879239152.jpg" alt="MINI JCW × Deus Ex Machina" loading="lazy" decoding="async">
-              <h4 class="mt-4 font-serif text-2xl font-bold leading-snug group-hover:text-red-600">MINI JCW × Deus Ex Machina</h4>
-              <p class="mt-2 text-neutral-600 dark:text-neutral-300">Спецпроект с фото и видео — подробности внутри.</p>
-            </a>
-            <a href="/posts/iphone-air.html" class="group block" data-published="2025-09-14">
-              <img class="rounded-2xl w-full h-60 object-cover" src="https://www.apple.com/v/iphone-air/a/images/overview/welcome/hero_endframe__e89wrlp1kjee_xlarge_2x.jpg" alt="iPhone Air самый тонкий iPhone" loading="lazy" decoding="async">
-              <h4 class="mt-4 font-serif text-2xl font-bold leading-snug group-hover:text-red-600">iPhone Air</h4>
-              <p class="mt-2 text-neutral-600 dark:text-neutral-300">Самый тонкий iPhone. С мощью Pro внутри.</p>
-            </a>
-            <a href="/posts/apple-watch-ultra-3.html" class="group block" data-published="2025-09-15">
-              <img class="rounded-2xl w-full h-60 object-cover" src="https://www.apple.com/v/apple-watch-ultra-3/a/images/overview/product-viewer/product_durability__fjxsjypa2e6i_large_2x.jpg" alt="Apple Watch Ultra 3 титан и прочность">
-              <h4 class="mt-4 font-serif text-2xl font-bold leading-snug group-hover:text-red-600">Apple Watch Ultra 3</h4>
-              <p class="mt-2 text-neutral-600 dark:text-neutral-300">Дисплей, титан, защита и выносливый аккумулятор — для спорта и приключений.</p>
-            </a>
-          </section>
+    <section class="cats-strip">
+      <div class="wrap">
+        <div class="section-header">
+          <span class="sh-num">03</span>
+          <span class="sh-title">Категории</span>
+          <span class="sh-line"></span>
+        </div>
+        <div class="cats-row" id="CATS_ROW"></div>
+      </div>
+    </section>
+
+    <section class="nl-strip">
+      <div class="wrap">
+        <div class="nl-layout">
+          <div class="nl-text">
+            <h3>Получать <em>новые</em> материалы</h3>
+            <p>Короткая рассылка Pereuloq о новых публикациях, обновлениях магазина и приватных заметках.</p>
+          </div>
+          <form class="nl-form" id="NL_FORM">
+            <input class="nl-inp" id="NL_EMAIL" type="email" placeholder="your@email.com" autocomplete="email">
+            <button class="nl-sub" type="submit">Подписаться</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="ft-top">
+        <div>
+          <div class="ft-logo-wrap"><span class="ft-logo-text">Pereuloq</span><span class="ft-logo-dot"></span></div>
+          <p class="ft-tagline">Статический журнал, лента и магазин на GitHub Pages.</p>
+        </div>
+        <div>
+          <div class="ft-col-label">Разделы</div>
+          <div class="ft-links">
+            <a class="ft-link" href="feed.html">Лента</a>
+            <a class="ft-link" href="store.html">Магазин</a>
+            <a class="ft-link" href="about.html">О проекте</a>
+          </div>
+        </div>
+        <div>
+          <div class="ft-col-label">Магазин</div>
+          <div class="ft-links">
+            <a class="ft-link" href="store.html">Цифровые товары</a>
+            <a class="ft-link" href="store.html">Подписки</a>
+            <a class="ft-link" href="private.html">Private</a>
+          </div>
+        </div>
+        <div>
+          <div class="ft-col-label">Контакт</div>
+          <div class="ft-links">
+            <a class="ft-link" href="mailto:hello@pereuloq.ru">hello@pereuloq.ru</a>
+            <a class="ft-link" href="https://pereuloq.ru">pereuloq.ru</a>
+          </div>
+        </div>
+      </div>
+      <div class="ft-bottom">
+        <div class="ft-copy">© 2026 Pereuloq</div>
+        <div class="ft-legal">
+          <a class="ft-legal-link" href="private.html">Private</a>
+          <a class="ft-legal-link" href="README.md">Deploy</a>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<!-- Back-to-top button -->
-<button id="toTop" aria-label="Наверх" class="fixed bottom-6 right-6 z-50 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-200 p-3 shadow-lg transition glass glass-border">
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-  </svg>
-  </button>
+  </footer>
 
-<footer class="mt-16">
-  <div class="mx-auto max-w-6xl px-4">
-    <div class="rounded-3xl glass glass-border shadow-soft p-6 md:p-8">
-      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div class="flex items-center gap-3">
-          <img src="/assets/logo.svg" class="h-8 w-auto dark:hidden" alt="Pereuloq">
-          <img src="/assets/logo-dark.svg" class="h-8 w-auto hidden dark:block" alt="Pereuloq">
-          <span class="text-sm text-neutral-600 dark:text-neutral-300">Журнал о мыслях и событиях</span>
-        </div>
-        <nav class="flex flex-wrap gap-4 text-sm">
-          <a href="/" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Главная</a>
-          <a href="/#lenta" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Лента</a>
-          <a href="/about.html" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">О проекте</a>
-          <a href="/private.html" class="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Приват</a>
-        </nav>
+  <div class="read-overlay" id="READ_OV">
+    <div class="read-inner">
+      <div class="read-close-bar">
+        <button class="rc-btn" type="button" data-close-read>← Назад</button>
+        <div class="read-meta-bar" id="READ_META"></div>
       </div>
-      <div class="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-neutral-500 dark:text-neutral-400">
-        <p>© 2025 Pereuloq • Almir Khialov</p>
-        <p class="flex items-center gap-2">
-          <span class="text-neutral-500">Партнёрство и реклама:</span>
-          <a href="mailto:hello@example.com" class="hover:text-red-600">hello@example.com</a>
-          <span>·</span>
-          <a href="#" class="hover:text-red-600">Telegram</a>
-        </p>
-      </div>
+      <article id="READ_CONTENT"></article>
     </div>
   </div>
-</footer>
 
-<script src="/js/main.js" defer></script>
-<script>
-  // Smooth fade navigation + fix for Safari bfcache
-  const isIOS = /iP(hone|od|ad)/.test(navigator.platform) || (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
-  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-  document.querySelectorAll('a[href]').forEach(link=>{
-    if(link.host===window.location.host){
-      link.addEventListener('click',function(e){
-        if(link.target==='_blank' || link.href.includes('#'))return;
-        e.preventDefault();
-        if (isIOS && isSafari) { window.location = link.href; return; }
-        document.body.classList.add('fade-out');
-        setTimeout(()=>window.location=link.href,120);
-      });
-    }
-  });
-  window.addEventListener('pageshow', ()=>{
-    // ensure page is visible when restored from bfcache
-    document.body.classList.remove('fade-out');
-  });
-</script>
+  <div class="toast" id="TOAST"><span id="T_I"></span><span id="T_M"></span></div>
+  <script src="js/main.js"></script>
 </body>
 </html>
