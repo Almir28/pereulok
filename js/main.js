@@ -8,6 +8,20 @@ const routes = {
 
 const ARTICLES = [
   {
+    id: 14,
+    cat: 'Технологии',
+    kind: 'news',
+    title: 'Apple урегулировала дело об ИИ',
+    desc: 'Компания достигла соглашения по судебному делу о технологиях искусственного интеллекта и интеллектуальной собственности.',
+    author: 'Pereuloq',
+    date: '6 мая 2026',
+    read: '4 мин',
+    img: 'https://static01.nyt.com/images/2026/05/05/multimedia/00biz-apple-settlement-HFO-mqjb/00biz-apple-settlement-HFO-mqjb-superJumbo.jpg?quality=75&auto=webp',
+    bg: 'gb1',
+    href: 'posts/apple-ai-settlement.html',
+    body: `<p>Apple достигла соглашения по судебному делу, связанному с использованием технологий искусственного интеллекта. Дело касалось претензий в отношении интеллектуальной собственности и возможного нарушения патентов в области ИИ.</p><p>Стороны договорились о внесудебном урегулировании, детали которого не раскрываются.</p><h3>Почему это важно</h3><p>Вопросы прав на ИИ и патенты становятся все более актуальными с ростом числа продуктов, использующих машинное обучение.</p><p>Подобные дела могут повлиять на будущие стандарты лицензирования и разработки ИИ-технологий.</p>`
+  },
+  {
     id: 13,
     cat: 'Культура',
     kind: 'news',
@@ -231,7 +245,7 @@ const STORE_CATS = [
 ];
 
 const CATS_DATA = [
-  { icon: '💻', name: 'Технологии', count: '4' },
+  { icon: '💻', name: 'Технологии', count: '5' },
   { icon: '$', name: 'Бизнес', count: '2' },
   { icon: '◼', name: 'Кино', count: '1' },
   { icon: '✦', name: 'Культура', count: '3' },
@@ -242,6 +256,7 @@ const CATS_DATA = [
 ];
 
 const TICKER_ITEMS = [
+  'Apple урегулировала судебное дело о технологии искусственного интеллекта',
   'The Devil Wears Prada 2 снова выводит моду в центр внимания',
   'SpaceX остается закрытой компанией и недоступна обычным инвесторам',
   'Daniel Radcliffe и Morgan Brooks говорят вне публичных ролей',
@@ -576,21 +591,21 @@ function buildAbout() {
   const stats = $('#AB_STATS');
   const projects = $('#AB_PROJS');
   if (skills) {
-    skills.innerHTML = ['Медиадизайн', 'UI / UX', 'Фронтенд', 'Редакция', 'Брендинг', 'Motion'].map((skill) => `<span class="ab-skill">${skill}</span>`).join('');
+    skills.innerHTML = ['Технологии', 'Бизнес', 'Путешествия', 'Культура', 'Стиль жизни', 'Магазин'].map((skill) => `<span class="ab-skill">${skill}</span>`).join('');
   }
   if (stats) {
     stats.innerHTML = [
-      { n: '6', l: 'Основных материалов' },
-      { n: '5', l: 'Форматов ленты' },
-      { n: '4', l: 'Раздела сайта' },
-      { n: '100%', l: 'Static GitHub Pages' }
+      { n: '0', l: 'Политики, войн и межнациональных споров' },
+      { n: '5+', l: 'Тем: технологии, бизнес, культура, travel, lifestyle' },
+      { n: '3ч', l: 'Гарантированный ответ на партнерские предложения' },
+      { n: '24/7', l: 'Комфортное чтение на любых устройствах' }
     ].map((item) => `<div class="ab-stat"><div class="ab-stat-n">${item.n}</div><div class="ab-stat-l">${item.l}</div></div>`).join('');
   }
   if (projects) {
     projects.innerHTML = [
-      { icon: '📰', name: 'Лента', desc: 'Новости, обновления, видео, реклама и посты', tag: 'Контент', span: false },
-      { icon: '🛒', name: 'Магазин', desc: 'Статический каталог цифровых продуктов', tag: 'Продукт', span: false },
-      { icon: '◆', name: 'Pereuloq Design System', desc: 'Midnight blue, warm white, gold accents and editorial rhythm', tag: 'Дизайн', span: true }
+      { icon: '▶', name: 'Медийные форматы', desc: 'Видео, подборки и интерактивные элементы для более живой подачи.', tag: 'Контент', span: false },
+      { icon: '◆', name: 'Премиум-доступ', desc: 'Закрытые материалы и премиум-контент для подписчиков.', tag: 'Private', span: false },
+      { icon: '✦', name: 'Сообщество', desc: 'Расширение аудитории вокруг современных тенденций, вдохновения и качественной аналитики.', tag: 'Рост', span: true }
     ].map((project) => `<article class="ab-proj${project.span ? ' span2' : ''}"><div class="ap-tag">${project.tag}</div><div class="ap-icon">${project.icon}</div><div class="ap-name">${project.name}</div><div class="ap-desc">${project.desc}</div></article>`).join('');
   }
 }
