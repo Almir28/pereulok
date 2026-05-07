@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apple Gift Card — Pereuloq</title>
+  <meta name="description" content="Apple Gift Card в магазине Pereuloq: выберите регион подарочной карты Apple для iTunes и Apple Store. Турция, США, Польша, Индия, Япония, Канада, Европа и Англия.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="store">
+  <div class="cursor" id="CUR"></div>
+  <div class="cursor-ring" id="CRING"></div>
+
+  <header class="hdr" id="HDR">
+    <div class="hdr-inner">
+      <a class="logo" href="index.html" aria-label="Pereuloq"><span class="logo-main">Pereuloq</span><span class="logo-dot"></span></a>
+      <nav aria-label="Основная навигация">
+        <a class="nav-link" data-nav="home" href="index.html">Главная</a>
+        <a class="nav-link" data-nav="feed" href="feed.html">Лента</a>
+        <a class="nav-link" data-nav="store" href="store.html">Магазин</a>
+        <a class="nav-link" data-nav="about" href="about.html">О проекте</a>
+      </nav>
+      <div class="hdr-right">
+        <button class="hdr-theme" id="THEME_BTN" type="button" aria-label="Сменить тему">☽</button>
+        <a class="hdr-btn" href="private.html">Private</a>
+        <button class="hdr-menu" id="MOBILE_MENU_BTN" type="button" aria-label="Открыть меню">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-panel" id="MOBILE_PANEL">
+    <a data-nav="home" href="index.html">Главная</a>
+    <a data-nav="feed" href="feed.html">Лента</a>
+    <a data-nav="store" href="store.html">Магазин</a>
+    <a data-nav="about" href="about.html">О проекте</a>
+    <a data-nav="private" href="private.html">Private</a>
+  </div>
+
+  <main class="agc-page">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Хлебные крошки">
+        <a href="store.html">Магазин</a>
+        <span>Apple Gift Card</span>
+      </nav>
+
+      <section class="agc-hero" aria-labelledby="agc-title">
+        <div class="agc-hero-copy">
+          <div class="ab-eyebrow">Digital Marketplace</div>
+          <h1 id="agc-title" class="agc-title">Apple Gift Card</h1>
+          <p>Выберите регион подарочной карты Apple. Карточки работают как отдельные страницы товара: номинал, конвертация, заказ и связь с продавцом собраны в одном месте.</p>
+          <div class="agc-hero-actions">
+            <a class="btn-ab primary" href="apple-gift-card-product.html?country=turkey">Открыть Турцию</a>
+            <a class="btn-ab" href="store.html">Назад в магазин</a>
+          </div>
+        </div>
+        <div class="agc-hero-media" aria-label="Apple Gift Card preview">
+          <img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/apple-gift-cards-landing-202006?wid=2982&hei=1176&fmt=jpeg&qlt=90&.v=U0EzaXNyc2ZlYWVYR0IxNTgwM2hBenVpVFFlVk9JRDNmTy85OE54VXNkUDdNdktaODg4Q2pUb3oxbHJXYnlHTUJ3b1EyanZvd0crOUVVd3ZSZWl3MldaWlg4SXd3WDRBclNoVm5RMFA5SWZXNm9oamhpbmdGcHIwa2hOU3lmQkw" alt="Apple Gift Card colorful cards" loading="eager" decoding="async">
+        </div>
+        <div class="agc-device-card agc-device-mini" aria-label="Apple Gift Card card preview">
+          <img class="agc-card-img" src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/giftcard-email-geode-select-2021?wid=600&hei=600&fmt=png-alpha&.v=bUgyM0RTaXJFS1BjZEl0R2ZhY3NWQk9UR2s3SlFFOWM2MGNlbHd1VE9uS0ZWOGd0ZE9RYTMwdzJDckhhbzIydlM0TjRWdzF2UjRGVEY0c3dBQVZ6VFRNNDAxQXNodDdOckZoZ08zRDVGUEk" alt="Apple Gift Card digital card" loading="lazy" decoding="async">
+          <div class="agc-device-shine"></div>
+          <div class="agc-device-label">Apple Gift Card</div>
+          <div class="agc-device-logo" aria-hidden="true">AGC</div>
+          <div class="agc-device-meta">iTunes / Apple Store</div>
+        </div>
+      </section>
+
+      <section class="agc-countries-section" aria-labelledby="agc-country-title">
+        <div class="section-header">
+          <span class="sh-num">01</span>
+          <span id="agc-country-title" class="sh-title">Выбор страны</span>
+          <span class="sh-line"></span>
+          <span class="sh-more" id="AGC_COUNTRY_COUNT">Загрузка</span>
+        </div>
+        <div class="agc-country-grid" id="AGC_COUNTRIES">
+          <div class="empty-state agc-empty"><div class="agc-loader" aria-hidden="true"></div>Загружаем регионы</div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="ft-bottom"><div class="ft-copy">© 2026 Pereuloq. Владелец и дизайн-разработчик: Almir Khialov</div><div class="ft-legal"><a class="ft-legal-link" href="store.html">Магазин</a><a class="ft-legal-link" href="privacy.html">Политика</a></div></div>
+    </div>
+  </footer>
+
+  <div class="toast" id="TOAST"><span id="T_I"></span><span id="T_M"></span></div>
+  <script src="js/main.js"></script>
+</body>
+</html>

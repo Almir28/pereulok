@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Xbox Game Pass — Pereuloq</title>
+  <meta name="description" content="Xbox Game Pass Ultimate, Premium и PC в магазине Pereuloq: выбор месяцев, автоматический расчет цены, генерация заказа и Telegram продавца.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="store">
+  <div class="cursor" id="CUR"></div>
+  <div class="cursor-ring" id="CRING"></div>
+  <header class="hdr" id="HDR"><div class="hdr-inner"><a class="logo" href="index.html" aria-label="Pereuloq"><span class="logo-main">Pereuloq</span><span class="logo-dot"></span></a><nav aria-label="Основная навигация"><a class="nav-link" data-nav="home" href="index.html">Главная</a><a class="nav-link" data-nav="feed" href="feed.html">Лента</a><a class="nav-link" data-nav="store" href="store.html">Магазин</a><a class="nav-link" data-nav="about" href="about.html">О проекте</a></nav><div class="hdr-right"><button class="hdr-theme" id="THEME_BTN" type="button" aria-label="Сменить тему">☽</button><a class="hdr-btn" href="private.html">Private</a><button class="hdr-menu" id="MOBILE_MENU_BTN" type="button" aria-label="Открыть меню">☰</button></div></div></header>
+  <div class="mobile-panel" id="MOBILE_PANEL"><a data-nav="home" href="index.html">Главная</a><a data-nav="feed" href="feed.html">Лента</a><a data-nav="store" href="store.html">Магазин</a><a data-nav="about" href="about.html">О проекте</a><a data-nav="private" href="private.html">Private</a></div>
+  <main class="xbox-page">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Хлебные крошки"><a href="store.html">Магазин</a><a href="xbox.html">Xbox</a><span>Game Pass</span></nav>
+      <section class="xbox-pass-layout">
+        <article class="xbox-pass-media">
+          <img src="https://cms-assets.xboxservices.com/assets/6f/34/6f3492d1-06de-47aa-903d-ba942790cb18.jpg?n=1254895_Page-Hero-500_Campaign_767x1175_03.jpg" alt="Xbox Game Pass cover" loading="eager" decoding="async">
+        </article>
+        <article class="xbox-pass-panel">
+          <div class="ab-eyebrow">Xbox Subscription</div>
+          <h1 class="xbox-product-title" id="XBOX_PRODUCT_NAME">Xbox Game Pass Ultimate</h1>
+          <p class="agc-product-desc">Выберите тип подписки и срок. Заказ создается автоматически: ID товара, название, количество месяцев и цена.</p>
+          <div class="xbox-form-grid">
+            <label class="agc-select-label" for="XBOX_PLAN_SELECT">Подписка</label>
+            <div class="agc-select-shell"><select class="agc-select" id="XBOX_PLAN_SELECT"></select></div>
+            <label class="agc-select-label" for="XBOX_MONTH_SELECT">Количество месяцев</label>
+            <div class="agc-select-shell"><select class="agc-select" id="XBOX_MONTH_SELECT"></select></div>
+          </div>
+          <div class="xbox-total">
+            <span>Цена</span>
+            <strong id="XBOX_PRICE">1 500 RUB</strong>
+          </div>
+        </article>
+      </section>
+
+      <section class="xbox-info-grid" aria-label="Информация о Game Pass">
+        <article class="xbox-info-card"><h2>Почему покупают у нас?</h2><p>Быстрая активация — подписка устанавливается в течение 10–30 минут с момента начала обработки заказа.</p><p>Честная цена — 0% комиссии. Цена в каталоге — финальная.</p><p>Гарантия на весь срок — подписка работает стабильно, и мы полностью отвечаем за результат.</p><p>Самые низкие цены среди конкурентов. Максимальный выбор — подписки от 1 до 12+ месяцев, включая расширенные комплекты.</p></article>
+        <article class="xbox-info-card"><h2>Как получить подписку?</h2><ol><li>Выберите подписку и месяц(ы).</li><li>Нажмите «Скопировать заказ».</li><li>Отправьте промт продавцу через Telegram.</li><li>После подтверждения оплаты предоставьте логин и пароль Xbox-аккаунта.</li><li>Ожидайте активации: поддержка работает 09:00–21:00 МСК.</li></ol></article>
+        <article class="xbox-info-card"><h2>Условия подключения</h2><p>Без активной подписки — текущая должна быть завершена.</p><p>Любой регион — РФ, РБ, Казахстан и другие.</p><p>Новый аккаунт создадим бесплатно для подписок от 2 месяцев.</p><p>Новый аккаунт не старше 3 дней. Пароли можно сменить после подключения. После активации срок подписки может отличаться ±7 дней.</p></article>
+        <article class="xbox-info-card"><h2>Ultimate включает</h2><p>Xbox Game Pass Essential</p><p>Xbox Game Pass Premium</p><p>PC Game Pass</p><p>EA Play для консоли и PC</p></article>
+      </section>
+
+      <section class="agc-order-section" aria-labelledby="xbox-order-title">
+        <div class="section-header"><span class="sh-num">02</span><span class="sh-title" id="xbox-order-title">Мини-заказ</span><span class="sh-line"></span></div>
+        <div class="agc-order-grid">
+          <textarea class="agc-order-text" id="XBOX_ORDER_TEXT" readonly aria-label="Автоматически созданный заказ Xbox Game Pass"></textarea>
+          <div class="agc-order-actions">
+            <button class="btn-ab primary" type="button" data-copy-order>Копировать заказ</button>
+            <button class="btn-ab" type="button" data-contact-seller="https://t.me/almir328">Написать продавцу</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer><div class="wrap"><div class="ft-bottom"><div class="ft-copy">© 2026 Pereuloq. Владелец и дизайн-разработчик: Almir Khialov</div><div class="ft-legal"><a class="ft-legal-link" href="xbox.html">Xbox</a><a class="ft-legal-link" href="privacy.html">Политика</a></div></div></div></footer>
+  <div class="toast" id="TOAST"><span id="T_I"></span><span id="T_M"></span></div>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apple Gift Card Turkey — Pereuloq</title>
+  <meta name="description" content="Apple Gift Card Turkey в магазине Pereuloq: выбор номинала TL, автоматическая конвертация в рубли, генерация заказа и связь с продавцом в Telegram.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="store">
+  <div class="cursor" id="CUR"></div>
+  <div class="cursor-ring" id="CRING"></div>
+
+  <header class="hdr" id="HDR">
+    <div class="hdr-inner">
+      <a class="logo" href="index.html" aria-label="Pereuloq"><span class="logo-main">Pereuloq</span><span class="logo-dot"></span></a>
+      <nav aria-label="Основная навигация">
+        <a class="nav-link" data-nav="home" href="index.html">Главная</a>
+        <a class="nav-link" data-nav="feed" href="feed.html">Лента</a>
+        <a class="nav-link" data-nav="store" href="store.html">Магазин</a>
+        <a class="nav-link" data-nav="about" href="about.html">О проекте</a>
+      </nav>
+      <div class="hdr-right">
+        <button class="hdr-theme" id="THEME_BTN" type="button" aria-label="Сменить тему">☽</button>
+        <a class="hdr-btn" href="private.html">Private</a>
+        <button class="hdr-menu" id="MOBILE_MENU_BTN" type="button" aria-label="Открыть меню">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-panel" id="MOBILE_PANEL">
+    <a data-nav="home" href="index.html">Главная</a>
+    <a data-nav="feed" href="feed.html">Лента</a>
+    <a data-nav="store" href="store.html">Магазин</a>
+    <a data-nav="about" href="about.html">О проекте</a>
+    <a data-nav="private" href="private.html">Private</a>
+  </div>
+
+  <main class="agc-product-page" id="AGC_PRODUCT_PAGE">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Хлебные крошки">
+        <a href="store.html">Магазин</a>
+        <a href="apple-gift-card.html">Apple Gift Card</a>
+        <span id="AGC_PRODUCT_REGION">Турция</span>
+      </nav>
+
+      <section class="agc-product-layout">
+        <article class="agc-product-visual" aria-label="Apple Gift Card товар">
+          <div class="agc-device-card product">
+            <img class="agc-card-img" src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/giftcard-email-geode-select-2021?wid=600&hei=600&fmt=png-alpha&.v=bUgyM0RTaXJFS1BjZEl0R2ZhY3NWQk9UR2s3SlFFOWM2MGNlbHd1VE9uS0ZWOGd0ZE9RYTMwdzJDckhhbzIydlM0TjRWdzF2UjRGVEY0c3dBQVZ6VFRNNDAxQXNodDdOckZoZ08zRDVGUEk" alt="Apple Gift Card digital card" loading="eager" decoding="async">
+            <div class="agc-device-shine"></div>
+            <div class="agc-device-label">Apple Gift Card</div>
+            <div class="agc-device-logo" aria-hidden="true">AGC</div>
+            <div class="agc-device-meta" id="AGC_PRICE">100 TL</div>
+          </div>
+          <div class="agc-visual-note">Цифровой код передается после подтверждения оплаты продавцом.</div>
+        </article>
+
+        <article class="agc-product-panel">
+          <div class="ab-eyebrow">Digital Product</div>
+          <h1 class="agc-product-title" id="AGC_PRODUCT_TITLE">Apple Gift Card Turkey</h1>
+          <p class="agc-product-desc" id="AGC_PRODUCT_DESC">Вы покупаете подарочную карту (код) для пополнения аккаунта iTunes / Apple Store.</p>
+
+          <div class="agc-alert">
+            <strong>Внимание:</strong>
+            <span id="AGC_WARNING">Промокод можно активировать только на аккаунтах с регионом Турция.</span>
+          </div>
+
+          <div class="agc-selector-wrap" id="AGC_SELECTOR_WRAP">
+            <label class="agc-select-label" for="AGC_DENOM_SELECT">Выберите номинал</label>
+            <div class="agc-select-shell">
+              <select id="AGC_DENOM_SELECT" class="agc-select" aria-label="Выберите номинал Apple Gift Card"></select>
+            </div>
+            <div class="agc-conversion">
+              <span>Конвертация</span>
+              <strong id="AGC_CONVERSION">≈ 320 RUB</strong>
+            </div>
+            <p class="agc-rate" id="AGC_RATE">Прайс-заглушка. Позже можно заменить рублевые значения в js/main.js.</p>
+          </div>
+
+          <div class="agc-unavailable" id="AGC_UNAVAILABLE" hidden></div>
+
+          <section class="agc-instruction" aria-labelledby="agc-instruction-title">
+            <h2 id="agc-instruction-title">Инструкция</h2>
+            <p>Подарочными картами можно оплачивать любые сервисы и приложения Apple.</p>
+            <p>Возврат цифровой карты невозможен.</p>
+            <ol>
+              <li>Выберите нужный номинал.</li>
+              <li>Скопируйте автоматически созданный заказ.</li>
+              <li>Отправьте его продавцу.</li>
+              <li>После подтверждения оплаты продавец выдаст цифровой код.</li>
+            </ol>
+          </section>
+        </article>
+      </section>
+
+      <section class="agc-order-section agc-ready-only" aria-labelledby="agc-order-title">
+        <div class="section-header">
+          <span class="sh-num">02</span>
+          <span id="agc-order-title" class="sh-title">Мини-заказ</span>
+          <span class="sh-line"></span>
+        </div>
+        <div class="agc-order-grid">
+          <textarea class="agc-order-text" id="AGC_ORDER_TEXT" readonly aria-label="Автоматически созданный заказ"></textarea>
+          <div class="agc-order-actions">
+            <button class="btn-ab primary" type="button" data-copy-order>Копировать заказ</button>
+            <button class="btn-ab" type="button" data-contact-seller="https://t.me/almir328">Написать продавцу</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="ft-bottom"><div class="ft-copy">© 2026 Pereuloq. Владелец и дизайн-разработчик: Almir Khialov</div><div class="ft-legal"><a class="ft-legal-link" href="apple-gift-card.html">Apple Gift Card</a><a class="ft-legal-link" href="privacy.html">Политика</a></div></div>
+    </div>
+  </footer>
+
+  <div class="toast" id="TOAST"><span id="T_I"></span><span id="T_M"></span></div>
+  <script src="js/main.js"></script>
+</body>
+</html>

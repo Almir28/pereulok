@@ -8,6 +8,34 @@ const routes = {
 
 const ARTICLES = [
   {
+    id: 16,
+    cat: 'Спорт',
+    kind: 'news',
+    title: 'Анонимный опрос среди игроков НБА',
+    desc: 'Игроки NBA анонимно оценили, кто внутри лиги считается переоцененным, а кто недооцененным.',
+    author: 'Pereuloq',
+    date: '7 мая 2026',
+    read: '4 мин',
+    img: 'https://static01.nyt.com/athletic/uploads/wp/2026/05/04173213/0405_NBA_PLAYER-POLL-2.png?width=1920&quality=70&format=auto',
+    bg: 'gb6',
+    href: 'posts/nba-player-poll.html',
+    body: `<p>Недавний анонимный опрос среди игроков NBA показал, какие баскетболисты считаются переоцененными, а какие недооцененными внутри лиги.</p><p>Информация получена от самих игроков, которые хотели оставаться неизвестными.</p><h3>Репутация и вклад на площадке</h3><p>По результатам опроса, некоторые суперзвезды, получающие большую медиаподдержку, в глазах коллег демонстрируют не всегда выдающиеся результаты на площадке.</p><p>В то же время молодые или менее заметные игроки получают высокие оценки за трудолюбие, командную игру и влияние на матч.</p>`
+  },
+  {
+    id: 15,
+    cat: 'Здоровье',
+    kind: 'news',
+    title: 'Случай с хантавирусом на круизном лайнере',
+    desc: 'На круизном лайнере из Южной Америки зафиксировали редкий случай хантавируса: что известно о мерах безопасности и симптомах.',
+    author: 'Pereuloq',
+    date: '7 мая 2026',
+    read: '4 мин',
+    img: 'https://cdn-storage-media.tass.ru/resize/1312x868/tass_media/2026/05/04/M/1777900079509764_MAfhYyQ5.jpg',
+    bg: 'gb3',
+    href: 'posts/hantavirus-cruise-ship.html',
+    body: `<p>На круизном лайнере, следовавшем из Южной Америки, был зафиксирован случай заражения хантавирусом - редкой, но опасной болезни, передающейся через грызунов.</p><p>Пассажиры, которые могли контактировать с потенциально зараженными поверхностями или местами, были поставлены под наблюдение медиков.</p><h3>Симптомы и меры безопасности</h3><p>Хантавирус может вызывать острое респираторное заболевание, сопровождающееся высокой температурой, слабостью и одышкой. Эксперты отмечают, что своевременное обращение к врачу значительно повышает шансы на выздоровление.</p><p>Риск для пассажиров считается низким при соблюдении рекомендаций специалистов, но случай подчеркивает важность строгих санитарных мер на транспорте и в местах массового скопления людей.</p>`
+  },
+  {
     id: 14,
     cat: 'Технологии',
     kind: 'news',
@@ -219,6 +247,8 @@ const ARTICLES = [
 ];
 
 const PRODUCTS = [
+  { id: 100, cat: 'giftcards', type: 'Apple Gift Card', name: 'Apple Gift Card', icon: 'AGC', price: 'от заглушки', was: null, rating: 5.0, rev: 320, st: 'st-blue', stl: 'NEW', desc: 'Подарочные карты Apple для разных регионов: Турция, США, Польша, Индия, Япония, Канада, Европа и Англия.', feats: ['Выбор региона', 'Автогенерация заказа', 'Связь через Telegram'], href: 'apple-gift-card.html' },
+  { id: 200, cat: 'xbox', type: 'Xbox', name: 'Xbox', icon: 'XB', price: 'Game Pass и игры', was: null, rating: 5.0, rev: 410, st: 'st-green', stl: 'XBOX', desc: 'Игры Xbox и подписки Game Pass Ultimate, Premium и PC с автогенерацией заказа.', feats: ['Игры', 'Game Pass', 'Telegram-заказ'], href: 'xbox.html' },
   { id: 0, cat: 'digital', type: 'Цифровой ключ', name: 'Steam пополнение', icon: '🎮', price: '299 ₽', was: null, rating: 4.9, rev: 1200, st: 'st-blue', stl: 'ХИТ', desc: 'Пополнение кошелька, подарочные карты и цифровые игровые сценарии.', feats: ['Быстрая обработка', 'Цифровой формат', 'Поддержка после заказа'] },
   { id: 1, cat: 'digital', type: 'Цифровой ключ', name: 'PlayStation Store', icon: '▣', price: '499 ₽', was: null, rating: 4.8, rev: 980, st: 'st-gold', stl: 'ТОП', desc: 'Карты пополнения PSN и подписки для игрового аккаунта.', feats: ['Коды пополнения', 'Проверенный формат', 'Инструкция после покупки'] },
   { id: 2, cat: 'digital', type: 'Подписка', name: 'ChatGPT', icon: '✦', price: '1 290 ₽', was: null, rating: 4.9, rev: 830, st: 'st-green', stl: 'НОВОЕ', desc: 'Пополнение, продление подписок и аккаунты с гарантией.', feats: ['AI-доступ', 'Подписки', 'Помощь с активацией'] },
@@ -238,11 +268,41 @@ const FEED_CATS = [
 
 const STORE_CATS = [
   { v: 'all', l: 'Все' },
+  { v: 'xbox', l: 'Xbox' },
+  { v: 'giftcards', l: 'Gift Cards' },
   { v: 'digital', l: 'Ключи' },
   { v: 'subs', l: 'Подписки' },
   { v: 'templates', l: 'Шаблоны' },
   { v: 'services', l: 'Услуги' }
 ];
+
+const GIFT_CARD_COUNTRIES = [
+  { slug: 'turkey', label: 'Турция', title: 'Apple Gift Card Turkey', code: 'TR', currency: 'TL', hint: 'Аккаунт Apple ID с регионом Турция', href: 'apple-gift-card-product.html?country=turkey', ready: true },
+  { slug: 'usa', label: 'США', title: 'Apple Gift Card USA', code: 'US', currency: 'USD', hint: 'Аккаунт Apple ID с регионом США', href: 'apple-gift-card-product.html?country=usa', ready: false },
+  { slug: 'poland', label: 'Польша', title: 'Apple Gift Card Poland', code: 'PL', currency: 'PLN', hint: 'Аккаунт Apple ID с регионом Польша', href: 'apple-gift-card-product.html?country=poland', ready: false },
+  { slug: 'india', label: 'Индия', title: 'Apple Gift Card India', code: 'IN', currency: 'INR', hint: 'Аккаунт Apple ID с регионом Индия', href: 'apple-gift-card-product.html?country=india', ready: false },
+  { slug: 'japan', label: 'Япония', title: 'Apple Gift Card Japan', code: 'JP', currency: 'JPY', hint: 'Аккаунт Apple ID с регионом Япония', href: 'apple-gift-card-product.html?country=japan', ready: false },
+  { slug: 'canada', label: 'Канада', title: 'Apple Gift Card Canada', code: 'CA', currency: 'CAD', hint: 'Аккаунт Apple ID с регионом Канада', href: 'apple-gift-card-product.html?country=canada', ready: false },
+  { slug: 'europe', label: 'Европа', title: 'Apple Gift Card Europe', code: 'EU', currency: 'EUR', hint: 'Аккаунт Apple ID с регионом Европа', href: 'apple-gift-card-product.html?country=europe', ready: false },
+  { slug: 'england', label: 'Англия', title: 'Apple Gift Card UK', code: 'UK', currency: 'GBP', hint: 'Аккаунт Apple ID с регионом Англия', href: 'apple-gift-card-product.html?country=england', ready: false }
+];
+
+const GIFT_CARD_PRODUCTS = {
+  turkey: {
+    seller: 'https://t.me/almir328',
+    name: 'Apple Gift Card Turkey',
+    region: 'Турция',
+    currency: 'TL',
+    rateLabel: 'Прайс-заглушка. Позже можно заменить рублевые значения в js/main.js.',
+    description: 'Вы покупаете подарочную карту (код) для пополнения аккаунта iTunes / Apple Store.',
+    warning: 'Промокод можно активировать только на аккаунтах с регионом Турция.',
+    denominations: [10, 25, 50, 75, 100, 150, 200, 300, 400, 500, 700, 800, 900, 1000, 1250, 1500, 2000, 2500, 3000, 5000, 7000, 10000].map((value) => ({
+      label: `${value} TL`,
+      value,
+      rub: Math.round(value * 3.2)
+    }))
+  }
+};
 
 const CATS_DATA = [
   { icon: '💻', name: 'Технологии', count: '5' },
@@ -256,6 +316,8 @@ const CATS_DATA = [
 ];
 
 const TICKER_ITEMS = [
+  'Анонимный опрос игроков NBA показал, кого в лиге считают переоцененным и недооцененным',
+  'На круизном лайнере зафиксировали случай хантавируса: пассажиров предупредили о симптомах',
   'Apple урегулировала судебное дело о технологии искусственного интеллекта',
   'The Devil Wears Prada 2 снова выводит моду в центр внимания',
   'SpaceX остается закрытой компанией и недоступна обычным инвесторам',
@@ -273,12 +335,75 @@ const TICKER_ITEMS = [
 ];
 
 const PROMOS = [
-  { cls: 'promo-blue', badge: 'Новое', title: 'Pereuloq Private', sub: 'Закрытая лента и ранние заметки' },
+  { cls: 'promo-xbox', badge: 'Xbox', title: 'Game Pass и игры', sub: 'Подписки и игровые товары с быстрым заказом', href: 'xbox.html' },
+  { cls: 'promo-blue', badge: 'Новое', title: 'Apple Gift Card', sub: 'Выбор страны, номинала и заказ в Telegram', href: 'apple-gift-card.html' },
   { cls: 'promo-violet', badge: 'Store', title: 'Цифровые продукты', sub: 'Ключи, шаблоны и услуги' }
+];
+
+const XBOX_ADS = [
+  {
+    type: 'image',
+    badge: 'Скоро',
+    title: 'Beast of Reincarnation',
+    desc: 'Скоро в продаже в разделе Xbox Игры',
+    image: 'https://cms-assets.xboxservices.com/assets/cd/78/cd7840c4-94ed-4a2a-88e3-a2028f7049f1.jpg?n=665824756_Large%20Tout-0_1083x1222_01.jpg',
+    href: 'xbox-games.html'
+  },
+  {
+    type: 'image',
+    badge: 'Game Pass',
+    title: 'Xbox Game Pass',
+    desc: 'Ultimate, Premium и PC с быстрым заказом',
+    image: 'https://cms-assets.xboxservices.com/assets/6f/34/6f3492d1-06de-47aa-903d-ba942790cb18.jpg?n=1254895_Page-Hero-500_Campaign_767x1175_03.jpg',
+    href: 'xbox-game-pass.html'
+  },
+  {
+    type: 'image',
+    badge: 'Apple Gift Card',
+    title: 'Apple Gift Card',
+    desc: 'Подарочные карты Apple по регионам',
+    image: 'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/apple-gift-cards-landing-202006?wid=2982&hei=1176&fmt=jpeg&qlt=90&.v=U0EzaXNyc2ZlYWVYR0IxNTgwM2hBenVpVFFlVk9JRDNmTy85OE54VXNkUDdNdktaODg4Q2pUb3oxbHJXYnlHTUJ3b1EyanZvd0crOUVVd3ZSZWl3MldaWlg4SXd3WDRBclNoVm5RMFA5SWZXNm9oamhpbmdGcHIwa2hOU3lmQkw',
+    href: 'apple-gift-card.html'
+  }
+];
+
+const XBOX_SUBCATS = [
+  { title: 'Игры', desc: 'Карточки игр, заглушки и быстрый переход к продавцу.', href: 'xbox-games.html', image: 'https://cms-assets.xboxservices.com/assets/42/57/425783a8-1249-447c-9e5b-50fe5ba6ef3d.jpg?n=The-Blood-of-Dawnwalker_Large-tout-0_1083x1222.jpg' },
+  { title: 'Game Pass', desc: 'Ultimate, Premium и PC с выбором срока и автозаказом.', href: 'xbox-game-pass.html', image: 'https://cms-assets.xboxservices.com/assets/6f/34/6f3492d1-06de-47aa-903d-ba942790cb18.jpg?n=1254895_Page-Hero-500_Campaign_767x1175_03.jpg' }
+];
+
+const XBOX_GAMES = [
+  { id: 'XGAME-000', title: 'Beast of Reincarnation', price: 'Скоро в продаже', image: 'https://cms-assets.xboxservices.com/assets/cd/78/cd7840c4-94ed-4a2a-88e3-a2028f7049f1.jpg?n=665824756_Large%20Tout-0_1083x1222_01.jpg' },
+  { id: 'XGAME-001', title: 'The Blood of Dawnwalker', price: 'Цена по запросу', image: 'https://cms-assets.xboxservices.com/assets/42/57/425783a8-1249-447c-9e5b-50fe5ba6ef3d.jpg?n=The-Blood-of-Dawnwalker_Large-tout-0_1083x1222.jpg' },
+  { id: 'XGAME-002', title: 'Xbox Digital Game', price: 'Цена по запросу', image: 'https://pbs.twimg.com/profile_images/2049896598801719296/ks_-5lTD_400x400.jpg' },
+  { id: 'XGAME-003', title: 'Game Bundle', price: 'Цена по запросу', image: 'https://cms-assets.xboxservices.com/assets/6f/34/6f3492d1-06de-47aa-903d-ba942790cb18.jpg?n=1254895_Page-Hero-500_Campaign_767x1175_03.jpg' }
+];
+
+const XBOX_GAMEPASS_PLANS = [
+  { id: 'XGPU', name: 'Xbox Game Pass Ultimate', short: 'Ultimate' },
+  { id: 'XGPP', name: 'Xbox Game Pass Premium', short: 'Premium' },
+  { id: 'XGPC', name: 'PC Game Pass', short: 'PC' }
+];
+
+const XBOX_GAMEPASS_MONTHS = [
+  { label: '1 месяц', months: '1', price: 1500 },
+  { label: '2 месяца', months: '2', price: 2800 },
+  { label: '3 месяца', months: '3', price: 3200 },
+  { label: '4 месяца', months: '4', price: null },
+  { label: '5 месяцев', months: '5', price: 5000 },
+  { label: '6 месяцев', months: '6', price: null },
+  { label: '7 месяцев', months: '7', price: 6200 },
+  { label: '8 месяцев', months: '8', price: null },
+  { label: '9 месяцев', months: '9', price: 7000 },
+  { label: '11 месяцев', months: '11', price: 8200 },
+  { label: '12+1 месяцев', months: '12+1', price: 9600 },
+  { label: '12+2 месяцев', months: '12+2', price: 10200 }
 ];
 
 let currentSlide = 0;
 let slideTimer;
+let storeAdSlide = 0;
+let storeAdTimer;
 let feedFilter = 'all';
 let storeFilter = 'all';
 let storeSearch = '';
@@ -289,6 +414,53 @@ const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selec
 
 function goPage(page) {
   window.location.href = routes[page] || routes.home;
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (char) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  }[char]));
+}
+
+function formatRub(value) {
+  return `≈ ${Number(value).toLocaleString('ru-RU')} RUB`;
+}
+
+function getCountryFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('country') || 'turkey';
+}
+
+function createOrderId() {
+  return `#AGC-${Math.floor(1000 + Math.random() * 9000)}`;
+}
+
+function createXboxOrderId() {
+  return `#XGP-${Math.floor(1000 + Math.random() * 9000)}`;
+}
+
+function formatPrice(value) {
+  return value ? `${Number(value).toLocaleString('ru-RU')} RUB` : 'Уточнить у продавца';
+}
+
+async function copyText(value) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(value);
+    return;
+  }
+  const area = document.createElement('textarea');
+  area.value = value;
+  area.setAttribute('readonly', '');
+  area.style.position = 'fixed';
+  area.style.left = '-9999px';
+  document.body.appendChild(area);
+  area.select();
+  document.execCommand('copy');
+  area.remove();
 }
 
 function articleVisual(article, className = '') {
@@ -332,12 +504,12 @@ function setupCursor() {
   document.addEventListener('mousedown', () => document.body.classList.add('cur-click'));
   document.addEventListener('mouseup', () => document.body.classList.remove('cur-click'));
   document.addEventListener('mouseover', (event) => {
-    if (event.target.closest('a,button,input,.feat-card,.feed-art,.prod-card,.cat-item,.ab-proj,.promo-card')) {
+    if (event.target.closest('a,button,input,select,.feat-card,.feed-art,.prod-card,.cat-item,.ab-proj,.promo-card,.agc-country-card')) {
       document.body.classList.add('cur-hover');
     }
   });
   document.addEventListener('mouseout', (event) => {
-    if (event.target.closest('a,button,input,.feat-card,.feed-art,.prod-card,.cat-item,.ab-proj,.promo-card')) {
+    if (event.target.closest('a,button,input,select,.feat-card,.feed-art,.prod-card,.cat-item,.ab-proj,.promo-card,.agc-country-card')) {
       document.body.classList.remove('cur-hover');
     }
   });
@@ -549,12 +721,33 @@ function buildStore() {
   }
   if (promos) {
     promos.innerHTML = PROMOS.map((promo) => `
-      <article class="promo-card ${promo.cls}">
+      <article class="promo-card ${promo.cls}" ${promo.href ? `data-product-link="${promo.href}"` : ''}>
         <div><span class="pc-badge">${promo.badge}</span><div class="pc-title">${promo.title}</div><div class="pc-sub">${promo.sub}</div></div>
         <div class="pc-arr">→</div>
       </article>`).join('');
   }
   renderProducts();
+}
+
+function buildStoreAds() {
+  const rotator = $('#STORE_AD_ROTATOR');
+  if (!rotator) return;
+  rotator.innerHTML = XBOX_ADS.map((ad, index) => `
+    <a class="store-ad-slide${index === storeAdSlide ? ' on' : ''}" href="${ad.href}" ${ad.href.startsWith('http') ? 'target="_blank" rel="noopener"' : ''} aria-label="${ad.title}">
+      <img src="${ad.image}" alt="${ad.title}" loading="${index === 0 ? 'eager' : 'lazy'}" decoding="async">
+      <span class="store-ad-shade"></span>
+      <span class="store-ad-copy">
+        <span class="store-ad-badge">${ad.badge}</span>
+        <strong>${ad.title}</strong>
+        <small>${ad.desc}</small>
+      </span>
+    </a>`).join('') + `
+    <div class="store-ad-dots">${XBOX_ADS.map((_, index) => `<button class="store-ad-dot${index === storeAdSlide ? ' on' : ''}" type="button" data-store-ad="${index}" aria-label="Реклама ${index + 1}"></button>`).join('')}</div>`;
+  clearTimeout(storeAdTimer);
+  storeAdTimer = setTimeout(() => {
+    storeAdSlide = (storeAdSlide + 1) % XBOX_ADS.length;
+    buildStoreAds();
+  }, 5000);
 }
 
 function renderProducts() {
@@ -568,7 +761,7 @@ function renderProducts() {
   const count = $('#SC_COUNT');
   if (count) count.textContent = `${items.length} товаров`;
   grid.innerHTML = items.map((product) => `
-    <article class="prod-card" data-product="${product.id}">
+    <article class="prod-card${product.href ? ' prod-card-link' : ''}" ${product.href ? `data-product-link="${product.href}"` : `data-product="${product.id}"`}>
       ${product.st ? `<div class="pc-sticker ${product.st}">${product.stl}</div>` : ''}
       <div class="pc-inner">
         <div class="pc-icon">${product.icon}</div>
@@ -580,10 +773,221 @@ function renderProducts() {
             <div><span class="pc-price">${product.price}</span>${product.was ? `<span class="pc-was">${product.was}</span>` : ''}</div>
             <div class="pc-rating"><span class="pc-rating-star">★</span> ${product.rating} · ${product.rev.toLocaleString()}</div>
           </div>
-          <button class="btn-pc" data-product="${product.id}">Купить</button>
+          <button class="btn-pc" ${product.href ? `data-product-link="${product.href}"` : `data-product="${product.id}"`}>${product.href ? 'Открыть' : 'Купить'}</button>
         </div>
       </div>
     </article>`).join('') || '<div class="empty-state">Ничего не найдено</div>';
+}
+
+function buildGiftCardCountries() {
+  const grid = $('#AGC_COUNTRIES');
+  const count = $('#AGC_COUNTRY_COUNT');
+  if (!grid) return;
+  if (count) count.textContent = `${GIFT_CARD_COUNTRIES.length} регионов`;
+  grid.innerHTML = GIFT_CARD_COUNTRIES.map((country) => `
+    <a class="agc-country-card" href="${country.href}" aria-label="Открыть ${country.title}">
+      <div class="agc-country-glow"></div>
+      <div class="agc-country-top">
+        <span class="agc-country-code">${country.code}</span>
+        <span class="agc-country-status${country.ready ? ' ready' : ''}">${country.ready ? 'Доступно' : 'Скоро'}</span>
+      </div>
+      <div class="agc-card-mark" aria-hidden="true">Apple</div>
+      <h2>${country.label}</h2>
+      <p>${country.hint}</p>
+      <div class="agc-country-foot">
+        <span>${country.currency}</span>
+        <span>Открыть →</span>
+      </div>
+    </a>`).join('');
+}
+
+function getGiftCardProductState() {
+  const slug = getCountryFromUrl();
+  const country = GIFT_CARD_COUNTRIES.find((item) => item.slug === slug) || GIFT_CARD_COUNTRIES[0];
+  const product = GIFT_CARD_PRODUCTS[country.slug] || null;
+  return { country, product };
+}
+
+function buildOrderText(product, option, orderId) {
+  return `--------------------------------
+ORDER ID: ${orderId}
+
+Товар:
+${product.name}
+
+Номинал:
+${option.label}
+
+Конвертация:
+${formatRub(option.rub)}
+
+Покупатель подтверждает:
+✅ Регион выбран верно
+✅ Товар выбран верно
+✅ Цифровой товар не подлежит возврату
+✅ Код будет активирован на аккаунте нужного региона
+--------------------------------`;
+}
+
+function renderGiftCardOrder() {
+  const select = $('#AGC_DENOM_SELECT');
+  const order = $('#AGC_ORDER_TEXT');
+  const conversion = $('#AGC_CONVERSION');
+  const price = $('#AGC_PRICE');
+  if (!select || !order) return;
+  const { product } = getGiftCardProductState();
+  if (!product) return;
+  const option = product.denominations.find((item) => item.label === select.value) || product.denominations[0];
+  window.__agcOrderId = createOrderId();
+  order.value = buildOrderText(product, option, window.__agcOrderId);
+  if (conversion) conversion.textContent = formatRub(option.rub);
+  if (price) price.textContent = option.label;
+}
+
+function buildGiftCardProduct() {
+  const page = $('#AGC_PRODUCT_PAGE');
+  if (!page) return;
+  const { country, product } = getGiftCardProductState();
+  const title = $('#AGC_PRODUCT_TITLE');
+  const region = $('#AGC_PRODUCT_REGION');
+  const description = $('#AGC_PRODUCT_DESC');
+  const warning = $('#AGC_WARNING');
+  const select = $('#AGC_DENOM_SELECT');
+  const selectorWrap = $('#AGC_SELECTOR_WRAP');
+  const unavailable = $('#AGC_UNAVAILABLE');
+  const readyBlocks = $$('.agc-ready-only');
+
+  document.title = `${country.title} — Pereuloq`;
+  if (title) title.textContent = country.title;
+  if (region) region.textContent = country.label;
+
+  if (!product) {
+    if (description) description.textContent = 'Номиналы для этого региона скоро появятся. Вы уже можете написать продавцу и уточнить доступность.';
+    if (warning) warning.textContent = `Промокод можно активировать только на аккаунтах с регионом ${country.label}.`;
+    if (selectorWrap) selectorWrap.hidden = true;
+    readyBlocks.forEach((block) => { block.hidden = true; });
+    if (unavailable) {
+      unavailable.hidden = false;
+      unavailable.innerHTML = `
+        <div class="empty-state agc-empty">
+          <div class="agc-loader" aria-hidden="true"></div>
+          Номиналы для региона ${country.label} готовятся. Напишите продавцу, чтобы уточнить наличие.
+          <a class="agc-telegram-inline" href="https://t.me/almir328" target="_blank" rel="noopener">Написать продавцу</a>
+        </div>`;
+    }
+    return;
+  }
+
+  if (description) description.textContent = product.description;
+  if (warning) warning.textContent = product.warning;
+  if (selectorWrap) selectorWrap.hidden = false;
+  readyBlocks.forEach((block) => { block.hidden = false; });
+  if (unavailable) unavailable.hidden = true;
+  if (select) {
+    select.innerHTML = product.denominations.map((item) => `<option value="${item.label}">${item.label} · ${formatRub(item.rub)}</option>`).join('');
+    select.value = product.denominations.find((item) => item.value === 100)?.label || product.denominations[0].label;
+  }
+  const rate = $('#AGC_RATE');
+  if (rate) rate.textContent = product.rateLabel;
+  renderGiftCardOrder();
+}
+
+function buildXboxHome() {
+  const grid = $('#XBOX_SUBCATS');
+  if (!grid) return;
+  grid.innerHTML = XBOX_SUBCATS.map((item) => `
+    <a class="xbox-subcat-card" href="${item.href}">
+      <img src="${item.image}" alt="${item.title}" loading="lazy" decoding="async">
+      <span class="xbox-card-shade"></span>
+      <span class="xbox-card-copy">
+        <span class="xbox-kicker">Xbox</span>
+        <strong>${item.title}</strong>
+        <small>${item.desc}</small>
+      </span>
+    </a>`).join('');
+}
+
+function buildXboxGames() {
+  const grid = $('#XBOX_GAMES_GRID');
+  if (!grid) return;
+  grid.innerHTML = XBOX_GAMES.map((game) => {
+    const order = `ORDER ID: #${game.id}
+
+Товар:
+${game.title}
+
+Категория:
+Xbox Игры
+
+Цена:
+${game.price}
+
+Покупатель хочет уточнить наличие и оформить покупку.`;
+    return `
+      <article class="xbox-game-card">
+        <img src="${game.image}" alt="${game.title}" loading="lazy" decoding="async">
+        <div class="xbox-game-body">
+          <div class="xbox-kicker">${game.id}</div>
+          <h2>${game.title}</h2>
+          <div class="xbox-price">${game.price}</div>
+          <button class="btn-ab primary" type="button" data-copy-static-order="${escapeHtml(order)}" data-contact-seller="https://t.me/almir328">Написать продавцу</button>
+        </div>
+      </article>`;
+  }).join('');
+}
+
+function getXboxGamePassState() {
+  const planId = $('#XBOX_PLAN_SELECT')?.value || XBOX_GAMEPASS_PLANS[0].id;
+  const monthsId = $('#XBOX_MONTH_SELECT')?.value || XBOX_GAMEPASS_MONTHS[0].months;
+  const plan = XBOX_GAMEPASS_PLANS.find((item) => item.id === planId) || XBOX_GAMEPASS_PLANS[0];
+  const term = XBOX_GAMEPASS_MONTHS.find((item) => item.months === monthsId) || XBOX_GAMEPASS_MONTHS[0];
+  return { plan, term };
+}
+
+function buildXboxGamePassOrder(plan, term, orderId) {
+  return `--------------------------------
+ORDER ID: ${orderId}
+
+ID товара:
+${plan.id}
+
+Товар:
+${plan.name}
+
+Количество месяцев:
+${term.label}
+
+Цена:
+${formatPrice(term.price)}
+
+Покупатель подтверждает:
+✅ Подписка выбрана верно
+✅ Количество месяцев выбрано верно
+✅ На аккаунте нет активной подписки
+✅ Регион аккаунта подходит для подключения
+✅ После оплаты покупатель предоставит данные Xbox-аккаунта продавцу
+--------------------------------`;
+}
+
+function renderXboxGamePassOrder() {
+  const order = $('#XBOX_ORDER_TEXT');
+  const price = $('#XBOX_PRICE');
+  const product = $('#XBOX_PRODUCT_NAME');
+  if (!order) return;
+  const { plan, term } = getXboxGamePassState();
+  if (price) price.textContent = formatPrice(term.price);
+  if (product) product.textContent = plan.name;
+  window.__xboxOrderId = createXboxOrderId();
+  order.value = buildXboxGamePassOrder(plan, term, window.__xboxOrderId);
+}
+
+function buildXboxGamePass() {
+  const planSelect = $('#XBOX_PLAN_SELECT');
+  const monthSelect = $('#XBOX_MONTH_SELECT');
+  if (!planSelect || !monthSelect) return;
+  planSelect.innerHTML = XBOX_GAMEPASS_PLANS.map((plan) => `<option value="${plan.id}">${plan.name}</option>`).join('');
+  monthSelect.innerHTML = XBOX_GAMEPASS_MONTHS.map((term) => `<option value="${term.months}">${term.label} · ${formatPrice(term.price)}</option>`).join('');
+  renderXboxGamePassOrder();
 }
 
 function buildAbout() {
@@ -714,15 +1118,43 @@ function toast(message) {
 }
 
 function setupEvents() {
-  document.addEventListener('click', (event) => {
+  document.addEventListener('click', async (event) => {
     const read = event.target.closest('[data-read]');
     const product = event.target.closest('[data-product]');
+    const productLink = event.target.closest('[data-product-link]');
     const feedButton = event.target.closest('[data-feed-filter]');
     const storeButton = event.target.closest('[data-store-filter]');
     const closeReadButton = event.target.closest('[data-close-read]');
     const closeModalButton = event.target.closest('[data-close-modal]');
     const copyButton = event.target.closest('[data-copy]');
+    const copyOrderButton = event.target.closest('[data-copy-order]');
+    const copyStaticOrderButton = event.target.closest('[data-copy-static-order]');
+    const contactSellerButton = event.target.closest('[data-contact-seller]');
+    const storeAdButton = event.target.closest('[data-store-ad]');
+    const videoSoundButton = event.target.closest('[data-youtube-sound]');
 
+    if (storeAdButton) {
+      event.preventDefault();
+      storeAdSlide = Number(storeAdButton.dataset.storeAd);
+      buildStoreAds();
+      return;
+    }
+    if (videoSoundButton) {
+      const frame = document.getElementById(videoSoundButton.dataset.youtubeSound);
+      const isMuted = videoSoundButton.dataset.sound === 'off';
+      frame?.contentWindow?.postMessage(JSON.stringify({
+        event: 'command',
+        func: isMuted ? 'unMute' : 'mute',
+        args: []
+      }), '*');
+      videoSoundButton.dataset.sound = isMuted ? 'on' : 'off';
+      videoSoundButton.textContent = isMuted ? 'Выключить звук' : 'Включить звук';
+      return;
+    }
+    if (productLink) {
+      window.location.href = productLink.dataset.productLink;
+      return;
+    }
     if (read) openRead(read.dataset.read);
     if (product) openProductModal(product.dataset.product);
     if (feedButton) {
@@ -736,8 +1168,27 @@ function setupEvents() {
     if (closeReadButton) closeRead();
     if (closeModalButton) closeModal(closeModalButton.dataset.closeModal);
     if (copyButton) {
-      navigator.clipboard?.writeText(new URL(copyButton.dataset.copy, location.href).href);
+      await copyText(new URL(copyButton.dataset.copy, location.href).href);
       toast('✓ Ссылка скопирована');
+    }
+    if (copyOrderButton) {
+      const value = $('#AGC_ORDER_TEXT')?.value || $('#XBOX_ORDER_TEXT')?.value;
+      if (value) {
+        await copyText(value);
+        toast('✓ Заказ скопирован');
+      }
+    }
+    if (copyStaticOrderButton && !contactSellerButton) {
+      await copyText(copyStaticOrderButton.dataset.copyStaticOrder);
+      toast('✓ Заказ скопирован');
+    }
+    if (contactSellerButton) {
+      const value = contactSellerButton.dataset.copyStaticOrder || $('#AGC_ORDER_TEXT')?.value || $('#XBOX_ORDER_TEXT')?.value;
+      if (value) {
+        await copyText(value);
+        toast('✓ Заказ скопирован');
+      }
+      window.open(contactSellerButton.dataset.contactSeller, '_blank', 'noopener');
     }
     if (event.target.id === 'PROD_MODAL') closeModal('PROD_MODAL');
   });
@@ -746,6 +1197,9 @@ function setupEvents() {
     storeSearch = event.target.value;
     renderProducts();
   });
+  $('#AGC_DENOM_SELECT')?.addEventListener('change', renderGiftCardOrder);
+  $('#XBOX_PLAN_SELECT')?.addEventListener('change', renderXboxGamePassOrder);
+  $('#XBOX_MONTH_SELECT')?.addEventListener('change', renderXboxGamePassOrder);
   $('#NL_FORM')?.addEventListener('submit', (event) => {
     event.preventDefault();
     const input = $('#NL_EMAIL');
@@ -779,6 +1233,12 @@ function initPage() {
   buildCategories();
   buildFeed();
   buildStore();
+  buildStoreAds();
+  buildGiftCardCountries();
+  buildGiftCardProduct();
+  buildXboxHome();
+  buildXboxGames();
+  buildXboxGamePass();
   buildAbout();
   setupPrivate();
 }
