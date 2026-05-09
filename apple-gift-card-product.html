@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Apple Gift Card Turkey — Pereuloq</title>
-  <meta name="description" content="Apple Gift Card Turkey в магазине Pereuloq: выбор номинала TL, автоматическая конвертация в рубли, генерация заказа и связь с продавцом в Telegram.">
+  <title>Apple Gift Card Turkey — номинал и заказ | Pereuloq</title>
+  <meta name="description" content="Apple Gift Card Turkey: выбор номинала TL, автоматический расчет финальной цены в RUB, генерация ORDER ID и заказ через Telegram продавца.">
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/gift-card.css">
 </head>
 <body data-page="store">
   <div class="cursor" id="CUR"></div>
@@ -21,6 +22,7 @@
       <nav aria-label="Основная навигация">
         <a class="nav-link" data-nav="home" href="index.html">Главная</a>
         <a class="nav-link" data-nav="feed" href="feed.html">Лента</a>
+        <a class="nav-link" data-nav="sport" href="sport.html">Спорт</a>
         <a class="nav-link" data-nav="store" href="store.html">Магазин</a>
         <a class="nav-link" data-nav="about" href="about.html">О проекте</a>
       </nav>
@@ -35,6 +37,7 @@
   <div class="mobile-panel" id="MOBILE_PANEL">
     <a data-nav="home" href="index.html">Главная</a>
     <a data-nav="feed" href="feed.html">Лента</a>
+    <a data-nav="sport" href="sport.html">Спорт</a>
     <a data-nav="store" href="store.html">Магазин</a>
     <a data-nav="about" href="about.html">О проекте</a>
     <a data-nav="private" href="private.html">Private</a>
@@ -50,7 +53,7 @@
 
       <section class="agc-product-layout">
         <article class="agc-product-visual" aria-label="Apple Gift Card товар">
-          <div class="agc-device-card product">
+          <div class="agc-device-card product" id="AGC_PRODUCT_CARD">
             <img class="agc-card-img" src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/giftcard-email-geode-select-2021?wid=600&hei=600&fmt=png-alpha&.v=bUgyM0RTaXJFS1BjZEl0R2ZhY3NWQk9UR2s3SlFFOWM2MGNlbHd1VE9uS0ZWOGd0ZE9RYTMwdzJDckhhbzIydlM0TjRWdzF2UjRGVEY0c3dBQVZ6VFRNNDAxQXNodDdOckZoZ08zRDVGUEk" alt="Apple Gift Card digital card" loading="eager" decoding="async">
             <div class="agc-device-shine"></div>
             <div class="agc-device-label">Apple Gift Card</div>
@@ -79,7 +82,7 @@
               <span>Конвертация</span>
               <strong id="AGC_CONVERSION">≈ 320 RUB</strong>
             </div>
-            <p class="agc-rate" id="AGC_RATE">Прайс-заглушка. Позже можно заменить рублевые значения в js/main.js.</p>
+            <p class="agc-rate" id="AGC_RATE">Финальная стоимость обновляется автоматически.</p>
           </div>
 
           <div class="agc-unavailable" id="AGC_UNAVAILABLE" hidden></div>
@@ -107,13 +110,22 @@
         <div class="agc-order-grid">
           <textarea class="agc-order-text" id="AGC_ORDER_TEXT" readonly aria-label="Автоматически созданный заказ"></textarea>
           <div class="agc-order-actions">
-            <button class="btn-ab primary" type="button" data-copy-order>Копировать заказ</button>
-            <button class="btn-ab" type="button" data-contact-seller="https://t.me/almir328">Написать продавцу</button>
+            <button class="btn-ab primary" type="button" data-agc-copy onclick="window.copyAgcOrder?.(false)">Копировать заказ</button>
+            <button class="btn-ab" type="button" data-agc-contact onclick="window.copyAgcOrder?.(true)">Написать продавцу</button>
           </div>
         </div>
       </section>
     </div>
   </main>
+
+  <div class="agc-sticky-cta" aria-label="Быстрое оформление Apple Gift Card">
+    <div class="agc-sticky-meta">
+      <span>К оплате</span>
+      <strong id="AGC_STICKY_PRICE">≈ 0 RUB</strong>
+    </div>
+    <button class="btn-ab primary" type="button" data-agc-contact onclick="window.copyAgcOrder?.(true)">Telegram</button>
+    <button class="btn-ab" type="button" data-agc-copy onclick="window.copyAgcOrder?.(false)">Копировать</button>
+  </div>
 
   <footer>
     <div class="wrap">
@@ -123,5 +135,6 @@
 
   <div class="toast" id="TOAST"><span id="T_I"></span><span id="T_M"></span></div>
   <script src="js/main.js"></script>
+  <script type="module" src="js/agc-ui.js"></script>
 </body>
 </html>

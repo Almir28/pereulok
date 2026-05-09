@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Apple Gift Card — Pereuloq</title>
-  <meta name="description" content="Apple Gift Card в магазине Pereuloq: выберите регион подарочной карты Apple для iTunes и Apple Store. Турция, США, Польша, Индия, Япония, Канада, Европа и Англия.">
+  <title>Apple Gift Card — страны и цифровые коды | Pereuloq</title>
+  <meta name="description" content="Apple Gift Card в Pereuloq: премиальный выбор страны, финальная цена в RUB, цифровые коды для iTunes и Apple Store, заказ через Telegram.">
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/gift-card.css">
 </head>
 <body data-page="store">
   <div class="cursor" id="CUR"></div>
@@ -21,6 +22,7 @@
       <nav aria-label="Основная навигация">
         <a class="nav-link" data-nav="home" href="index.html">Главная</a>
         <a class="nav-link" data-nav="feed" href="feed.html">Лента</a>
+        <a class="nav-link" data-nav="sport" href="sport.html">Спорт</a>
         <a class="nav-link" data-nav="store" href="store.html">Магазин</a>
         <a class="nav-link" data-nav="about" href="about.html">О проекте</a>
       </nav>
@@ -35,6 +37,7 @@
   <div class="mobile-panel" id="MOBILE_PANEL">
     <a data-nav="home" href="index.html">Главная</a>
     <a data-nav="feed" href="feed.html">Лента</a>
+    <a data-nav="sport" href="sport.html">Спорт</a>
     <a data-nav="store" href="store.html">Магазин</a>
     <a data-nav="about" href="about.html">О проекте</a>
     <a data-nav="private" href="private.html">Private</a>
@@ -51,7 +54,7 @@
         <div class="agc-hero-copy">
           <div class="ab-eyebrow">Digital Marketplace</div>
           <h1 id="agc-title" class="agc-title">Apple Gift Card</h1>
-          <p>Выберите регион подарочной карты Apple. Карточки работают как отдельные страницы товара: номинал, конвертация, заказ и связь с продавцом собраны в одном месте.</p>
+          <p>Выберите страну Apple Gift Card. Внутри каждой карточки вас ждет отдельная страница товара с номиналами, финальной ценой в RUB, мини-заказом и быстрым переходом к продавцу.</p>
           <div class="agc-hero-actions">
             <a class="btn-ab primary" href="apple-gift-card-product.html?country=turkey">Открыть Турцию</a>
             <a class="btn-ab" href="store.html">Назад в магазин</a>
@@ -76,8 +79,11 @@
           <span class="sh-line"></span>
           <span class="sh-more" id="AGC_COUNTRY_COUNT">Загрузка</span>
         </div>
-        <div class="agc-country-grid" id="AGC_COUNTRIES">
-          <div class="empty-state agc-empty"><div class="agc-loader" aria-hidden="true"></div>Загружаем регионы</div>
+        <div class="agc-country-grid" id="AGC_COUNTRIES" aria-live="polite">
+          <article class="agc-country-card agc-skeleton" aria-hidden="true"><span class="agc-skeleton-line short"></span><span class="agc-skeleton-orb"></span><span class="agc-skeleton-line"></span><span class="agc-skeleton-line soft"></span></article>
+          <article class="agc-country-card agc-skeleton" aria-hidden="true"><span class="agc-skeleton-line short"></span><span class="agc-skeleton-orb"></span><span class="agc-skeleton-line"></span><span class="agc-skeleton-line soft"></span></article>
+          <article class="agc-country-card agc-skeleton" aria-hidden="true"><span class="agc-skeleton-line short"></span><span class="agc-skeleton-orb"></span><span class="agc-skeleton-line"></span><span class="agc-skeleton-line soft"></span></article>
+          <article class="agc-country-card agc-skeleton" aria-hidden="true"><span class="agc-skeleton-line short"></span><span class="agc-skeleton-orb"></span><span class="agc-skeleton-line"></span><span class="agc-skeleton-line soft"></span></article>
         </div>
       </section>
     </div>
@@ -91,5 +97,6 @@
 
   <div class="toast" id="TOAST"><span id="T_I"></span><span id="T_M"></span></div>
   <script src="js/main.js"></script>
+  <script type="module" src="js/agc-ui.js"></script>
 </body>
 </html>

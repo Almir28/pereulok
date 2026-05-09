@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Матч онлайн — Pereuloq Sport</title>
+  <meta name="description" content="Детальная live-страница матча Pereuloq Sport: счет, команды, турнир, статистика и события без перезагрузки страницы.">
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/sport.css">
+</head>
+<body data-page="sport-match">
+  <header class="sport-hdr" id="HDR">
+    <div class="sport-hdr-inner">
+      <a class="sport-logo" href="../index.html" aria-label="Pereuloq Sport"><span>Pereuloq</span><i>Sport</i></a>
+      <nav class="sport-nav" aria-label="Основная навигация">
+        <a href="../index.html">Главная</a>
+        <a href="../feed.html">Лента</a>
+        <a class="on" href="../sport.html" aria-current="page">Спорт</a>
+        <a href="../store.html">Магазин</a>
+        <a href="../about.html">О проекте</a>
+      </nav>
+      <div class="sport-actions">
+        <button class="icon-btn" id="REFRESH_BTN" type="button" aria-label="Обновить матч">↻</button>
+        <button class="icon-btn" id="THEME_BTN" type="button" aria-label="Сменить тему">☽</button>
+        <button class="menu-btn" id="MOBILE_MENU_BTN" type="button" aria-label="Открыть меню">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-panel" id="MOBILE_PANEL">
+    <a href="../index.html">Главная</a>
+    <a href="../feed.html">Лента</a>
+    <a class="on" href="../sport.html">Спорт</a>
+    <a href="../store.html">Магазин</a>
+    <a href="../about.html">О проекте</a>
+  </div>
+
+  <main class="match-detail-main">
+    <div class="match-mini-nav">
+      <a href="../sport.html">← Матчи</a>
+      <span>Live detail</span>
+    </div>
+    <div id="MATCH_DETAIL"></div>
+  </main>
+
+  <div class="toast" id="TOAST" role="status" aria-live="polite"><span id="T_M">Готово</span></div>
+  <script type="module" src="../js/ui.js"></script>
+</body>
+</html>

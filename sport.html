@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Спорт онлайн — Pereuloq</title>
+  <meta name="description" content="Спортивный раздел Pereuloq с матчами, счетом, турнирами, прогнозами и автообновлением данных через бесплатный frontend API.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/sport.css">
+</head>
+<body data-page="sport">
+  <header class="sport-hdr" id="HDR">
+    <div class="sport-hdr-inner">
+      <a class="sport-logo" href="index.html" aria-label="Pereuloq Sport"><span>Pereuloq</span><i>Sport</i></a>
+      <nav class="sport-nav" aria-label="Основная навигация">
+        <a href="index.html">Главная</a>
+        <a href="feed.html">Лента</a>
+        <a class="on" href="sport.html" aria-current="page">Спорт</a>
+        <a href="store.html">Магазин</a>
+        <a href="about.html">О проекте</a>
+      </nav>
+      <div class="sport-actions">
+        <button class="icon-btn" id="REFRESH_BTN" type="button" aria-label="Обновить матчи">↻</button>
+        <button class="icon-btn" id="THEME_BTN" type="button" aria-label="Сменить тему">☽</button>
+        <button class="menu-btn" id="MOBILE_MENU_BTN" type="button" aria-label="Открыть меню">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-panel" id="MOBILE_PANEL">
+    <a href="index.html">Главная</a>
+    <a href="feed.html">Лента</a>
+    <a class="on" href="sport.html">Спорт</a>
+    <a href="store.html">Магазин</a>
+    <a href="about.html">О проекте</a>
+  </div>
+
+  <main>
+    <section class="sport-hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span>Live sports hub</div>
+        <h1>Матчи, счет и прогнозы в одном спортивном потоке.</h1>
+        <p>Frontend-раздел с автообновлением, резервными данными, историей команд в браузере и премиальным интерфейсом для будущих лиг.</p>
+        <div class="hero-stats" aria-label="Сводка матчей">
+          <div><strong id="live-count">0</strong><span>live</span></div>
+          <div><strong id="match-count">0</strong><span>матчей</span></div>
+          <div><strong>20s</strong><span>refresh</span></div>
+        </div>
+      </div>
+      <aside class="featured-match-card" id="FEATURED_CARD" aria-label="Главный матч">
+        <div class="featured-empty">Загружаем главный матч</div>
+      </aside>
+    </section>
+
+    <section class="sport-board" id="MATCHES_SECTION" aria-labelledby="matches-title">
+      <div class="board-head">
+        <div>
+          <div class="section-kicker">match center</div>
+          <h2 id="matches-title">Матчи</h2>
+        </div>
+        <div class="toolbar">
+          <label class="search-box">
+            <span>⌕</span>
+            <input id="SEARCH" type="search" placeholder="Команда или турнир" autocomplete="off">
+          </label>
+          <select id="SEL_STATUS" aria-label="Фильтр статуса матча">
+            <option value="all">Все статусы</option>
+            <option value="live">Live</option>
+            <option value="upcoming">Скоро</option>
+            <option value="finished">Завершены</option>
+          </select>
+          <div class="view-toggle" aria-label="Вид карточек">
+            <button class="on" id="vt-grid" type="button">Grid</button>
+            <button id="vt-list" type="button">List</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="sport-chips" id="SPORT_CHIPS" aria-label="Виды спорта"></div>
+      <div class="matches-grid" id="MATCHES_GRID" role="list" aria-live="polite"></div>
+    </section>
+
+    <section class="analytics-section" id="ANALYTICS_SECTION" aria-labelledby="analytics-title">
+      <div class="section-kicker">insights</div>
+      <h2 id="analytics-title">Прогнозы и статистика</h2>
+      <div class="analytics-grid" id="ANALYTICS_GRID"></div>
+    </section>
+
+    <section class="standings-section" aria-labelledby="standings-title">
+      <div class="section-kicker">standings</div>
+      <h2 id="standings-title">Турнирная таблица</h2>
+      <div class="standings-card" id="STANDINGS_GRID" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="sport-footer">
+    <div>Pereuloq Sport</div>
+    <nav aria-label="Нижняя навигация">
+      <a href="feed.html">Лента</a>
+      <a href="store.html">Магазин</a>
+      <a href="privacy.html">Политика</a>
+    </nav>
+  </footer>
+
+  <div class="toast" id="TOAST" role="status" aria-live="polite"><span id="T_M">Готово</span></div>
+  <script type="module" src="js/ui.js"></script>
+</body>
+</html>
