@@ -9,6 +9,20 @@ const routes = {
 
 const ARTICLES = [
   {
+    id: 19,
+    cat: 'Кино',
+    kind: 'news',
+    title: 'Фильмы и сериалы мая 2026: что нового на стриминге',
+    desc: 'Майские премьеры на стримингах: блокбастеры, независимое кино, сериалы, концертные фильмы и авторские эксперименты.',
+    author: 'Pereuloq',
+    date: '9 мая 2026',
+    read: '7 мин',
+    img: 'https://static01.nyt.com/images/2026/05/01/multimedia/01cul-streaming-new-spidernoir-2-jbkw/01cul-streaming-new-spidernoir-2-jbkw-superJumbo.jpg?quality=75&auto=webp',
+    bg: 'gb2',
+    href: 'posts/streaming-may-2026.html',
+    body: `<p>Май 2026 года принес зрителям разнообразные премьеры на стриминговых сервисах - от крупных блокбастеров до независимых фильмов и сериалов.</p><p>Критики отмечают, что месяц сочетает коммерческие и авторские проекты, позволяя найти что-то интересное для разной аудитории.</p><h3>Фильмы и сериалы месяца</h3><p>В подборке - Mortal Kombat II, Ready or Not 2, The Devil Wears Prada 2, Remarkably Bright Creatures, Swapped, концертный фильм Billie Eilish, The Drama и Blue.</p><p>Главные акценты месяца: визуальная эстетика, сценарные эксперименты, актуальные темы и новые подходы к повествованию.</p>`
+  },
+  {
     id: 18,
     cat: 'Кино',
     kind: 'news',
