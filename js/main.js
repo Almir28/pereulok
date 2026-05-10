@@ -9,6 +9,20 @@ const routes = {
 
 const ARTICLES = [
   {
+    id: 23,
+    cat: 'Музыка',
+    kind: 'news',
+    title: 'Билли Айлиш и Джеймс Кэмерон сняли концертный фильм в 3D',
+    desc: 'Как создавался Hit Me Hard and Soft: The Tour Live in 3D — один из самых необычных музыкальных проектов года.',
+    author: 'Pereuloq',
+    date: '11 мая 2026',
+    read: '7 мин',
+    img: 'https://static01.nyt.com/images/2026/05/05/multimedia/05cul-eilish-walkup-vchk/05cul-eilish-walkup-vchk-superJumbo.jpg?quality=75&auto=webp',
+    bg: 'gb4',
+    href: 'posts/billie-eilish-james-cameron-3d.html',
+    body: `<p>Когда мать Billie Eilish сказала дочери, что режиссер James Cameron хочет снять о ней 3D-концертный фильм, певица сначала не поверила.</p><p>Так появился проект Billie Eilish — Hit Me Hard and Soft: The Tour (Live in 3D), который выходит в кинотеатрах и IMAX 9 мая.</p><h3>17 камер и эффект присутствия</h3><p>Фильм был снят во время концертов певицы в Манчестере летом 2025 года. James Cameron установил 17 движущихся камер вокруг сцены, чтобы передать масштаб шоу и близость певицы к аудитории.</p><p>Это не просто концертная запись, а попытка показать эмоциональную атмосферу современного поп-шоу изнутри.</p>`
+  },
+  {
     id: 22,
     cat: 'Кино',
     kind: 'news',
