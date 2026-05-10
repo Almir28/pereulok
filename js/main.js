@@ -9,6 +9,20 @@ const routes = {
 
 const ARTICLES = [
   {
+    id: 24,
+    cat: 'Книги',
+    kind: 'news',
+    title: '7 новых книг недели, которые рекомендует Pereuloq',
+    desc: 'Исторические романы, триллеры, биографии, true crime и литературная проза в одной книжной подборке недели.',
+    author: 'Pereuloq',
+    date: '11 мая 2026',
+    read: '7 мин',
+    img: 'https://static01.nyt.com/images/2025/11/15/multimedia/calamity-clubjpg/calamity-clubjpg-superJumbo.jpg?quality=75&auto=webp',
+    bg: 'gb5',
+    href: 'posts/seven-books-week-pereuloq.html',
+    body: `<p>Редакция Pereuloq собрала самые интересные книжные новинки недели: исторические романы, психологические триллеры, биографии, true crime и литературную прозу.</p><p>В подборке есть масштабные исторические драмы, семейные истории, политические биографии и романтическое фэнтези.</p><h3>Главные книги недели</h3><p>Среди заметных новинок - The Calamity Club, John of John, The Family Man, Five, The Successor, Stay for a Spell и The Hill.</p><p>Подборка получилась особенно разнообразной: многие из этих книг уже называют потенциальными литературными хитами 2026 года.</p>`
+  },
+  {
     id: 23,
     cat: 'Музыка',
     kind: 'news',
