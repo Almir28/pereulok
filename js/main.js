@@ -9,6 +9,48 @@ const routes = {
 
 const ARTICLES = [
   {
+    id: 22,
+    cat: 'Кино',
+    kind: 'news',
+    title: 'Netflix, фридайвинг и смерть Одри Местр',
+    desc: 'Почему суд не поверил легенде Франсиско Феррераса после иска к Netflix из-за фильма No Limit.',
+    author: 'Pereuloq',
+    date: '11 мая 2026',
+    read: '7 мин',
+    img: 'https://static01.nyt.com/images/2026/05/17/magazine/17mag-dive-06/17mag-dive-06-superJumbo-v2.jpg?quality=75&auto=webp',
+    bg: 'gb2',
+    href: 'posts/netflix-freediving-audrey-mestre.html',
+    body: `<p>Франсиско Феррерас, один из самых известных фридайверов в истории, подал в суд на Netflix после выхода французской драмы No Limit.</p><p>Он считал, что фильм фактически обвинил его в убийстве жены - легендарной фридайверши Одри Местр, погибшей во время рекордного погружения в 2002 году.</p><h3>Почему суд не поверил иску</h3><p>Суд решил, что художественный герой фильма не обязан восприниматься как точная копия Феррераса, а сама история спортсмена давно окружена противоречивыми мифами.</p><p>Этот спор оказался не только о клевете, но и о том, как реальная трагедия, кино и личная легенда смешиваются в публичной памяти.</p>`
+  },
+  {
+    id: 21,
+    cat: 'Здоровье',
+    kind: 'news',
+    title: 'Что такое дисморфофобия',
+    desc: 'Почему человек может болезненно ненавидеть свою внешность даже без видимых причин и как лечится body dysmorphic disorder.',
+    author: 'Pereuloq',
+    date: '11 мая 2026',
+    read: '7 мин',
+    img: 'https://static01.nyt.com/images/2026/05/12/well/06WELL-PSYCH101-BDD-image/06WELL-PSYCH101-BDD-image-superJumbo-v3.jpg?quality=75&auto=webp',
+    bg: 'gb3',
+    href: 'posts/body-dysmorphic-disorder.html',
+    body: `<p>Дисморфофобия, или body dysmorphic disorder, считается тяжелым психическим расстройством, при котором человек болезненно фиксируется на воображаемых или едва заметных дефектах внешности.</p><p>Это состояние может разрушать повседневную жизнь: люди избегают общения, проводят часы перед зеркалом и часто обращаются не к психотерапевтам, а к косметологам или хирургам.</p><h3>Почему это важно</h3><p>В эпоху социальных сетей, фильтров и постоянного сравнения себя с другими тема дисморфофобии становится особенно актуальной.</p><p>Лечение обычно строится на когнитивно-поведенческой терапии и, при необходимости, медикаментозной поддержке.</p>`
+  },
+  {
+    id: 20,
+    cat: 'Здоровье',
+    kind: 'news',
+    title: 'Пассажиров эвакуируют с круизного лайнера после вспышки хантавируса',
+    desc: 'MV Hondius прибыл к Канарским островам после вспышки хантавируса: пассажиров эвакуируют группами, медицинские службы отслеживают контакты.',
+    author: 'Pereuloq',
+    date: '11 мая 2026',
+    read: '7 мин',
+    img: 'https://static01.nyt.com/images/2026/05/10/multimedia/10int-cruise-arrival-02-jzvg/10int-cruise-arrival-02-jzvg-superJumbo.jpg?quality=75&auto=webp',
+    bg: 'gb3',
+    href: 'posts/mv-hondius-hantavirus-evacuation.html',
+    body: `<p>Пассажиров и членов экипажа круизного лайнера MV Hondius начали эвакуировать после вспышки хантавируса на борту судна.</p><p>Корабль прибыл к испанским Канарским островам утром 10 мая, спустя месяц после первой смерти пассажира, связанной с заболеванием.</p><h3>Что известно</h3><p>Эвакуация проходила небольшими группами: люди покидали корабль в масках и защитных костюмах, а медицинские службы начали отслеживать контакты всех находившихся на борту.</p><p>По данным международных служб здравоохранения, риск массового распространения инфекции остается низким.</p>`
+  },
+  {
     id: 19,
     cat: 'Кино',
     kind: 'news',
@@ -289,6 +331,8 @@ const ARTICLES = [
   }
 ];
 
+const PUBLIC_ARTICLES = ARTICLES.filter((article) => article.href !== 'store.html');
+
 const PRODUCTS = [
   { id: 100, cat: 'giftcards', type: 'Apple Gift Card', name: 'Apple Gift Card', icon: 'AGC', price: 'от заглушки', was: null, rating: 5.0, rev: 320, st: 'st-blue', stl: 'NEW', desc: 'Подарочные карты Apple для разных регионов: Турция, США, Польша, Индия, Япония, Канада, Европа и Англия.', feats: ['Выбор региона', 'Автогенерация заказа', 'Связь через Telegram'], href: 'apple-gift-card.html' },
   { id: 200, cat: 'xbox', type: 'Xbox', name: 'Xbox', icon: 'XB', price: 'Game Pass и игры', was: null, rating: 5.0, rev: 410, st: 'st-green', stl: 'XBOX', desc: 'Игры Xbox и подписки Game Pass Ultimate, Premium и PC с автогенерацией заказа.', feats: ['Игры', 'Game Pass', 'Telegram-заказ'], href: 'xbox.html' },
@@ -371,9 +415,9 @@ const TICKER_ITEMS = [
   'Как выжить при встрече с бегемотом: главное - держать дистанцию',
   'Кафе Южной Кореи стали новым культурным феноменом',
   'Новый дизайн Pereuloq на GitHub Pages',
-  'Лента и магазин теперь отдельные страницы',
+  'Лента теперь живет как отдельный редакционный раздел',
   'Темная и светлая тема сохранены',
-  'Магазин работает без backend',
+  'Сайт работает без backend',
   'Приватная страница остается статической'
 ];
 
@@ -606,7 +650,7 @@ function buildSlider() {
   const wrap = $('#SLIDES_WRAP');
   const ctrl = $('#HERO_CTRL');
   if (!wrap || !ctrl) return;
-  const slides = ARTICLES.slice(0, 4);
+  const slides = PUBLIC_ARTICLES.slice(0, 4);
   wrap.innerHTML = slides.map((article, index) => `
     <div class="hero-slide${index === 0 ? ' active' : ''}" id="hs_${index}">
       <div class="hero-slide-bg ${article.bg}">${articleVisual(article)}</div>
@@ -670,7 +714,7 @@ function buildTicker() {
 function buildFeatured() {
   const grid = $('#FEAT_GRID');
   if (!grid) return;
-  const lead = ARTICLES[0];
+  const lead = PUBLIC_ARTICLES[0];
   grid.innerHTML = `
     <article class="feat-card wide" data-read="${lead.id}">
       <div class="fc-img">${articleVisual(lead)}</div>
@@ -681,7 +725,7 @@ function buildFeatured() {
         <div class="fc-meta"><span>${lead.author}</span><span class="fc-dot">·</span><span>${lead.date}</span><span class="fc-dot">·</span><span>${lead.read}</span></div>
       </div>
     </article>` +
-    ARTICLES.slice(1, 4).map((article) => `
+    PUBLIC_ARTICLES.slice(1, 4).map((article) => `
       <article class="feat-card" data-read="${article.id}">
         <div class="fc-img">${articleVisual(article)}</div>
         <div class="fc-body">
@@ -697,7 +741,7 @@ function buildLower() {
   const list = $('#LIST_ARTS');
   const side = $('#SB_ITEMS');
   if (list) {
-    list.innerHTML = ARTICLES.map((article) => `
+    list.innerHTML = PUBLIC_ARTICLES.map((article) => `
       <article class="la-row" data-read="${article.id}">
         <div class="la-num">${articleVisual(article)}</div>
         <div>
@@ -708,7 +752,7 @@ function buildLower() {
       </article>`).join('');
   }
   if (side) {
-    side.innerHTML = ARTICLES.slice(0, 5).map((article) => `
+    side.innerHTML = PUBLIC_ARTICLES.slice(0, 5).map((article) => `
       <article class="sb-item" data-read="${article.id}">
         <div class="sb-cat">${article.cat}</div>
         <div class="sb-title">${article.title}</div>
@@ -735,7 +779,7 @@ function buildFeed() {
   const pagination = $('#PAGINATION');
   if (!filters || !main) return;
   filters.innerHTML = FEED_CATS.map((item) => `<button class="ff-btn${feedFilter === item.v ? ' on' : ''}" data-feed-filter="${item.v}">${item.l}</button>`).join('<span class="ff-sep"></span>');
-  const articles = feedFilter === 'all' ? ARTICLES : ARTICLES.filter((article) => article.kind === feedFilter);
+  const articles = feedFilter === 'all' ? PUBLIC_ARTICLES : PUBLIC_ARTICLES.filter((article) => article.kind === feedFilter);
   main.innerHTML = articles.map((article) => `
     <article class="feed-art" data-read="${article.id}">
       <div>
@@ -748,7 +792,7 @@ function buildFeed() {
     </article>`).join('') || '<div class="empty-state">Материалов в этой категории пока нет</div>';
   if (side) {
     side.innerHTML = `
-      <div class="fs-widget"><div class="fs-wh">Популярное</div>${ARTICLES.slice(0, 4).map((article) => `<article class="sb-item" data-read="${article.id}"><div class="sb-cat">${article.cat}</div><div class="sb-title">${article.title}</div><div class="sb-time">${article.read}</div></article>`).join('')}</div>
+      <div class="fs-widget"><div class="fs-wh">Популярное</div>${PUBLIC_ARTICLES.slice(0, 4).map((article) => `<article class="sb-item" data-read="${article.id}"><div class="sb-cat">${article.cat}</div><div class="sb-title">${article.title}</div><div class="sb-time">${article.read}</div></article>`).join('')}</div>
       <div class="fs-widget"><div class="fs-wh">Категории</div>${CATS_DATA.map((category) => `<div class="sb-item"><div class="sb-cat">${category.icon} ${category.name}</div><div class="sb-time">${category.count} материалов</div></div>`).join('')}</div>`;
   }
   if (pagination) {
@@ -1038,7 +1082,7 @@ function buildAbout() {
   const stats = $('#AB_STATS');
   const projects = $('#AB_PROJS');
   if (skills) {
-    skills.innerHTML = ['Технологии', 'Бизнес', 'Путешествия', 'Культура', 'Стиль жизни', 'Магазин'].map((skill) => `<span class="ab-skill">${skill}</span>`).join('');
+    skills.innerHTML = ['Технологии', 'Бизнес', 'Путешествия', 'Культура', 'Стиль жизни', 'Редакция'].map((skill) => `<span class="ab-skill">${skill}</span>`).join('');
   }
   if (stats) {
     stats.innerHTML = [
@@ -1104,7 +1148,7 @@ function closeModal(id) {
 }
 
 function openRead(id) {
-  const article = ARTICLES.find((item) => item.id === Number(id));
+  const article = PUBLIC_ARTICLES.find((item) => item.id === Number(id));
   const overlay = $('#READ_OV');
   const meta = $('#READ_META');
   const content = $('#READ_CONTENT');
