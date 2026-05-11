@@ -702,6 +702,16 @@ footer{background:var(--bg-1);border-top:1px solid var(--ln);padding:60px 0 36px
 .post-gallery .wide{grid-column:span 2}
 .post-note{font-size:12px;color:var(--t4);font-family:var(--mono);margin-top:34px;padding-top:22px;border-top:1px solid var(--ln)}
 .post-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:44px}
+.seo-related{margin-top:54px;padding-top:26px;border-top:1px solid var(--ln)}
+.seo-related-head{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:18px}
+.seo-related-head span{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--t3)}
+.seo-related-head a{font-size:13px;font-weight:700;color:var(--a)}
+.seo-related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.seo-related-card{display:flex;min-height:190px;flex-direction:column;justify-content:flex-end;border:1px solid var(--ln);border-radius:var(--r-md);padding:18px;background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02));box-shadow:var(--shadow-soft);transition:transform .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease)}
+.seo-related-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22);background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.03))}
+.seo-related-card span{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--a);margin-bottom:12px}
+.seo-related-card strong{font-size:17px;line-height:1.2;color:var(--t1);margin-bottom:10px}
+.seo-related-card small{font-size:13px;line-height:1.45;color:var(--t3)}
 
 /* ════════════════
    UTILS & RESPONSIVE
@@ -778,6 +788,8 @@ footer{background:var(--bg-1);border-top:1px solid var(--ln);padding:60px 0 36px
   .post-gallery{grid-template-columns:1fr}
   .post-gallery .wide{grid-column:span 1}
   .post-body p{font-size:16px}
+  .seo-related-grid{grid-template-columns:1fr}
+  .seo-related-card{min-height:150px}
   .hdr-inner{padding:0 16px}
   .hero-slide-content{padding:0 16px 56px}
   .lower-grid{gap:24px}

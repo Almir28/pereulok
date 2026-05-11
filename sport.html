@@ -3,13 +3,70 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Спорт онлайн — Pereuloq</title>
-  <meta name="description" content="Спортивный раздел Pereuloq с матчами, счетом, турнирами, прогнозами и автообновлением данных через бесплатный frontend API.">
+  <title>Спорт онлайн - Pereuloq</title>
+  <meta name="description" content="Спортивный раздел Pereuloq с live-матчами, счетом, турнирами, статистикой и автообновлением данных.">
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/sport.css">
+  <!-- Pereuloq SEO -->
+  <meta name="keywords" content="спорт онлайн, live score, матчи, футбол, Pereuloq Sport">
+  <meta name="author" content="Pereuloq">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://pereuloq.ru/sport.html">
+  <link rel="manifest" href="/manifest.json">
+  <meta property="og:site_name" content="Pereuloq">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Спорт онлайн - Pereuloq">
+  <meta property="og:description" content="Спортивный раздел Pereuloq с live-матчами, счетом, турнирами, статистикой и автообновлением данных.">
+  <meta property="og:image" content="https://pereuloq.ru/assets/logo.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pereuloq.ru/sport.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Спорт онлайн - Pereuloq">
+  <meta name="twitter:description" content="Спортивный раздел Pereuloq с live-матчами, счетом, турнирами, статистикой и автообновлением данных.">
+  <meta name="twitter:image" content="https://pereuloq.ru/assets/logo.svg">
+  <!-- /Pereuloq SEO -->
+  <!-- Pereuloq Structured Data -->
+  <script type="application/ld+json" id="schema-organization">{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Pereuloq",
+  "url": "https://pereuloq.ru",
+  "logo": "https://pereuloq.ru/assets/logo.svg"
+}</script>
+  <script type="application/ld+json" id="schema-website">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Pereuloq",
+  "url": "https://pereuloq.ru",
+  "inLanguage": "ru-RU",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://pereuloq.ru/feed.html?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}</script>
+  <script type="application/ld+json" id="schema-breadcrumbs">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Pereuloq",
+      "item": "https://pereuloq.ru/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Спорт онлайн",
+      "item": "https://pereuloq.ru/sport.html"
+    }
+  ]
+}</script>
+  <!-- /Pereuloq Structured Data -->
 </head>
 <body data-page="sport">
   <header class="sport-hdr" id="HDR">
@@ -107,5 +164,10 @@
 
   <div class="toast" id="TOAST" role="status" aria-live="polite"><span id="T_M">Готово</span></div>
   <script type="module" src="js/ui.js"></script>
+  <script src="js/meta-generator.js" defer></script>
+  <script src="js/schema.js" defer></script>
+  <script src="js/structured-data.js" defer></script>
+  <script src="js/sitemap-generator.js" defer></script>
+  <script src="js/seo.js" defer></script>
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pereuloq — Журнал о технологиях и событиях</title>
-  <meta name="description" content="Pereuloq — премиальный статический журнал с редакционной лентой о технологиях, культуре и событиях.">
+  <title>Pereuloq - журнал о технологиях, культуре и событиях</title>
+  <meta name="description" content="Pereuloq - премиальный онлайн-журнал о технологиях, бизнесе, культуре, здоровье, кино и интересных событиях без лишнего шума.">
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +19,63 @@
 
     gtag('config', 'G-RRR88HV0FF');
   </script>
+  <!-- Pereuloq SEO -->
+  <meta name="keywords" content="онлайн журнал, новости Pereuloq, технологии, культура, бизнес">
+  <meta name="author" content="Pereuloq">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://pereuloq.ru/">
+  <link rel="manifest" href="/manifest.json">
+  <meta property="og:site_name" content="Pereuloq">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Pereuloq - журнал о технологиях, культуре и событиях">
+  <meta property="og:description" content="Pereuloq - премиальный онлайн-журнал о технологиях, бизнесе, культуре, здоровье, кино и интересных событиях без лишнего шума.">
+  <meta property="og:image" content="https://pereuloq.ru/assets/logo.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pereuloq.ru/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pereuloq - журнал о технологиях, культуре и событиях">
+  <meta name="twitter:description" content="Pereuloq - премиальный онлайн-журнал о технологиях, бизнесе, культуре, здоровье, кино и интересных событиях без лишнего шума.">
+  <meta name="twitter:image" content="https://pereuloq.ru/assets/logo.svg">
+  <!-- /Pereuloq SEO -->
+  <!-- Pereuloq Structured Data -->
+  <script type="application/ld+json" id="schema-organization">{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Pereuloq",
+  "url": "https://pereuloq.ru",
+  "logo": "https://pereuloq.ru/assets/logo.svg"
+}</script>
+  <script type="application/ld+json" id="schema-website">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Pereuloq",
+  "url": "https://pereuloq.ru",
+  "inLanguage": "ru-RU",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://pereuloq.ru/feed.html?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}</script>
+  <script type="application/ld+json" id="schema-breadcrumbs">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Pereuloq",
+      "item": "https://pereuloq.ru/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Pereuloq - журнал о технологиях, культуре и событиях",
+      "item": "https://pereuloq.ru/"
+    }
+  ]
+}</script>
+  <!-- /Pereuloq Structured Data -->
 </head>
 <body data-page="home">
   <div class="cursor" id="CUR"></div>
@@ -177,5 +234,10 @@
 
   <div class="toast" id="TOAST"><span id="T_I"></span><span id="T_M"></span></div>
   <script src="js/main.js"></script>
+  <script src="js/meta-generator.js" defer></script>
+  <script src="js/schema.js" defer></script>
+  <script src="js/structured-data.js" defer></script>
+  <script src="js/sitemap-generator.js" defer></script>
+  <script src="js/seo.js" defer></script>
 </body>
 </html>

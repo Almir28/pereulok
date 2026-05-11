@@ -1,0 +1,20 @@
+{
+  "name": "Pereuloq",
+  "short_name": "Pereuloq",
+  "description": "Премиальный онлайн-журнал о технологиях, бизнесе, культуре, здоровье, кино и событиях.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#080b14",
+  "theme_color": "#080b14",
+  "lang": "ru-RU",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

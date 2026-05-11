@@ -360,6 +360,8 @@ const ARTICLES = [
 ];
 
 const PUBLIC_ARTICLES = ARTICLES.filter((article) => article.href !== 'store.html');
+window.PEREULOQ_ARTICLES = ARTICLES;
+window.PEREULOQ_PUBLIC_ARTICLES = PUBLIC_ARTICLES;
 
 const PRODUCTS = [
   { id: 100, cat: 'giftcards', type: 'Apple Gift Card', name: 'Apple Gift Card', icon: 'AGC', price: 'от заглушки', was: null, rating: 5.0, rev: 320, st: 'st-blue', stl: 'NEW', desc: 'Подарочные карты Apple для разных регионов: Турция, США, Польша, Индия, Япония, Канада, Европа и Англия.', feats: ['Выбор региона', 'Автогенерация заказа', 'Связь через Telegram'], href: 'apple-gift-card.html' },
