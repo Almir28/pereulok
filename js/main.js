@@ -9,6 +9,20 @@ const routes = {
 
 const ARTICLES = [
   {
+    id: 25,
+    cat: 'Финансы',
+    kind: 'video',
+    title: 'Рамит Сетхи — о деньгах, миллениалах и помощи детям',
+    desc: 'Финансовый эксперт Ramit Sethi объясняет, почему молодым поколениям тяжелее строить стабильность и как говорить о деньгах без стыда.',
+    author: 'Pereuloq',
+    date: '11 мая 2026',
+    read: '7 мин',
+    img: 'https://static01.nyt.com/images/2026/05/17/magazine/17mag-interview-sethi-03/17mag-interview-sethi-03-superJumbo.jpg?quality=75&auto=webp',
+    bg: 'gb6',
+    href: 'posts/ramit-sethi-money-millennials.html',
+    body: `<p>Финансовый эксперт Ramit Sethi считает, что миллениалы и Gen Z живут в другой экономической реальности, чем поколение их родителей.</p><p>Для него богатство - это не только баланс на счете, а свобода строить жизнь вокруг того, что действительно важно.</p><h3>Главная мысль</h3><p>Сетхи советует семьям говорить о деньгах регулярно, честно считать ключевые финансовые показатели и помогать детям раньше, если такая возможность есть.</p><p>Деньги, по его словам, должны быть не источником стыда, а инструментом для более спокойной и осознанной жизни.</p>`
+  },
+  {
     id: 24,
     cat: 'Книги',
     kind: 'news',
@@ -1337,11 +1351,53 @@ function setupEvents() {
   });
 }
 
+function setupScrollVideos() {
+  const videos = $$('video[data-scroll-video]');
+  if (!videos.length) return;
+
+  videos.forEach((video) => {
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('muted', '');
+    video.setAttribute('loop', '');
+  });
+
+  const updateVideoState = (video, isActive) => {
+    const wrap = video.closest('[data-scroll-video-wrap]');
+    wrap?.classList.toggle('is-playing', isActive);
+    if (isActive) {
+      const playRequest = video.play();
+      if (playRequest?.catch) playRequest.catch(() => wrap?.classList.add('is-blocked'));
+      return;
+    }
+    video.pause();
+  };
+
+  if (!('IntersectionObserver' in window)) {
+    videos.forEach((video) => updateVideoState(video, true));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      updateVideoState(entry.target, entry.isIntersecting && entry.intersectionRatio >= 0.45);
+    });
+  }, {
+    threshold: [0, 0.25, 0.45, 0.7, 1],
+    rootMargin: '0px 0px -8% 0px'
+  });
+
+  videos.forEach((video) => observer.observe(video));
+}
+
 function initPage() {
   setActiveNav();
   setupCursor();
   setupHeader();
   setupTheme();
+  setupScrollVideos();
   setupEvents();
   buildSlider();
   buildTicker();

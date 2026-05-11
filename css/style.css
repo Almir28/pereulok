@@ -687,6 +687,14 @@ footer{background:var(--bg-1);border-top:1px solid var(--ln);padding:60px 0 36px
 .post-cover-title{font-family:var(--serif);font-size:clamp(34px,5vw,68px);font-weight:700;line-height:.95;letter-spacing:-.03em;color:var(--t1);max-width:560px}
 .post-video{position:relative;aspect-ratio:16/9;border-radius:var(--r-lg);overflow:hidden;background:var(--bg-2);border:1px solid var(--ln2);margin-bottom:46px}
 .post-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.post-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;background:#000}
+.post-video.native{box-shadow:0 28px 90px rgba(0,0,0,.35)}
+.post-video.native::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(7,8,15,.62),rgba(7,8,15,0) 48%,rgba(7,8,15,.18));pointer-events:none;opacity:.82}
+.post-video-badge{position:absolute;left:18px;bottom:18px;z-index:3;display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(242,244,255,.18);border-radius:999px;background:rgba(7,8,15,.62);backdrop-filter:blur(14px);color:var(--t1);font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px}
+.post-video-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--a);box-shadow:0 0 18px var(--a)}
+.post-video-state{position:absolute;right:18px;bottom:18px;z-index:3;border:1px solid rgba(242,244,255,.14);border-radius:999px;background:rgba(7,8,15,.48);backdrop-filter:blur(14px);color:var(--t2);font-family:var(--mono);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:10px 12px;transition:opacity .2s}
+.post-video.native.is-playing .post-video-state{opacity:.52}
+.post-video.native.is-blocked .post-video-state{opacity:1;color:var(--a-pale)}
 .post-video.hero-bg{aspect-ratio:16/8;min-height:420px;border:none}
 .post-video.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(7,8,15,.86),rgba(7,8,15,.26),rgba(7,8,15,.5));pointer-events:none}
 .post-video.hero-bg iframe{width:120%;height:120%;left:-10%;top:-10%}
