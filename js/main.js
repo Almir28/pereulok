@@ -1,6 +1,7 @@
 const routes = {
   home: 'index.html',
   feed: 'feed.html',
+  politics: 'politics.html',
   sport: 'sport.html',
   store: 'store.html',
   about: 'about.html',
@@ -374,6 +375,30 @@ const ARTICLES = [
 ];
 
 const PUBLIC_ARTICLES = ARTICLES.filter((article) => article.href !== 'store.html');
+const PROMO_ARTICLES = PUBLIC_ARTICLES.filter((article) => article.promoted !== false);
+const POLITICS_SEARCH_ITEMS = [
+  {
+    title: 'Си Цзиньпин готов усилить давление на Трампа из-за поставок оружия Тайваню',
+    desc: 'Тайвань снова становится одной из главных тем в отношениях США и Китая перед саммитом в Пекине.',
+    cat: 'Мировая политика',
+    href: 'politics/xi-trump-taiwan-arms.html',
+    img: 'https://static01.nyt.com/images/2026/05/11/multimedia/00int-China-US-taiwan-pcmh/00int-China-US-taiwan-pcmh-superJumbo.jpg?quality=75&auto=webp'
+  },
+  {
+    title: 'Тим Кук, Илон Маск и главы компаний США едут с Трампом в Китай',
+    desc: 'Делегация американского бизнеса отправится в Китай вместе с Donald Trump на фоне переговоров о торговле и инвестициях.',
+    cat: 'Мировая политика',
+    href: 'politics/us-business-leaders-trump-china.html',
+    img: 'https://static01.nyt.com/images/2026/05/11/multimedia/11trump-news-biz-leaders-pcbv/11trump-news-biz-leaders-pcbv-verticalTwoByThree735-v4.jpg?quality=75&auto=webp'
+  },
+  {
+    title: 'США и Китай движутся к одному ИИ-будущему',
+    desc: 'Алгоритмы уже меняют работу, отношения и повседневную жизнь миллионов людей похожим образом.',
+    cat: 'Мировая политика',
+    href: 'politics/us-china-ai-future.html',
+    img: 'https://static01.nyt.com/images/2026/05/12/opinion/12liu-image/12liu-image-superJumbo.jpg?quality=75&auto=webp'
+  }
+];
 window.PEREULOQ_ARTICLES = ARTICLES;
 window.PEREULOQ_PUBLIC_ARTICLES = PUBLIC_ARTICLES;
 
@@ -561,6 +586,89 @@ function formatRub(value) {
   return `≈ ${Number(value).toLocaleString('ru-RU')} RUB`;
 }
 
+function resolveSearchHref(href) {
+  if (/^https?:\/\//.test(href) || href.startsWith('../')) return href;
+  return location.pathname.includes('/posts/') ? `../${href}` : href;
+}
+
+function setupSearch() {
+  if ($('#SEARCH_PANEL')) return;
+  const items = [
+    ...PUBLIC_ARTICLES.map((article) => ({
+      title: article.title,
+      desc: article.desc,
+      cat: article.cat,
+      href: article.href,
+      img: article.img
+    })),
+    ...POLITICS_SEARCH_ITEMS
+  ];
+  const panel = document.createElement('div');
+  panel.className = 'search-panel';
+  panel.id = 'SEARCH_PANEL';
+  panel.innerHTML = `
+    <div class="search-box" role="dialog" aria-modal="true" aria-label="Поиск по Pereuloq">
+      <div class="search-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input class="search-input" id="SEARCH_INPUT" type="search" placeholder="Найти новость, тему или рубрику" autocomplete="off">
+        <button class="search-close" id="SEARCH_CLOSE" type="button" aria-label="Закрыть поиск">×</button>
+      </div>
+      <div class="search-results" id="SEARCH_RESULTS"></div>
+    </div>
+  `;
+  document.body.append(panel);
+  const input = $('#SEARCH_INPUT', panel);
+  const results = $('#SEARCH_RESULTS', panel);
+  const render = () => {
+    const query = input.value.trim().toLowerCase();
+    const matches = (query
+      ? items.filter((item) => `${item.title} ${item.desc} ${item.cat}`.toLowerCase().includes(query))
+      : items.slice(0, 7)
+    ).slice(0, 12);
+    results.innerHTML = matches.length ? matches.map((item) => `
+      <a class="search-result" href="${resolveSearchHref(item.href)}">
+        <span class="search-thumb">${item.img ? `<img src="${item.img}" alt="" loading="lazy" decoding="async">` : ''}</span>
+        <span>
+          <span class="search-meta">${escapeHtml(item.cat)}</span>
+          <span class="search-title">${escapeHtml(item.title)}</span>
+          <span class="search-desc">${escapeHtml(item.desc)}</span>
+        </span>
+      </a>
+    `).join('') : '<div class="search-empty">Ничего не найдено. Попробуйте другое слово.</div>';
+  };
+  const open = () => {
+    panel.classList.add('open');
+    render();
+    setTimeout(() => input.focus(), 20);
+  };
+  const close = () => panel.classList.remove('open');
+  $$('.hdr-search').forEach((button) => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      open();
+    });
+  });
+  document.addEventListener('click', (event) => {
+    if (event.target.closest('.hdr-search')) {
+      event.preventDefault();
+      open();
+    }
+  });
+  input.addEventListener('input', render);
+  $('#SEARCH_CLOSE', panel)?.addEventListener('click', close);
+  panel.addEventListener('click', (event) => {
+    if (event.target === panel || event.target.closest('.search-result')) close();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') close();
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+      event.preventDefault();
+      open();
+    }
+  });
+  render();
+}
+
 function getCountryFromUrl() {
   const params = new URLSearchParams(window.location.search);
   return params.get('country') || 'turkey';
@@ -650,10 +758,21 @@ function setupHeader() {
   const header = $('#HDR');
   const menuButton = $('#MOBILE_MENU_BTN');
   const mobilePanel = $('#MOBILE_PANEL');
+  const headerRight = $('.hdr-right');
+  const themeButton = $('#THEME_BTN');
   const legacyMenuButton = $('#menuBtn');
   const legacyMobileNav = $('#mobileNav');
   const legacyClose = $('#mnavClose');
   const legacyProgress = $('#scrollProgress');
+  if (headerRight && themeButton && !$('.hdr-search')) {
+    const searchButton = document.createElement('a');
+    searchButton.className = 'hdr-search';
+    searchButton.href = '#SEARCH_PANEL';
+    searchButton.setAttribute('aria-label', 'Поиск');
+    searchButton.setAttribute('onclick', "document.getElementById('SEARCH_PANEL')?.classList.add('open');setTimeout(()=>document.getElementById('SEARCH_INPUT')?.focus(),20)");
+    searchButton.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>';
+    headerRight.insertBefore(searchButton, themeButton);
+  }
   window.addEventListener('scroll', () => {
     header?.classList.toggle('stuck', window.scrollY > 10);
     if (legacyProgress) {
@@ -694,7 +813,7 @@ function buildSlider() {
   const wrap = $('#SLIDES_WRAP');
   const ctrl = $('#HERO_CTRL');
   if (!wrap || !ctrl) return;
-  const slides = PUBLIC_ARTICLES.slice(0, 4);
+  const slides = PROMO_ARTICLES.slice(0, 4);
   wrap.innerHTML = slides.map((article, index) => `
     <div class="hero-slide${index === 0 ? ' active' : ''}" id="hs_${index}">
       <div class="hero-slide-bg ${article.bg}">${articleVisual(article)}</div>
@@ -758,7 +877,7 @@ function buildTicker() {
 function buildFeatured() {
   const grid = $('#FEAT_GRID');
   if (!grid) return;
-  const lead = PUBLIC_ARTICLES[0];
+  const lead = PROMO_ARTICLES[0];
   grid.innerHTML = `
     <article class="feat-card wide" data-read="${lead.id}">
       <div class="fc-img">${articleVisual(lead)}</div>
@@ -769,7 +888,7 @@ function buildFeatured() {
         <div class="fc-meta"><span>${lead.author}</span><span class="fc-dot">·</span><span>${lead.date}</span><span class="fc-dot">·</span><span>${lead.read}</span></div>
       </div>
     </article>` +
-    PUBLIC_ARTICLES.slice(1, 4).map((article) => `
+    PROMO_ARTICLES.slice(1, 4).map((article) => `
       <article class="feat-card" data-read="${article.id}">
         <div class="fc-img">${articleVisual(article)}</div>
         <div class="fc-body">
@@ -1397,6 +1516,7 @@ function initPage() {
   setupCursor();
   setupHeader();
   setupTheme();
+  setupSearch();
   setupScrollVideos();
   setupEvents();
   buildSlider();

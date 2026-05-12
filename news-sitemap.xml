@@ -275,4 +275,37 @@
       <news:title>Justin Bieber — SWAG II</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://pereuloq.ru/politics/xi-trump-taiwan-arms.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Pereuloq</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-12</news:publication_date>
+      <news:title>Си Цзиньпин готов усилить давление на Трампа из-за поставок оружия Тайваню</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/politics/us-china-ai-future.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Pereuloq</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-12</news:publication_date>
+      <news:title>США и Китай движутся к одному ИИ-будущему</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/politics/us-business-leaders-trump-china.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Pereuloq</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-12</news:publication_date>
+      <news:title>Тим Кук, Илон Маск и главы компаний США едут с Трампом в Китай</news:title>
+    </news:news>
+  </url>
 </urlset>

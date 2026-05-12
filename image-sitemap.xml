@@ -200,4 +200,28 @@
       <image:caption>Музыкальный релиз как культурный сигнал и повод для разговора о стиле.</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://pereuloq.ru/politics/xi-trump-taiwan-arms.html</loc>
+    <image:image>
+      <image:loc>https://static01.nyt.com/images/2026/05/11/multimedia/00int-China-US-taiwan-pcmh/00int-China-US-taiwan-pcmh-superJumbo.jpg?quality=75&amp;auto=webp</image:loc>
+      <image:title>Си Цзиньпин готов усилить давление на Трампа из-за поставок оружия Тайваню</image:title>
+      <image:caption>Тайвань снова становится одной из главных тем в отношениях США и Китая перед саммитом Trump и Xi Jinping в Пекине.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/politics/us-china-ai-future.html</loc>
+    <image:image>
+      <image:loc>https://static01.nyt.com/images/2026/05/12/opinion/12liu-image/12liu-image-superJumbo.jpg?quality=75&amp;auto=webp</image:loc>
+      <image:title>США и Китай движутся к одному ИИ-будущему</image:title>
+      <image:caption>Алгоритмы уже меняют работу, отношения и повседневную жизнь миллионов людей в США и Китае похожим образом.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/politics/us-business-leaders-trump-china.html</loc>
+    <image:image>
+      <image:loc>https://static01.nyt.com/images/2026/05/11/multimedia/11trump-news-biz-leaders-pcbv/11trump-news-biz-leaders-pcbv-verticalTwoByThree735-v4.jpg?quality=75&amp;auto=webp</image:loc>
+      <image:title>Тим Кук, Илон Маск и главы компаний США едут с Трампом в Китай</image:title>
+      <image:caption>Делегация американского бизнеса отправится в Китай вместе с Donald Trump на фоне переговоров о торговле и инвестициях.</image:caption>
+    </image:image>
+  </url>
 </urlset>

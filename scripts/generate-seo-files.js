@@ -23,6 +23,7 @@ const DATE_MAP = {
 const staticPages = [
   '/',
   '/feed.html',
+  '/politics.html',
   '/about.html',
   '/privacy.html',
   '/private.html',
@@ -63,6 +64,19 @@ function readArticles() {
   return sandbox.window.PEREULOQ_PUBLIC_ARTICLES || sandbox.window.PEREULOQ_ARTICLES || [];
 }
 
+function readPoliticsArticles() {
+  if (!fs.existsSync('data/politics-feed.json')) return [];
+  const data = JSON.parse(fs.readFileSync('data/politics-feed.json', 'utf8'));
+  return (data.articles || []).map((article) => ({
+    title: article.title,
+    desc: article.dek,
+    date: article.date,
+    isoDate: article.isoDate,
+    href: article.url,
+    img: article.image
+  }));
+}
+
 function buildSitemap(articles) {
   const availablePages = staticPages.filter((item, index, arr) => (
     arr.indexOf(item) === index && (item === '/' || fs.existsSync(item.replace(/^\//, '')))
@@ -94,7 +108,9 @@ function buildImageSitemap(articles) {
 }
 
 const articles = readArticles();
-fs.writeFileSync('sitemap.xml', buildSitemap(articles));
-fs.writeFileSync('news-sitemap.xml', buildNewsSitemap(articles));
-fs.writeFileSync('image-sitemap.xml', buildImageSitemap(articles));
-console.log(`SEO files generated for ${articles.length} articles.`);
+const politicsArticles = readPoliticsArticles();
+const allIndexableArticles = articles.concat(politicsArticles);
+fs.writeFileSync('sitemap.xml', buildSitemap(allIndexableArticles));
+fs.writeFileSync('news-sitemap.xml', buildNewsSitemap(allIndexableArticles));
+fs.writeFileSync('image-sitemap.xml', buildImageSitemap(allIndexableArticles));
+console.log(`SEO files generated for ${articles.length} main articles and ${politicsArticles.length} politics articles.`);

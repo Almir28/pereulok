@@ -4,6 +4,7 @@
   const staticPages = [
     '/',
     '/feed.html',
+    '/politics.html',
     '/about.html',
     '/privacy.html',
     '/private.html',
