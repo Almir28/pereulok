@@ -276,6 +276,50 @@
     </news:news>
   </url>
   <url>
+    <loc>https://pereuloq.ru/politics/putin-zelensky-final-talks.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Pereuloq</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-12</news:publication_date>
+      <news:title>В Кремле заявили, что встреча Путина и Зеленского должна поставить точку в переговорах</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/politics/uae-iran-iron-dome.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Pereuloq</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-12</news:publication_date>
+      <news:title>ОАЭ вступили в конфликт против Ирана: Израиль перебросил в Эмираты системы «Железный купол»</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/politics/uk-iran-war-energy-risk.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Pereuloq</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-12</news:publication_date>
+      <news:title>Почему Британия может пострадать от войны с Ираном сильнее других богатых стран</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/politics/mideast-iran-us-china-tensions.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Pereuloq</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-12</news:publication_date>
+      <news:title>Ближний Восток снова на грани эскалации</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://pereuloq.ru/politics/xi-trump-taiwan-arms.html</loc>
     <news:news>
       <news:publication>

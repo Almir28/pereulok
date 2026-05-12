@@ -378,6 +378,34 @@ const PUBLIC_ARTICLES = ARTICLES.filter((article) => article.href !== 'store.htm
 const PROMO_ARTICLES = PUBLIC_ARTICLES.filter((article) => article.promoted !== false);
 const POLITICS_SEARCH_ITEMS = [
   {
+    title: 'В Кремле заявили, что встреча Путина и Зеленского должна поставить точку в переговорах',
+    desc: 'Dmitry Peskov заявил, что возможная встреча Vladimir Putin и Volodymyr Zelenskyy имеет смысл только на финальной стадии переговоров.',
+    cat: 'Мировая политика',
+    href: 'politics/putin-zelensky-final-talks.html',
+    img: 'https://avatars.dzeninfra.ru/get-ynews/271828/9df09344e1d59184a4943885b7a4628e/800x400'
+  },
+  {
+    title: 'ОАЭ вступили в конфликт против Ирана: Израиль перебросил в Эмираты системы «Железный купол»',
+    desc: 'По данным западных СМИ, ОАЭ могли участвовать в ударах по Ирану, а Israel направил в Эмираты батареи Iron Dome.',
+    cat: 'Мировая политика',
+    href: 'politics/uae-iran-iron-dome.html',
+    img: 'https://ichef.bbci.co.uk/ace/ws/800/cpsprodpb/8a6c/live/e5517ce0-4e02-11f1-aa37-6b8846c2f74e.jpg.webp'
+  },
+  {
+    title: 'Почему Британия может пострадать от войны с Ираном сильнее других богатых стран',
+    desc: 'Энергетический кризис из-за конфликта США и Ирана усиливает давление на United Kingdom.',
+    cat: 'Мировая политика',
+    href: 'politics/uk-iran-war-energy-risk.html',
+    img: 'https://ichef.bbci.co.uk/ace/ws/800/cpsprodpb/ca91/live/b125b4d0-4bdd-11f1-be41-a5619e425abe.jpg.webp'
+  },
+  {
+    title: 'Ближний Восток снова на грани эскалации',
+    desc: 'Формальное перемирие остается хрупким: Иран, США, Китай и региональные игроки усиливают давление.',
+    cat: 'Мировая политика',
+    href: 'politics/mideast-iran-us-china-tensions.html',
+    img: 'https://static01.nyt.com/images/2026/05/12/multimedia/12mideast-header1-qvlh/12mideast-header1-qvlh-superJumbo.jpg?quality=75&auto=webp'
+  },
+  {
     title: 'Си Цзиньпин готов усилить давление на Трампа из-за поставок оружия Тайваню',
     desc: 'Тайвань снова становится одной из главных тем в отношениях США и Китая перед саммитом в Пекине.',
     cat: 'Мировая политика',
