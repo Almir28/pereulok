@@ -469,9 +469,251 @@ const ARTICLES = [
   }
 ];
 
-const PUBLIC_ARTICLES = ARTICLES.filter((article) => article.href !== 'store.html');
+const ARTICLE_TRANSLATIONS = {
+  "posts/apple-ai-wwdc-2026.html": {
+    "cat": "Technology",
+    "title": "Apple is preparing its biggest iPhone AI update — what to expect at WWDC 2026",
+    "desc": "Apple is preparing a major Apple Intelligence update for iOS: a new Siri, offline AI, smart summaries and a system-level personal assistant.",
+    "date": "May 13, 2026",
+    "read": "5 min",
+    "body": "<p>Apple is preparing a major Apple Intelligence update for iOS: a new Siri, offline AI, smart summaries and a system-level personal assistant.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/openai-daybreak-ai-security.html": {
+    "cat": "Technology",
+    "title": "OpenAI launches Daybreak — AI now searches for code vulnerabilities",
+    "desc": "OpenAI has introduced Daybreak, an AI service for finding vulnerabilities, checking dependencies and suggesting code fixes automatically.",
+    "date": "May 13, 2026",
+    "read": "4 min",
+    "body": "<p>OpenAI has introduced Daybreak, an AI service for finding vulnerabilities, checking dependencies and suggesting code fixes automatically.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/swatch-audemars-piguet-royal-pop.html": {
+    "cat": "Style",
+    "title": "Swatch x Audemars Piguet shook the internet — with an unexpected twist",
+    "desc": "Swatch and Audemars Piguet revealed Royal Pop, a bright Pop Art pocket-watch collection instead of the expected affordable Royal Oak.",
+    "date": "May 13, 2026",
+    "read": "5 min",
+    "body": "<p>Swatch and Audemars Piguet revealed Royal Pop, a bright Pop Art pocket-watch collection instead of the expected affordable Royal Oak.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/ramit-sethi-money-millennials.html": {
+    "cat": "Finance",
+    "title": "Ramit Sethi on money, millennials and helping children",
+    "desc": "Financial expert Ramit Sethi explains why younger generations face a different economy and how families can talk about money without shame.",
+    "date": "May 11, 2026",
+    "read": "7 min",
+    "body": "<p>Financial expert Ramit Sethi explains why younger generations face a different economy and how families can talk about money without shame.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/seven-books-week-pereuloq.html": {
+    "cat": "Books",
+    "title": "7 new books of the week recommended by Pereuloq",
+    "desc": "Historical fiction, thrillers, biographies, true crime and literary novels in one weekly reading list.",
+    "date": "May 11, 2026",
+    "read": "7 min",
+    "body": "<p>Historical fiction, thrillers, biographies, true crime and literary novels in one weekly reading list.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/billie-eilish-james-cameron-3d.html": {
+    "cat": "Music",
+    "title": "Billie Eilish and James Cameron made a 3D concert film",
+    "desc": "How Hit Me Hard and Soft: The Tour Live in 3D became one of the most unusual music projects of the year.",
+    "date": "May 11, 2026",
+    "read": "7 min",
+    "body": "<p>How Hit Me Hard and Soft: The Tour Live in 3D became one of the most unusual music projects of the year.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/netflix-freediving-audrey-mestre.html": {
+    "cat": "Film",
+    "title": "Netflix, freediving and the death of Audrey Mestre",
+    "desc": "Why a court rejected Francisco Ferreras’s claim against Netflix over the film No Limit.",
+    "date": "May 11, 2026",
+    "read": "7 min",
+    "body": "<p>Why a court rejected Francisco Ferreras’s claim against Netflix over the film No Limit.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/body-dysmorphic-disorder.html": {
+    "cat": "Health",
+    "title": "What body dysmorphic disorder is",
+    "desc": "Why someone can painfully hate their appearance even without visible reasons, and how body dysmorphic disorder is treated.",
+    "date": "May 11, 2026",
+    "read": "7 min",
+    "body": "<p>Why someone can painfully hate their appearance even without visible reasons, and how body dysmorphic disorder is treated.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/mv-hondius-hantavirus-evacuation.html": {
+    "cat": "Health",
+    "title": "Passengers evacuated from cruise ship after hantavirus outbreak",
+    "desc": "The MV Hondius case shows why health protocols matter in travel and crowded spaces.",
+    "date": "May 11, 2026",
+    "read": "6 min",
+    "body": "<p>The MV Hondius case shows why health protocols matter in travel and crowded spaces.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/streaming-may-2026.html": {
+    "cat": "Film",
+    "title": "May 2026 streaming premieres: what to watch",
+    "desc": "The month brings new films, series and documentaries across the major streaming platforms.",
+    "date": "May 10, 2026",
+    "read": "6 min",
+    "body": "<p>The month brings new films, series and documentaries across the major streaming platforms.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/new-films-week-critics.html": {
+    "cat": "Film",
+    "title": "New films of the week: critics’ picks",
+    "desc": "Fresh theatrical and streaming releases worth watching this week.",
+    "date": "May 10, 2026",
+    "read": "5 min",
+    "body": "<p>Fresh theatrical and streaming releases worth watching this week.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/canine-anti-age-longevity.html": {
+    "cat": "Health",
+    "title": "Scientists are trying to help dogs live longer",
+    "desc": "Longevity research is moving into veterinary science and may change how pets age.",
+    "date": "May 10, 2026",
+    "read": "5 min",
+    "body": "<p>Longevity research is moving into veterinary science and may change how pets age.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/nba-player-poll.html": {
+    "cat": "Sport",
+    "title": "An anonymous NBA player poll",
+    "desc": "What players really think about overrated stars, underrated talent and the mood inside the league.",
+    "date": "May 9, 2026",
+    "read": "5 min",
+    "body": "<p>What players really think about overrated stars, underrated talent and the mood inside the league.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/hantavirus-cruise-ship.html": {
+    "cat": "Health",
+    "title": "A hantavirus case on a cruise ship",
+    "desc": "A rare infection case raises questions about sanitation and passenger safety at sea.",
+    "date": "May 9, 2026",
+    "read": "4 min",
+    "body": "<p>A rare infection case raises questions about sanitation and passenger safety at sea.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/apple-ai-settlement.html": {
+    "cat": "Technology",
+    "title": "Apple settles an AI-related lawsuit",
+    "desc": "The company has reached a settlement in a case tied to artificial intelligence technology and intellectual property.",
+    "date": "May 6, 2026",
+    "read": "4 min",
+    "body": "<p>The company has reached a settlement in a case tied to artificial intelligence technology and intellectual property.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/devil-wears-prada-2-fashion.html": {
+    "cat": "Culture",
+    "title": "The Devil Wears Prada 2 brings fashion back to the center",
+    "desc": "The sequel turns fashion, celebrity culture and media nostalgia into one big event.",
+    "date": "May 6, 2026",
+    "read": "4 min",
+    "body": "<p>The sequel turns fashion, celebrity culture and media nostalgia into one big event.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/radcliffe-morgan-brooks.html": {
+    "cat": "Culture",
+    "title": "Daniel Radcliffe and Morgan Brooks beyond public roles",
+    "desc": "A short cultural note on fame, privacy and what remains outside the spotlight.",
+    "date": "May 5, 2026",
+    "read": "4 min",
+    "body": "<p>A short cultural note on fame, privacy and what remains outside the spotlight.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/spacex-private-shares.html": {
+    "cat": "Business",
+    "title": "Why SpaceX shares are not available to ordinary investors",
+    "desc": "SpaceX remains a private company, which makes access to its shares limited and complicated.",
+    "date": "May 5, 2026",
+    "read": "4 min",
+    "body": "<p>SpaceX remains a private company, which makes access to its shares limited and complicated.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/lg-business-restructure.html": {
+    "cat": "Business",
+    "title": "How LG is restructuring its business",
+    "desc": "LG is reshaping its business around new technologies, services and long-term growth areas.",
+    "date": "May 4, 2026",
+    "read": "4 min",
+    "body": "<p>LG is reshaping its business around new technologies, services and long-term growth areas.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/altman-musk-investors.html": {
+    "cat": "Technology",
+    "title": "Sam Altman or Elon Musk: who would investors choose?",
+    "desc": "The AI race is also a trust race between different visions of the technology industry.",
+    "date": "May 4, 2026",
+    "read": "4 min",
+    "body": "<p>The AI race is also a trust race between different visions of the technology industry.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/spike-lee-ai-cinema.html": {
+    "cat": "Film",
+    "title": "Spike Lee rejects AI in filmmaking",
+    "desc": "The director’s position shows how cinema is debating technology, authorship and creative control.",
+    "date": "May 3, 2026",
+    "read": "4 min",
+    "body": "<p>The director’s position shows how cinema is debating technology, authorship and creative control.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/hippo-survival-africa.html": {
+    "cat": "Nature",
+    "title": "The most dangerous animal in Africa",
+    "desc": "A practical note on why hippos are so dangerous and what distance means in the wild.",
+    "date": "May 3, 2026",
+    "read": "4 min",
+    "body": "<p>A practical note on why hippos are so dangerous and what distance means in the wild.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/korean-cafes-art.html": {
+    "cat": "Culture",
+    "title": "How Korean cafes became works of art",
+    "desc": "Design-driven cafes in South Korea turn coffee into an immersive cultural experience.",
+    "date": "May 2, 2026",
+    "read": "4 min",
+    "body": "<p>Design-driven cafes in South Korea turn coffee into an immersive cultural experience.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/iphone-17-pro.html": {
+    "cat": "Technology",
+    "title": "iPhone 17 Pro",
+    "desc": "A product-focused look at the next iPhone Pro generation and what users expect from it.",
+    "date": "September 10, 2025",
+    "read": "5 min",
+    "body": "<p>A product-focused look at the next iPhone Pro generation and what users expect from it.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/iphone-air.html": {
+    "cat": "Technology",
+    "title": "iPhone Air",
+    "desc": "Apple’s thinnest iPhone concept combines a light design with Pro-level performance ideas.",
+    "date": "September 10, 2025",
+    "read": "5 min",
+    "body": "<p>Apple’s thinnest iPhone concept combines a light design with Pro-level performance ideas.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/apple-watch-ultra-3.html": {
+    "cat": "Technology",
+    "title": "Apple Watch Ultra 3",
+    "desc": "A rugged Apple Watch generation focused on sport, battery life and health features.",
+    "date": "September 10, 2025",
+    "read": "5 min",
+    "body": "<p>A rugged Apple Watch generation focused on sport, battery life and health features.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/mini-jcw-deus.html": {
+    "cat": "Events",
+    "title": "MINI JCW x Deus Ex Machina",
+    "desc": "A design collaboration where car culture, fashion and visual identity meet.",
+    "date": "September 16, 2025",
+    "read": "5 min",
+    "body": "<p>A design collaboration where car culture, fashion and visual identity meet.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/justin-bieber-swag-ii.html": {
+    "cat": "Music",
+    "title": "Justin Bieber — SWAG II",
+    "desc": "A music release as a cultural signal and a reason to talk about style.",
+    "date": "September 16, 2025",
+    "read": "5 min",
+    "body": "<p>A music release as a cultural signal and a reason to talk about style.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "store.html": {
+    "cat": "Project",
+    "title": "Pereuloq Store has been updated",
+    "desc": "Categories, search and product pages now live separately from the editorial feed.",
+    "date": "May 4, 2026",
+    "read": "3 min",
+    "body": "<p>Categories, search and product pages now live separately from the editorial feed.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  }
+};
+
+function localizedArticle(article) {
+  if (i18n.lang() !== 'en') return article;
+  const translated = ARTICLE_TRANSLATIONS[article.href];
+  return translated ? { ...article, ...translated } : article;
+}
+
+const CURRENT_ARTICLES = ARTICLES.map(localizedArticle);
+const PUBLIC_ARTICLES = CURRENT_ARTICLES.filter((article) => article.href !== 'store.html');
 const PROMO_ARTICLES = PUBLIC_ARTICLES.filter((article) => article.promoted !== false);
-const POLITICS_SEARCH_ITEMS = [
+const POLITICS_SEARCH_ITEMS_RU = [
   {
     title: 'Мир входит в новую холодную войну — США и Китай готовятся к крупнейшим переговорам 2026 года',
     desc: 'Переговоры Donald Trump и Xi Jinping проходят на фоне торговой войны, AI-гонки, кризиса вокруг Ирана, Тайваня и перестройки мировой экономики.',
@@ -536,7 +778,57 @@ const POLITICS_SEARCH_ITEMS = [
     img: 'https://static01.nyt.com/images/2026/05/12/opinion/12liu-image/12liu-image-superJumbo.jpg?quality=75&auto=webp'
   }
 ];
-window.PEREULOQ_ARTICLES = ARTICLES;
+const POLITICS_SEARCH_TRANSLATIONS = {
+  "politics/us-china-new-cold-war-2026.html": {
+    "title": "The world enters a new cold war — the U.S. and China prepare for major 2026 talks",
+    "desc": "Donald Trump and Xi Jinping meet against the backdrop of a trade war, the AI race, Iran, Taiwan and a global economic reset.",
+    "cat": "World politics"
+  },
+  "politics/europe-energy-crisis-2026.html": {
+    "title": "Europe prepares for a second energy shock as the 2026 crisis deepens",
+    "desc": "Europe faces higher oil and gas prices, pressure on industry and emergency measures around the Strait of Hormuz crisis.",
+    "cat": "World politics"
+  },
+  "politics/putin-zelensky-final-talks.html": {
+    "title": "The Kremlin says a Putin-Zelenskyy meeting should close the negotiations",
+    "desc": "Dmitry Peskov said a possible meeting between Vladimir Putin and Volodymyr Zelenskyy only makes sense at the final stage of talks.",
+    "cat": "World politics"
+  },
+  "politics/uae-iran-iron-dome.html": {
+    "title": "UAE, Iran and Iron Dome: why the region is watching closely",
+    "desc": "Reports about Israel, the UAE and Iran show how quickly regional security can change.",
+    "cat": "World politics"
+  },
+  "politics/uk-iran-war-energy-risk.html": {
+    "title": "Why Britain may suffer more from an Iran war than other wealthy countries",
+    "desc": "An energy shock linked to conflict with Iran could intensify pressure on the United Kingdom.",
+    "cat": "World politics"
+  },
+  "politics/mideast-iran-us-china-tensions.html": {
+    "title": "The Middle East is again close to escalation",
+    "desc": "A formal ceasefire remains fragile as Iran, the United States, China and regional players increase pressure.",
+    "cat": "World politics"
+  },
+  "politics/xi-trump-taiwan-arms.html": {
+    "title": "Xi Jinping may pressure Trump over weapons supplies to Taiwan",
+    "desc": "Taiwan is again one of the main themes in U.S.-China relations ahead of the Beijing summit.",
+    "cat": "World politics"
+  },
+  "politics/us-business-leaders-trump-china.html": {
+    "title": "Tim Cook, Elon Musk and U.S. business leaders travel with Trump to China",
+    "desc": "An American business delegation heads to China with Donald Trump amid trade and investment talks.",
+    "cat": "World politics"
+  },
+  "politics/us-china-ai-future.html": {
+    "title": "The U.S. and China are moving toward the same AI future",
+    "desc": "Algorithms are already changing work, relationships and everyday life in similar ways for millions of people.",
+    "cat": "World politics"
+  }
+};
+const POLITICS_SEARCH_ITEMS = i18n.lang() === 'en'
+  ? POLITICS_SEARCH_ITEMS_RU.map((item) => ({ ...item, ...(POLITICS_SEARCH_TRANSLATIONS[item.href] || {}) }))
+  : POLITICS_SEARCH_ITEMS_RU;
+window.PEREULOQ_ARTICLES = CURRENT_ARTICLES;
 window.PEREULOQ_PUBLIC_ARTICLES = PUBLIC_ARTICLES;
 
 const PRODUCTS = [
@@ -692,6 +984,32 @@ const XBOX_GAMEPASS_MONTHS = [
   { label: '12+1 месяцев', months: '12+1', price: 9600 },
   { label: '12+2 месяцев', months: '12+2', price: 10200 }
 ];
+
+
+if (i18n.lang() === 'en') {
+  FEED_CATS.splice(0, FEED_CATS.length,
+    { v: 'all', l: 'All' }, { v: 'news', l: 'News' }, { v: 'update', l: 'Updates' },
+    { v: 'ad', l: 'Ads' }, { v: 'video', l: 'Video' }, { v: 'post', l: 'Posts' }
+  );
+  STORE_CATS.splice(0, STORE_CATS.length,
+    { v: 'all', l: 'All' }, { v: 'xbox', l: 'Xbox' }, { v: 'giftcards', l: 'Gift Cards' },
+    { v: 'digital', l: 'Keys' }, { v: 'subs', l: 'Subscriptions' }, { v: 'templates', l: 'Templates' }, { v: 'services', l: 'Services' }
+  );
+  CATS_DATA.splice(0, CATS_DATA.length,
+    { icon: 'PC', name: 'Technology', count: '5' }, { icon: '$', name: 'Business', count: '2' },
+    { icon: 'FM', name: 'Film', count: '1' }, { icon: '*', name: 'Culture', count: '3' },
+    { icon: '!', name: 'Nature', count: '1' }, { icon: 'EV', name: 'Events', count: '1' },
+    { icon: 'MU', name: 'Music', count: '1' }, { icon: 'PR', name: 'Project', count: '1' }
+  );
+  TICKER_ITEMS.splice(0, TICKER_ITEMS.length,
+    'Apple prepares a major AI update for iPhone',
+    'OpenAI Daybreak brings AI into software security',
+    'Swatch and Audemars Piguet turn watches into an internet event',
+    'SpaceX remains private and hard to access for ordinary investors',
+    'Pereuloq Store works as a separate digital goods section',
+    'The site runs on static hosting without a backend'
+  );
+}
 
 let currentSlide = 0;
 let slideTimer;
@@ -1068,7 +1386,7 @@ function buildCategories() {
     <a class="cat-item" href="feed.html">
       <span class="cat-icon">${category.icon}</span>
       <span class="cat-name">${category.name}</span>
-      <span class="cat-count">${category.count} материалов</span>
+      <span class="cat-count">${category.count} ${i18n.lang() === 'en' ? 'stories' : 'материалов'}</span>
     </a>`).join('');
 }
 
@@ -1092,8 +1410,8 @@ function buildFeed() {
     </article>`).join('') || '<div class="empty-state">Материалов в этой категории пока нет</div>';
   if (side) {
     side.innerHTML = `
-      <div class="fs-widget"><div class="fs-wh">Популярное</div>${PUBLIC_ARTICLES.slice(0, 4).map((article) => `<article class="sb-item" data-read="${article.id}"><div class="sb-cat">${article.cat}</div><div class="sb-title">${article.title}</div><div class="sb-time">${article.read}</div></article>`).join('')}</div>
-      <div class="fs-widget"><div class="fs-wh">Категории</div>${CATS_DATA.map((category) => `<div class="sb-item"><div class="sb-cat">${category.icon} ${category.name}</div><div class="sb-time">${category.count} материалов</div></div>`).join('')}</div>`;
+      <div class="fs-widget"><div class="fs-wh">${i18n.lang() === 'en' ? 'Popular' : 'Популярное'}</div>${PUBLIC_ARTICLES.slice(0, 4).map((article) => `<article class="sb-item" data-read="${article.id}"><div class="sb-cat">${article.cat}</div><div class="sb-title">${article.title}</div><div class="sb-time">${article.read}</div></article>`).join('')}</div>
+      <div class="fs-widget"><div class="fs-wh">${i18n.lang() === 'en' ? 'Categories' : 'Категории'}</div>${CATS_DATA.map((category) => `<div class="sb-item"><div class="sb-cat">${category.icon} ${category.name}</div><div class="sb-time">${category.count} ${i18n.lang() === 'en' ? 'stories' : 'материалов'}</div></div>`).join('')}</div>`;
   }
   if (pagination) {
     pagination.innerHTML = '<button class="pg-btn">←</button><button class="pg-btn on">1</button><button class="pg-btn">2</button><button class="pg-btn">→</button>';
