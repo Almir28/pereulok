@@ -531,6 +531,94 @@ nav.scrolled {
   z-index: 2;
 }
 
+.hero-intel-panel {
+  position: absolute;
+  right: clamp(24px, 5vw, 72px);
+  top: 50%;
+  z-index: 4;
+  width: min(420px, 42vw);
+  transform: translateY(-50%);
+  padding: 22px;
+  border: 1px solid rgba(200,169,110,0.18);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(13,18,30,0.76), rgba(8,10,15,0.54));
+  backdrop-filter: blur(20px);
+  box-shadow: 0 28px 90px rgba(0,0,0,0.42);
+}
+
+.hero-intel-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.hero-intel-grid { display: grid; gap: 10px; }
+
+.hero-intel-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.045);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.hero-intel-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 18px var(--red-glow);
+}
+
+.hero-intel-item:nth-child(2) .hero-intel-dot { background: var(--accent); box-shadow: 0 0 18px var(--gold-glow); }
+.hero-intel-item:nth-child(3) .hero-intel-dot { background: var(--blue); box-shadow: 0 0 18px var(--blue-glow); }
+
+.hero-intel-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.hero-intel-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text3);
+  white-space: nowrap;
+}
+
+.hero-intel-map {
+  position: relative;
+  height: 120px;
+  margin-top: 14px;
+  border-radius: 18px;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+    radial-gradient(circle at 72% 30%, rgba(224,85,85,0.28), transparent 22%),
+    radial-gradient(circle at 56% 52%, rgba(200,169,110,0.22), transparent 24%),
+    rgba(255,255,255,0.035);
+  background-size: 34px 34px, 34px 34px, auto, auto, auto;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.hero-intel-map::before,
+.hero-intel-map::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  border: 1px solid rgba(200,169,110,0.28);
+}
+
+.hero-intel-map::before { width: 150px; height: 64px; left: 42px; top: 28px; transform: rotate(-10deg); }
+.hero-intel-map::after { width: 84px; height: 42px; right: 48px; top: 38px; transform: rotate(18deg); }
+
 .hero-video-thumb {
   position: absolute;
   inset: 0;
@@ -1861,7 +1949,8 @@ footer {
    ============================================ */
 @media (max-width: 1100px) {
   .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-right { height: 300px; position: relative; }
+  .hero-right { height: 360px; position: relative; }
+  .hero-intel-panel { width: min(520px, calc(100% - 48px)); right: 24px; left: 24px; margin: 0 auto; }
   .hero-left { padding: 60px 40px; }
   .news-section { padding: 60px 40px; }
   .card-feature { grid-column: span 12; min-height: 360px; }
@@ -1879,6 +1968,8 @@ footer {
   .nav-center { display: none; }
   .hero-left { padding: 48px 24px 40px; }
   .hero-headline { font-size: 30px; }
+  .hero-right { height: 260px; }
+  .hero-intel-panel { display: none; }
   .news-section { padding: 48px 20px; }
   .recommendations-section { padding: 48px 20px; }
   .worldmap-section { padding: 48px 20px; }
@@ -1893,8 +1984,58 @@ footer {
   .native-ad { flex-wrap: wrap; }
   .video-grid { grid-template-columns: 1fr; }
   .mobile-nav { display: flex; }
-  .breaking-overlay { width: calc(100vw - 32px); right: 16px; bottom: 76px; }
-  .news-grid { gap: 12px; }
+  .breaking-overlay { display: none !important; }
+  .news-grid { gap: 16px; }
+  .card, .card-feature, .card-medium, .card-small, .card-wide {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    background: rgba(14,16,22,0.96);
+    border-radius: 24px;
+  }
+  .card-image {
+    position: relative;
+    inset: auto;
+    height: clamp(190px, 52vw, 260px);
+    min-height: 190px;
+    transform: none;
+    filter: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .card:hover .card-image { transform: none; filter: none; }
+  .card-overlay { display: none; }
+  .card-link { z-index: 5; }
+  .card-body {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    padding: 18px;
+    z-index: 2;
+    background: linear-gradient(180deg, rgba(14,16,22,0.98), rgba(8,10,15,1));
+  }
+  .card-feature .card-title,
+  .card-medium .card-title,
+  .card-small .card-title {
+    font-size: clamp(21px, 6.2vw, 28px);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-excerpt, .card-feature .card-excerpt {
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-line-clamp: 3;
+  }
+  .card-meta {
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 10px;
+  }
+  .card-tag { margin-bottom: 10px; }
   .section-title { font-size: 22px; }
 }
 </style>
@@ -2008,6 +2149,15 @@ footer {
     <div class="hero-video-wrap">
       <div class="hero-img-placeholder"></div>
       <div class="hero-city-lines" id="city-lines"></div>
+        <div class="hero-intel-panel" aria-label="Редакционная сводка">
+          <div class="hero-intel-eyebrow">Pereuloq briefing</div>
+          <div class="hero-intel-grid">
+            <div class="hero-intel-item"><span class="hero-intel-dot"></span><span class="hero-intel-title">Дипломатия</span><span class="hero-intel-meta">LIVE</span></div>
+            <div class="hero-intel-item"><span class="hero-intel-dot"></span><span class="hero-intel-title">Экономика</span><span class="hero-intel-meta">12 материалов</span></div>
+            <div class="hero-intel-item"><span class="hero-intel-dot"></span><span class="hero-intel-title">Безопасность</span><span class="hero-intel-meta">обновляется</span></div>
+          </div>
+          <div class="hero-intel-map" aria-hidden="true"></div>
+        </div>
       <button class="play-btn" aria-label="Смотреть видео">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
       </button>
@@ -2614,7 +2764,7 @@ footer {
     </div>
     <button class="close-overlay" id="close-breaking" aria-label="Закрыть">✕</button>
   </div>
-  <div class="breaking-title">КНДР запустила баллистическую ракету. Япония объявила воздушную тревогу</div>
+  <div class="breaking-title">Ближний Восток снова остается на грани эскалации</div>
   <div class="breaking-time">12 мая, 14:52 · Обновляется</div>
 </div>
 
@@ -2831,9 +2981,11 @@ if (cityLinesContainer) {
 const breakingOverlay = document.getElementById('breaking-overlay');
 const closeBreaking = document.getElementById('close-breaking');
 
-setTimeout(() => {
-  breakingOverlay.classList.add('show');
-}, 2800);
+if (breakingOverlay && !window.matchMedia('(max-width: 768px)').matches) {
+  setTimeout(() => {
+    breakingOverlay.classList.add('show');
+  }, 2800);
+}
 
 if (closeBreaking) {
   closeBreaking.addEventListener('click', (e) => {
@@ -2842,9 +2994,11 @@ if (closeBreaking) {
   });
 }
 
-breakingOverlay.addEventListener('click', () => {
-  breakingOverlay.classList.remove('show');
-});
+if (breakingOverlay) {
+  breakingOverlay.addEventListener('click', () => {
+    breakingOverlay.classList.remove('show');
+  });
+}
 
 // ─── SMOOTH PARALLAX (hero) ───────────────────
 let ticking = false;

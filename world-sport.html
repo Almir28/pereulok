@@ -1140,6 +1140,92 @@ section {
   color: var(--text-dim);
 }
 
+
+/* ========== SPORT SEARCH ========== */
+.sport-search-section {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(255,159,10,0.14), transparent 30%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.sport-search-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255,255,255,0.045);
+  backdrop-filter: blur(18px);
+}
+
+.sport-search-head {
+  display: grid;
+  grid-template-columns: 1fr minmax(260px, 420px);
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.sport-search-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 4vw, 52px);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.sport-search-desc { color: var(--text-dim); line-height: 1.7; margin-top: 8px; }
+
+.sport-search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 16px;
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  background: rgba(0,0,0,0.28);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.sport-search-box:focus-within { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-dim); }
+.sport-search-icon { color: var(--accent); font-size: 18px; }
+.sport-search-input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--text); font: 600 16px/1.2 'Barlow', sans-serif; }
+.sport-search-input::placeholder { color: var(--text-muted); }
+
+.sport-search-results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.sport-search-card {
+  position: relative;
+  display: block;
+  min-height: 142px;
+  padding: 18px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, rgba(255,255,255,0.065), rgba(255,255,255,0.025));
+  color: var(--text);
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.sport-search-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.sport-search-card:hover { transform: translateY(-3px); border-color: var(--accent-glow); box-shadow: 0 18px 48px rgba(0,0,0,0.36); }
+.sport-search-card:hover::before { opacity: 1; }
+.sport-search-card small { color: var(--accent); font: 700 11px/1 'Barlow Condensed', sans-serif; letter-spacing: 1.6px; text-transform: uppercase; }
+.sport-search-card strong { display: block; margin-top: 10px; font-family: 'Barlow Condensed', sans-serif; font-size: 22px; line-height: 1.08; letter-spacing: 0.5px; }
+.sport-search-card span { display: block; margin-top: 10px; color: var(--text-dim); line-height: 1.45; font-size: 13px; }
+.sport-search-empty { grid-column: 1 / -1; padding: 20px; border: 1px dashed var(--glass-border); border-radius: var(--radius); color: var(--text-dim); text-align: center; }
+
 /* ========== FOOTER ========== */
 footer {
   background: #050505;
@@ -1335,6 +1421,8 @@ footer {
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   footer { padding: 40px 20px; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .sport-search-head { grid-template-columns: 1fr; }
+  .sport-search-results { grid-template-columns: 1fr; }
   .mobile-nav { display: block; }
   body { padding-bottom: 70px; }
   .ad-section { padding: 24px 20px; }
@@ -1368,7 +1456,7 @@ footer {
     <li><a href="#news">Новости</a></li>
     <li><a href="#categories">Виды спорта</a></li>
     <li><a href="#trending">Тренды</a></li>
-    <li><a href="/smotret" class="nav-cta">Смотреть</a></li>
+    <li><a href="#scores" class="nav-cta">Смотреть</a></li>
   </ul>
   <div class="sport-lang" aria-label="Переключатель языка"><a href="world-sport.html" hreflang="ru" class="active">RU</a><a href="en/world-sport.html" hreflang="en">EN</a></div>
   <button class="hamburger" aria-label="Меню" aria-expanded="false">
@@ -1457,6 +1545,25 @@ footer {
   </div>
 </section>
 
+
+<!-- SPORT SEARCH -->
+<section class="sport-search-section" id="sport-search" aria-label="Поиск по спортивному разделу">
+  <div class="sport-search-shell fade-up">
+    <div class="sport-search-head">
+      <div>
+        <div class="section-label">Поиск по разделу</div>
+        <h2 class="sport-search-title">НАЙТИ СПОРТ</h2>
+        <p class="sport-search-desc">Ищет только по спортивным новостям, счётам и трендам Pereuloq Sport.</p>
+      </div>
+      <label class="sport-search-box">
+        <span class="sport-search-icon" aria-hidden="true">⌕</span>
+        <input class="sport-search-input" id="sportSearchInput" type="search" placeholder="Футбол, NBA, ЧМ-2026..." autocomplete="off">
+      </label>
+    </div>
+    <div class="sport-search-results" id="sportSearchResults" aria-live="polite"></div>
+  </div>
+</section>
+
 <!-- LIVE SCORES -->
 <section class="live-scores" id="scores" aria-label="Счёт футбольных матчей">
   <div class="section-header fade-up">
@@ -1464,7 +1571,7 @@ footer {
       <div class="section-label">6–12 мая 2026</div>
       <h2 class="section-title">СЧЁТ ФУТБОЛ</h2>
     </div>
-    <a href="sport/sports-results-may-6-12-2026.html" class="see-all">Все результаты →</a>
+    <a href="all-results.html" class="see-all">Все результаты →</a>
   </div>
 
   <div class="scores-scroll" role="list" aria-label="Список футбольных результатов">
@@ -1617,7 +1724,7 @@ footer {
       <div class="section-label">Главные материалы</div>
       <h2 class="section-title">НОВОСТИ СПОРТА</h2>
     </div>
-    <a href="#news" class="see-all">Все новости →</a>
+    <a href="all-news.html" class="see-all">Все новости →</a>
   </div>
 
   <div class="news-grid" role="list">
@@ -1802,7 +1909,7 @@ footer {
       <div class="section-label">Горячие события</div>
       <h2 class="section-title">В ТРЕНДЕ</h2>
     </div>
-    <a href="/trending" class="see-all">Все тренды →</a>
+    <a href="all-trends.html" class="see-all">Все тренды →</a>
   </div>
 
   <div class="trending-grid">
@@ -1910,32 +2017,32 @@ footer {
     <div>
       <div class="footer-col-title">Спорт</div>
       <ul class="footer-links">
-        <li><a href="/football">Футбол</a></li>
-        <li><a href="/f1">Формула 1</a></li>
-        <li><a href="/nba">НБА</a></li>
-        <li><a href="/ufc">UFC / ММА</a></li>
-        <li><a href="/tennis">Теннис</a></li>
-        <li><a href="/esports">eSports</a></li>
+        <li><a href="#categories">Футбол</a></li>
+        <li><a href="#categories">Формула 1</a></li>
+        <li><a href="#categories">НБА</a></li>
+        <li><a href="#categories">UFC / ММА</a></li>
+        <li><a href="#categories">Теннис</a></li>
+        <li><a href="#categories">eSports</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Сервис</div>
       <ul class="footer-links">
-        <li><a href="/live">Live-трансляции</a></li>
-        <li><a href="/scores">Счёт онлайн</a></li>
-        <li><a href="/video">Видео</a></li>
-        <li><a href="/stats">Статистика</a></li>
-        <li><a href="#news">Все новости</a></li>
+        <li><a href="#scores">Live-трансляции</a></li>
+        <li><a href="all-results.html">Счёт онлайн</a></li>
+        <li><a href="#news">Видео</a></li>
+        <li><a href="all-results.html">Статистика</a></li>
+        <li><a href="all-news.html">Все новости</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Компания</div>
       <ul class="footer-links">
         <li><a href="about.html">О нас</a></li>
-        <li><a href="/advertise">Реклама</a></li>
+        <li><a href="store.html">Реклама</a></li>
         <li><a href="privacy.html">Конфиденциальность</a></li>
-        <li><a href="/terms">Условия</a></li>
-        <li><a href="/contact">Контакты</a></li>
+        <li><a href="policy.html">Условия</a></li>
+        <li><a href="about.html">Контакты</a></li>
       </ul>
     </div>
   </div>
@@ -2066,6 +2173,59 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
       heroImg.style.transform = `scale(1) translateY(${y * 0.3}px)`;
     }
   }, { passive: true });
+})();
+
+
+// Sport-only search
+const SPORT_SEARCH_ITEMS = [
+  {
+    "title": "Результаты 6-12 мая 2026",
+    "desc": "Футбол, NBA, теннис, F1, бокс и UFC в одной сводке.",
+    "cat": "Результаты",
+    "href": "all-results.html"
+  },
+  {
+    "title": "Легенда NBA зовёт в Лос-Анджелес",
+    "desc": "Magic Johnson продвигает LA как центр ЧМ-2026.",
+    "cat": "Новость",
+    "href": "sport/magic-johnson-la-world-cup-2026.html"
+  },
+  {
+    "title": "Первые составы на ЧМ-2026",
+    "desc": "Сборные начинают финальную подготовку к турниру.",
+    "cat": "Футбол",
+    "href": "sport/world-cup-2026-first-squads.html"
+  },
+  {
+    "title": "Волейбол: сборные и турниры",
+    "desc": "Команды входят в плотный майский календарь.",
+    "cat": "Волейбол",
+    "href": "sport/volleyball-may-2026-teams-tournaments.html"
+  },
+  {
+    "title": "Кайрат и Рикардиньо",
+    "desc": "Клуб расстался с форвардом по соглашению сторон.",
+    "cat": "Трансфер",
+    "href": "sport/kairat-ricardinho-transfer-2026.html"
+  },
+  {
+    "title": "Спортивные тренды",
+    "desc": "Самые обсуждаемые события и матчи недели.",
+    "cat": "Тренды",
+    "href": "all-trends.html"
+  }
+];
+(function() {
+  const input = document.getElementById('sportSearchInput');
+  const results = document.getElementById('sportSearchResults');
+  if (!input || !results) return;
+  const render = (query = '') => {
+    const q = query.trim().toLowerCase();
+    const items = SPORT_SEARCH_ITEMS.filter(item => !q || [item.title, item.desc, item.cat].join(' ').toLowerCase().includes(q));
+    results.innerHTML = items.length ? items.map(item => '<a class="sport-search-card" href="' + item.href + '"><small>' + item.cat + '</small><strong>' + item.title + '</strong><span>' + item.desc + '</span></a>').join('') : '<div class="sport-search-empty">В спортивном разделе ничего не найдено.</div>';
+  };
+  input.addEventListener('input', () => render(input.value));
+  render();
 })();
 </script>
 

@@ -1088,4 +1088,52 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://pereuloq.ru/all-results.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/all-results.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/all-results.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/all-results.html" />
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/en/all-results.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/all-results.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/all-results.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/all-results.html" />
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/all-news.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/all-news.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/all-news.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/all-news.html" />
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/en/all-news.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/all-news.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/all-news.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/all-news.html" />
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/all-trends.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/all-trends.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/all-trends.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/all-trends.html" />
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/en/all-trends.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/all-trends.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/all-trends.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/all-trends.html" />
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
