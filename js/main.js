@@ -844,7 +844,11 @@ function localizedArticle(article) {
 }
 
 const CURRENT_ARTICLES = ARTICLES.map(localizedArticle);
-const PUBLIC_ARTICLES = CURRENT_ARTICLES.filter((article) => article.href !== 'store.html');
+const PUBLIC_ARTICLES = CURRENT_ARTICLES.filter((article) => (
+  article.href !== 'store.html'
+  && !article.href.startsWith('sport/')
+  && article.href !== 'posts/nba-player-poll.html'
+));
 const PROMO_ARTICLES = PUBLIC_ARTICLES.filter((article) => article.promoted !== false);
 const POLITICS_SEARCH_ITEMS_RU = [
   {
@@ -1078,7 +1082,6 @@ const CATS_DATA = [
   { icon: '!', name: 'Природа', count: '1' },
   { icon: '🎬', name: 'События', count: '1' },
   { icon: '🎵', name: 'Музыка', count: '1' },
-  { icon: 'SP', name: 'Спорт', count: '6' },
   { icon: '◆', name: 'Проект', count: '1' }
 ];
 
@@ -1181,7 +1184,7 @@ if (i18n.lang() === 'en') {
     { icon: 'PC', name: 'Technology', count: '5' }, { icon: '$', name: 'Business', count: '2' },
     { icon: 'FM', name: 'Film', count: '1' }, { icon: '*', name: 'Culture', count: '3' },
     { icon: '!', name: 'Nature', count: '1' }, { icon: 'EV', name: 'Events', count: '1' },
-    { icon: 'MU', name: 'Music', count: '1' }, { icon: 'SP', name: 'Sport', count: '6' }, { icon: 'PR', name: 'Project', count: '1' }
+    { icon: 'MU', name: 'Music', count: '1' }, { icon: 'PR', name: 'Project', count: '1' }
   );
   TICKER_ITEMS.splice(0, TICKER_ITEMS.length,
     'Apple prepares a major AI update for iPhone',
