@@ -947,7 +947,7 @@
   <url>
     <loc>https://pereuloq.ru/world-sport.html</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/world-sport.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/world-sport.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/world-sport.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/world-sport.html" />
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -997,6 +997,78 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/xbox.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/xbox.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/xbox.html" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/sport/magic-johnson-la-world-cup-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/sport/magic-johnson-la-world-cup-2026.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/sport/magic-johnson-la-world-cup-2026.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/sport/magic-johnson-la-world-cup-2026.html" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/en/sport/magic-johnson-la-world-cup-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/sport/magic-johnson-la-world-cup-2026.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/sport/magic-johnson-la-world-cup-2026.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/sport/magic-johnson-la-world-cup-2026.html" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/sport/world-cup-2026-first-squads.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/sport/world-cup-2026-first-squads.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/sport/world-cup-2026-first-squads.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/sport/world-cup-2026-first-squads.html" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/en/sport/world-cup-2026-first-squads.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/sport/world-cup-2026-first-squads.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/sport/world-cup-2026-first-squads.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/sport/world-cup-2026-first-squads.html" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/sport/volleyball-may-2026-teams-tournaments.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/sport/volleyball-may-2026-teams-tournaments.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/sport/volleyball-may-2026-teams-tournaments.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/sport/volleyball-may-2026-teams-tournaments.html" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/en/sport/volleyball-may-2026-teams-tournaments.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/sport/volleyball-may-2026-teams-tournaments.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/sport/volleyball-may-2026-teams-tournaments.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/sport/volleyball-may-2026-teams-tournaments.html" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/sport/kairat-ricardinho-transfer-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/sport/kairat-ricardinho-transfer-2026.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/sport/kairat-ricardinho-transfer-2026.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/sport/kairat-ricardinho-transfer-2026.html" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/en/sport/kairat-ricardinho-transfer-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/sport/kairat-ricardinho-transfer-2026.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/sport/kairat-ricardinho-transfer-2026.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/sport/kairat-ricardinho-transfer-2026.html" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/en/world-sport.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/world-sport.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/world-sport.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/world-sport.html" />
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

@@ -35,6 +35,62 @@ const i18n = {
 
 const ARTICLES = [
   {
+    id: 32,
+    cat: 'Футбол',
+    kind: 'news',
+    title: "Футбол: крупный трансфер и турнирные битвы",
+    desc: "Кайрат расстался с бразильским форвардом Рикардиньо, а клубные турниры продолжают менять расстановку сил перед большим футбольным летом.",
+    author: 'Almir Khialov',
+    date: '13 мая 2026',
+    read: '3 мин',
+    img: "https://images.openai.com/static-rsc-4/aMGxw1RVTQIBLx8VIPyhOWDmU9tz-xVcMCRE4EtCzKAb5vqIQXmUf9Z7dzcXsf9qJlShZGlA3Spxp5HUCVP9iGgXoUH2oSs04t_xiT_W1jozj78N0yQaAyzi37MLLkRNH9Lnz3rPqiQOXHyv1pni9aksi3o-MRD3O6EUPkTGE7eZoi3y_ZkHsa1qOh3OtasD?purpose=fullsize",
+    bg: 'gb1',
+    href: 'sport/kairat-ricardinho-transfer-2026.html',
+    body: "<p>Алматинский Кайрат расстался с бразильским форвардом Рикардиньо. Игрок запомнился болельщикам голом в ворота Arsenal в Лиге чемпионов и стал частью заметного европейского сезона клуба.</p><h2>Что произошло</h2><ul><li>клуб и футболист завершили сотрудничество по обоюдному согласию</li><li>Рикардиньо провел в команде меньше года</li><li>его гол в Лиге чемпионов стал одним из самых обсуждаемых моментов сезона</li></ul><p>Такие решения часто выглядят как локальная трансферная новость, но для клуба они означают перестройку состава и новую роль для молодых игроков.</p><h2>Почему это важно</h2><p>Перед большим международным футбольным летом клубная форма игроков становится особенно заметной. Трансферы, травмы и игровая практика напрямую влияют на сборные и турнирные прогнозы.</p><h2>Мнение Pereuloq</h2><p>Футбол живет не только финалами. Иногда важный поворот начинается с одного трансфера, который меняет баланс внутри команды.</p>"
+  },
+  {
+    id: 33,
+    cat: 'Волейбол',
+    kind: 'news',
+    title: "Волейбол продолжает динамично жить — сборные, тренировки, турниры",
+    desc: "Волейбольная повестка мая ускоряется: сборные проводят сборы, тренеры проверяют составы, а турниры подводят команды к летнему сезону.",
+    author: 'Almir Khialov',
+    date: '13 мая 2026',
+    read: '3 мин',
+    img: "https://images.openai.com/static-rsc-4/b6fMdhlwGEUcatIIpW0KqCo1ueMhlRPDoTzRzSyPp0TWZDXladgkI3THMBh8lAwlCRJh12HPnIinsQD3uiz88FJlSenXLDq2bhAozBwqQDWzBSk7JLCSqoB-dwZzzEtgQDq9VGWM82b8K9jP4a5BWC3yU-dAZ_HQjcFTsLWTaGLUJ3xti9GikBhHjEChQ0un?purpose=fullsize",
+    bg: 'gb1',
+    href: 'sport/volleyball-may-2026-teams-tournaments.html',
+    body: "<p>Волейбольная повестка мая остается одной из самых активных: сборные проводят тренировки, тренеры проверяют сочетания, а клубные и международные турниры задают темп летнему сезону.</p><h2>Что происходит</h2><ul><li>команды обновляют тренировочные планы</li><li>спортсмены возвращаются после клубного сезона</li><li>тренеры оценивают форму лидеров и молодых игроков</li><li>турниры становятся проверкой перед более крупными стартами</li></ul><p>Такие новости редко выглядят громко отдельно, но вместе они показывают, как формируется спортивная форма перед решающими месяцами.</p><h2>Почему это важно</h2><p>Волейбол остается одним из самых массовых видов спорта в Европе и мире. Подготовка сборных и клубов напрямую влияет на качество турниров, интерес болельщиков и будущие результаты.</p><h2>Мнение Pereuloq</h2><p>Сила волейбола — в постоянном движении. Пока футбол забирает громкие заголовки, волейбольный сезон спокойно собирает свою аудиторию и готовит большие матчи.</p>"
+  },
+  {
+    id: 34,
+    cat: 'Футбол',
+    kind: 'news',
+    title: "Названы первые сборные на ЧМ-2026 — поворотные шаги перед турниром",
+    desc: "Подготовка к ЧМ-2026 ускоряется: первые сборные объявляют заявки, а тренеры начинают финальный этап отбора игроков.",
+    author: 'Almir Khialov',
+    date: '13 мая 2026',
+    read: '4 мин',
+    img: "https://images.openai.com/static-rsc-4/5vfg7DcZ7x9XzZe-_pdSFwUxUPbl9qCKE6Orv4rBP2Rh6BF1C1ft_nMxmHGt_9qq-lgkm01WGirJGwJXaU4xdmHJOza3igjDSkuFd9zzxEGLbVg0A516S27L1BaQMnVIksvkp3RI9QcUWTYgxh5dYhxx31fiGscz6xFv0LJeNTVa1ypa4mj1rJ9IBdac0dcH?purpose=fullsize",
+    bg: 'gb1',
+    href: 'sport/world-cup-2026-first-squads.html',
+    body: "<p>Подготовка к Чемпионату мира 2026 года выходит на новый этап: национальные команды начинают публиковать заявки и расширенные списки игроков.</p><p>Для тренеров это момент, когда общая стратегия превращается в конкретный выбор состава, ролей и тактических связок.</p><h2>Что известно сейчас</h2><ul><li>первые сборные начинают объявлять окончательные или расширенные заявки</li><li>действующие фавориты тестируют глубину состава</li><li>игроки борются за место в финальной заявке</li><li>клубная форма весны становится важным аргументом для тренеров</li></ul><h2>Почему это важно</h2><p>ЧМ-2026 пройдет в США, Мексике и Канаде и впервые соберет 48 команд. Чем шире турнир, тем важнее глубина состава и способность сборной выдерживать длинную дистанцию.</p><h2>Мнение Pereuloq</h2><p>Составы перед ЧМ — это уже не просто список фамилий. Это ранний сигнал о том, кто готов играть в современный быстрый футбол, а кто все еще живет прошлым циклом.</p>"
+  },
+  {
+    id: 35,
+    cat: 'Футбол',
+    kind: 'news',
+    title: "Легенда NBA призывает ехать на Чемпионат мира — Лос-Анджелес как новый центр футбола",
+    desc: "Magic Johnson призвал болельщиков со всего мира выбрать Лос-Анджелес для поездки на ЧМ-2026, называя город спортивной столицей мира.",
+    author: 'Almir Khialov',
+    date: '13 мая 2026',
+    read: '4 мин',
+    img: "https://images.openai.com/static-rsc-4/wSa1IjNIuB0B_MbTPnlLomOHPAU1FvY1g2CMn1hNoxuhMQO5zZE-E7d2gz-C-RSyz4HlAWmEwfgqk1Mb0RWzqF2k4Ils-rjthXLV9I4OijMk_rHT-Igsya4yswdrp7LvGIVaiRa-uFnDQ6J8spV0eFWFfegMlWmbX2WiWWBYDaJCO8nJ2hOJO7pppI67QCrh?purpose=fullsize",
+    bg: 'gb1',
+    href: 'sport/magic-johnson-la-world-cup-2026.html',
+    body: "<p>NBA-легенда Magic Johnson призвал болельщиков сделать Лос-Анджелес главным направлением для поездки на Чемпионат мира 2026 года.</p><p>Он назвал город спортивной столицей мира и подчеркнул, что турнир должен стать не только футбольным событием, но и большим городским фестивалем.</p><h2>Что готовит Лос-Анджелес</h2><ul><li>8 матчей турнира на площадках региона</li><li>большие фан-фестивали на выходные</li><li>транспортные решения для болельщиков</li><li>участие известных спортсменов и звезд в промо-кампаниях</li></ul><p>SoFi Stadium станет одной из центральных арен турнира, а город уже пытается превратить ЧМ-2026 в туристический магнит.</p><h2>Почему это важно</h2><p>Чемпионат мира 2026 года станет крупнейшим в истории: США, Мексика и Канада примут расширенный турнир с 48 командами. Для Лос-Анджелеса это шанс закрепить статус города, где футбол становится частью массовой культуры.</p><h2>Мнение Pereuloq</h2><p>ЧМ-2026 будет не только спортивным турниром. Это будет соревнование городов за внимание мира, и Лос-Анджелес уже играет на опережение.</p>"
+  },
+  {
     id: 31,
     cat: "Технологии",
     kind: "news",
@@ -485,6 +541,38 @@ const ARTICLES = [
 ];
 
 const ARTICLE_TRANSLATIONS = {
+  "sport/kairat-ricardinho-transfer-2026.html": {
+    "cat": "Football",
+    "title": "Football: a notable Kairat exit and tournament battles across the calendar",
+    "desc": "Kairat parted ways with Brazilian forward Ricardinho as club competitions continue to shape form before a major football summer.",
+    "date": "May 13, 2026",
+    "read": "3 min",
+    "body": "<p>Almaty club Kairat has parted ways with Brazilian forward Ricardinho. He was remembered by fans for scoring against Arsenal in the Champions League and became part of a notable European season for the club.</p><h2>What happened</h2><ul><li>the club and the player ended their cooperation by mutual agreement</li><li>Ricardinho spent less than a year with the team</li><li>his Champions League goal became one of the most discussed moments of the season</li></ul><p>Such moves may look like local transfer news, but for a club they often mean a squad reset and new roles for younger players.</p><h2>Why it matters</h2><p>Ahead of a major international football summer, club form matters more than usual. Transfers, injuries and playing time directly affect national teams and tournament expectations.</p><h2>Pereuloq view</h2><p>Football is not only about finals. Sometimes an important turn begins with one transfer that changes the balance inside a team.</p>"
+  },
+  "sport/volleyball-may-2026-teams-tournaments.html": {
+    "cat": "Volleyball",
+    "title": "Volleyball stays active in May with national teams, training camps and tournaments",
+    "desc": "May’s volleyball calendar is heating up with national teams, training camps, coaching decisions and tournament preparation.",
+    "date": "May 13, 2026",
+    "read": "3 min",
+    "body": "<p>May’s volleyball agenda remains highly active: national teams are training, coaches are testing combinations, and club and international tournaments are setting the pace for the summer season.</p><h2>What is happening</h2><ul><li>teams are updating training plans</li><li>players are returning from club seasons</li><li>coaches are checking the form of leaders and young players</li><li>tournaments are becoming tests before bigger events</li></ul><p>These stories may not always look loud on their own, but together they show how competitive form is built before the decisive months.</p><h2>Why it matters</h2><p>Volleyball remains one of the world’s most widely played sports. National-team and club preparation directly shapes tournament quality, fan interest and future results.</p><h2>Pereuloq view</h2><p>Volleyball’s strength is constant motion. While football takes the loudest headlines, the volleyball season keeps building its audience and preparing major matches.</p>"
+  },
+  "sport/world-cup-2026-first-squads.html": {
+    "cat": "Football",
+    "title": "First World Cup 2026 squads named as teams begin final tournament planning",
+    "desc": "Preparation for World Cup 2026 is accelerating as national teams start naming squads and coaches move into final selection mode.",
+    "date": "May 13, 2026",
+    "read": "4 min",
+    "body": "<p>Preparation for the 2026 World Cup is entering a new phase as national teams begin publishing final or extended squad lists.</p><p>For coaches, this is the moment when strategy turns into specific choices: players, roles and tactical partnerships.</p><h2>What is happening now</h2><ul><li>the first national teams are starting to announce squads</li><li>leading contenders are testing squad depth</li><li>players are fighting for a place in the final list</li><li>spring club form is becoming a key selection argument</li></ul><h2>Why it matters</h2><p>World Cup 2026 will be hosted by the United States, Mexico and Canada and will include 48 teams for the first time. The larger the tournament, the more important squad depth becomes.</p><h2>Pereuloq view</h2><p>World Cup squad lists are no longer just names on paper. They are early signals of which teams are ready for modern, fast football and which are still tied to the previous cycle.</p>"
+  },
+  "sport/magic-johnson-la-world-cup-2026.html": {
+    "cat": "Football",
+    "title": "NBA legend urges fans to make Los Angeles their World Cup destination",
+    "desc": "Magic Johnson urged fans around the world to make Los Angeles their World Cup destination, framing the city as a global sports capital.",
+    "date": "May 13, 2026",
+    "read": "4 min",
+    "body": "<p>NBA legend Magic Johnson urged fans to make Los Angeles their destination for the 2026 FIFA World Cup.</p><p>He framed the city as a global sports capital and argued that the tournament should become more than a series of football matches: a citywide festival for international fans.</p><h2>What Los Angeles is preparing</h2><ul><li>8 tournament matches in the region</li><li>large weekend fan festivals</li><li>transport plans for visitors</li><li>promotion led by athletes and local celebrities</li></ul><p>SoFi Stadium is set to be one of the tournament’s key venues, while Los Angeles is already trying to turn the World Cup into a major tourism moment.</p><h2>Why it matters</h2><p>The 2026 World Cup will be the largest in history, hosted by the United States, Mexico and Canada with 48 teams. For Los Angeles, it is a chance to make football part of the city’s mainstream sports culture.</p><h2>Pereuloq view</h2><p>World Cup 2026 will not only be a sports tournament. It will also be a competition between cities for global attention, and Los Angeles is already moving early.</p>"
+  },
   "posts/apple-ai-wwdc-2026.html": {
     "cat": "Technology",
     "title": "Apple is preparing its biggest iPhone AI update — what to expect at WWDC 2026",
@@ -968,6 +1056,7 @@ const CATS_DATA = [
   { icon: '!', name: 'Природа', count: '1' },
   { icon: '🎬', name: 'События', count: '1' },
   { icon: '🎵', name: 'Музыка', count: '1' },
+  { icon: 'SP', name: 'Спорт', count: '5' },
   { icon: '◆', name: 'Проект', count: '1' }
 ];
 
@@ -1070,7 +1159,7 @@ if (i18n.lang() === 'en') {
     { icon: 'PC', name: 'Technology', count: '5' }, { icon: '$', name: 'Business', count: '2' },
     { icon: 'FM', name: 'Film', count: '1' }, { icon: '*', name: 'Culture', count: '3' },
     { icon: '!', name: 'Nature', count: '1' }, { icon: 'EV', name: 'Events', count: '1' },
-    { icon: 'MU', name: 'Music', count: '1' }, { icon: 'PR', name: 'Project', count: '1' }
+    { icon: 'MU', name: 'Music', count: '1' }, { icon: 'SP', name: 'Sport', count: '5' }, { icon: 'PR', name: 'Project', count: '1' }
   );
   TICKER_ITEMS.splice(0, TICKER_ITEMS.length,
     'Apple prepares a major AI update for iPhone',
@@ -1114,7 +1203,7 @@ function formatRub(value) {
 
 function resolveSearchHref(href) {
   if (/^https?:\/\//.test(href) || href.startsWith('../')) return href;
-  return location.pathname.includes('/posts/') ? `../${href}` : href;
+  return /\/(posts|politics|sport)\//.test(location.pathname) ? `../${href}` : href;
 }
 
 function setupSearch() {
