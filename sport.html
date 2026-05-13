@@ -5,7 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Спорт онлайн - Pereuloq</title>
   <meta name="description" content="Спортивный раздел Pereuloq с live-матчами, счетом, турнирами, статистикой и автообновлением данных.">
-  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="./site.webmanifest">
+  <meta name="theme-color" content="#080b14">
+  <meta name="msapplication-TileColor" content="#080b14">
+  <meta name="msapplication-config" content="/browserconfig.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -15,18 +22,25 @@
   <meta name="author" content="Pereuloq">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://pereuloq.ru/sport.html">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" hreflang="ru" href="https://pereuloq.ru/sport.html">
+  <link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/sport.html">
+  <link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/sport.html">
   <meta property="og:site_name" content="Pereuloq">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:title" content="Спорт онлайн - Pereuloq">
   <meta property="og:description" content="Спортивный раздел Pereuloq с live-матчами, счетом, турнирами, статистикой и автообновлением данных.">
-  <meta property="og:image" content="https://pereuloq.ru/assets/logo.svg">
+  <meta property="og:image" content="https://pereuloq.ru/assets/icons/android-chrome-512x512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="Pereuloq">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pereuloq.ru/sport.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Спорт онлайн - Pereuloq">
   <meta name="twitter:description" content="Спортивный раздел Pereuloq с live-матчами, счетом, турнирами, статистикой и автообновлением данных.">
-  <meta name="twitter:image" content="https://pereuloq.ru/assets/logo.svg">
+  <meta name="twitter:image" content="https://pereuloq.ru/assets/icons/android-chrome-512x512.png">
+  <meta name="application-name" content="Pereuloq">
+  <meta name="apple-mobile-web-app-title" content="Pereuloq">
   <!-- /Pereuloq SEO -->
   <!-- Pereuloq Structured Data -->
   <script type="application/ld+json" id="schema-organization">{
@@ -34,7 +48,12 @@
   "@type": "Organization",
   "name": "Pereuloq",
   "url": "https://pereuloq.ru",
-  "logo": "https://pereuloq.ru/assets/logo.svg"
+  "logo": "https://pereuloq.ru/assets/icons/android-chrome-512x512.png",
+  "founder": {
+    "@type": "Person",
+    "name": "Almir Khialov",
+    "url": "https://pereuloq.ru/almir-khialov.html"
+  }
 }</script>
   <script type="application/ld+json" id="schema-website">{
   "@context": "https://schema.org",
@@ -61,7 +80,7 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Спорт онлайн",
+      "name": "Спорт онлайн - Pereuloq",
       "item": "https://pereuloq.ru/sport.html"
     }
   ]
@@ -79,8 +98,10 @@
         
         
         <a href="about.html">О проекте</a>
+        <a href="./almir-khialov.html">Founder</a>
       </nav>
       <div class="sport-actions">
+        <div class="lang-switcher" aria-label="Language selector"><a href="./sport.html" hreflang="ru" class="active">RU</a><a href="en/sport.html" hreflang="en">EN</a></div>
         <button class="icon-btn" id="REFRESH_BTN" type="button" aria-label="Обновить матчи">↻</button>
         <button class="icon-btn" id="THEME_BTN" type="button" aria-label="Сменить тему">☽</button>
         <button class="menu-btn" id="MOBILE_MENU_BTN" type="button" aria-label="Открыть меню">☰</button>
@@ -95,6 +116,7 @@
     
     
     <a href="about.html">О проекте</a>
+        <a href="./almir-khialov.html">Founder</a>
   </div>
 
   <main>
@@ -163,7 +185,8 @@
       
       <a href="privacy.html">Политика</a>
     </nav>
-  </footer>
+    <div class="founder-note">Founded by <a class="founder-link" href="./almir-khialov.html">Almir Khialov</a> · <span>Founder & Owner of Pereuloq</span></div>
+</footer>
 
   <div class="toast" id="TOAST" role="status" aria-live="polite"><span id="T_M">Готово</span></div>
   <script type="module" src="js/ui.js"></script>

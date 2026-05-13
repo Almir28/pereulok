@@ -11,7 +11,12 @@
       '@type': 'Organization',
       name: config.name,
       url: config.url,
-      logo: abs('/assets/logo.svg'),
+      logo: abs('/assets/icons/android-chrome-512x512.png'),
+      founder: {
+        '@type': 'Person',
+        name: 'Almir Khialov',
+        url: `${config.url}/almir-khialov.html`
+      },
       sameAs: [config.url]
     };
   }
@@ -56,16 +61,16 @@
       datePublished: articleData.isoDate || articleData.publishedAt || '2026-05-11T09:00:00+03:00',
       dateModified: articleData.modifiedAt || articleData.isoDate || '2026-05-11T09:00:00+03:00',
       author: {
-        '@type': 'Organization',
-        name: articleData.author || config.name,
-        url: config.url
+        '@type': 'Person',
+        name: articleData.author || 'Almir Khialov',
+        url: `${config.url}/almir-khialov.html`
       },
       publisher: {
         '@type': 'Organization',
         name: config.name,
         logo: {
           '@type': 'ImageObject',
-          url: abs('/assets/logo.svg')
+          url: abs('/assets/icons/android-chrome-512x512.png')
         }
       },
       mainEntityOfPage: {
@@ -105,7 +110,7 @@
       '@type': 'Product',
       name: productData.name || document.querySelector('h1')?.textContent || 'Цифровой товар Pereuloq',
       description: productData.description || document.querySelector('meta[name="description"]')?.content || 'Цифровой товар Pereuloq Store',
-      image: productData.image || abs('/assets/logo.svg'),
+      image: productData.image || abs('/assets/icons/android-chrome-512x512.png'),
       brand: {
         '@type': 'Brand',
         name: 'Pereuloq Store'

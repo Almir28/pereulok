@@ -12,7 +12,9 @@ function normalize(value = '') {
 }
 
 async function fetchPoliticsData() {
-  const response = await fetch('data/politics-feed.json', { cache: 'no-store' });
+  const isEnglishPath = /\/en(?:\/|$)/.test(location.pathname);
+  const dataPath = isEnglishPath ? '../data/politics-feed.json' : 'data/politics-feed.json';
+  const response = await fetch(dataPath, { cache: 'no-store' });
   if (!response.ok) throw new Error(`Politics feed failed: ${response.status}`);
   return response.json();
 }

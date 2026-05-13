@@ -8,7 +8,102 @@ const routes = {
   private: 'private.html'
 };
 
+const runtimeTranslations = {
+  ru: {
+    searchPlaceholder: 'Поиск по журналу',
+    searchEmpty: 'Ничего не найдено',
+    orderCopied: 'Заказ скопирован. Отправьте его продавцу в Telegram',
+    linkCopied: 'Ссылка скопирована',
+    subscribed: 'Вы подписаны. Добро пожаловать.',
+    emailInvalid: 'Введите корректный email'
+  },
+  en: {
+    searchPlaceholder: 'Search the journal',
+    searchEmpty: 'Nothing found',
+    orderCopied: 'Order copied. Send it to the seller in Telegram',
+    linkCopied: 'Link copied',
+    subscribed: 'You are subscribed. Welcome.',
+    emailInvalid: 'Enter a valid email'
+  }
+};
+
+const i18n = {
+  lang: () => window.PereuloqMetaGenerator?.currentLang?.() || (((document.documentElement.lang || '').toLowerCase().startsWith('en') || location.pathname.startsWith('/en/')) ? 'en' : 'ru'),
+  t: (key) => window.PereuloqMetaGenerator?.t?.(key) || runtimeTranslations[i18n.lang()]?.[key] || runtimeTranslations.ru[key] || key
+};
+
 const ARTICLES = [
+  {
+    id: 30,
+    cat: 'Технологии',
+    kind: 'news',
+    title: 'Apple готовит крупнейшее AI-обновление iPhone — что покажут на WWDC 2026',
+    desc: 'Apple готовит масштабное обновление Apple Intelligence для iOS: новая Siri, офлайн-AI, умные сводки и системный персональный помощник.',
+    author: 'Almir Khialov',
+    date: '13 мая 2026',
+    read: '5 мин',
+    img: 'https://images.openai.com/static-rsc-4/2GVBZ87VNjKk9T3ssdouDf7JqvmUthoKAYHgSkwQOZ5vBepwfeipkU5gdvxcTgVvsalANS8y9MI23szgSmKXc1FV71qDV--8Gr1lf8EcajPjBcpY1aftsEXu4kbbw0nJLbRVENM45UTAXT9ZSHMnx1qHk9ARfT8w3QIio0EXzUJhQxw1Er6x42wV34__1njN?purpose=fullsize',
+    bg: 'gb1',
+    href: 'posts/apple-ai-wwdc-2026.html',
+    body: `<p>Пока весь рынок обсуждает OpenAI и новые AI-видео, Apple готовит то, что может полностью изменить iPhone уже в этом году.</p>
+          <p>По информации инсайдеров и аналитиков индустрии, на WWDC 2026 компания покажет масштабное обновление Apple Intelligence, которое станет центром новой iOS. Главная цель Apple — сделать AI незаметным, быстрым и встроенным прямо в повседневные действия пользователя.</p>
+          <h2>Что может появиться</h2>
+          <ul><li>Siri нового поколения с почти живым общением</li><li>Автоматическое редактирование фото и видео</li><li>AI-сводки уведомлений и сообщений</li><li>Умная работа батареи через машинное обучение</li><li>Генерация текста внутри Notes, Mail и Safari</li><li>Персональный AI-помощник прямо в системе</li></ul>
+          <p>Инсайдеры также сообщают, что Apple активно работает над офлайн-AI, чтобы часть функций работала даже без интернета. Это может стать главным отличием компании от конкурентов.</p>
+          <h2>Почему это важно</h2>
+          <p>Сегодня AI — самая быстрорастущая категория интернета. Но большинство сервисов работают отдельно: приложения, сайты или подписки. Apple хочет встроить искусственный интеллект прямо в iPhone так, чтобы пользователь почти не замечал его работу, но чувствовал результат каждый день.</p>
+          <h2>Что это значит для пользователей</h2>
+          <p>Для обычных людей это меньше ручных действий, более быстрый сценарий работы, умнее iPhone и новые функции без необходимости устанавливать десятки приложений. Для индустрии — новый этап AI-гонки между Apple, OpenAI, Google и Microsoft.</p>
+          <h2>Мнение Pereuloq</h2>
+          <p>Apple редко приходит первой. Но когда компания выходит на рынок позднее, она часто меняет саму привычку использования технологии. Именно поэтому WWDC 2026 может стать одним из самых важных событий года для всей tech-индустрии.</p>`
+  },
+  {
+    id: 29,
+    cat: 'Технологии',
+    kind: 'news',
+    title: 'OpenAI запустила Daybreak — AI теперь сам ищет уязвимости в коде',
+    desc: 'OpenAI представила Daybreak — AI-сервис для автоматического поиска уязвимостей, проверки зависимостей и предложения исправлений в коде.',
+    author: 'Almir Khialov',
+    date: '13 мая 2026',
+    read: '4 мин',
+    img: 'https://images.openai.com/static-rsc-4/UUa5GZta8TGs3yr-0a-T3rOFyCQ9Qg2XQyiuyuLPeN-_iUZBL0L6MwwdnDDHMdFSgRR_AH06Bxwdh4V-gtItXO7mGaaDw1CF2gEwMf3uTTnzBazT4H3qU57eCzHQHr_HixTvTjGh7J6KeomjnnbBMiZ-FY5OMcnuQLxqpoxI3C6uKSWp1LI_GgVGR1NDXvu5?purpose=fullsize',
+    bg: 'gb2',
+    href: 'posts/openai-daybreak-ai-security.html',
+    body: `<p>OpenAI представила новый AI-сервис Daybreak, который автоматически ищет уязвимости в программном обеспечении еще до того, как ими воспользуются злоумышленники.</p>
+          <p>Проект основан на новой модели GPT-5.4-Cyber и уже привлек внимание крупных IT-компаний и специалистов по безопасности.</p>
+          <h2>Что умеет Daybreak</h2>
+          <ul><li>находит потенциальные уязвимости</li><li>проверяет зависимости</li><li>моделирует возможные атаки</li><li>предлагает исправления</li><li>помогает закрывать проблемы еще на этапе создания продукта</li></ul>
+          <h2>Почему это важно</h2>
+          <p>Мир все больше зависит от облачных сервисов, банковских приложений, AI-систем и цифровой инфраструктуры. При этом количество кибератак растет каждый год.</p>
+          <p>Раньше поиск уязвимостей занимал недели или месяцы. Теперь AI начинает делать это автоматически и намного быстрее.</p>
+          <h2>Что это меняет для индустрии</h2>
+          <p>Если такие системы станут стандартом, разработка ПО ускорится, компании будут выпускать более безопасные продукты, а роль AI в программировании станет еще сильнее. Но те же технологии могут использоваться злоумышленниками, поэтому начинается новая гонка: AI для защиты против AI для атак.</p>
+          <h2>Мнение Pereuloq</h2>
+          <p>Раньше AI помогал писать код. Теперь AI начинает охранять сам интернет. И это может стать одной из самых важных технологических трансформаций ближайших лет.</p>`
+  },
+  {
+    id: 28,
+    cat: 'Стиль',
+    kind: 'news',
+    title: 'Swatch x Audemars Piguet взорвали интернет — но есть неожиданный поворот',
+    desc: 'Swatch и Audemars Piguet показали Royal Pop — яркую Pop Art-коллекцию pocket watch вместо ожидаемой доступной версии Royal Oak.',
+    author: 'Almir Khialov',
+    date: '13 мая 2026',
+    read: '5 мин',
+    img: 'https://images.openai.com/static-rsc-4/A0Ta7PvhrGNxGHZlJKvOZyJ1WkWXbNpz1Dw12avEFjfv9YNfdd4GD57iPe3uzE_xuhntOvF6FpBQ3_gao1r1HKtiOyc9aNwSViqByB83qYCVFL2t8njjH827XbR8xsXHikSk38Op7Axgsk92YC5U5w26z56e2d8Uxpst5hpg4gIkCThEzbIFfVDf67r-xHoV?purpose=fullsize',
+    bg: 'gb3',
+    href: 'posts/swatch-audemars-piguet-royal-pop.html',
+    body: `<p>Swatch официально представила долгожданную коллаборацию с Audemars Piguet — и интернет оказался в шоке. Все ожидали доступную версию легендарных Royal Oak, но компании выпустили премиальные pocket watch в стиле Pop Art под названием Royal Pop.</p>
+          <h2>Что показали</h2>
+          <p>Коллекция состоит из восьми ярких моделей с восьмиугольным дизайном AP, элементами Royal Oak, Bioceramic-корпусом и механизмом SISTEM51 с ручным заводом.</p>
+          <p>Часы можно носить на шее, цеплять на одежду, сумку или использовать как заметный аксессуар.</p>
+          <h2>Интернет ожидал другое</h2>
+          <p>Соцсети были переполнены AI-рендерами MoonSwatch в стиле Royal Oak, поэтому многие ждали доступную версию AP Royal Oak за несколько сотен долларов. Но Swatch пошла другим путем.</p>
+          <h2>Почему это все равно огромная новость</h2>
+          <p>После феномена MoonSwatch рынок понял: люди готовы покупать не только люкс, но и часть легенды. Swatch продолжает превращать luxury-watch культуру в массовое интернет-событие.</p>
+          <h2>Мнение Pereuloq</h2>
+          <p>Swatch снова делает то, что умеет лучше всех: превращает часы из просто аксессуара в поп-культурный момент. И похоже, в 2026 году hype вокруг часов снова стал частью большого интернета.</p>`
+  },
   {
     id: 25,
     cat: 'Финансы',
@@ -378,6 +473,20 @@ const PUBLIC_ARTICLES = ARTICLES.filter((article) => article.href !== 'store.htm
 const PROMO_ARTICLES = PUBLIC_ARTICLES.filter((article) => article.promoted !== false);
 const POLITICS_SEARCH_ITEMS = [
   {
+    title: 'Мир входит в новую холодную войну — США и Китай готовятся к крупнейшим переговорам 2026 года',
+    desc: 'Переговоры Donald Trump и Xi Jinping проходят на фоне торговой войны, AI-гонки, кризиса вокруг Ирана, Тайваня и перестройки мировой экономики.',
+    cat: 'Мировая политика',
+    href: 'politics/us-china-new-cold-war-2026.html',
+    img: 'https://images.openai.com/static-rsc-4/SRRR6mUzjNmt1SpvZibk_t4r7VjJ8qbNULuq25ffjEwc94_wzjPH0MTabTy7fyFDqAeMLtpzxSoHmlOAZwUOmAxAqV94K7N0LsN-8gkaogWC1upz0W6KO4mmsjCblDw0Em8-htxx7kXL_YQlnB9b24K76dJtejZ-ztCwPFOzIB2FuTTf6ey2-dd4g2qysuCK?purpose=fullsize'
+  },
+  {
+    title: 'Европа готовится ко второй энергетической катастрофе — кризис 2026 усиливается',
+    desc: 'Европа сталкивается с ростом цен на нефть и газ, давлением на промышленность и экстренными мерами из-за кризиса вокруг Ормузского пролива.',
+    cat: 'Мировая политика',
+    href: 'politics/europe-energy-crisis-2026.html',
+    img: 'https://images.openai.com/static-rsc-4/MGw0543HCybEvLHKhBoyd2w0okbOv5pVKGr0yRrn6IHg-XCq5aRfU_-ReCpxtSBEoMZfYzMGaFun18Mim3QciGsQALfq7Hli5fD7DBhqVBi75XuqrdW_cxy2UsQrJ-T0qg94oZ2J-WvlnrDys7_FisafcLEfKs7e5YLGUHeprgDC366tgiPqOdvizmXq8WaQ?purpose=fullsize'
+  },
+  {
     title: 'В Кремле заявили, что встреча Путина и Зеленского должна поставить точку в переговорах',
     desc: 'Dmitry Peskov заявил, что возможная встреча Vladimir Putin и Volodymyr Zelenskyy имеет смысл только на финальной стадии переговоров.',
     cat: 'Мировая политика',
@@ -635,11 +744,11 @@ function setupSearch() {
   panel.className = 'search-panel';
   panel.id = 'SEARCH_PANEL';
   panel.innerHTML = `
-    <div class="search-box" role="dialog" aria-modal="true" aria-label="Поиск по Pereuloq">
+    <div class="search-box" role="dialog" aria-modal="true" aria-label="${i18n.lang() === 'en' ? 'Search Pereuloq' : 'Поиск по Pereuloq'}">
       <div class="search-head">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input class="search-input" id="SEARCH_INPUT" type="search" placeholder="Найти новость, тему или рубрику" autocomplete="off">
-        <button class="search-close" id="SEARCH_CLOSE" type="button" aria-label="Закрыть поиск">×</button>
+        <input class="search-input" id="SEARCH_INPUT" type="search" placeholder="${i18n.t('searchPlaceholder')}" autocomplete="off">
+        <button class="search-close" id="SEARCH_CLOSE" type="button" aria-label="${i18n.lang() === 'en' ? 'Close search' : 'Закрыть поиск'}">×</button>
       </div>
       <div class="search-results" id="SEARCH_RESULTS"></div>
     </div>
@@ -662,7 +771,7 @@ function setupSearch() {
           <span class="search-desc">${escapeHtml(item.desc)}</span>
         </span>
       </a>
-    `).join('') : '<div class="search-empty">Ничего не найдено. Попробуйте другое слово.</div>';
+    `).join('') : `<div class="search-empty">${i18n.t('searchEmpty')}</div>`;
   };
   const open = () => {
     panel.classList.add('open');
@@ -1447,24 +1556,24 @@ function setupEvents() {
     if (closeModalButton) closeModal(closeModalButton.dataset.closeModal);
     if (copyButton) {
       await copyText(new URL(copyButton.dataset.copy, location.href).href);
-      toast('✓ Ссылка скопирована');
+      toast(i18n.t('linkCopied'));
     }
     if (copyOrderButton) {
       const value = $('#AGC_ORDER_TEXT')?.value || $('#XBOX_ORDER_TEXT')?.value;
       if (value) {
         await copyText(value);
-        toast('✓ Заказ скопирован');
+        toast(i18n.t('orderCopied'));
       }
     }
     if (copyStaticOrderButton && !contactSellerButton) {
       await copyText(copyStaticOrderButton.dataset.copyStaticOrder);
-      toast('✓ Заказ скопирован');
+      toast(i18n.t('orderCopied'));
     }
     if (contactSellerButton) {
       const value = contactSellerButton.dataset.copyStaticOrder || $('#AGC_ORDER_TEXT')?.value || $('#XBOX_ORDER_TEXT')?.value;
       if (value) {
         await copyText(value);
-        toast('✓ Заказ скопирован');
+        toast(i18n.t('orderCopied'));
       }
       window.open(contactSellerButton.dataset.contactSeller, '_blank', 'noopener');
     }
@@ -1482,10 +1591,10 @@ function setupEvents() {
     event.preventDefault();
     const input = $('#NL_EMAIL');
     if (input?.value.includes('@')) {
-      toast('✦ Вы в списке. Добро пожаловать.');
+      toast(i18n.t('subscribed'));
       input.value = '';
     } else {
-      toast('⚠ Введите корректный email');
+      toast(i18n.t('emailInvalid'));
     }
   });
   $('#READ_OV')?.addEventListener('scroll', updateReadProgress, { passive: true });

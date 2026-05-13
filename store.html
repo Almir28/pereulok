@@ -3,9 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Магазин цифровых товаров - Pereuloq</title>
-<meta name="description" content="Магазин Pereuloq: Apple Gift Card, игровые подписки, цифровые товары и сервисы с быстрым оформлением заказа.">
-<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<title>Pereuloq Store — подписки, игры и цифровые товары</title>
+<meta name="description" content="Pereuloq Store — цифровой магазин подписок, игр, Apple Gift Card, Xbox Game Pass и других цифровых товаров с быстрым оформлением заказа.">
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="./site.webmanifest">
+  <meta name="theme-color" content="#080b14">
+  <meta name="msapplication-TileColor" content="#080b14">
+  <meta name="msapplication-config" content="/browserconfig.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -112,6 +119,10 @@ nav{display:flex;gap:2px}
 .nv:hover{color:var(--t1);background:var(--violet-g)}
 .nv.on{color:var(--violet-3)}
 .nv.on::after{content:'';position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:18px;height:2px;background:linear-gradient(90deg,var(--violet),var(--cyan));border-radius:2px}
+.lang-switcher{display:inline-flex;align-items:center;gap:4px;padding:3px;border:1px solid var(--ln2);border-radius:999px;background:rgba(248,250,255,.04);margin-left:8px}
+.lang-switcher a{min-width:30px;padding:7px 9px;border-radius:999px;color:var(--t3);font:800 10px/1 var(--mono);letter-spacing:.08em;text-align:center;transition:color .2s,background .2s,transform .2s}
+.lang-switcher a:hover{color:#fff;background:rgba(255,159,10,.12);transform:translateY(-1px)}
+.lang-switcher a.active{color:#080b14;background:#FF9F0A}
 .mob-nav{display:none}
 
 .h-right{margin-left:auto;display:flex;align-items:center;gap:8px}
@@ -394,6 +405,16 @@ footer{padding:56px 0 30px;margin-top:72px;border-top:1px solid var(--ln)}
 .ft-legal{display:flex;gap:18px}
 .ft-leg{font-size:10px;color:var(--t4);font-family:var(--mono);transition:color .2s}
 .ft-leg:hover{color:var(--violet-3)}
+.founder-link{color:#FF9F0A;font-weight:800;position:relative;transition:color .2s,transform .2s;text-decoration:none}
+.founder-link::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:1px;background:#FF9F0A;transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
+.founder-link:hover{color:#ffb84a;transform:translateY(-1px)}
+.founder-link:hover::after{transform:scaleX(1)}
+.founder-note{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
+.store-trust{margin:18px 0 0;padding:14px;border:1px solid rgba(255,159,10,.2);border-radius:var(--r-md);background:rgba(255,159,10,.06)}
+.store-trust strong{display:block;color:var(--t1);font-size:13px;margin-bottom:4px}
+.store-trust span{display:block;color:var(--t3);font-size:11px;font-family:var(--mono);margin-bottom:10px}
+.store-trust a{display:inline-flex;color:#FF9F0A;font:800 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;transition:color .2s,transform .2s}
+.store-trust a:hover{color:#ffb84a;transform:translateY(-1px)}
 
 /* ═══════════════════════════════════
    TOAST
@@ -413,18 +434,25 @@ footer{padding:56px 0 30px;margin-top:72px;border-top:1px solid var(--ln)}
   <meta name="author" content="Pereuloq">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://pereuloq.ru/store.html">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" hreflang="ru" href="https://pereuloq.ru/store.html">
+  <link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/store.html">
+  <link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/store.html">
   <meta property="og:site_name" content="Pereuloq">
   <meta property="og:locale" content="ru_RU">
-  <meta property="og:title" content="Магазин цифровых товаров - Pereuloq">
-  <meta property="og:description" content="Магазин Pereuloq: Apple Gift Card, игровые подписки, цифровые товары и сервисы с быстрым оформлением заказа.">
-  <meta property="og:image" content="https://pereuloq.ru/assets/logo.svg">
+  <meta property="og:title" content="Pereuloq Store — подписки, игры и цифровые товары">
+  <meta property="og:description" content="Pereuloq Store — цифровой магазин подписок, игр, Apple Gift Card, Xbox Game Pass и других цифровых товаров с быстрым оформлением заказа.">
+  <meta property="og:image" content="https://pereuloq.ru/assets/icons/android-chrome-512x512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="Pereuloq">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pereuloq.ru/store.html">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Магазин цифровых товаров - Pereuloq">
-  <meta name="twitter:description" content="Магазин Pereuloq: Apple Gift Card, игровые подписки, цифровые товары и сервисы с быстрым оформлением заказа.">
-  <meta name="twitter:image" content="https://pereuloq.ru/assets/logo.svg">
+  <meta name="twitter:title" content="Pereuloq Store — подписки, игры и цифровые товары">
+  <meta name="twitter:description" content="Pereuloq Store — цифровой магазин подписок, игр, Apple Gift Card, Xbox Game Pass и других цифровых товаров с быстрым оформлением заказа.">
+  <meta name="twitter:image" content="https://pereuloq.ru/assets/icons/android-chrome-512x512.png">
+  <meta name="application-name" content="Pereuloq">
+  <meta name="apple-mobile-web-app-title" content="Pereuloq">
   <!-- /Pereuloq SEO -->
   <!-- Pereuloq Structured Data -->
   <script type="application/ld+json" id="schema-organization">{
@@ -432,7 +460,12 @@ footer{padding:56px 0 30px;margin-top:72px;border-top:1px solid var(--ln)}
   "@type": "Organization",
   "name": "Pereuloq",
   "url": "https://pereuloq.ru",
-  "logo": "https://pereuloq.ru/assets/logo.svg"
+  "logo": "https://pereuloq.ru/assets/icons/android-chrome-512x512.png",
+  "founder": {
+    "@type": "Person",
+    "name": "Almir Khialov",
+    "url": "https://pereuloq.ru/almir-khialov.html"
+  }
 }</script>
   <script type="application/ld+json" id="schema-website">{
   "@context": "https://schema.org",
@@ -459,7 +492,7 @@ footer{padding:56px 0 30px;margin-top:72px;border-top:1px solid var(--ln)}
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Магазин цифровых товаров",
+      "name": "Pereuloq Store — подписки, игры и цифровые товары",
       "item": "https://pereuloq.ru/store.html"
     }
   ]
@@ -484,8 +517,10 @@ footer{padding:56px 0 30px;margin-top:72px;border-top:1px solid var(--ln)}
       
       
       <a class="nv" href="about.html">О проекте</a>
+      <a class="nv" href="./almir-khialov.html">Founder</a>
     </nav>
     <div class="h-right">
+      <div class="lang-switcher" aria-label="Language selector"><a href="./store.html" hreflang="ru" class="active">RU</a><a href="en/store.html" hreflang="en">EN</a></div>
       <button class="btn-theme" id="THEME_BTN" onclick="toggleTheme()">☽</button>
       <a class="btn-login" href="private.html"><span>Premium</span></a>
     </div>
@@ -498,6 +533,7 @@ footer{padding:56px 0 30px;margin-top:72px;border-top:1px solid var(--ln)}
   
   
   <a href="about.html">О проекте</a>
+        <a href="./almir-khialov.html">Founder</a>
 </div>
 
 <!-- ════ HERO ════ -->
@@ -561,6 +597,13 @@ footer{padding:56px 0 30px;margin-top:72px;border-top:1px solid var(--ln)}
   <div class="wrap">
     <div class="stats-row" id="STATS"></div>
   </div>
+  <div class="wrap">
+    <aside class="store-trust" aria-label="Founder trust block">
+      <strong>Operated by <a class="founder-link" href="./almir-khialov.html">Almir Khialov</a></strong>
+      <span>Founder of Pereuloq</span>
+      <a href="./almir-khialov.html">About founder</a>
+    </aside>
+  </div>
 
   <!-- NL -->
   <div class="wrap">
@@ -592,7 +635,7 @@ footer{padding:56px 0 30px;margin-top:72px;border-top:1px solid var(--ln)}
       <div><div class="ft-col-h">Контакты</div><div class="ft-links"><a class="ft-link" href="https://t.me/almir328" target="_blank" rel="noopener">Telegram</a><a class="ft-link" href="mailto:hello@pereuloq.ru">hello@pereuloq.ru</a><a class="ft-link" href="private.html">Поддержка</a></div></div>
     </div>
     <div class="ft-bottom">
-      <span class="ft-copy">© 2026 Pereuloq. Владелец и дизайн-разработчик: Almir Khialov</span>
+      <span class="ft-copy">© 2026 Pereuloq. Pereuloq — основан <a class="founder-link" href="./almir-khialov.html">Almir Khialov</a></span>
       <div class="ft-legal"><a class="ft-leg" href="privacy.html">Конфиденциальность</a><a class="ft-leg" href="about.html">О проекте</a><a class="ft-leg" href="private.html">Premium</a></div>
     </div>
   </div>

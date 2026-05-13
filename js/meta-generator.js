@@ -5,21 +5,21 @@
     name: 'Pereuloq',
     url: 'https://pereuloq.ru',
     locale: 'ru_RU',
-    author: 'Pereuloq',
-    defaultImage: 'https://pereuloq.ru/assets/logo.svg',
-    description: 'Pereuloq - современный онлайн-журнал о технологиях, бизнесе, культуре, здоровье, кино и важных событиях.',
+    author: 'Almir Khialov',
+    defaultImage: 'https://pereuloq.ru/assets/icons/android-chrome-512x512.png',
+    description: 'Pereuloq — современный онлайн-журнал о технологиях, интересных событиях и цифровых сервисах. Новости без политики, войн и лишнего шума. Также доступен магазин подписок, игр и Apple Gift Card.',
     keywords: ['Pereuloq', 'новости', 'технологии', 'культура', 'бизнес', 'кино', 'здоровье', 'медиа']
   };
 
   const PAGE_SEO = {
     '/': {
-      title: 'Pereuloq - журнал о технологиях, культуре и событиях',
-      description: 'Pereuloq - премиальный онлайн-журнал о технологиях, бизнесе, культуре, здоровье, кино и интересных событиях без лишнего шума.',
+      title: 'Pereuloq — технологии, события и цифровой магазин',
+      description: 'Pereuloq — современный онлайн-журнал о технологиях, интересных событиях и цифровых сервисах. Новости без политики, войн и лишнего шума. Также доступен магазин подписок, игр и Apple Gift Card.',
       keywords: ['онлайн журнал', 'новости Pereuloq', 'технологии', 'культура', 'бизнес']
     },
     '/index.html': {
-      title: 'Pereuloq - журнал о технологиях, культуре и событиях',
-      description: 'Pereuloq - премиальный онлайн-журнал о технологиях, бизнесе, культуре, здоровье, кино и интересных событиях без лишнего шума.',
+      title: 'Pereuloq — технологии, события и цифровой магазин',
+      description: 'Pereuloq — современный онлайн-журнал о технологиях, интересных событиях и цифровых сервисах. Новости без политики, войн и лишнего шума. Также доступен магазин подписок, игр и Apple Gift Card.',
       keywords: ['онлайн журнал', 'новости Pereuloq', 'технологии', 'культура', 'бизнес']
     },
     '/feed.html': {
@@ -33,8 +33,8 @@
       keywords: ['мировая политика', 'геополитика', 'международные конфликты', 'санкции', 'кризисы']
     },
     '/about.html': {
-      title: 'О проекте Pereuloq',
-      description: 'Pereuloq - современный онлайн-журнал о технологиях, бизнесе, путешествиях, культуре и стиле жизни с удобным чтением на всех устройствах.',
+      title: 'О проекте Pereuloq — новости без шума и цифровые сервисы',
+      description: 'Pereuloq — онлайн-журнал о технологиях, интересных событиях и цифровых сервисах без политики, войн и лишнего шума.',
       keywords: ['о Pereuloq', 'онлайн медиа', 'редакционный журнал', 'проект Pereuloq']
     },
     '/privacy.html': {
@@ -63,26 +63,53 @@
       keywords: ['матч онлайн', 'статистика матча', 'live score', 'спорт']
     },
     '/store.html': {
-      title: 'Магазин цифровых товаров - Pereuloq',
-      description: 'Магазин Pereuloq: Apple Gift Card, игровые подписки, цифровые товары и сервисы с быстрым оформлением заказа.',
+      title: 'Pereuloq Store — подписки, игры и цифровые товары',
+      description: 'Pereuloq Store — цифровой магазин подписок, игр, Apple Gift Card, Xbox Game Pass и других цифровых товаров с быстрым оформлением заказа.',
       keywords: ['магазин цифровых товаров', 'Apple Gift Card', 'подписки', 'цифровые коды']
     },
     '/apple-gift-card.html': {
-      title: 'Apple Gift Card - Pereuloq Store',
-      description: 'Apple Gift Card для разных регионов: выбор страны, номинала, расчет цены в рублях и быстрый заказ у продавца.',
+      title: 'Apple Gift Card — купить цифровую карту для App Store и iTunes',
+      description: 'Apple Gift Card для App Store и iTunes: выбор региона, номинала, расчет цены в рублях и быстрый заказ цифровой карты.',
       keywords: ['Apple Gift Card', 'подарочная карта Apple', 'iTunes карта', 'цифровой код']
     },
     '/apple-gift-card-product.html': {
-      title: 'Apple Gift Card Turkey - Pereuloq Store',
-      description: 'Apple Gift Card Turkey: выбор номинала, автоматический расчет итоговой цены в рублях и готовый текст заказа.',
+      title: 'Apple Gift Card — купить цифровую карту для App Store и iTunes',
+      description: 'Apple Gift Card для App Store и iTunes: цифровая карта Apple с выбором номинала, региона и быстрым оформлением заказа.',
       keywords: ['Apple Gift Card Turkey', 'Apple Turkey', 'iTunes Turkey', 'подарочная карта Турция']
     },
     '/product.html': {
       title: 'Цифровой товар - Pereuloq Store',
       description: 'Страница цифрового товара Pereuloq Store с описанием, ценой, рекомендациями и быстрым переходом к продавцу.',
       keywords: ['цифровой товар', 'Pereuloq Store', 'онлайн покупка']
+    },
+    '/almir-khialov.html': {
+      title: 'Almir Khialov — Founder & Owner of Pereuloq',
+      description: 'Almir Khialov is the founder and owner of Pereuloq, a modern digital media and technology platform focused on useful content, digital products and online services.',
+      keywords: ['Almir Khialov', 'Pereuloq founder', 'Founder Owner Pereuloq', 'digital media']
     }
   };
+
+  const translations = {
+    ru: {
+      searchPlaceholder: 'Найти новость, тему или рубрику',
+      searchEmpty: 'Ничего не найдено. Попробуйте другое слово.',
+      orderCopied: '✓ Заказ скопирован',
+      linkCopied: '✓ Ссылка скопирована',
+      subscribed: '✦ Вы в списке. Добро пожаловать.',
+      emailInvalid: '⚠ Введите корректный email'
+    },
+    en: {
+      searchPlaceholder: 'Search stories, topics or sections',
+      searchEmpty: 'Nothing found. Try another keyword.',
+      orderCopied: '✓ Order copied',
+      linkCopied: '✓ Link copied',
+      subscribed: '✦ You are on the list. Welcome.',
+      emailInvalid: '⚠ Enter a valid email'
+    }
+  };
+
+  const currentLang = () => (document.documentElement.lang || '').toLowerCase().startsWith('en') || window.location.pathname.startsWith('/en/') ? 'en' : 'ru';
+  const t = (key) => translations[currentLang()]?.[key] || translations.ru[key] || key;
 
   const cleanText = (value) => String(value || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
   const trim = (value, max = 158) => {
@@ -105,6 +132,9 @@
       const parts = window.location.pathname.split('/').filter(Boolean);
       const file = parts.at(-1) || 'index.html';
       const folder = parts.at(-2);
+      const maybeEn = parts.includes('en');
+      if (maybeEn && file === 'index.html') return '/en/';
+      if (maybeEn) return `/en/${folder === 'posts' || folder === 'pages' ? `${folder}/` : ''}${file}`;
       if (folder === 'posts' || folder === 'pages') return `/${folder}/${file}`;
       return file === 'index.html' ? '/' : `/${file}`;
     }
@@ -139,7 +169,41 @@
       };
     }
 
-    const config = PAGE_SEO[pagePath()] || PAGE_SEO[`/${pagePath().split('/').pop()}`] || {
+    const currentPath = pagePath();
+    const isEn = currentLang() === 'en';
+    const pathWithoutLang = currentPath.replace(/^\/en(?=\/|$)/, '') || '/';
+    const config = (isEn ? {
+      '/': {
+        title: 'Pereuloq — technology, events and a digital store',
+        description: 'Pereuloq is a modern online magazine about technology, interesting events and digital services. Useful news without unnecessary noise, plus a store for subscriptions, games and Apple Gift Card.',
+        keywords: ['Pereuloq', 'technology', 'digital media', 'digital store', 'subscriptions']
+      },
+      '/index.html': {
+        title: 'Pereuloq — technology, events and a digital store',
+        description: 'Pereuloq is a modern online magazine about technology, interesting events and digital services. Useful news without unnecessary noise, plus a store for subscriptions, games and Apple Gift Card.',
+        keywords: ['Pereuloq', 'technology', 'digital media', 'digital store', 'subscriptions']
+      },
+      '/feed.html': {
+        title: 'Pereuloq Feed — fresh stories and updates',
+        description: 'Fresh Pereuloq feed with stories about technology, culture, business, digital products and useful online services.',
+        keywords: ['Pereuloq feed', 'technology stories', 'digital media']
+      },
+      '/store.html': {
+        title: 'Pereuloq Store — subscriptions, games and digital products',
+        description: 'Pereuloq Store is a digital marketplace for subscriptions, games, Apple Gift Card, Xbox Game Pass and online services.',
+        keywords: ['Pereuloq Store', 'digital products', 'subscriptions', 'Apple Gift Card', 'Xbox Game Pass']
+      },
+      '/about.html': {
+        title: 'About Pereuloq — useful media, digital services and products',
+        description: 'Pereuloq is a modern online magazine and digital platform focused on useful technology content, digital products and online services without noise.',
+        keywords: ['about Pereuloq', 'digital media', 'technology platform']
+      },
+      '/almir-khialov.html': {
+        title: 'Almir Khialov — Founder & Owner of Pereuloq',
+        description: 'Almir Khialov is the founder and owner of Pereuloq, a modern digital media and technology platform focused on useful content, digital products and online services.',
+        keywords: ['Almir Khialov', 'Pereuloq founder', 'Founder Owner Pereuloq']
+      }
+    } : PAGE_SEO)[pathWithoutLang] || PAGE_SEO[pathWithoutLang] || PAGE_SEO[`/${pathWithoutLang.split('/').pop()}`] || {
       title: document.title || SITE.name,
       description: document.querySelector('meta[name="description"]')?.content || SITE.description,
       keywords: SITE.keywords
@@ -150,7 +214,7 @@
       description: trim(config.description),
       keywords: config.keywords || SITE.keywords,
       image: config.image || SITE.defaultImage,
-      canonical: absoluteUrl(pagePath() === '/index.html' ? '/' : pagePath())
+      canonical: absoluteUrl(currentPath === '/index.html' ? '/' : currentPath)
     };
   };
   const setTag = (selector, create, value) => {
@@ -206,6 +270,6 @@
     return { ...data, title, description, canonical, image, keywords };
   }
 
-  window.PereuloqSEOConfig = { SITE, PAGE_SEO };
-  window.PereuloqMetaGenerator = { applyMeta, metaByPage, findArticle, getArticles, absoluteUrl, cleanText, trim, articlePath };
+  window.PereuloqSEOConfig = { SITE, PAGE_SEO, translations, currentLang, t };
+  window.PereuloqMetaGenerator = { applyMeta, metaByPage, findArticle, getArticles, absoluteUrl, cleanText, trim, articlePath, currentLang, t };
 })();

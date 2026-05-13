@@ -3,9 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>О проекте Pereuloq</title>
-  <meta name="description" content="Pereuloq - современный онлайн-журнал о технологиях, бизнесе, путешествиях, культуре и стиле жизни с удобным чтением на всех устройствах.">
-  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <title>О проекте Pereuloq — новости без шума и цифровые сервисы</title>
+  <meta name="description" content="Pereuloq — онлайн-журнал о технологиях, интересных событиях и цифровых сервисах без политики, войн и лишнего шума.">
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="./site.webmanifest">
+  <meta name="theme-color" content="#080b14">
+  <meta name="msapplication-TileColor" content="#080b14">
+  <meta name="msapplication-config" content="/browserconfig.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
@@ -15,18 +22,25 @@
   <meta name="author" content="Pereuloq">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://pereuloq.ru/about.html">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" hreflang="ru" href="https://pereuloq.ru/about.html">
+  <link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/about.html">
+  <link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/about.html">
   <meta property="og:site_name" content="Pereuloq">
   <meta property="og:locale" content="ru_RU">
-  <meta property="og:title" content="О проекте Pereuloq">
-  <meta property="og:description" content="Pereuloq - современный онлайн-журнал о технологиях, бизнесе, путешествиях, культуре и стиле жизни с удобным чтением на всех устройствах.">
-  <meta property="og:image" content="https://pereuloq.ru/assets/logo.svg">
+  <meta property="og:title" content="О проекте Pereuloq — новости без шума и цифровые сервисы">
+  <meta property="og:description" content="Pereuloq — онлайн-журнал о технологиях, интересных событиях и цифровых сервисах без политики, войн и лишнего шума.">
+  <meta property="og:image" content="https://pereuloq.ru/assets/icons/android-chrome-512x512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="Pereuloq">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pereuloq.ru/about.html">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="О проекте Pereuloq">
-  <meta name="twitter:description" content="Pereuloq - современный онлайн-журнал о технологиях, бизнесе, путешествиях, культуре и стиле жизни с удобным чтением на всех устройствах.">
-  <meta name="twitter:image" content="https://pereuloq.ru/assets/logo.svg">
+  <meta name="twitter:title" content="О проекте Pereuloq — новости без шума и цифровые сервисы">
+  <meta name="twitter:description" content="Pereuloq — онлайн-журнал о технологиях, интересных событиях и цифровых сервисах без политики, войн и лишнего шума.">
+  <meta name="twitter:image" content="https://pereuloq.ru/assets/icons/android-chrome-512x512.png">
+  <meta name="application-name" content="Pereuloq">
+  <meta name="apple-mobile-web-app-title" content="Pereuloq">
   <!-- /Pereuloq SEO -->
   <!-- Pereuloq Structured Data -->
   <script type="application/ld+json" id="schema-organization">{
@@ -34,7 +48,12 @@
   "@type": "Organization",
   "name": "Pereuloq",
   "url": "https://pereuloq.ru",
-  "logo": "https://pereuloq.ru/assets/logo.svg"
+  "logo": "https://pereuloq.ru/assets/icons/android-chrome-512x512.png",
+  "founder": {
+    "@type": "Person",
+    "name": "Almir Khialov",
+    "url": "https://pereuloq.ru/almir-khialov.html"
+  }
 }</script>
   <script type="application/ld+json" id="schema-website">{
   "@context": "https://schema.org",
@@ -61,7 +80,7 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "О проекте Pereuloq",
+      "name": "О проекте Pereuloq — новости без шума и цифровые сервисы",
       "item": "https://pereuloq.ru/about.html"
     }
   ]
@@ -82,8 +101,10 @@
         
         
         <a class="nav-link" data-nav="about" href="about.html">О проекте</a>
+        <a class="nav-link" data-nav="founder" href="./almir-khialov.html">Founder</a>
       </nav>
       <div class="hdr-right">
+        <div class="lang-switcher" aria-label="Language selector"><a href="./about.html" hreflang="ru" class="active">RU</a><a href="en/about.html" hreflang="en">EN</a></div>
         <button class="hdr-theme" id="THEME_BTN" type="button" aria-label="Сменить тему">☽</button>
         <a class="hdr-btn" href="private.html">Premium</a>
         <button class="hdr-menu" id="MOBILE_MENU_BTN" type="button" aria-label="Открыть меню">☰</button>
@@ -98,6 +119,7 @@
     
     
     <a data-nav="about" href="about.html">О проекте</a>
+    <a href="./almir-khialov.html">Founder</a>
     <a data-nav="private" href="private.html">Premium</a>
   </div>
 
@@ -150,6 +172,12 @@
           </article>
         </div>
       </section>
+      <section class="about-info founder-panel" aria-labelledby="founder-title">
+        <div class="ap-tag">Founder</div>
+        <h2 id="founder-title">Almir Khialov</h2>
+        <p>Pereuloq was founded by Almir Khialov as a modern digital media and technology platform focused on useful content, digital products and online services.</p>
+        <a class="btn-ab primary" href="./almir-khialov.html">Read about Almir Khialov</a>
+      </section>
 
       <section class="about-info">
         <div class="section-header">
@@ -170,7 +198,7 @@
         <div><div class="ft-col-label">Функции</div><div class="ft-links"><a class="ft-link" href="feed.html">Фильтры ленты</a><a class="ft-link" href="private.html">Premium</a></div></div>
         <div><div class="ft-col-label">Контакт</div><div class="ft-links"><a class="ft-link" href="mailto:hello@pereuloq.ru">hello@pereuloq.ru</a><a class="ft-link" href="privacy.html">Политика</a></div></div>
       </div>
-      <div class="ft-bottom"><div class="ft-copy">© 2026 Pereuloq. Владелец и дизайн-разработчик: Almir Khialov</div><div class="ft-legal"><a class="ft-legal-link" href="feed.html">Лента</a><a class="ft-legal-link" href="politics.html">Мировая политика</a><a class="ft-legal-link" href="privacy.html">Политика</a></div></div>
+      <div class="ft-bottom"><div class="ft-copy">© 2026 Pereuloq. Pereuloq — основан <a class="founder-link" href="./almir-khialov.html">Almir Khialov</a></div><div class="ft-legal"><a class="ft-legal-link" href="feed.html">Лента</a><a class="ft-legal-link" href="politics.html">Мировая политика</a><a class="ft-legal-link" href="privacy.html">Политика</a></div></div>
     </div>
   </footer>
 
