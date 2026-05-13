@@ -3,6 +3,7 @@ const routes = {
   feed: 'feed.html',
   politics: 'politics.html',
   sport: 'sport.html',
+  worldSport: 'world-sport.html',
   store: 'store.html',
   about: 'about.html',
   private: 'private.html'
@@ -33,6 +34,20 @@ const i18n = {
 };
 
 const ARTICLES = [
+  {
+    id: 31,
+    cat: "Технологии",
+    kind: "news",
+    title: "Во Флориде взялись за Sam Altman — против OpenAI начинается давление со стороны властей",
+    desc: "Власти Флориды и республиканские прокуроры усиливают давление на OpenAI и Sam Altman из-за возможных конфликтов интересов, безопасности AI и влияния компании.",
+    author: "Almir Khialov",
+    date: "13 мая 2026",
+    read: "5 мин",
+    img: "https://images.openai.com/static-rsc-4/Z2GbtRKdJYFbv727WWYhSQNwTTWRN8tt0mfDcM1bLaX6X818uJGKDni3JducLc0SzaaqgB2GKswHXWk1pWE5vqDE1RzM5em9CMEZv6_8MpTayX89eUbfpHCdat-iHA8MV4rIjZeV_NACgigALwH_SnYxwNNVtP4mZfbtT6a43A40rmCpowJJj8IEohySi8cK?purpose=fullsize",
+    bg: "gb2",
+    href: "posts/florida-openai-altman-pressure.html",
+    body: `<p>Во Florida власти начали серьезное давление на OpenAI и Sam Altman. Генеральный прокурор штата поддержал расследование возможных конфликтов интересов вокруг Altman на фоне подготовки OpenAI к потенциальному IPO.</p><h2>В чем обвиняют Altman</h2><p>Республиканские прокуроры нескольких штатов, включая Флориду, требуют проверки личных инвестиций Sam Altman, связей OpenAI с компаниями, в которые он вложился, и возможного self-dealing.</p><p>Особое внимание вызвали инвестиции Altman в AI-инфраструктуру, ядерную энергетику, космические стартапы и компании, сотрудничающие с OpenAI.</p><h2>Почему именно Флорида</h2><p>Во Флориде усиливается давление на AI-компании. Власти штата хотят усилить контроль над AI, безопасностью моделей и влиянием AI-компаний на общество.</p><h2>Что происходит параллельно</h2><p>Sam Altman продолжает выступать в суде против Elon Musk. Musk обвиняет OpenAI в отходе от первоначальной миссии, коммерциализации компании и концентрации слишком большой власти вокруг Altman.</p><h2>Почему это важно</h2><p>Еще недавно AI-компании воспринимались как новые технологические стартапы. Сейчас правительства начинают смотреть на них как на инфраструктуру, потенциальную угрозу и силу, влияющую на экономику, безопасность и политику.</p><h2>Мнение Pereuloq</h2><p>Эпоха, когда AI развивался почти без контроля, постепенно заканчивается. Теперь крупнейшие AI-компании будут находиться под тем же вниманием, что банки, энергетика и Big Tech.</p>`
+  },
   {
     id: 30,
     cat: 'Технологии',
@@ -701,6 +716,14 @@ const ARTICLE_TRANSLATIONS = {
     "date": "May 4, 2026",
     "read": "3 min",
     "body": "<p>Categories, search and product pages now live separately from the editorial feed.</p><h2>Why it matters</h2><p>Pereuloq covers this story as part of a wider digital culture feed: technology, business, design, entertainment and online services that affect everyday life.</p><h2>Pereuloq view</h2><p>The most useful stories are the ones that help readers understand what is changing and why it matters now.</p>"
+  },
+  "posts/florida-openai-altman-pressure.html": {
+    "cat": "Technology",
+    "title": "Florida turns up the pressure on Sam Altman as OpenAI faces government scrutiny",
+    "desc": "Florida authorities and Republican prosecutors are increasing pressure on OpenAI and Sam Altman over potential conflicts of interest, AI safety and corporate influence.",
+    "date": "May 13, 2026",
+    "read": "5 min",
+    "body": "<p>Authorities in Florida have started applying serious pressure on OpenAI and Sam Altman. The state attorney general has supported scrutiny of possible conflicts of interest around Altman as OpenAI moves toward a potential IPO.</p><h2>What Altman is being questioned over</h2><p>Republican prosecutors in several states want a closer look at Altman’s personal investments, OpenAI’s links to companies he backed and possible self-dealing.</p><p>Investments in AI infrastructure, nuclear energy, space startups and companies working with OpenAI are getting particular attention.</p><h2>Why Florida matters</h2><p>Florida is becoming one of the states pushing harder on AI companies. Officials want stronger control over model safety, social impact and the power of AI firms.</p><h2>The wider picture</h2><p>At the same time, Altman remains tied to a legal fight with Elon Musk, who argues that OpenAI moved away from its original mission and concentrated too much power around its leadership.</p><h2>Pereuloq view</h2><p>The era when AI grew with little oversight is slowly ending. Major AI companies are starting to face the same level of scrutiny as banks, energy companies and Big Tech.</p>"
   }
 };
 
@@ -715,67 +738,95 @@ const PUBLIC_ARTICLES = CURRENT_ARTICLES.filter((article) => article.href !== 's
 const PROMO_ARTICLES = PUBLIC_ARTICLES.filter((article) => article.promoted !== false);
 const POLITICS_SEARCH_ITEMS_RU = [
   {
-    title: 'Мир входит в новую холодную войну — США и Китай готовятся к крупнейшим переговорам 2026 года',
-    desc: 'Переговоры Donald Trump и Xi Jinping проходят на фоне торговой войны, AI-гонки, кризиса вокруг Ирана, Тайваня и перестройки мировой экономики.',
-    cat: 'Мировая политика',
-    href: 'politics/us-china-new-cold-war-2026.html',
-    img: 'https://images.openai.com/static-rsc-4/SRRR6mUzjNmt1SpvZibk_t4r7VjJ8qbNULuq25ffjEwc94_wzjPH0MTabTy7fyFDqAeMLtpzxSoHmlOAZwUOmAxAqV94K7N0LsN-8gkaogWC1upz0W6KO4mmsjCblDw0Em8-htxx7kXL_YQlnB9b24K76dJtejZ-ztCwPFOzIB2FuTTf6ey2-dd4g2qysuCK?purpose=fullsize'
+    "title": "Вокруг России усиливается экономическое давление — ЕС готовит новые ограничения",
+    "desc": "Европейский союз обсуждает новый пакет ограничений против России, включая борьбу с теневым флотом, нефтяным экспортом и обходом санкций.",
+    "cat": "Геополитика",
+    "href": "politics/russia-economic-pressure-eu-sanctions-2026.html",
+    "img": "https://images.openai.com/static-rsc-4/dq5wBLEs92z60S2f2nad4ljUWYBFC7vDSIf9qd1WDW2Q7pLDP2s4Rsb2uCgTdvd4w0ELxUiQxKKJwIa3WuGuUzq3b1R6q4XXLGMafqQuBRDjf8VcNw9DEV0YBibq11vk4qJADj1lgrGLpzrnidTSNO2UHZkpomXsNPA4EcarAymC-U5pLVOXtRPk4Lo6Iu-A?purpose=fullsize"
   },
   {
-    title: 'Европа готовится ко второй энергетической катастрофе — кризис 2026 усиливается',
-    desc: 'Европа сталкивается с ростом цен на нефть и газ, давлением на промышленность и экстренными мерами из-за кризиса вокруг Ормузского пролива.',
-    cat: 'Мировая политика',
-    href: 'politics/europe-energy-crisis-2026.html',
-    img: 'https://images.openai.com/static-rsc-4/MGw0543HCybEvLHKhBoyd2w0okbOv5pVKGr0yRrn6IHg-XCq5aRfU_-ReCpxtSBEoMZfYzMGaFun18Mim3QciGsQALfq7Hli5fD7DBhqVBi75XuqrdW_cxy2UsQrJ-T0qg94oZ2J-WvlnrDys7_FisafcLEfKs7e5YLGUHeprgDC366tgiPqOdvizmXq8WaQ?purpose=fullsize'
+    "title": "Новая Зеландия готовится к экономическим шокам — бюджет 2026 делает фокус на безопасности",
+    "desc": "Новая Зеландия смещает бюджетную стратегию к устойчивости, инфраструктуре, обороне и защите от глобальных рисков.",
+    "cat": "Экономика",
+    "href": "politics/new-zealand-budget-security-2026.html",
+    "img": "https://images.openai.com/static-rsc-4/CEDZwl3fqWfM4EURu_HFWUUJGb5lNkcsO9z_ZO_ZFi2aKo9-Y4HdTWPSh6y5rjhZRMOaOLACGWSAyqEMqeZ2FuwBBHVhq0OEdllQgXnCPVV7MD6z2kvKZ5DVPplKZeTo4Cm_OIVL13FazQyWUy3zuFJjmfm_m29v8YWyqrQVTZ1azBbhm0mFs_oq3oOcvaQU?purpose=fullsize"
   },
   {
-    title: 'В Кремле заявили, что встреча Путина и Зеленского должна поставить точку в переговорах',
-    desc: 'Dmitry Peskov заявил, что возможная встреча Vladimir Putin и Volodymyr Zelenskyy имеет смысл только на финальной стадии переговоров.',
-    cat: 'Мировая политика',
-    href: 'politics/putin-zelensky-final-talks.html',
-    img: 'https://avatars.dzeninfra.ru/get-ynews/271828/9df09344e1d59184a4943885b7a4628e/800x400'
+    "title": "Глобальные рынки облигаций под давлением — рост доходностей выше 20-летних максимумов",
+    "desc": "Доходности долгосрочных облигаций G7 растут на фоне инфляции, геополитической нестабильности и неопределенности центробанков.",
+    "cat": "Экономика",
+    "href": "politics/global-bond-markets-pressure-2026.html",
+    "img": "https://images.openai.com/static-rsc-4/Z7vtG42F4BLN1fPt7Z4uqqwYmwuLL8A4ajm4nyDV127qPOt1zArun0h81Io2phB2Kyqrhg7n3ScYocSdZCX9Yw59Sg7C5XL9jFjIXyoF524cXdYmueV0Twe7GK27MiMjihU1qL5BmJmpzGl4yrVfydm5vVOYqa47J83_n7FQBIR2PQSwsxbhu_Nu5Xf7Oqoe?purpose=fullsize"
   },
   {
-    title: 'ОАЭ вступили в конфликт против Ирана: Израиль перебросил в Эмираты системы «Железный купол»',
-    desc: 'По данным западных СМИ, ОАЭ могли участвовать в ударах по Ирану, а Israel направил в Эмираты батареи Iron Dome.',
-    cat: 'Мировая политика',
-    href: 'politics/uae-iran-iron-dome.html',
-    img: 'https://ichef.bbci.co.uk/ace/ws/800/cpsprodpb/8a6c/live/e5517ce0-4e02-11f1-aa37-6b8846c2f74e.jpg.webp'
+    "title": "Ближний Восток снова под давлением — нефтяные рынки и Ceasefire на грани",
+    "desc": "Перемирие между Ираном и США остается хрупким, а рынки нефти снова реагируют на риск перебоев вокруг Ормузского пролива.",
+    "cat": "Кризисы",
+    "href": "politics/middle-east-ceasefire-oil-pressure-2026.html",
+    "img": "https://images.openai.com/static-rsc-4/FYpqbSZqqUTxPud4OJhPmzSpnlDiSWC2FM2gT0Q2P6lzwP8TJwfD-KlOcYvDkvT_Dg716SliTLF8p9SuEv12-6eFcathL5q4DJ8I5XsbnocBcJO1nxjOQm5l6KLIeA3oVTQfVgtXBnyMe5-CQXL_6uk2zYp6CDS5C4-KGKrXM8bFvZh2owHFgkunPBhVazyD?purpose=fullsize"
   },
   {
-    title: 'Почему Британия может пострадать от войны с Ираном сильнее других богатых стран',
-    desc: 'Энергетический кризис из-за конфликта США и Ирана усиливает давление на United Kingdom.',
-    cat: 'Мировая политика',
-    href: 'politics/uk-iran-war-energy-risk.html',
-    img: 'https://ichef.bbci.co.uk/ace/ws/800/cpsprodpb/ca91/live/b125b4d0-4bdd-11f1-be41-a5619e425abe.jpg.webp'
+    "title": "Мир входит в новую холодную войну — США и Китай готовятся к крупнейшим переговорам 2026 года",
+    "desc": "Переговоры Donald Trump и Xi Jinping проходят на фоне торговой войны, AI-гонки, кризиса вокруг Ирана, Тайваня и перестройки мировой экономики.",
+    "cat": "Мировая политика",
+    "href": "politics/us-china-new-cold-war-2026.html",
+    "img": "https://images.openai.com/static-rsc-4/SRRR6mUzjNmt1SpvZibk_t4r7VjJ8qbNULuq25ffjEwc94_wzjPH0MTabTy7fyFDqAeMLtpzxSoHmlOAZwUOmAxAqV94K7N0LsN-8gkaogWC1upz0W6KO4mmsjCblDw0Em8-htxx7kXL_YQlnB9b24K76dJtejZ-ztCwPFOzIB2FuTTf6ey2-dd4g2qysuCK?purpose=fullsize"
   },
   {
-    title: 'Ближний Восток снова на грани эскалации',
-    desc: 'Формальное перемирие остается хрупким: Иран, США, Китай и региональные игроки усиливают давление.',
-    cat: 'Мировая политика',
-    href: 'politics/mideast-iran-us-china-tensions.html',
-    img: 'https://static01.nyt.com/images/2026/05/12/multimedia/12mideast-header1-qvlh/12mideast-header1-qvlh-superJumbo.jpg?quality=75&auto=webp'
+    "title": "Европа готовится ко второй энергетической катастрофе — кризис 2026 усиливается",
+    "desc": "Европа сталкивается с ростом цен на нефть и газ, давлением на промышленность и экстренными мерами из-за кризиса вокруг Ормузского пролива.",
+    "cat": "Мировая политика",
+    "href": "politics/europe-energy-crisis-2026.html",
+    "img": "https://images.openai.com/static-rsc-4/MGw0543HCybEvLHKhBoyd2w0okbOv5pVKGr0yRrn6IHg-XCq5aRfU_-ReCpxtSBEoMZfYzMGaFun18Mim3QciGsQALfq7Hli5fD7DBhqVBi75XuqrdW_cxy2UsQrJ-T0qg94oZ2J-WvlnrDys7_FisafcLEfKs7e5YLGUHeprgDC366tgiPqOdvizmXq8WaQ?purpose=fullsize"
   },
   {
-    title: 'Си Цзиньпин готов усилить давление на Трампа из-за поставок оружия Тайваню',
-    desc: 'Тайвань снова становится одной из главных тем в отношениях США и Китая перед саммитом в Пекине.',
-    cat: 'Мировая политика',
-    href: 'politics/xi-trump-taiwan-arms.html',
-    img: 'https://static01.nyt.com/images/2026/05/11/multimedia/00int-China-US-taiwan-pcmh/00int-China-US-taiwan-pcmh-superJumbo.jpg?quality=75&auto=webp'
+    "title": "В Кремле заявили, что встреча Путина и Зеленского должна поставить точку в переговорах",
+    "desc": "Dmitry Peskov заявил, что возможная встреча Vladimir Putin и Volodymyr Zelenskyy имеет смысл только на финальной стадии переговоров.",
+    "cat": "Мировая политика",
+    "href": "politics/putin-zelensky-final-talks.html",
+    "img": "https://avatars.dzeninfra.ru/get-ynews/271828/9df09344e1d59184a4943885b7a4628e/800x400"
   },
   {
-    title: 'Тим Кук, Илон Маск и главы компаний США едут с Трампом в Китай',
-    desc: 'Делегация американского бизнеса отправится в Китай вместе с Donald Trump на фоне переговоров о торговле и инвестициях.',
-    cat: 'Мировая политика',
-    href: 'politics/us-business-leaders-trump-china.html',
-    img: 'https://static01.nyt.com/images/2026/05/11/multimedia/11trump-news-biz-leaders-pcbv/11trump-news-biz-leaders-pcbv-verticalTwoByThree735-v4.jpg?quality=75&auto=webp'
+    "title": "ОАЭ вступили в конфликт против Ирана: Израиль перебросил в Эмираты системы «Железный купол»",
+    "desc": "По данным западных СМИ, ОАЭ могли участвовать в ударах по Ирану, а Israel направил в Эмираты батареи Iron Dome.",
+    "cat": "Мировая политика",
+    "href": "politics/uae-iran-iron-dome.html",
+    "img": "https://ichef.bbci.co.uk/ace/ws/800/cpsprodpb/8a6c/live/e5517ce0-4e02-11f1-aa37-6b8846c2f74e.jpg.webp"
   },
   {
-    title: 'США и Китай движутся к одному ИИ-будущему',
-    desc: 'Алгоритмы уже меняют работу, отношения и повседневную жизнь миллионов людей похожим образом.',
-    cat: 'Мировая политика',
-    href: 'politics/us-china-ai-future.html',
-    img: 'https://static01.nyt.com/images/2026/05/12/opinion/12liu-image/12liu-image-superJumbo.jpg?quality=75&auto=webp'
+    "title": "Почему Британия может пострадать от войны с Ираном сильнее других богатых стран",
+    "desc": "Энергетический кризис из-за конфликта США и Ирана усиливает давление на United Kingdom.",
+    "cat": "Мировая политика",
+    "href": "politics/uk-iran-war-energy-risk.html",
+    "img": "https://ichef.bbci.co.uk/ace/ws/800/cpsprodpb/ca91/live/b125b4d0-4bdd-11f1-be41-a5619e425abe.jpg.webp"
+  },
+  {
+    "title": "Ближний Восток снова на грани эскалации",
+    "desc": "Формальное перемирие остается хрупким: Иран, США, Китай и региональные игроки усиливают давление.",
+    "cat": "Мировая политика",
+    "href": "politics/mideast-iran-us-china-tensions.html",
+    "img": "https://static01.nyt.com/images/2026/05/12/multimedia/12mideast-header1-qvlh/12mideast-header1-qvlh-superJumbo.jpg?quality=75&auto=webp"
+  },
+  {
+    "title": "Си Цзиньпин готов усилить давление на Трампа из-за поставок оружия Тайваню",
+    "desc": "Тайвань снова становится одной из главных тем в отношениях США и Китая перед саммитом в Пекине.",
+    "cat": "Мировая политика",
+    "href": "politics/xi-trump-taiwan-arms.html",
+    "img": "https://static01.nyt.com/images/2026/05/11/multimedia/00int-China-US-taiwan-pcmh/00int-China-US-taiwan-pcmh-superJumbo.jpg?quality=75&auto=webp"
+  },
+  {
+    "title": "Тим Кук, Илон Маск и главы компаний США едут с Трампом в Китай",
+    "desc": "Делегация американского бизнеса отправится в Китай вместе с Donald Trump на фоне переговоров о торговле и инвестициях.",
+    "cat": "Мировая политика",
+    "href": "politics/us-business-leaders-trump-china.html",
+    "img": "https://static01.nyt.com/images/2026/05/11/multimedia/11trump-news-biz-leaders-pcbv/11trump-news-biz-leaders-pcbv-verticalTwoByThree735-v4.jpg?quality=75&auto=webp"
+  },
+  {
+    "title": "США и Китай движутся к одному ИИ-будущему",
+    "desc": "Алгоритмы уже меняют работу, отношения и повседневную жизнь миллионов людей похожим образом.",
+    "cat": "Мировая политика",
+    "href": "politics/us-china-ai-future.html",
+    "img": "https://static01.nyt.com/images/2026/05/12/opinion/12liu-image/12liu-image-superJumbo.jpg?quality=75&auto=webp"
   }
 ];
 const POLITICS_SEARCH_TRANSLATIONS = {
@@ -823,6 +874,26 @@ const POLITICS_SEARCH_TRANSLATIONS = {
     "title": "The U.S. and China are moving toward the same AI future",
     "desc": "Algorithms are already changing work, relationships and everyday life in similar ways for millions of people.",
     "cat": "World politics"
+  },
+  "politics/middle-east-ceasefire-oil-pressure-2026.html": {
+    "title": "The Middle East is under pressure again as oil markets and the ceasefire sit on the edge",
+    "desc": "The Iran-U.S. ceasefire remains fragile, while oil markets react again to the risk of disruptions around the Strait of Hormuz.",
+    "cat": "Crises"
+  },
+  "politics/global-bond-markets-pressure-2026.html": {
+    "title": "Global bond markets under pressure as yields climb beyond 20-year highs",
+    "desc": "Long-term G7 bond yields are rising amid inflation, geopolitical instability and uncertainty around central banks.",
+    "cat": "Economy"
+  },
+  "politics/new-zealand-budget-security-2026.html": {
+    "title": "New Zealand prepares for economic shocks as Budget 2026 focuses on security",
+    "desc": "New Zealand is shifting its budget strategy toward resilience, infrastructure, defense and protection from global risks.",
+    "cat": "Economy"
+  },
+  "politics/russia-economic-pressure-eu-sanctions-2026.html": {
+    "title": "Economic pressure around Russia grows as the EU prepares new restrictions",
+    "desc": "The European Union is discussing new restrictions on Russia, including action against the shadow fleet, oil exports and sanctions evasion.",
+    "cat": "Geopolitics"
   }
 };
 const POLITICS_SEARCH_ITEMS = i18n.lang() === 'en'

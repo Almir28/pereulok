@@ -1,0 +1,2030 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Мировой спорт — премиальный спортивный медиа-хаб. Прямые трансляции, результаты матчей, последние новости спорта.">
+<meta property="og:title" content="Мировой спорт | Pereuloq">
+<meta property="og:description" content="Живой мировой спорт — счёт в реальном времени, эксклюзивные новости, видео и аналитика">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1200">
+<title>Мировой спорт | Pereuloq</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --accent: #FF9F0A;
+  --accent-dim: rgba(255,159,10,0.15);
+  --accent-glow: rgba(255,159,10,0.4);
+  --bg: #080808;
+  --bg2: #0f0f0f;
+  --bg3: #141414;
+  --bg4: #1a1a1a;
+  --glass: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.08);
+  --text: #ffffff;
+  --text-dim: rgba(255,255,255,0.55);
+  --text-muted: rgba(255,255,255,0.3);
+  --live: #ff3b30;
+  --live-glow: rgba(255,59,48,0.4);
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+/* ========== NAVBAR ========== */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(8,8,8,0.7);
+  border-bottom: 1px solid var(--glass-border);
+  transition: background 0.3s;
+}
+
+.navbar.scrolled { background: rgba(8,8,8,0.95); }
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logo-badge {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: var(--text);
+}
+
+.nav-logo-badge span {
+  color: var(--accent);
+}
+
+.nav-live-dot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--live);
+  font-weight: 600;
+}
+
+.pulse-dot {
+  width: 7px; height: 7px;
+  background: var(--live);
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 0 6px var(--live-glow);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.nav-cta {
+  background: var(--accent);
+  color: #000 !important;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 700 !important;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: #ffb833 !important; color: #000 !important; }
+
+/* ========== TICKER ========== */
+.ticker-bar {
+  position: fixed;
+  top: 64px; left: 0; right: 0;
+  z-index: 999;
+  background: var(--accent);
+  height: 32px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ticker-label {
+  background: #000;
+  color: var(--accent);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  padding: 0 16px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  display: flex;
+  gap: 60px;
+  white-space: nowrap;
+  animation: ticker 40s linear infinite;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-item {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.ticker-sep {
+  opacity: 0.4;
+  font-weight: 300;
+}
+
+/* ========== HERO ========== */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 700px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 80px;
+}
+
+.hero-video-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-video-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.08);
+  animation: cinematic-zoom 12s ease-out forwards;
+  filter: brightness(0.55) saturate(1.2);
+}
+
+@keyframes cinematic-zoom {
+  0% { transform: scale(1.15); }
+  100% { transform: scale(1.0); }
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(8,8,8,0.3) 0%,
+    rgba(8,8,8,0.1) 40%,
+    rgba(8,8,8,0.6) 70%,
+    rgba(8,8,8,0.97) 100%
+  );
+}
+
+.hero-overlay-left {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    rgba(8,8,8,0.7) 0%,
+    transparent 60%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 60px;
+  max-width: 800px;
+  animation: hero-in 1.2s cubic-bezier(0.16,1,0.3,1) both;
+  animation-delay: 0.3s;
+}
+
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  border: 1px solid var(--accent-glow);
+  border-radius: 4px;
+  background: var(--accent-dim);
+}
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 8vw, 110px);
+  line-height: 0.92;
+  letter-spacing: 2px;
+  color: #fff;
+  margin-bottom: 22px;
+}
+
+.hero-title .accent { color: var(--accent); }
+
+.hero-subtitle {
+  font-family: 'Barlow', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  margin-bottom: 36px;
+  max-width: 520px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #000;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #ffb833;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px var(--accent-glow);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 13px 28px;
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--glass-border);
+}
+
+.hero-stat-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 32px;
+  right: 60px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.5;
+}
+
+.scroll-indicator span {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scroll-line 2s ease-in-out infinite;
+}
+
+@keyframes scroll-line {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  50.01% { transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ========== SECTION COMMON ========== */
+section {
+  padding: 80px 60px;
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.section-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 4vw, 52px);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.see-all {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.see-all:hover { border-color: var(--accent); }
+
+/* ========== LIVE SCORES ========== */
+.live-scores { background: var(--bg2); padding-top: 60px; }
+
+.scores-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scores-scroll::-webkit-scrollbar { display: none; }
+
+.score-card {
+  flex-shrink: 0;
+  width: 280px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.score-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.score-card:hover {
+  border-color: var(--accent-glow);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.score-card:hover::before { opacity: 1; }
+
+.score-card-live {
+  border-color: rgba(255,59,48,0.3);
+}
+
+.score-card-live::before {
+  opacity: 1;
+  background: linear-gradient(90deg, transparent, var(--live), transparent);
+}
+
+.score-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.score-competition {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255,59,48,0.15);
+  border: 1px solid rgba(255,59,48,0.3);
+  border-radius: 20px;
+  padding: 3px 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--live);
+  font-weight: 700;
+}
+
+.finished-badge {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.score-match {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.score-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.team-emblem {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  border: 1px solid var(--glass-border);
+}
+
+.team-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.score-board {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.score-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 44px;
+  line-height: 1;
+  min-width: 30px;
+  text-align: center;
+}
+
+.score-sep {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--text-muted);
+}
+
+.score-time {
+  text-align: center;
+  margin-top: 14px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.score-time .min {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ========== NEWS GRID ========== */
+.news-section { background: var(--bg); }
+
+.news-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 16px;
+}
+
+.news-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  background: var(--bg3);
+  border: 1px solid var(--glass-border);
+}
+
+.news-card:hover { transform: scale(1.015); }
+
+.news-card.featured { grid-row: 1 / 3; }
+
+.news-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+  min-height: 240px;
+}
+
+.news-card.featured img { min-height: 500px; }
+
+.news-card:hover img { transform: scale(1.06); }
+
+.news-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.news-category {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-glow);
+  border-radius: 4px;
+  padding: 3px 8px;
+  margin-bottom: 12px;
+  align-self: flex-start;
+}
+
+.news-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #fff;
+}
+
+.news-card.featured .news-title {
+  font-size: 32px;
+  line-height: 1.15;
+}
+
+.news-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.news-meta span { color: var(--text-dim); }
+
+/* ========== CATEGORIES ========== */
+.categories-section { background: var(--bg2); }
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.cat-card {
+  position: relative;
+  height: 160px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--glass-border);
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+
+.cat-card:nth-child(1) { background: linear-gradient(135deg, #0a3d62 0%, #1e3c72 100%); }
+.cat-card:nth-child(2) { background: linear-gradient(135deg, #c0392b 0%, #8e1010 100%); }
+.cat-card:nth-child(3) { background: linear-gradient(135deg, #d4a017 0%, #8b5e00 100%); }
+.cat-card:nth-child(4) { background: linear-gradient(135deg, #0a7a55 0%, #064c36 100%); }
+.cat-card:nth-child(5) { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+.cat-card:nth-child(6) { background: linear-gradient(135deg, #6a0572 0%, #3a0050 100%); }
+.cat-card:nth-child(7) { background: linear-gradient(135deg, #2c2c2c 0%, #0a0a0a 100%); }
+.cat-card:nth-child(8) { background: linear-gradient(135deg, #1c3b5a 0%, #0f2238 100%); }
+
+.cat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  transition: opacity 0.3s;
+}
+
+.cat-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.cat-card:hover::after { border-color: var(--accent); }
+
+.cat-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 30px var(--accent-glow);
+}
+
+.cat-bg-emoji {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  font-size: 80px;
+  opacity: 0.15;
+  transition: transform 0.4s, opacity 0.4s;
+  line-height: 1;
+}
+
+.cat-card:hover .cat-bg-emoji {
+  transform: scale(1.2) rotate(-8deg);
+  opacity: 0.25;
+}
+
+.cat-content {
+  position: absolute;
+  inset: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cat-icon { font-size: 28px; }
+
+.cat-info {}
+
+.cat-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  letter-spacing: 2px;
+  color: #fff;
+  line-height: 1;
+}
+
+.cat-count {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ========== AD BANNER ========== */
+.ad-section {
+  background: var(--bg);
+  padding: 40px 60px;
+}
+
+.ad-banner {
+  width: 100%;
+  height: 100px;
+  border-radius: var(--radius);
+  background: linear-gradient(90deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%);
+  border: 1px dashed rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ad-label {
+  position: absolute;
+  top: 8px; right: 12px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.ad-placeholder-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.12);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.ad-banner-gradient {
+  background: linear-gradient(135deg,
+    rgba(255,159,10,0.08) 0%,
+    transparent 40%,
+    rgba(255,159,10,0.04) 100%
+  );
+}
+
+/* ========== TRENDING ========== */
+.trending-section { background: var(--bg2); }
+
+.trending-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 16px;
+}
+
+.trending-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.trending-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.trending-card:hover { border-color: var(--accent-glow); background: rgba(255,255,255,0.06); }
+.trending-card:hover::after { transform: scaleX(1); }
+
+.trending-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.trending-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  color: rgba(255,159,10,0.15);
+  line-height: 1;
+}
+
+.trending-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,59,48,0.1);
+  border: 1px solid rgba(255,59,48,0.2);
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--live);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.trending-match-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.trending-teams {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.team-mini {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.team-mini-emblem {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  border: 1px solid var(--glass-border);
+}
+
+.team-mini-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vs-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.trending-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.t-stat {
+  text-align: center;
+  padding: 10px;
+  background: var(--bg3);
+  border-radius: 8px;
+}
+
+.t-stat-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: var(--accent);
+}
+
+.t-stat-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.interest-bar-wrap {
+  margin-top: 16px;
+}
+
+.interest-label {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+
+.interest-bar {
+  height: 4px;
+  background: var(--bg4);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.interest-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #ffcf6f);
+  border-radius: 2px;
+  animation: fill-in 1.5s ease-out both;
+}
+
+@keyframes fill-in {
+  from { width: 0 !important; }
+}
+
+.trending-sidebar { display: flex; flex-direction: column; gap: 16px; }
+
+.trending-mini {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.trending-mini:hover {
+  border-color: var(--accent-glow);
+  transform: translateX(6px);
+}
+
+.trending-mini-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  color: var(--accent-dim);
+  min-width: 36px;
+}
+
+.trending-mini-content { flex: 1; }
+
+.trending-mini-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.trending-mini-meta {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.trending-mini-views {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  color: var(--text-dim);
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background: #050505;
+  border-top: 1px solid var(--glass-border);
+  padding: 60px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-brand-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.footer-brand-name span { color: var(--accent); }
+
+.footer-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 280px;
+}
+
+.footer-col-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--text); }
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 28px;
+  border-top: 1px solid var(--glass-border);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ========== MOBILE NAV ========== */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(8,8,8,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--glass-border);
+  padding: 10px 0;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom));
+}
+
+.mobile-nav-items {
+  display: flex;
+  justify-content: space-around;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: color 0.2s;
+  padding: 4px 12px;
+}
+
+.mobile-nav-item.active { color: var(--accent); }
+
+.mobile-nav-icon { font-size: 22px; }
+
+.mobile-nav-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ========== SKELETON ========== */
+.skeleton {
+  background: linear-gradient(90deg, var(--bg3) 25%, var(--bg4) 50%, var(--bg3) 75%);
+  background-size: 400% 100%;
+  animation: skeleton 1.5s ease infinite;
+  border-radius: 6px;
+}
+
+@keyframes skeleton {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ========== FADE IN ON SCROLL ========== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-up-delay-1 { transition-delay: 0.1s; }
+.fade-up-delay-2 { transition-delay: 0.2s; }
+.fade-up-delay-3 { transition-delay: 0.3s; }
+
+/* ========== HAMBURGER ========== */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  margin: 5px 0;
+  transition: all 0.3s;
+  border-radius: 1px;
+}
+
+/* ========== FLOATING GRADIENT ========== */
+.float-gradient {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.12;
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.05); }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  section { padding: 60px 30px; }
+  .navbar { padding: 0 24px; }
+  .hero-content { padding: 0 30px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  footer { padding: 48px 30px; }
+  .cat-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: block; }
+  .hero-content { padding: 0 20px; max-width: 100%; }
+  .hero { padding-bottom: 100px; }
+  section { padding: 50px 20px; }
+  .news-grid { grid-template-columns: 1fr; }
+  .news-card.featured { grid-row: auto; }
+  .news-card.featured img { min-height: 280px; }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .trending-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  footer { padding: 40px 20px; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .mobile-nav { display: block; }
+  body { padding-bottom: 70px; }
+  .ad-section { padding: 24px 20px; }
+  .scroll-indicator { display: none; }
+  .hero-stats { gap: 24px; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .cat-card { height: 130px; }
+  .score-card { width: 240px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Главная навигация">
+  <a href="/" class="nav-logo" aria-label="Pereuloq Мировой спорт">
+    <span class="nav-logo-badge">PEREULOQ <span>СПОРТ</span></span>
+  </a>
+  <div class="nav-live-dot" aria-live="polite">
+    <span class="pulse-dot" aria-hidden="true"></span>
+    LIVE
+  </div>
+  <ul class="nav-links" role="list">
+    <li><a href="#scores">Счёт</a></li>
+    <li><a href="#news">Новости</a></li>
+    <li><a href="#categories">Виды спорта</a></li>
+    <li><a href="#trending">Тренды</a></li>
+    <li><a href="/smotret" class="nav-cta">Смотреть</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Меню" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-bar" aria-label="Спортивные новости в реальном времени">
+  <div class="ticker-label">⚡ LIVE</div>
+  <div class="ticker-track" role="marquee">
+    <!-- Doubled for seamless loop -->
+    <span class="ticker-item">⚽ Реал Мадрид 2:1 Манчестер Сити <span class="ticker-sep">|</span> 74'</span>
+    <span class="ticker-item">🏎 Гран-при Монако: Верстаппен лидирует <span class="ticker-sep">|</span> 38/78 кругов</span>
+    <span class="ticker-item">🥊 Фьюри vs Усик 2 — объявлен дата поединка</span>
+    <span class="ticker-item">🏀 Лейкерс 108:102 Бостон <span class="ticker-sep">|</span> 3Q 4:12</span>
+    <span class="ticker-item">🎾 Джокович вышел в финал Roland Garros</span>
+    <span class="ticker-item">🏊 Олимпийский рекорд побит на 100м вольным стилем</span>
+    <span class="ticker-item">🎮 Финал ESL Pro League: NAVI vs Vitality 1:1</span>
+    <span class="ticker-item">⚽ ПСЖ 0:0 Бавария <span class="ticker-sep">|</span> 61'</span>
+    <!-- repeated -->
+    <span class="ticker-item">⚽ Реал Мадрид 2:1 Манчестер Сити <span class="ticker-sep">|</span> 74'</span>
+    <span class="ticker-item">🏎 Гран-при Монако: Верстаппен лидирует <span class="ticker-sep">|</span> 38/78 кругов</span>
+    <span class="ticker-item">🥊 Фьюри vs Усик 2 — объявлен дата поединка</span>
+    <span class="ticker-item">🏀 Лейкерс 108:102 Бостон <span class="ticker-sep">|</span> 3Q 4:12</span>
+    <span class="ticker-item">🎾 Джокович вышел в финал Roland Garros</span>
+    <span class="ticker-item">🏊 Олимпийский рекорд побит на 100м вольным стилем</span>
+    <span class="ticker-item">🎮 Финал ESL Pro League: NAVI vs Vitality 1:1</span>
+    <span class="ticker-item">⚽ ПСЖ 0:0 Бавария <span class="ticker-sep">|</span> 61'</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" aria-label="Главный экран">
+  <div class="hero-video-wrap">
+    <img
+      src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1920&q=85&auto=format"
+      alt="Спортивный стадион на фоне вечернего неба"
+      fetchpriority="high"
+      decoding="async"
+    >
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-overlay-left" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="pulse-dot" aria-hidden="true"></span>
+      Прямой эфир
+    </div>
+    <h1 class="hero-title">
+      МИРОВОЙ<br>
+      <span class="accent">СПОРТ</span><br>
+      СЕГОДНЯ
+    </h1>
+    <p class="hero-subtitle">
+      Результаты в реальном времени, эксклюзивные материалы и самые горячие матчи планеты — всё в одном месте.
+    </p>
+    <div class="hero-actions">
+      <a href="#scores" class="btn-primary">
+        <span>▶</span> Смотреть события
+      </a>
+      <a href="#news" class="btn-secondary">
+        Все новости →
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-val">42</div>
+        <div class="hero-stat-label">Матчей Live</div>
+      </div>
+      <div>
+        <div class="hero-stat-val">1.2M</div>
+        <div class="hero-stat-label">Зрителей</div>
+      </div>
+      <div>
+        <div class="hero-stat-val">8</div>
+        <div class="hero-stat-label">Видов спорта</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator" aria-hidden="true">
+    <span>Прокрути</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- LIVE SCORES -->
+<section class="live-scores" id="scores" aria-label="Счёт матчей Live">
+  <div class="section-header fade-up">
+    <div>
+      <div class="section-label">Прямо сейчас</div>
+      <h2 class="section-title">LIVE СЧЁТ</h2>
+    </div>
+    <a href="/scores" class="see-all">Все матчи →</a>
+  </div>
+
+  <div class="scores-scroll" role="list" aria-label="Список матчей">
+
+    <article class="score-card score-card-live" role="listitem">
+      <div class="score-meta">
+        <span class="score-competition">Лига Чемпионов</span>
+        <span class="live-badge"><span class="pulse-dot"></span> LIVE</span>
+      </div>
+      <div class="score-match">
+        <div class="score-team">
+          <div class="team-emblem" aria-hidden="true">🏟️</div>
+          <div class="team-name">Реал</div>
+        </div>
+        <div class="score-board">
+          <span class="score-num" id="rm-score">2</span>
+          <span class="score-sep">:</span>
+          <span class="score-num" id="mc-score">1</span>
+        </div>
+        <div class="score-team">
+          <div class="team-emblem" aria-hidden="true">🌆</div>
+          <div class="team-name">Ман. Сити</div>
+        </div>
+      </div>
+      <div class="score-time"><span class="min" id="rm-time">74'</span> &nbsp; 2-й тайм</div>
+    </article>
+
+    <article class="score-card score-card-live" role="listitem">
+      <div class="score-meta">
+        <span class="score-competition">Лига Чемпионов</span>
+        <span class="live-badge"><span class="pulse-dot"></span> LIVE</span>
+      </div>
+      <div class="score-match">
+        <div class="score-team">
+          <div class="team-emblem">⚫🔴</div>
+          <div class="team-name">ПСЖ</div>
+        </div>
+        <div class="score-board">
+          <span class="score-num">0</span>
+          <span class="score-sep">:</span>
+          <span class="score-num">0</span>
+        </div>
+        <div class="score-team">
+          <div class="team-emblem">🔴⚪</div>
+          <div class="team-name">Бавария</div>
+        </div>
+      </div>
+      <div class="score-time"><span class="min">61'</span> &nbsp; 2-й тайм</div>
+    </article>
+
+    <article class="score-card score-card-live" role="listitem">
+      <div class="score-meta">
+        <span class="score-competition">НБА</span>
+        <span class="live-badge"><span class="pulse-dot"></span> LIVE</span>
+      </div>
+      <div class="score-match">
+        <div class="score-team">
+          <div class="team-emblem">💜💛</div>
+          <div class="team-name">Лейкерс</div>
+        </div>
+        <div class="score-board">
+          <span class="score-num">108</span>
+          <span class="score-sep">:</span>
+          <span class="score-num">102</span>
+        </div>
+        <div class="score-team">
+          <div class="team-emblem">💚⚪</div>
+          <div class="team-name">Бостон</div>
+        </div>
+      </div>
+      <div class="score-time"><span class="min">3Q 4:12</span></div>
+    </article>
+
+    <article class="score-card" role="listitem">
+      <div class="score-meta">
+        <span class="score-competition">АПЛ</span>
+        <span class="finished-badge">Завершён</span>
+      </div>
+      <div class="score-match">
+        <div class="score-team">
+          <div class="team-emblem">🔵</div>
+          <div class="team-name">Челси</div>
+        </div>
+        <div class="score-board">
+          <span class="score-num">3</span>
+          <span class="score-sep">:</span>
+          <span class="score-num">1</span>
+        </div>
+        <div class="score-team">
+          <div class="team-emblem">🔴</div>
+          <div class="team-name">Арсенал</div>
+        </div>
+      </div>
+      <div class="score-time">Финальный свисток</div>
+    </article>
+
+    <article class="score-card score-card-live" role="listitem">
+      <div class="score-meta">
+        <span class="score-competition">Ла Лига</span>
+        <span class="live-badge"><span class="pulse-dot"></span> LIVE</span>
+      </div>
+      <div class="score-match">
+        <div class="score-team">
+          <div class="team-emblem">🔵🔴</div>
+          <div class="team-name">Барса</div>
+        </div>
+        <div class="score-board">
+          <span class="score-num">1</span>
+          <span class="score-sep">:</span>
+          <span class="score-num">1</span>
+        </div>
+        <div class="score-team">
+          <div class="team-emblem">🔴⚫</div>
+          <div class="team-name">Атлетико</div>
+        </div>
+      </div>
+      <div class="score-time"><span class="min">88'</span> &nbsp; 2-й тайм</div>
+    </article>
+
+    <article class="score-card" role="listitem">
+      <div class="score-meta">
+        <span class="score-competition">Формула 1 | Монако</span>
+        <span class="live-badge"><span class="pulse-dot"></span> ГОНКА</span>
+      </div>
+      <div class="score-match" style="flex-direction:column; align-items:flex-start; gap:10px;">
+        <div class="score-team" style="flex-direction:row; align-items:center; gap:10px;">
+          <div class="team-emblem">🏎</div>
+          <div>
+            <div class="team-name" style="text-align:left">1. Верстаппен</div>
+            <div style="font-size:12px;color:var(--text-muted);font-family:'Barlow Condensed';letter-spacing:1px;">Ред Булл</div>
+          </div>
+        </div>
+        <div class="score-team" style="flex-direction:row; align-items:center; gap:10px;">
+          <div class="team-emblem">🏎</div>
+          <div>
+            <div class="team-name" style="text-align:left">2. Хэмилтон +4.2с</div>
+            <div style="font-size:12px;color:var(--text-muted);font-family:'Barlow Condensed';letter-spacing:1px;">Феррари</div>
+          </div>
+        </div>
+      </div>
+      <div class="score-time"><span class="min">38/78 кругов</span></div>
+    </article>
+
+  </div>
+</section>
+
+<!-- BREAKING NEWS -->
+<section class="news-section" id="news" aria-label="Спортивные новости">
+  <div class="section-header fade-up">
+    <div>
+      <div class="section-label">Главные материалы</div>
+      <h2 class="section-title">НОВОСТИ СПОРТА</h2>
+    </div>
+    <a href="/news" class="see-all">Все новости →</a>
+  </div>
+
+  <div class="news-grid" role="list">
+
+    <article class="news-card featured fade-up" role="listitem">
+      <img
+        src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=900&q=80&auto=format"
+        alt="Футбол: игрок готовится к удару"
+        loading="lazy"
+        decoding="async"
+      >
+      <div class="news-card-overlay">
+        <span class="news-category">Лига Чемпионов</span>
+        <h3 class="news-title">Реал Мадрид творит историю: победная серия из 11 матчей подряд без пропущенных голов</h3>
+        <div class="news-meta"><span>Сегодня, 20:15</span> · 8 мин чтения</div>
+      </div>
+    </article>
+
+    <article class="news-card fade-up fade-up-delay-1" role="listitem">
+      <img
+        src="https://images.unsplash.com/photo-1568376794508-ae52c6ab3929?w=600&q=80&auto=format"
+        alt="Формула 1: болид на трассе"
+        loading="lazy"
+        decoding="async"
+      >
+      <div class="news-card-overlay">
+        <span class="news-category">Формула 1</span>
+        <h3 class="news-title">Верстаппен установил рекорд трассы в Монако на квалификации</h3>
+        <div class="news-meta"><span>19:42</span> · 4 мин</div>
+      </div>
+    </article>
+
+    <article class="news-card fade-up fade-up-delay-2" role="listitem">
+      <img
+        src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&q=80&auto=format"
+        alt="Баскетбол: Лейкерс"
+        loading="lazy"
+        decoding="async"
+      >
+      <div class="news-card-overlay">
+        <span class="news-category">НБА</span>
+        <h3 class="news-title">ЛеБрон Джеймс: 40 очков и финальный бросок в овертайме</h3>
+        <div class="news-meta"><span>18:55</span> · 5 мин</div>
+      </div>
+    </article>
+
+    <article class="news-card fade-up fade-up-delay-1" role="listitem">
+      <img
+        src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=600&q=80&auto=format"
+        alt="Бокс: ринг"
+        loading="lazy"
+        decoding="async"
+      >
+      <div class="news-card-overlay">
+        <span class="news-category">Бокс</span>
+        <h3 class="news-title">Фьюри и Усик вновь встретятся в Лондоне — дата объявлена</h3>
+        <div class="news-meta"><span>17:30</span> · 3 мин</div>
+      </div>
+    </article>
+
+    <article class="news-card fade-up fade-up-delay-2" role="listitem">
+      <img
+        src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&q=80&auto=format"
+        alt="Теннис: подача"
+        loading="lazy"
+        decoding="async"
+      >
+      <div class="news-card-overlay">
+        <span class="news-category">Теннис</span>
+        <h3 class="news-title">Roland Garros: Новак Джокович разгромил Синнера в 4 сетах</h3>
+        <div class="news-meta"><span>16:00</span> · 6 мин</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- AD BANNER 1 -->
+<div class="ad-section" aria-label="Рекламный блок">
+  <div class="ad-banner ad-banner-gradient">
+    <span class="ad-label">Реклама</span>
+    <span class="ad-placeholder-text">Рекламное место — 970 × 90 — Leaderboard</span>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="categories-section" id="categories" aria-label="Виды спорта">
+  <div class="section-header fade-up">
+    <div>
+      <div class="section-label">Все дисциплины</div>
+      <h2 class="section-title">ВИДЫ СПОРТА</h2>
+    </div>
+  </div>
+
+  <div class="cat-grid" role="list">
+
+    <article class="cat-card fade-up" role="listitem" tabindex="0" aria-label="Футбол">
+      <div class="cat-bg-emoji" aria-hidden="true">⚽</div>
+      <div class="cat-content">
+        <div class="cat-icon" aria-hidden="true">⚽</div>
+        <div class="cat-info">
+          <div class="cat-name">ФУТБОЛ</div>
+          <div class="cat-count">2 840 новостей</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="cat-card fade-up fade-up-delay-1" role="listitem" tabindex="0" aria-label="Формула 1">
+      <div class="cat-bg-emoji" aria-hidden="true">🏎</div>
+      <div class="cat-content">
+        <div class="cat-icon" aria-hidden="true">🏎</div>
+        <div class="cat-info">
+          <div class="cat-name">ФОРМУЛА 1</div>
+          <div class="cat-count">1 230 новостей</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="cat-card fade-up fade-up-delay-2" role="listitem" tabindex="0" aria-label="UFC">
+      <div class="cat-bg-emoji" aria-hidden="true">🥊</div>
+      <div class="cat-content">
+        <div class="cat-icon" aria-hidden="true">🥊</div>
+        <div class="cat-info">
+          <div class="cat-name">UFC / ММА</div>
+          <div class="cat-count">870 новостей</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="cat-card fade-up fade-up-delay-3" role="listitem" tabindex="0" aria-label="НБА">
+      <div class="cat-bg-emoji" aria-hidden="true">🏀</div>
+      <div class="cat-content">
+        <div class="cat-icon" aria-hidden="true">🏀</div>
+        <div class="cat-info">
+          <div class="cat-name">НБА</div>
+          <div class="cat-count">1 540 новостей</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="cat-card fade-up" role="listitem" tabindex="0" aria-label="Теннис">
+      <div class="cat-bg-emoji" aria-hidden="true">🎾</div>
+      <div class="cat-content">
+        <div class="cat-icon" aria-hidden="true">🎾</div>
+        <div class="cat-info">
+          <div class="cat-name">ТЕННИС</div>
+          <div class="cat-count">690 новостей</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="cat-card fade-up fade-up-delay-1" role="listitem" tabindex="0" aria-label="eSports">
+      <div class="cat-bg-emoji" aria-hidden="true">🎮</div>
+      <div class="cat-content">
+        <div class="cat-icon" aria-hidden="true">🎮</div>
+        <div class="cat-info">
+          <div class="cat-name">ESPORTS</div>
+          <div class="cat-count">1 100 новостей</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="cat-card fade-up fade-up-delay-2" role="listitem" tabindex="0" aria-label="Бокс">
+      <div class="cat-bg-emoji" aria-hidden="true">🥋</div>
+      <div class="cat-content">
+        <div class="cat-icon" aria-hidden="true">🥋</div>
+        <div class="cat-info">
+          <div class="cat-name">БОКС</div>
+          <div class="cat-count">420 новостей</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="cat-card fade-up fade-up-delay-3" role="listitem" tabindex="0" aria-label="Олимпиада">
+      <div class="cat-bg-emoji" aria-hidden="true">🏅</div>
+      <div class="cat-content">
+        <div class="cat-icon" aria-hidden="true">🏅</div>
+        <div class="cat-info">
+          <div class="cat-name">ОЛИМПИАДА</div>
+          <div class="cat-count">560 новостей</div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- TRENDING MATCHES -->
+<section class="trending-section" id="trending" aria-label="Самые обсуждаемые матчи">
+  <div class="section-header fade-up">
+    <div>
+      <div class="section-label">Горячие события</div>
+      <h2 class="section-title">В ТРЕНДЕ</h2>
+    </div>
+    <a href="/trending" class="see-all">Все тренды →</a>
+  </div>
+
+  <div class="trending-grid">
+
+    <article class="trending-card fade-up" aria-label="Trending матч #1">
+      <div class="trending-header">
+        <span class="trending-num">01</span>
+        <span class="trending-badge"><span class="pulse-dot" style="background:var(--live);box-shadow:0 0 6px var(--live-glow);"></span> HOT</span>
+      </div>
+      <h3 class="trending-match-title">Финал Лиги Чемпионов — самый просматриваемый матч года</h3>
+      <div class="trending-teams">
+        <div class="team-mini">
+          <div class="team-mini-emblem">🏟️</div>
+          <div class="team-mini-name">Реал Мадрид</div>
+        </div>
+        <span class="vs-text">vs</span>
+        <div class="team-mini">
+          <div class="team-mini-emblem">🌆</div>
+          <div class="team-mini-name">Ман. Сити</div>
+        </div>
+      </div>
+      <div class="trending-stats">
+        <div class="t-stat">
+          <div class="t-stat-val">2.4M</div>
+          <div class="t-stat-label">Просмотров</div>
+        </div>
+        <div class="t-stat">
+          <div class="t-stat-val">187K</div>
+          <div class="t-stat-label">Реакций</div>
+        </div>
+        <div class="t-stat">
+          <div class="t-stat-val">94%</div>
+          <div class="t-stat-label">Интерес</div>
+        </div>
+      </div>
+      <div class="interest-bar-wrap">
+        <div class="interest-label">
+          <span>Уровень интереса</span>
+          <span>94%</span>
+        </div>
+        <div class="interest-bar">
+          <div class="interest-fill" style="width:94%"></div>
+        </div>
+      </div>
+    </article>
+
+    <div class="trending-sidebar">
+
+      <article class="trending-mini fade-up fade-up-delay-1" aria-label="Trending #2">
+        <div class="trending-mini-num">02</div>
+        <div class="trending-mini-content">
+          <div class="trending-mini-title">Верстаппен — Монако GP</div>
+          <div class="trending-mini-meta">Формула 1 · Прямо сейчас</div>
+        </div>
+        <div class="trending-mini-views">1.1M</div>
+      </article>
+
+      <article class="trending-mini fade-up fade-up-delay-2" aria-label="Trending #3">
+        <div class="trending-mini-num">03</div>
+        <div class="trending-mini-content">
+          <div class="trending-mini-title">Фьюри vs Усик 2 — анонс</div>
+          <div class="trending-mini-meta">Бокс · 2 часа назад</div>
+        </div>
+        <div class="trending-mini-views">820K</div>
+      </article>
+
+      <article class="trending-mini fade-up fade-up-delay-3" aria-label="Trending #4">
+        <div class="trending-mini-num">04</div>
+        <div class="trending-mini-content">
+          <div class="trending-mini-title">ЛеБрон 40 очков в овертайме</div>
+          <div class="trending-mini-meta">НБА · 45 мин назад</div>
+        </div>
+        <div class="trending-mini-views">690K</div>
+      </article>
+
+      <article class="trending-mini fade-up" aria-label="Trending #5">
+        <div class="trending-mini-num">05</div>
+        <div class="trending-mini-content">
+          <div class="trending-mini-title">Джокович — финал Roland Garros</div>
+          <div class="trending-mini-meta">Теннис · 3 часа назад</div>
+        </div>
+        <div class="trending-mini-views">540K</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- AD BANNER 2 -->
+<div class="ad-section" aria-label="Рекламный блок">
+  <div class="ad-banner" style="height:260px; flex-direction:column; gap:8px;">
+    <span class="ad-label">Реклама</span>
+    <span class="ad-placeholder-text">300 × 250 — Rectangle Ad</span>
+    <span style="font-size:12px;color:var(--text-muted);font-family:'Barlow Condensed';letter-spacing:2px;">Нативный рекламный блок</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer aria-label="Подвал сайта">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">PEREULOQ <span>СПОРТ</span></div>
+      <p class="footer-desc">Премиальный спортивный медиа-хаб. Результаты в реальном времени, эксклюзивные материалы и аналитика со всего мира.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Спорт</div>
+      <ul class="footer-links">
+        <li><a href="/football">Футбол</a></li>
+        <li><a href="/f1">Формула 1</a></li>
+        <li><a href="/nba">НБА</a></li>
+        <li><a href="/ufc">UFC / ММА</a></li>
+        <li><a href="/tennis">Теннис</a></li>
+        <li><a href="/esports">eSports</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Сервис</div>
+      <ul class="footer-links">
+        <li><a href="/live">Live-трансляции</a></li>
+        <li><a href="/scores">Счёт онлайн</a></li>
+        <li><a href="/video">Видео</a></li>
+        <li><a href="/stats">Статистика</a></li>
+        <li><a href="/news">Все новости</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Компания</div>
+      <ul class="footer-links">
+        <li><a href="/about">О нас</a></li>
+        <li><a href="/advertise">Реклама</a></li>
+        <li><a href="/privacy">Конфиденциальность</a></li>
+        <li><a href="/terms">Условия</a></li>
+        <li><a href="/contact">Контакты</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Pereuloq. Все права защищены.</span>
+    <span>Сделано с ❤️ для любителей спорта</span>
+  </div>
+</footer>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" aria-label="Мобильная навигация">
+  <div class="mobile-nav-items">
+    <a href="#" class="mobile-nav-item active" aria-label="Главная">
+      <span class="mobile-nav-icon">🏠</span>
+      <span class="mobile-nav-label">Главная</span>
+    </a>
+    <a href="#scores" class="mobile-nav-item" aria-label="Счёт">
+      <span class="mobile-nav-icon">⚡</span>
+      <span class="mobile-nav-label">Live</span>
+    </a>
+    <a href="#news" class="mobile-nav-item" aria-label="Новости">
+      <span class="mobile-nav-icon">📰</span>
+      <span class="mobile-nav-label">Новости</span>
+    </a>
+    <a href="#categories" class="mobile-nav-item" aria-label="Виды спорта">
+      <span class="mobile-nav-icon">🏆</span>
+      <span class="mobile-nav-label">Спорт</span>
+    </a>
+    <a href="#trending" class="mobile-nav-item" aria-label="Тренды">
+      <span class="mobile-nav-icon">🔥</span>
+      <span class="mobile-nav-label">Тренды</span>
+    </a>
+  </div>
+</nav>
+
+<script>
+// Navbar scroll effect
+(function() {
+  const nav = document.getElementById('navbar');
+  let lastY = 0;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 80);
+    lastY = y;
+  }, { passive: true });
+})();
+
+// Intersection Observer - fade-up animations
+(function() {
+  const els = document.querySelectorAll('.fade-up');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => obs.observe(el));
+})();
+
+// Live score ticker simulation
+(function() {
+  const rmTime = document.getElementById('rm-time');
+  if (!rmTime) return;
+  let minute = 74;
+  setInterval(() => {
+    if (minute < 90) {
+      minute++;
+      rmTime.textContent = minute + "'";
+    }
+  }, 60000); // every real minute
+  // Simulate faster for demo: every 5s + 1 minute
+  let demoMin = 74;
+  const demo = setInterval(() => {
+    if (demoMin >= 90) { clearInterval(demo); return; }
+    demoMin++;
+    rmTime.textContent = demoMin + "'";
+  }, 5000);
+})();
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const id = link.getAttribute('href');
+    if (id === '#') return;
+    const target = document.querySelector(id);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// Mobile nav active state
+(function() {
+  const items = document.querySelectorAll('.mobile-nav-item');
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      items.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+})();
+
+// Lazy loading skeleton for score cards
+(function() {
+  const cards = document.querySelectorAll('.score-card');
+  cards.forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    setTimeout(() => {
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    }, i * 100 + 300);
+  });
+})();
+
+// Parallax hero on scroll
+(function() {
+  const heroImg = document.querySelector('.hero-video-wrap img');
+  if (!heroImg) return;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    const max = window.innerHeight;
+    if (y < max) {
+      heroImg.style.transform = `scale(1) translateY(${y * 0.3}px)`;
+    }
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>
