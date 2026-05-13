@@ -1072,4 +1072,20 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://pereuloq.ru/sport/sports-results-may-6-12-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/sport/sports-results-may-6-12-2026.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/sport/sports-results-may-6-12-2026.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/sport/sports-results-may-6-12-2026.html" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/en/sport/sports-results-may-6-12-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://pereuloq.ru/sport/sports-results-may-6-12-2026.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/sport/sports-results-may-6-12-2026.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/sport/sports-results-may-6-12-2026.html" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
