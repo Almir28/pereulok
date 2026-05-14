@@ -533,22 +533,37 @@ nav.scrolled {
 
 .hero-intel-panel {
   position: absolute;
-  left: clamp(32px, 5vw, 72px);
-  right: clamp(32px, 5vw, 72px);
-  top: 50%;
+  inset: clamp(34px, 7vh, 82px) clamp(28px, 4vw, 60px) clamp(34px, 7vh, 82px) clamp(28px, 4vw, 60px);
   z-index: 4;
-  width: auto;
-  max-width: 780px;
-  transform: translateY(-50%);
-  padding: 24px;
+  display: grid;
+  grid-template-rows: auto auto auto minmax(0, 1fr);
+  gap: clamp(10px, 1.2vw, 16px);
+  padding: clamp(18px, 2vw, 26px);
   border: 1px solid rgba(200,169,110,0.18);
   border-radius: 28px;
-  background: linear-gradient(145deg, rgba(13,18,30,0.76), rgba(8,10,15,0.54));
+  background:
+    linear-gradient(145deg, rgba(13,18,30,0.82), rgba(8,10,15,0.62)),
+    radial-gradient(circle at 78% 18%, rgba(74,144,217,0.16), transparent 34%),
+    radial-gradient(circle at 18% 82%, rgba(200,169,110,0.12), transparent 32%);
   backdrop-filter: blur(20px);
   box-shadow: 0 28px 90px rgba(0,0,0,0.42);
+  overflow: hidden;
+}
+
+.hero-intel-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.32));
 }
 
 .hero-intel-eyebrow {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -566,97 +581,287 @@ nav.scrolled {
   letter-spacing: 0.08em;
 }
 
-.hero-top-stories {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.hero-story {
+.hero-day-brief {
   position: relative;
-  min-height: 220px;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
-  border-radius: 22px;
-  border: 1px solid rgba(255,255,255,0.08);
+  display: grid;
+  gap: 14px;
+  min-height: 188px;
+  padding: clamp(18px, 2vw, 24px);
+  border-radius: 24px;
+  border: 1px solid rgba(200,169,110,0.2);
   background:
-    linear-gradient(180deg, transparent 0%, rgba(8,10,15,0.88) 78%),
-    var(--hero-story-bg, linear-gradient(135deg, #182036, #0b101c));
+    linear-gradient(135deg, rgba(200,169,110,0.15), rgba(74,144,217,0.08) 46%, rgba(8,10,15,0.72)),
+    rgba(255,255,255,0.04);
   color: var(--text);
   text-decoration: none;
+  overflow: hidden;
   transition: transform 0.28s var(--ease-out), border-color 0.28s var(--ease-out), box-shadow 0.28s var(--ease-out);
 }
 
-.hero-story::before {
+.hero-day-brief::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 74% 22%, rgba(255,255,255,0.2), transparent 18%),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: auto, 34px 34px, 34px 34px;
-  opacity: 0.52;
+  width: 240px;
+  height: 240px;
+  right: -96px;
+  top: -104px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,169,110,0.2), transparent 64%);
 }
 
-.hero-story:hover {
+.hero-day-brief:hover {
   transform: translateY(-4px);
-  border-color: rgba(200,169,110,0.34);
-  box-shadow: 0 24px 70px rgba(0,0,0,0.36);
+  border-color: rgba(200,169,110,0.38);
+  box-shadow: 0 22px 60px rgba(0,0,0,0.34);
 }
 
-.hero-story-tag {
+.hero-brief-kicker {
   position: relative;
   width: fit-content;
-  margin-bottom: 12px;
-  padding: 5px 9px;
+  padding: 5px 10px;
   border-radius: 999px;
-  background: rgba(8,10,15,0.58);
-  border: 1px solid rgba(200,169,110,0.22);
   color: var(--accent);
+  background: rgba(8,10,15,0.48);
+  border: 1px solid rgba(200,169,110,0.22);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.hero-brief-title {
+  position: relative;
+  max-width: 560px;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3vw, 44px);
+  line-height: 1.02;
+  color: var(--text);
+}
+
+.hero-brief-desc {
+  position: relative;
+  max-width: 580px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text2);
+}
+
+.hero-brief-bottom {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-brief-tags {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.hero-brief-tags span {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text2);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-brief-cta {
+  color: var(--bg);
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.hero-topic-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.hero-topic-card {
+  position: relative;
+  min-height: 96px;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.045);
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.28s var(--ease-out), border-color 0.28s var(--ease-out), box-shadow 0.28s var(--ease-out);
+}
+
+.hero-topic-card::before {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  top: 16px;
+  right: 16px;
+  border-radius: 50%;
+  background: var(--topic-color, var(--accent));
+  box-shadow: 0 0 18px color-mix(in srgb, var(--topic-color, var(--accent)) 50%, transparent);
+}
+
+.hero-topic-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(200,169,110,0.34);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.28);
+}
+
+.hero-topic-label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--text3);
   font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.hero-intel-title {
-  position: relative;
+.hero-topic-title {
+  display: block;
   font-family: var(--font-display);
-  font-size: clamp(22px, 2vw, 30px);
-  line-height: 1.08;
+  font-size: clamp(21px, 1.7vw, 28px);
+  line-height: 1.04;
   color: var(--text);
 }
 
-.hero-intel-meta {
-  position: relative;
+.hero-topic-meta {
+  display: block;
   margin-top: 10px;
-  font-family: var(--font-mono);
-  font-size: 10px;
   color: var(--text3);
+  font-size: 12px;
 }
 
-.hero-signal-row {
+.hero-media-grid {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.1fr) minmax(190px, 0.9fr);
   gap: 10px;
-  margin-top: 14px;
+  min-height: 0;
 }
 
-.hero-signal {
-  min-height: 86px;
-  padding: 12px;
+.hero-updates,
+.hero-watch,
+.hero-sponsor {
   border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.08);
   background: rgba(255,255,255,0.045);
 }
 
-.hero-signal-k {
+.hero-updates {
+  padding: 14px;
+}
+
+.hero-block-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.hero-block-head span:last-child {
+  color: var(--text3);
+}
+
+.hero-update-list {
+  display: grid;
+  gap: 8px;
+}
+
+.hero-update {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.hero-update:first-child { border-top: 0; padding-top: 0; }
+
+.hero-update-time {
+  color: var(--text3);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.hero-update-title {
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.hero-update-cat {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-side-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.hero-watch {
+  padding: 14px;
+}
+
+.hero-watch-list {
+  display: grid;
+  gap: 8px;
+}
+
+.hero-watch-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--text2);
+  font-size: 13px;
+}
+
+.hero-watch-item strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.hero-watch-item span {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.hero-sponsor {
+  padding: 14px;
+  background:
+    linear-gradient(135deg, rgba(200,169,110,0.1), rgba(255,255,255,0.035)),
+    rgba(255,255,255,0.035);
+}
+
+.hero-sponsor-label {
   display: block;
-  margin-bottom: 9px;
+  margin-bottom: 10px;
   color: var(--text3);
   font-family: var(--font-mono);
   font-size: 9px;
@@ -664,12 +869,18 @@ nav.scrolled {
   text-transform: uppercase;
 }
 
-.hero-signal-v {
-  display: block;
+.hero-sponsor-title {
   font-family: var(--font-display);
-  font-size: 19px;
-  line-height: 1.12;
+  font-size: 22px;
+  line-height: 1.05;
   color: var(--text);
+  margin-bottom: 8px;
+}
+
+.hero-sponsor-copy {
+  color: var(--text2);
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 .hero-right .play-btn { display: none; }
@@ -1779,82 +1990,6 @@ nav.scrolled {
 .newsletter-btn:hover { background: var(--accent2); }
 
 /* ============================================
-   BREAKING OVERLAY (floating)
-   ============================================ */
-.breaking-overlay {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 900;
-  width: 340px;
-  background: rgba(8,10,15,0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(224,85,85,0.25);
-  border-radius: var(--radius);
-  padding: 20px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(224,85,85,0.08);
-  transform: translateX(400px);
-  opacity: 0;
-  transition: all 0.6s var(--ease-out);
-  cursor: pointer;
-}
-
-.breaking-overlay.show {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-.breaking-overlay-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.breaking-badge-sm {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--red);
-}
-
-.close-overlay {
-  width: 24px; height: 24px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 50%;
-  background: var(--surface2);
-  color: var(--text3);
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s;
-  border: none;
-  flex-shrink: 0;
-}
-
-.close-overlay:hover { background: var(--surface2); color: var(--text); }
-
-.breaking-title {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  color: var(--text);
-  margin-bottom: 10px;
-}
-
-.breaking-time {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text3);
-}
-
-/* ============================================
    FOOTER
    ============================================ */
 footer {
@@ -2004,8 +2139,9 @@ footer {
    ============================================ */
 @media (max-width: 1100px) {
   .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-right { height: 470px; position: relative; }
-  .hero-intel-panel { left: 24px; right: 24px; max-width: none; }
+  .hero-right { height: auto; position: relative; }
+  .hero-video-wrap { position: relative; inset: auto; padding: 0 40px 56px; }
+  .hero-intel-panel { position: relative; inset: auto; max-width: none; }
   .hero-left { padding: 60px 40px; }
   .news-section { padding: 60px 40px; }
   .card-feature { grid-column: span 12; min-height: 360px; }
@@ -2023,8 +2159,14 @@ footer {
   .nav-center { display: none; }
   .hero-left { padding: 48px 24px 40px; }
   .hero-headline { font-size: 30px; }
-  .hero-right { height: 260px; }
-  .hero-intel-panel { display: none; }
+  .hero-video-wrap { padding: 0 20px 44px; }
+  .hero-intel-panel { gap: 12px; padding: 16px; border-radius: 22px; }
+  .hero-day-brief { min-height: 0; border-radius: 18px; }
+  .hero-brief-title { font-size: 28px; }
+  .hero-topic-grid { grid-template-columns: 1fr; }
+  .hero-media-grid { grid-template-columns: 1fr; }
+  .hero-update { grid-template-columns: 42px 1fr; }
+  .hero-update-cat { display: none; }
   .news-section { padding: 48px 20px; }
   .recommendations-section { padding: 48px 20px; }
   .worldmap-section { padding: 48px 20px; }
@@ -2039,7 +2181,6 @@ footer {
   .native-ad { flex-wrap: wrap; }
   .video-grid { grid-template-columns: 1fr; }
   .mobile-nav { display: flex; }
-  .breaking-overlay { display: none !important; }
   .news-grid { gap: 16px; }
   .card, .card-feature, .card-medium, .card-small, .card-wide {
     min-height: 0;
@@ -2205,23 +2346,62 @@ footer {
       <div class="hero-img-placeholder"></div>
       <div class="hero-city-lines" id="city-lines"></div>
         <div class="hero-intel-panel" aria-label="Редакционная сводка">
-          <div class="hero-intel-eyebrow"><span>Главные сигналы</span><span>обновляется сегодня</span></div>
-          <div class="hero-top-stories">
-            <a class="hero-story" href="politics/us-china-new-cold-war-2026.html" style="--hero-story-bg: linear-gradient(135deg, #2b2316 0%, #111827 48%, #0a0d14 100%);">
-              <span class="hero-story-tag">Геополитика</span>
-              <span class="hero-intel-title">США и Китай входят в новую холодную войну</span>
-              <span class="hero-intel-meta">AI, чипы, Тайвань · 6 мин чтения</span>
+          <div class="hero-intel-eyebrow"><span>Политический радар</span><span>обновляется сегодня</span></div>
+          <a class="hero-day-brief" href="politics/us-china-new-cold-war-2026.html">
+            <span class="hero-brief-kicker">Главная картина дня</span>
+            <span class="hero-brief-title">Мир собирается вокруг новой оси: AI, энергия, чипы и дипломатия</span>
+            <span class="hero-brief-desc">Редакционный обзор Pereuloq о том, как переговоры США и Китая, энергетический кризис и рынки складываются в одну политическую картину.</span>
+            <span class="hero-brief-bottom">
+              <span class="hero-brief-tags"><span>AI</span><span>Энергия</span><span>Рынки</span></span>
+              <span class="hero-brief-cta">Открыть обзор</span>
+            </span>
+          </a>
+          <div class="hero-topic-grid" aria-label="Коротко по главным направлениям">
+            <a class="hero-topic-card" href="politics/us-china-new-cold-war-2026.html" style="--topic-color:#e05555">
+              <span class="hero-topic-label">Геополитика</span>
+              <span class="hero-topic-title">США и Китай входят в новую холодную войну</span>
+              <span class="hero-topic-meta">6 мин чтения</span>
             </a>
-            <a class="hero-story" href="politics/europe-energy-crisis-2026.html" style="--hero-story-bg: linear-gradient(135deg, #122033 0%, #17131f 48%, #090c12 100%);">
-              <span class="hero-story-tag">Экономика</span>
-              <span class="hero-intel-title">Европа готовится ко второй энергетической волне</span>
-              <span class="hero-intel-meta">Нефть, газ, инфляция · 6 мин чтения</span>
+            <a class="hero-topic-card" href="politics/global-bond-markets-pressure-2026.html" style="--topic-color:#c8a96e">
+              <span class="hero-topic-label">Экономика</span>
+              <span class="hero-topic-title">Доходности G7 давят на рынки</span>
+              <span class="hero-topic-meta">4 сигнала</span>
+            </a>
+            <a class="hero-topic-card" href="politics/middle-east-ceasefire-oil-pressure-2026.html" style="--topic-color:#4a90d9">
+              <span class="hero-topic-label">Регионы</span>
+              <span class="hero-topic-title">Ближний Восток снова на грани</span>
+              <span class="hero-topic-meta">обновляется</span>
+            </a>
+            <a class="hero-topic-card" href="politics/europe-energy-crisis-2026.html" style="--topic-color:#8bc4a3">
+              <span class="hero-topic-label">Энергетика</span>
+              <span class="hero-topic-title">Европа готовится к новому шоку</span>
+              <span class="hero-topic-meta">6 мин чтения</span>
             </a>
           </div>
-          <div class="hero-signal-row" aria-label="Короткие сигналы дня">
-            <div class="hero-signal"><span class="hero-signal-k">Рынки</span><span class="hero-signal-v">Доходности G7 растут</span></div>
-            <div class="hero-signal"><span class="hero-signal-k">Регионы</span><span class="hero-signal-v">Ближний Восток на грани</span></div>
-            <div class="hero-signal"><span class="hero-signal-k">Фокус</span><span class="hero-signal-v">Энергия как политика</span></div>
+          <div class="hero-media-grid">
+            <div class="hero-updates">
+              <div class="hero-block-head"><span>Последние обновления</span><span>live</span></div>
+              <div class="hero-update-list">
+                <div class="hero-update"><span class="hero-update-time">16:00</span><span class="hero-update-title">Кремль назвал встречу финальной стадией переговоров</span><span class="hero-update-cat">дипломатия</span></div>
+                <div class="hero-update"><span class="hero-update-time">15:24</span><span class="hero-update-title">Европейские рынки снова смотрят на цены энергии</span><span class="hero-update-cat">экономика</span></div>
+                <div class="hero-update"><span class="hero-update-time">14:52</span><span class="hero-update-title">Ближний Восток остается на грани эскалации</span><span class="hero-update-cat">регион</span></div>
+              </div>
+            </div>
+            <div class="hero-side-stack">
+              <div class="hero-watch">
+                <div class="hero-block-head"><span>Следить за темой</span><span>3</span></div>
+                <div class="hero-watch-list">
+                  <div class="hero-watch-item"><strong>США — Китай</strong><span>AI</span></div>
+                  <div class="hero-watch-item"><strong>Европа</strong><span>газ</span></div>
+                  <div class="hero-watch-item"><strong>Рынки</strong><span>G7</span></div>
+                </div>
+              </div>
+              <div class="hero-sponsor">
+                <span class="hero-sponsor-label">Партнерский блок</span>
+                <div class="hero-sponsor-title">Pereuloq Brief</div>
+                <div class="hero-sponsor-copy">Короткий вечерний дайджест о политике, рынках и технологиях без лишнего шума.</div>
+              </div>
+            </div>
           </div>
         </div>
       <button class="play-btn" aria-label="Смотреть видео">
@@ -2820,21 +3000,6 @@ footer {
 </footer>
 
 <!-- ============================================
-     BREAKING OVERLAY
-     ============================================ -->
-<div class="breaking-overlay" id="breaking-overlay">
-  <div class="breaking-overlay-header">
-    <div class="breaking-badge-sm">
-      <div class="live-dot"></div>
-      Только что
-    </div>
-    <button class="close-overlay" id="close-breaking" aria-label="Закрыть">✕</button>
-  </div>
-  <div class="breaking-title">Ближний Восток снова остается на грани эскалации</div>
-  <div class="breaking-time">12 мая, 14:52 · Обновляется</div>
-</div>
-
-<!-- ============================================
      MOBILE NAV
      ============================================ -->
 <nav class="mobile-nav" aria-label="Мобильная навигация">
@@ -3041,29 +3206,6 @@ if (cityLinesContainer) {
     `;
     cityLinesContainer.appendChild(line);
   }
-}
-
-// ─── BREAKING OVERLAY ─────────────────────────
-const breakingOverlay = document.getElementById('breaking-overlay');
-const closeBreaking = document.getElementById('close-breaking');
-
-if (breakingOverlay && !window.matchMedia('(max-width: 768px)').matches) {
-  setTimeout(() => {
-    breakingOverlay.classList.add('show');
-  }, 2800);
-}
-
-if (closeBreaking) {
-  closeBreaking.addEventListener('click', (e) => {
-    e.stopPropagation();
-    breakingOverlay.classList.remove('show');
-  });
-}
-
-if (breakingOverlay) {
-  breakingOverlay.addEventListener('click', () => {
-    breakingOverlay.classList.remove('show');
-  });
 }
 
 // ─── SMOOTH PARALLAX (hero) ───────────────────
