@@ -198,6 +198,7 @@ footer{background:#050505;border-top:1px solid var(--glass-border);padding:48px 
 @media(max-width:1024px){.page-header,.filter-bar,.page-content,footer{padding-left:30px;padding-right:30px}.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:768px){.nav-links,.filter-search{display:none}.hamburger{display:none!important}.page-header,.filter-bar,.page-content{padding-left:20px;padding-right:20px}footer{padding:32px 20px}.footer-grid{grid-template-columns:1fr;gap:24px}.footer-bottom{flex-direction:column;gap:8px;text-align:center}.mobile-nav{display:block}body{padding-bottom:70px}.results-grid{display:none}.filter-bar{overflow-x:auto;flex-wrap:nowrap}.filter-bar::-webkit-scrollbar{display:none}}
 @media(min-width:769px){.results-scroll-outer{display:none}.results-grid{display:grid}}
+@media(max-width:768px){.results-grid{display:grid!important;grid-template-columns:1fr!important}.result-card{min-width:0}}
 </style>
 </head>
 <body>
@@ -224,19 +225,7 @@ footer{background:#050505;border-top:1px solid var(--glass-border);padding:48px 
 <div class="ticker-bar">
   <div class="ticker-label">⚡ LIVE</div>
   <div class="ticker-track">
-    <span class="ticker-item">⚽ Реал Мадрид 2:1 Манчестер Сити | 74'</span>
-    <span class="ticker-item">🏎 Верстаппен лидирует в Монако | 38/78</span>
-    <span class="ticker-item">🏀 Лейкерс 108:102 Бостон | 3Q 4:12</span>
-    <span class="ticker-item">🎾 Джокович — финал Roland Garros</span>
-    <span class="ticker-item">⚽ ПСЖ 0:0 Бавария | 61'</span>
-    <span class="ticker-item">⚽ Барселона 1:1 Атлетико | 88'</span>
-    <span class="ticker-item">⚽ Реал Мадрид 2:1 Манчестер Сити | 74'</span>
-    <span class="ticker-item">🏎 Верстаппен лидирует в Монако | 38/78</span>
-    <span class="ticker-item">🏀 Лейкерс 108:102 Бостон | 3Q 4:12</span>
-    <span class="ticker-item">🎾 Джокович — финал Roland Garros</span>
-    <span class="ticker-item">⚽ ПСЖ 0:0 Бавария | 61'</span>
-    <span class="ticker-item">⚽ Барселона 1:1 Атлетико | 88'</span>
-  </div>
+    <span class="ticker-item">⚽ Бавария 1:1 ПСЖ — PSG в финале</span><span class="ticker-item">🇷🇺 Зенит 2:1 Сочи · РПЛ</span><span class="ticker-item">🇪🇸 Сельта 2:3 Леванте · Ла Лига</span><span class="ticker-item">🏀 Spurs 126:97 Timberwolves</span></div>
 </div>
 
 <!-- PAGE HEADER -->
@@ -248,11 +237,11 @@ footer{background:#050505;border-top:1px solid var(--glass-border);padding:48px 
     <span>Все результаты</span>
   </nav>
   <h1 class="page-title">ВСЕ <span class="accent">РЕЗУЛЬТАТЫ</span></h1>
-  <p class="page-subtitle">Счёт в реальном времени, завершённые матчи и предстоящие события по всем видам спорта</p>
+  <p class="page-subtitle">Результаты матчей и турниров за 6–12 мая 2026: футбол, NBA, теннис, Формула 1, бокс и UFC</p>
   <div class="header-meta">
-    <div class="header-meta-item"><span class="header-meta-val" id="liveCount">8</span> матчей live</div>
-    <div class="header-meta-item"><span class="header-meta-val">24</span> завершено сегодня</div>
-    <div class="header-meta-item"><span class="header-meta-val">12</span> предстоит</div>
+    <div class="header-meta-item"><span class="header-meta-val" id="liveCount">31</span> результат</div>
+    <div class="header-meta-item"><span class="header-meta-val">6–12</span> мая</div>
+    <div class="header-meta-item"><span class="header-meta-val">6</span> видов спорта</div>
   </div>
 </header>
 
@@ -264,7 +253,7 @@ footer{background:#050505;border-top:1px solid var(--glass-border);padding:48px 
   <button class="filter-btn" data-filter="nba">🏀 НБА</button>
   <button class="filter-btn" data-filter="tennis">🎾 Теннис</button>
   <button class="filter-btn" data-filter="ufc">🥊 UFC</button>
-  <button class="filter-btn" data-filter="esports">🎮 eSports</button>
+
   <div class="filter-search">
     <span class="filter-search-icon">🔍</span>
     <input type="search" placeholder="Поиск матча..." aria-label="Поиск матча">
@@ -293,227 +282,58 @@ footer{background:#050505;border-top:1px solid var(--glass-border);padding:48px 
   <!-- Real content (hidden until loaded) -->
   <div id="realContent" style="display:none">
 
-    <!-- FOOTBALL -->
     <section class="sport-group fade-up" data-sport="football">
-      <div class="sport-group-header">
-        <h2 class="sport-group-title">⚽ Футбол <span class="sport-group-count">9 матчей</span></h2>
-        <a href="#" class="sport-group-more" onclick="toast('Страница футбола открывается...');return false">Все →</a>
-      </div>
-
-      <!-- Desktop grid -->
-      <div class="results-grid">
-        <article class="result-card live-card" onclick="toast('Реал Мадрид — Ман. Сити: детали матча')">
-          <div class="result-card-top"><span class="competition-name">Лига Чемпионов</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div>
-          <div class="match-row">
-            <div class="result-team"><div class="team-logo" aria-hidden="true">🏟️</div><div class="team-label">Реал Мадрид</div></div>
-            <div class="scoreline"><span class="score-dig">2</span><span class="score-col">:</span><span class="score-dig">1</span></div>
-            <div class="result-team"><div class="team-logo" aria-hidden="true">🌆</div><div class="team-label">Ман. Сити</div></div>
-          </div>
-          <div class="result-time"><span class="min" id="t1">74'</span> &nbsp;2-й тайм</div>
-        </article>
-
-        <article class="result-card live-card" onclick="toast('ПСЖ — Бавария: детали матча')">
-          <div class="result-card-top"><span class="competition-name">Лига Чемпионов</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div>
-          <div class="match-row">
-            <div class="result-team"><div class="team-logo">⚫🔴</div><div class="team-label">ПСЖ</div></div>
-            <div class="scoreline"><span class="score-dig">0</span><span class="score-col">:</span><span class="score-dig">0</span></div>
-            <div class="result-team"><div class="team-logo">🔴⚪</div><div class="team-label">Бавария</div></div>
-          </div>
-          <div class="result-time"><span class="min">61'</span> &nbsp;2-й тайм</div>
-        </article>
-
-        <article class="result-card live-card" onclick="toast('Барселона — Атлетико: детали матча')">
-          <div class="result-card-top"><span class="competition-name">Ла Лига</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div>
-          <div class="match-row">
-            <div class="result-team"><div class="team-logo">🔵🔴</div><div class="team-label">Барселона</div></div>
-            <div class="scoreline"><span class="score-dig">1</span><span class="score-col">:</span><span class="score-dig">1</span></div>
-            <div class="result-team"><div class="team-logo">🔴⚫</div><div class="team-label">Атлетико</div></div>
-          </div>
-          <div class="result-time"><span class="min">88'</span> &nbsp;2-й тайм</div>
-        </article>
-
-        <article class="result-card" onclick="toast('Челси — Арсенал: детали матча')">
-          <div class="result-card-top"><span class="competition-name">АПЛ</span><span class="finished-badge">Завершён</span></div>
-          <div class="match-row">
-            <div class="result-team"><div class="team-logo">🔵</div><div class="team-label">Челси</div></div>
-            <div class="scoreline"><span class="score-dig">3</span><span class="score-col">:</span><span class="score-dig">1</span></div>
-            <div class="result-team"><div class="team-logo">🔴</div><div class="team-label">Арсенал</div></div>
-          </div>
-          <div class="result-time">Финальный свисток</div>
-        </article>
-
-        <article class="result-card" onclick="toast('Ювентус — Интер: детали матча')">
-          <div class="result-card-top"><span class="competition-name">Серия А</span><span class="finished-badge">Завершён</span></div>
-          <div class="match-row">
-            <div class="result-team"><div class="team-logo">⚫⚪</div><div class="team-label">Ювентус</div></div>
-            <div class="scoreline"><span class="score-dig">2</span><span class="score-col">:</span><span class="score-dig">2</span></div>
-            <div class="result-team"><div class="team-logo">🖤💙</div><div class="team-label">Интер</div></div>
-          </div>
-          <div class="result-time">Финальный свисток</div>
-        </article>
-
-        <article class="result-card" onclick="toast('Манчестер Юнайтед — Ливерпуль: детали')">
-          <div class="result-card-top"><span class="competition-name">АПЛ</span><span class="upcoming-badge">Сегодня 22:00</span></div>
-          <div class="match-row">
-            <div class="result-team"><div class="team-logo">🔴⚫</div><div class="team-label">Ман. Юнайтед</div></div>
-            <div class="scoreline"><span class="score-dig" style="color:var(--text-muted)">-</span><span class="score-col">:</span><span class="score-dig" style="color:var(--text-muted)">-</span></div>
-            <div class="result-team"><div class="team-logo">🔴</div><div class="team-label">Ливерпуль</div></div>
-          </div>
-          <div class="result-time">Начало через 2ч 15мин</div>
-        </article>
-      </div>
-
-      <!-- Mobile scroll -->
-      <div class="results-scroll-outer">
-        <div class="results-scroll-inner">
-          <article class="result-card live-card"><div class="result-card-top"><span class="competition-name">Лига Чемпионов</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div><div class="match-row"><div class="result-team"><div class="team-logo">🏟️</div><div class="team-label">Реал</div></div><div class="scoreline"><span class="score-dig">2</span><span class="score-col">:</span><span class="score-dig">1</span></div><div class="result-team"><div class="team-logo">🌆</div><div class="team-label">Ман.Сити</div></div></div><div class="result-time"><span class="min">74'</span></div></article>
-          <article class="result-card live-card"><div class="result-card-top"><span class="competition-name">Лига Чемпионов</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div><div class="match-row"><div class="result-team"><div class="team-logo">⚫🔴</div><div class="team-label">ПСЖ</div></div><div class="scoreline"><span class="score-dig">0</span><span class="score-col">:</span><span class="score-dig">0</span></div><div class="result-team"><div class="team-logo">🔴⚪</div><div class="team-label">Бавария</div></div></div><div class="result-time"><span class="min">61'</span></div></article>
-          <article class="result-card live-card"><div class="result-card-top"><span class="competition-name">Ла Лига</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div><div class="match-row"><div class="result-team"><div class="team-logo">🔵🔴</div><div class="team-label">Барса</div></div><div class="scoreline"><span class="score-dig">1</span><span class="score-col">:</span><span class="score-dig">1</span></div><div class="result-team"><div class="team-logo">🔴⚫</div><div class="team-label">Атлетико</div></div></div><div class="result-time"><span class="min">88'</span></div></article>
-          <article class="result-card"><div class="result-card-top"><span class="competition-name">АПЛ</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">🔵</div><div class="team-label">Челси</div></div><div class="scoreline"><span class="score-dig">3</span><span class="score-col">:</span><span class="score-dig">1</span></div><div class="result-team"><div class="team-logo">🔴</div><div class="team-label">Арсенал</div></div></div><div class="result-time">ФТ</div></article>
-        </div>
-      </div>
+      <div class="sport-group-header"><h2 class="sport-group-title">⚽ Футбол <span class="sport-group-count">16 матчей</span></h2><a href="world-sport.html#scores" class="sport-group-more">К сводке →</a></div>
+      <div class="results-grid"><article class="result-card" onclick="toast('Бавария — ПСЖ')"><div class="result-card-top"><span class="competition-name">Лига Чемпионов · 6 мая</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">БАВ</div><div class="team-label">Бавария</div></div><div class="scoreline"><span class="score-dig">1</span><span class="score-col">:</span><span class="score-dig">1</span></div><div class="result-team"><div class="team-logo">ПСЖ</div><div class="team-label">ПСЖ</div></div></div><div class="result-time">PSG проходит в финал 6:5 по сумме двух матчей</div></article>
+<article class="result-card" onclick="toast('Спартак Москва — ЦСКА Москва')"><div class="result-card-top"><span class="competition-name">Кубок России · 6 мая</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">СПА</div><div class="team-label">Спартак Москва</div></div><div class="scoreline"><span class="score-dig">1</span><span class="score-col">:</span><span class="score-dig">0</span></div><div class="result-team"><div class="team-logo">ЦСК</div><div class="team-label">ЦСКА Москва</div></div></div><div class="result-time">Финал Пути регионов</div></article>
+<article class="result-card" onclick="toast('Зенит — Сочи')"><div class="result-card-top"><span class="competition-name">РПЛ · 10–11 мая</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">ЗЕН</div><div class="team-label">Зенит</div></div><div class="scoreline"><span class="score-dig">2</span><span class="score-col">:</span><span class="score-dig">1</span></div><div class="result-team"><div class="team-logo">СОЧ</div><div class="team-label">Сочи</div></div></div><div class="result-time">Премьер-лига России</div></article>
+<article class="result-card" onclick="toast('Локомотив — Балтика')"><div class="result-card-top"><span class="competition-name">РПЛ · 10–11 мая</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">ЛОК</div><div class="team-label">Локомотив</div></div><div class="scoreline"><span class="score-dig">1</span><span class="score-col">:</span><span class="score-dig">0</span></div><div class="result-team"><div class="team-logo">БАЛ</div><div class="team-label">Балтика</div></div></div><div class="result-time">Премьер-лига России</div></article>
+<article class="result-card" onclick="toast('Спартак — Рубин')"><div class="result-card-top"><span class="competition-name">РПЛ · 10–11 мая</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">СПА</div><div class="team-label">Спартак</div></div><div class="scoreline"><span class="score-dig">2</span><span class="score-col">:</span><span class="score-dig">1</span></div><div class="result-team"><div class="team-logo">РУБ</div><div class="team-label">Рубин</div></div></div><div class="result-time">Премьер-лига России</div></article>
+<article class="result-card" onclick="toast('Динамо Москва — Краснодар')"><div class="result-card-top"><span class="competition-name">РПЛ · 10–11 мая</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">ДИН</div><div class="team-label">Динамо Москва</div></div><div class="scoreline"><span class="score-dig">2</span><span class="score-col">:</span><span class="score-dig">1</span></div><div class="result-team"><div class="team-logo">КРА</div><div class="team-label">Краснодар</div></div></div><div class="result-time">Премьер-лига России</div></article>
+<article class="result-card" onclick="toast('Пари НН — ЦСКА Москва')"><div class="result-card-top"><span class="competition-name">РПЛ · 10–11 мая</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">ПАР</div><div class="team-label">Пари НН</div></div><div class="scoreline"><span class="score-dig">1</span><span class="score-col">:</span><span class="score-dig">2</span></div><div class="result-team"><div class="team-logo">ЦСК</div><div class="team-label">ЦСКА Москва</div></div></div><div class="result-time">Премьер-лига России</div></article>
+<article class="result-card" onclick="toast('Акрон — Ростов')"><div class="result-card-top"><span class="competition-name">РПЛ · 10–11 мая</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">АКР</div><div class="team-label">Акрон</div></div><div class="scoreline"><span class="score-dig">1</span><span class="score-col">:</span><span class="score-dig">3</span></div><div class="result-team"><div class="team-logo">РОС</div><div class="team-label">Ростов</div></div></div><div class="result-time">Премьер-лига России</div></article>
+<article class="result-card" onclick="toast('Ахмат — Динамо Махачкала')"><div class="result-card-top"><span class="competition-name">РПЛ · 10–11 мая</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">АХМ</div><div class="team-label">Ахмат</div></div><div class="scoreline"><span class="score-dig">1</span><span class="score-col">:</span><span class="score-dig">1</span></div><div class="result-team"><div class="team-logo">ДИН</div><div class="team-label">Динамо Махачкала</div></div></div><div class="result-time">Премьер-лига России</div></article>
+<article class="result-card" onclick="toast('Оренбург — Крылья Советов')"><div class="result-card-top"><span class="competition-name">РПЛ · 10–11 мая</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">ОРЕ</div><div class="team-label">Оренбург</div></div><div class="scoreline"><span class="score-dig">1</span><span class="score-col">:</span><span class="score-dig">0</span></div><div class="result-team"><div class="team-logo">КРЫ</div><div class="team-label">Крылья Советов</div></div></div><div class="result-time">Премьер-лига России</div></article>
+<article class="result-card" onclick="toast('Сельта — Леванте')"><div class="result-card-top"><span class="competition-name">Ла Лига · 12 мая</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">СЕЛ</div><div class="team-label">Сельта</div></div><div class="scoreline"><span class="score-dig">2</span><span class="score-col">:</span><span class="score-dig">3</span></div><div class="result-team"><div class="team-logo">ЛЕВ</div><div class="team-label">Леванте</div></div></div><div class="result-time">Испания</div></article>
+<article class="result-card" onclick="toast('Реал Бетис — Эльче')"><div class="result-card-top"><span class="competition-name">Ла Лига · 12 мая</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">РЕА</div><div class="team-label">Реал Бетис</div></div><div class="scoreline"><span class="score-dig">2</span><span class="score-col">:</span><span class="score-dig">1</span></div><div class="result-team"><div class="team-logo">ЭЛЬ</div><div class="team-label">Эльче</div></div></div><div class="result-time">Испания</div></article>
+<article class="result-card" onclick="toast('Осасуна — Атлетико Мадрид')"><div class="result-card-top"><span class="competition-name">Ла Лига · 12 мая</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">ОСА</div><div class="team-label">Осасуна</div></div><div class="scoreline"><span class="score-dig">1</span><span class="score-col">:</span><span class="score-dig">2</span></div><div class="result-team"><div class="team-logo">АТЛ</div><div class="team-label">Атлетико Мадрид</div></div></div><div class="result-time">Испания</div></article>
+<article class="result-card" onclick="toast('Панэтоликос — Лариса')"><div class="result-card-top"><span class="competition-name">Греция · 12 мая</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">ПАН</div><div class="team-label">Панэтоликос</div></div><div class="scoreline"><span class="score-dig">1</span><span class="score-col">:</span><span class="score-dig">1</span></div><div class="result-team"><div class="team-logo">ЛАР</div><div class="team-label">Лариса</div></div></div><div class="result-time">Суперлига</div></article>
+<article class="result-card" onclick="toast('Кифисия — Атромитос')"><div class="result-card-top"><span class="competition-name">Греция · 12 мая</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">КИФ</div><div class="team-label">Кифисия</div></div><div class="scoreline"><span class="score-dig">0</span><span class="score-col">:</span><span class="score-dig">3</span></div><div class="result-team"><div class="team-logo">АТР</div><div class="team-label">Атромитос</div></div></div><div class="result-time">Суперлига</div></article>
+<article class="result-card" onclick="toast('Астерас — Пансерраикос')"><div class="result-card-top"><span class="competition-name">Греция · 12 мая</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">АСТ</div><div class="team-label">Астерас</div></div><div class="scoreline"><span class="score-dig">1</span><span class="score-col">:</span><span class="score-dig">0</span></div><div class="result-team"><div class="team-logo">ПАН</div><div class="team-label">Пансерраикос</div></div></div><div class="result-time">Суперлига</div></article></div>
     </section>
 
-    <!-- FORMULA 1 -->
-    <section class="sport-group fade-up" data-sport="f1">
-      <div class="sport-group-header">
-        <h2 class="sport-group-title">🏎 Формула 1 <span class="sport-group-count">1 гонка</span></h2>
-        <a href="#" class="sport-group-more" onclick="toast('Страница Формулы 1...');return false">Все →</a>
-      </div>
-      <div class="results-grid">
-        <article class="result-card live-card f1-card" style="grid-column:span 2" onclick="toast('Гран-при Монако: детали гонки')">
-          <div class="result-card-top"><span class="competition-name">Гран-при Монако 2026</span><span class="live-badge"><span class="pulse-dot"></span>ГОНКА</span></div>
-          <div class="match-row">
-            <div class="f1-row"><div class="f1-pos">1.</div><div><div class="f1-driver">М. Верстаппен</div><div class="f1-team">Ред Булл</div></div><div class="f1-gap">Лидер</div></div>
-            <div class="f1-row"><div class="f1-pos">2.</div><div><div class="f1-driver">Л. Хэмилтон</div><div class="f1-team">Феррари</div></div><div class="f1-gap">+4.2с</div></div>
-            <div class="f1-row"><div class="f1-pos">3.</div><div><div class="f1-driver">Ш. Леклер</div><div class="f1-team">Феррари</div></div><div class="f1-gap">+8.7с</div></div>
-            <div class="f1-row"><div class="f1-pos">4.</div><div><div class="f1-driver">Л. Норрис</div><div class="f1-team">Макларен</div></div><div class="f1-gap">+12.1с</div></div>
-          </div>
-          <div class="result-time"><span class="min">38/78 кругов</span></div>
-        </article>
-      </div>
-    </section>
-
-    <!-- NBA -->
     <section class="sport-group fade-up" data-sport="nba">
-      <div class="sport-group-header">
-        <h2 class="sport-group-title">🏀 НБА <span class="sport-group-count">4 матча</span></h2>
-        <a href="#" class="sport-group-more" onclick="toast('Страница НБА...');return false">Все →</a>
-      </div>
-      <div class="results-grid">
-        <article class="result-card live-card" onclick="toast('Лейкерс — Бостон: детали')">
-          <div class="result-card-top"><span class="competition-name">НБА · Плей-офф</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div>
-          <div class="match-row">
-            <div class="result-team"><div class="team-logo">💜💛</div><div class="team-label">Лейкерс</div></div>
-            <div class="scoreline"><span class="score-dig">108</span><span class="score-col">:</span><span class="score-dig">102</span></div>
-            <div class="result-team"><div class="team-logo">💚⚪</div><div class="team-label">Бостон</div></div>
-          </div>
-          <div class="result-time"><span class="min">3Q 4:12</span></div>
-        </article>
-
-        <article class="result-card" onclick="toast('Голден Стэйт — Финикс: детали')">
-          <div class="result-card-top"><span class="competition-name">НБА · Плей-офф</span><span class="finished-badge">Завершён</span></div>
-          <div class="match-row">
-            <div class="result-team"><div class="team-logo">💛🔵</div><div class="team-label">Голден Стэйт</div></div>
-            <div class="scoreline"><span class="score-dig">119</span><span class="score-col">:</span><span class="score-dig">107</span></div>
-            <div class="result-team"><div class="team-logo">🟣🟠</div><div class="team-label">Финикс</div></div>
-          </div>
-          <div class="result-time">Финальная сирена</div>
-        </article>
-
-        <article class="result-card" onclick="toast('Чикаго — Майами: детали')">
-          <div class="result-card-top"><span class="competition-name">НБА · Регулярный</span><span class="upcoming-badge">21:30</span></div>
-          <div class="match-row">
-            <div class="result-team"><div class="team-logo">🔴⚫</div><div class="team-label">Чикаго</div></div>
-            <div class="scoreline"><span class="score-dig" style="color:var(--text-muted)">-</span><span class="score-col">:</span><span class="score-dig" style="color:var(--text-muted)">-</span></div>
-            <div class="result-team"><div class="team-logo">🔴⚫🌴</div><div class="team-label">Майами</div></div>
-          </div>
-          <div class="result-time">Через 3 часа</div>
-        </article>
-      </div>
+      <div class="sport-group-header"><h2 class="sport-group-title">🏀 NBA <span class="sport-group-count">6 матчей</span></h2></div>
+      <div class="results-grid"><article class="result-card" onclick="toast('Detroit Pistons — Cleveland Cavaliers')"><div class="result-card-top"><span class="competition-name">NBA · плей-офф</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">DET</div><div class="team-label">Detroit Pistons</div></div><div class="scoreline"><span class="score-dig">111</span><span class="score-col">:</span><span class="score-dig">101</span></div><div class="result-team"><div class="team-logo">CLE</div><div class="team-label">Cleveland Cavaliers</div></div></div><div class="result-time">06.05 · 2-й раунд</div></article>
+<article class="result-card" onclick="toast('Detroit Pistons — Cleveland Cavaliers')"><div class="result-card-top"><span class="competition-name">NBA · плей-офф</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">DET</div><div class="team-label">Detroit Pistons</div></div><div class="scoreline"><span class="score-dig">107</span><span class="score-col">:</span><span class="score-dig">97</span></div><div class="result-team"><div class="team-logo">CLE</div><div class="team-label">Cleveland Cavaliers</div></div></div><div class="result-time">07.05 · 2-й раунд</div></article>
+<article class="result-card" onclick="toast('Cleveland Cavaliers — Detroit Pistons')"><div class="result-card-top"><span class="competition-name">NBA · плей-офф</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">CLE</div><div class="team-label">Cleveland Cavaliers</div></div><div class="scoreline"><span class="score-dig">116</span><span class="score-col">:</span><span class="score-dig">109</span></div><div class="result-team"><div class="team-logo">DET</div><div class="team-label">Detroit Pistons</div></div></div><div class="result-time">09.05 · серия 2–1</div></article>
+<article class="result-card" onclick="toast('Cleveland Cavaliers — Detroit Pistons')"><div class="result-card-top"><span class="competition-name">NBA · плей-офф</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">CLE</div><div class="team-label">Cleveland Cavaliers</div></div><div class="scoreline"><span class="score-dig">112</span><span class="score-col">:</span><span class="score-dig">103</span></div><div class="result-team"><div class="team-logo">DET</div><div class="team-label">Detroit Pistons</div></div></div><div class="result-time">11.05 · серия 2–2</div></article>
+<article class="result-card" onclick="toast('San Antonio Spurs — Minnesota Timberwolves')"><div class="result-card-top"><span class="competition-name">NBA · плей-офф</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">SAN</div><div class="team-label">San Antonio Spurs</div></div><div class="scoreline"><span class="score-dig">126</span><span class="score-col">:</span><span class="score-dig">97</span></div><div class="result-team"><div class="team-logo">MIN</div><div class="team-label">Minnesota Timberwolves</div></div></div><div class="result-time">12.05 · Spurs ведут 3–2</div></article>
+<article class="result-card" onclick="toast('New York Knicks — Philadelphia 76ers')"><div class="result-card-top"><span class="competition-name">NBA · плей-офф</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">NEW</div><div class="team-label">New York Knicks</div></div><div class="scoreline"><span class="score-dig">144</span><span class="score-col">:</span><span class="score-dig">114</span></div><div class="result-team"><div class="team-logo">PHI</div><div class="team-label">Philadelphia 76ers</div></div></div><div class="result-time">10.05 · Knicks выиграли серию 4–0</div></article></div>
     </section>
 
-    <!-- TENNIS -->
     <section class="sport-group fade-up" data-sport="tennis">
-      <div class="sport-group-header">
-        <h2 class="sport-group-title">🎾 Теннис <span class="sport-group-count">3 матча</span></h2>
-        <a href="#" class="sport-group-more" onclick="toast('Страница тенниса...');return false">Все →</a>
-      </div>
-      <div class="results-grid">
-        <article class="result-card live-card" onclick="toast('Roland Garros — полуфинал: детали')">
-          <div class="result-card-top"><span class="competition-name">Roland Garros · Полуфинал</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div>
-          <div class="match-row">
-            <div class="result-team"><div class="team-logo">🇷🇸</div><div class="team-label">Джокович</div></div>
-            <div class="scoreline"><span class="score-dig" style="font-size:32px">3:1</span></div>
-            <div class="result-team"><div class="team-logo">🇮🇹</div><div class="team-label">Синнер</div></div>
-          </div>
-          <div class="result-time"><span class="min">4-й сет</span> · 6:4 6:2 3:6 2:1</div>
-        </article>
-
-        <article class="result-card" onclick="toast('Roland Garros — женщины: детали')">
-          <div class="result-card-top"><span class="competition-name">Roland Garros · 1/4 финала</span><span class="finished-badge">Завершён</span></div>
-          <div class="match-row">
-            <div class="result-team"><div class="team-logo">🇵🇱</div><div class="team-label">Свёнтек</div></div>
-            <div class="scoreline"><span class="score-dig" style="font-size:32px">2:0</span></div>
-            <div class="result-team"><div class="team-logo">🇨🇿</div><div class="team-label">Кудерметова</div></div>
-          </div>
-          <div class="result-time">6:3 6:2 · Завершён</div>
-        </article>
-      </div>
+      <div class="sport-group-header"><h2 class="sport-group-title">🎾 Теннис <span class="sport-group-count">Rome · 12 мая</span></h2></div>
+      <div class="results-grid"><article class="result-card" onclick="toast('Khachanov K. — Prizmic D.')"><div class="result-card-top"><span class="competition-name">ATP / WTA Rome</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">KHA</div><div class="team-label">Khachanov K.</div></div><div class="scoreline"><span class="score-dig">2</span><span class="score-col">:</span><span class="score-dig">0</span></div><div class="result-team"><div class="team-logo">PRI</div><div class="team-label">Prizmic D.</div></div></div><div class="result-time">6–1, 7–6(2) · Rome</div></article>
+<article class="result-card" onclick="toast('Ruud C. — Musetti L.')"><div class="result-card-top"><span class="competition-name">ATP / WTA Rome</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">RUU</div><div class="team-label">Ruud C.</div></div><div class="scoreline"><span class="score-dig">2</span><span class="score-col">:</span><span class="score-dig">0</span></div><div class="result-team"><div class="team-logo">MUS</div><div class="team-label">Musetti L.</div></div></div><div class="result-time">6–3, 6–1 · Rome</div></article>
+<article class="result-card" onclick="toast('Sinner J. — Pellegrino A.')"><div class="result-card-top"><span class="competition-name">ATP / WTA Rome</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">SIN</div><div class="team-label">Sinner J.</div></div><div class="scoreline"><span class="score-dig">2</span><span class="score-col">:</span><span class="score-dig">0</span></div><div class="result-team"><div class="team-logo">PEL</div><div class="team-label">Pellegrino A.</div></div></div><div class="result-time">6–0, 6–0 · Rome</div></article>
+<article class="result-card" onclick="toast('Rublev A. — Basilashvili N.')"><div class="result-card-top"><span class="competition-name">ATP / WTA Rome</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">RUB</div><div class="team-label">Rublev A.</div></div><div class="scoreline"><span class="score-dig">2</span><span class="score-col">:</span><span class="score-dig">1</span></div><div class="result-team"><div class="team-logo">BAS</div><div class="team-label">Basilashvili N.</div></div></div><div class="result-time">3–6, 7–6(5), 6–4 · Rome</div></article></div>
     </section>
 
-    <!-- UFC -->
+    <section class="sport-group fade-up" data-sport="f1">
+      <div class="sport-group-header"><h2 class="sport-group-title">🏎 Формула 1 <span class="sport-group-count">Miami GP</span></h2></div>
+      <div class="results-grid"><article class="result-card f1-card" style="grid-column:span 2" onclick="toast('Miami Grand Prix 2026')"><div class="result-card-top"><span class="competition-name">Formula 1 · Miami GP · 03.05</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="f1-row"><div class="f1-pos">1.</div><div><div class="f1-driver">Kimi Antonelli</div><div class="f1-team">Mercedes</div></div><div class="f1-gap">Победа</div></div><div class="f1-row"><div class="f1-pos">2.</div><div><div class="f1-driver">Lando Norris</div><div class="f1-team">McLaren</div></div><div class="f1-gap">P2</div></div><div class="f1-row"><div class="f1-pos">3.</div><div><div class="f1-driver">Oscar Piastri</div><div class="f1-team">McLaren</div></div><div class="f1-gap">P3</div></div><div class="f1-row"><div class="f1-pos">4.</div><div><div class="f1-driver">George Russell</div><div class="f1-team">Mercedes</div></div><div class="f1-gap">P4</div></div></div><div class="result-time">Ближайшая гонка к периоду 6–12 мая</div></article></div>
+    </section>
+
     <section class="sport-group fade-up" data-sport="ufc">
-      <div class="sport-group-header">
-        <h2 class="sport-group-title">🥊 UFC / ММА <span class="sport-group-count">1 турнир</span></h2>
-        <a href="#" class="sport-group-more" onclick="toast('Страница UFC...');return false">Все →</a>
-      </div>
-      <div class="results-grid">
-        <article class="result-card" onclick="toast('UFC 315: детали')">
-          <div class="result-card-top"><span class="competition-name">UFC 315 · Главный бой</span><span class="upcoming-badge">Суббота 03:00</span></div>
-          <div class="match-row">
-            <div class="result-team"><div class="team-logo">🥊</div><div class="team-label">Ислам Махачев</div></div>
-            <div class="scoreline"><span class="score-dig" style="color:var(--text-muted);font-size:32px">vs</span></div>
-            <div class="result-team"><div class="team-logo">🦅</div><div class="team-label">Чарльз Оливейра</div></div>
-          </div>
-          <div class="result-time">Лёгкий вес · Чемпионский бой</div>
-        </article>
-      </div>
+      <div class="sport-group-header"><h2 class="sport-group-title">🥊 Бокс / UFC <span class="sport-group-count">4 результата</span></h2></div>
+      <div class="results-grid"><article class="result-card" onclick="toast('Shane Mosley Jr. — Serhii Bohachuk')"><div class="result-card-top"><span class="competition-name">Zuffa Boxing 06</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">SHA</div><div class="team-label">Shane Mosley Jr.</div></div><div class="scoreline"><span class="score-dig">TKO</span><span class="score-col">:</span><span class="score-dig">6R</span></div><div class="result-team"><div class="team-logo">SER</div><div class="team-label">Serhii Bohachuk</div></div></div><div class="result-time">Итог боя</div></article>
+<article class="result-card" onclick="toast('Julian Rodriguez — James Perella')"><div class="result-card-top"><span class="competition-name">Zuffa Boxing 06</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">JUL</div><div class="team-label">Julian Rodriguez</div></div><div class="scoreline"><span class="score-dig">UD</span><span class="score-col">:</span><span class="score-dig">WIN</span></div><div class="result-team"><div class="team-logo">JAM</div><div class="team-label">James Perella</div></div></div><div class="result-time">Итог боя</div></article>
+<article class="result-card" onclick="toast('Andreas Katzourakis — Misael Rodriguez')"><div class="result-card-top"><span class="competition-name">Zuffa Boxing 06</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">AND</div><div class="team-label">Andreas Katzourakis</div></div><div class="scoreline"><span class="score-dig">UD</span><span class="score-col">:</span><span class="score-dig">WIN</span></div><div class="result-team"><div class="team-logo">MIS</div><div class="team-label">Misael Rodriguez</div></div></div><div class="result-time">Итог боя</div></article>
+<article class="result-card" onclick="toast('Sean Strickland — Khamzat Chimaev')"><div class="result-card-top"><span class="competition-name">UFC 328</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">SEA</div><div class="team-label">Sean Strickland</div></div><div class="scoreline"><span class="score-dig">SD</span><span class="score-col">:</span><span class="score-dig">5R</span></div><div class="result-team"><div class="team-logo">KHA</div><div class="team-label">Khamzat Chimaev</div></div></div><div class="result-time">Split Decision · 5 раундов</div></article></div>
     </section>
 
-    <!-- ESPORTS -->
-    <section class="sport-group fade-up" data-sport="esports">
-      <div class="sport-group-header">
-        <h2 class="sport-group-title">🎮 eSports <span class="sport-group-count">2 матча</span></h2>
-        <a href="#" class="sport-group-more" onclick="toast('Страница eSports...');return false">Все →</a>
-      </div>
-      <div class="results-grid">
-        <article class="result-card live-card" onclick="toast('ESL Pro League: детали')">
-          <div class="result-card-top"><span class="competition-name">ESL Pro League · Финал CS2</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div>
-          <div class="match-row">
-            <div class="result-team"><div class="team-logo">🇺🇦</div><div class="team-label">NAVI</div></div>
-            <div class="scoreline"><span class="score-dig">1</span><span class="score-col">:</span><span class="score-dig">1</span></div>
-            <div class="result-team"><div class="team-logo">🇫🇷</div><div class="team-label">Vitality</div></div>
-          </div>
-          <div class="result-time"><span class="min">Карта 3</span> · Inferno</div>
-        </article>
-
-        <article class="result-card" onclick="toast('League of Legends: детали')">
-          <div class="result-card-top"><span class="competition-name">LoL Worlds · Полуфинал</span><span class="finished-badge">Завершён</span></div>
-          <div class="match-row">
-            <div class="result-team"><div class="team-logo">🇰🇷</div><div class="team-label">T1</div></div>
-            <div class="scoreline"><span class="score-dig">3</span><span class="score-col">:</span><span class="score-dig">1</span></div>
-            <div class="result-team"><div class="team-logo">🇨🇳</div><div class="team-label">BLG</div></div>
-          </div>
-          <div class="result-time">Серия до 3 побед</div>
-        </article>
-      </div>
-    </section>
-
-    <div class="load-more-wrap">
-      <button class="btn-load-more" onclick="toast('Загружаем ещё результаты...')">Загрузить ещё</button>
-    </div>
-
+    <div class="load-more-wrap"><button class="btn-load-more" onclick="toast('Все результаты за 6–12 мая уже загружены')">Все результаты загружены</button></div>
   </div><!-- /realContent -->
 </main>
 
