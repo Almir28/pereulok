@@ -360,6 +360,52 @@ nav.scrolled {
   padding: 80px 72px 80px 60px;
   position: relative;
   z-index: 2;
+  overflow: hidden;
+}
+
+.hero-left::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 24% 42%, rgba(74,144,217,0.18), transparent 30%),
+    radial-gradient(circle at 78% 24%, rgba(200,169,110,0.12), transparent 24%),
+    radial-gradient(circle at 70% 78%, rgba(224,85,85,0.09), transparent 30%),
+    linear-gradient(130deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(40deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: auto, auto, auto, 82px 82px, 106px 106px;
+  animation: hero-left-ambient 12s ease-in-out infinite alternate;
+}
+
+.hero-left::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.15;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 900 520' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c8a96e' stroke-width='0.7' opacity='0.55'%3E%3Cpath d='M80 190 C170 95 270 90 360 150 S560 240 660 160 S795 105 860 190'/%3E%3Cpath d='M70 310 C180 230 300 250 390 300 S560 400 690 300 S815 250 880 330'/%3E%3Cpath d='M155 105 C130 205 130 330 180 430'/%3E%3Cpath d='M455 80 C420 205 420 340 470 455'/%3E%3Cpath d='M735 100 C705 210 700 330 760 450'/%3E%3Ccircle cx='230' cy='250' r='5' fill='%23e05555' stroke='none'/%3E%3Ccircle cx='520' cy='185' r='4' fill='%234a90d9' stroke='none'/%3E%3Ccircle cx='700' cy='310' r='4' fill='%23c8a96e' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 74% auto;
+  background-repeat: no-repeat;
+  background-position: 62% 48%;
+  animation: hero-map-drift 18s ease-in-out infinite alternate;
+}
+
+.hero-left > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes hero-left-ambient {
+  0% { filter: brightness(0.95); transform: scale(1); }
+  100% { filter: brightness(1.08); transform: scale(1.02); }
+}
+
+@keyframes hero-map-drift {
+  0% { transform: translate3d(-10px, 0, 0); opacity: 0.1; }
+  100% { transform: translate3d(16px, -8px, 0); opacity: 0.2; }
 }
 
 .hero-category {
@@ -1263,8 +1309,8 @@ nav.scrolled {
 }
 
 .pd-sponsor {
-  margin: 14px 16px 0;
-  padding: 14px;
+  margin: 10px 12px 0;
+  padding: 10px 12px;
   border: 1px solid rgba(200,169,110,0.13);
   border-radius: 16px;
   background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(74,144,217,0.045));
@@ -1272,25 +1318,25 @@ nav.scrolled {
 
 .pd-sponsor-label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: var(--text3);
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 8px;
   letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
 .pd-sponsor-title {
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 17px;
   line-height: 1.08;
 }
 
 .pd-sponsor-copy {
   color: var(--text2);
-  font-size: 12px;
-  line-height: 1.45;
+  font-size: 11px;
+  line-height: 1.32;
 }
 
 .hero-video-thumb {
@@ -1862,7 +1908,9 @@ nav.scrolled {
 
 .world-map-container {
   position: relative;
-  background: var(--bg2);
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(74,144,217,0.13), transparent 58%),
+    linear-gradient(135deg, #0d1725 0%, #101d31 55%, #0a1018 100%);
   border: 1px solid var(--border);
   border-radius: 16px;
   overflow: hidden;
@@ -1877,9 +1925,12 @@ nav.scrolled {
   position: absolute;
   inset: 0;
   background:
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255,255,255,0.028) 1px, transparent 1px),
     radial-gradient(ellipse at 30% 60%, rgba(74,144,217,0.06) 0%, transparent 50%),
     radial-gradient(ellipse at 70% 30%, rgba(200,169,110,0.05) 0%, transparent 40%),
     radial-gradient(ellipse at 80% 70%, rgba(224,85,85,0.05) 0%, transparent 35%);
+  background-size: 80px 80px, 80px 80px, auto, auto, auto;
   pointer-events: none;
 }
 
@@ -1892,12 +1943,12 @@ nav.scrolled {
   justify-content: center;
 }
 
-/* Simplified world map SVG */
 .world-svg {
-  width: 90%;
-  height: 90%;
-  opacity: 0.18;
+  width: 92%;
+  height: 92%;
+  opacity: 0.28;
   fill: var(--text2);
+  filter: drop-shadow(0 18px 34px rgba(0,0,0,0.28));
 }
 
 .hotspot {
@@ -2970,12 +3021,12 @@ footer {
     <!-- Small cards -->
     <article class="card card-small reveal reveal-delay-1">
       <div class="grid-accent-line"></div>
-      <div class="card-image" style="background: linear-gradient(135deg, #101508 0%, #1a2010 50%, #0d1018 100%);"></div>
+      <div class="card-image" style="background-image: linear-gradient(135deg, rgba(6,10,16,0.28), rgba(15,26,36,0.78)), url('https://images.openai.com/static-rsc-4/HXQ4g8QepAdICjVjqYIIZ4mXhg8beNI7qDMruMADPLot5yBCL6bKloRmeJMlMq4SKLUAbwqLnLrKohejSfN2Edsm0qMPzDwliAKaKqc5nuX34cNTkKsvpTN16NUGB5r_t6LCVB5oOn5mnLj9vQFwlAsyFBNdVcsv209-lCyyhY0Ho2vq39PXlH6oDDqnWmSP?purpose=fullsize');" role="img" aria-label="Европейская дипломатия и энергетическая политика"></div>
       <div class="card-overlay"></div>
       <div class="card-body">
         <div class="card-tag tag-exclusive">Эксклюзив</div>
         <h3 class="card-title">Зелёный дипломатический курс ЕС: кто в выигрыше?</h3>
-        <div class="card-meta"><span>2 ч назад</span></div>
+        <div class="card-meta"><span>2 ч назад</span><div class="card-meta-dot"></div><span>5 мин чтения</span></div>
       </div>
     </article>
 
@@ -3022,6 +3073,24 @@ footer {
           <div class="card-meta-dot"></div>
           <span>18 мин чтения</span>
         </div>
+      </div>
+    </article>
+
+    <article class="card card-small reveal reveal-delay-2">
+      <a class="card-link" href="politics/global-bond-markets-pressure-2026.html" aria-label="Доходности G7 снова давят на мировые рынки"></a>
+      <div class="grid-accent-line"></div>
+      <div class="card-image" style="background: linear-gradient(135deg, #101624 0%, #182136 45%, #20142a 100%);">
+        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.24" viewBox="0 0 420 260" fill="none" aria-hidden="true">
+          <path d="M30 190 C90 150 126 166 175 118 S285 70 390 92" stroke="#c8a96e" stroke-width="2" fill="none"/>
+          <path d="M30 212 H390 M30 158 H390 M30 104 H390" stroke="#4a90d9" stroke-width=".6" opacity=".45"/>
+          <circle cx="286" cy="76" r="30" stroke="#e05555" stroke-width="1" opacity=".7"/>
+        </svg>
+      </div>
+      <div class="card-overlay"></div>
+      <div class="card-body">
+        <div class="card-tag tag-geopolitics">Рынки</div>
+        <h3 class="card-title">Доходности G7 снова давят на мировые рынки</h3>
+        <div class="card-meta"><span>14 мая 2026</span><div class="card-meta-dot"></div><span>4 мин</span></div>
       </div>
     </article>
 
@@ -3120,21 +3189,26 @@ footer {
   </div>
 
   <div class="world-map-container reveal">
-    <!-- Simplified world outline SVG -->
     <svg class="world-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <!-- Very simplified continental outlines -->
-      <!-- North America -->
-      <path d="M80 80 L180 60 L220 100 L240 140 L200 180 L160 200 L120 220 L100 190 L80 160 L60 120 Z" opacity="0.6"/>
-      <!-- South America -->
-      <path d="M180 230 L220 220 L240 260 L250 310 L230 360 L200 390 L170 370 L155 330 L160 280 L170 250 Z" opacity="0.6"/>
-      <!-- Europe -->
-      <path d="M440 80 L480 70 L510 90 L520 110 L510 130 L480 140 L450 130 L430 110 Z" opacity="0.6"/>
-      <!-- Africa -->
-      <path d="M440 150 L490 145 L520 170 L530 220 L520 280 L490 320 L455 310 L430 270 L420 220 L425 175 Z" opacity="0.6"/>
-      <!-- Asia -->
-      <path d="M540 60 L680 50 L750 80 L780 120 L760 160 L700 180 L640 170 L580 150 L550 120 L530 90 Z" opacity="0.6"/>
-      <!-- Australia -->
-      <path d="M750 280 L820 265 L860 290 L865 330 L840 360 L790 365 L755 340 L740 310 Z" opacity="0.6"/>
+      <g fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.8">
+        <path d="M80 250 H920 M500 55 V445 M190 85 C155 190 155 310 190 415 M810 85 C845 190 845 310 810 415 M80 165 C265 122 735 122 920 165 M80 335 C265 378 735 378 920 335"/>
+      </g>
+      <g fill="currentColor" opacity="0.72">
+        <path d="M112 138 L151 109 L204 91 L260 102 L306 132 L335 172 L323 205 L274 228 L222 257 L183 247 L151 216 L121 190 Z"/>
+        <path d="M206 262 L247 280 L265 330 L251 384 L224 435 L195 409 L179 363 L186 315 Z"/>
+        <path d="M430 124 L472 108 L511 121 L530 150 L507 175 L466 174 L431 153 Z"/>
+        <path d="M470 182 L527 177 L555 208 L565 263 L548 323 L509 371 L467 343 L445 287 L449 226 Z"/>
+        <path d="M535 108 L617 82 L727 88 L812 126 L858 181 L838 231 L754 252 L666 230 L589 194 L540 151 Z"/>
+        <path d="M681 245 L739 252 L780 289 L754 326 L689 316 L655 282 Z"/>
+        <path d="M764 330 L823 317 L872 343 L891 382 L849 412 L788 398 L748 363 Z"/>
+        <path d="M378 146 L403 139 L418 153 L409 170 L382 168 Z"/>
+        <path d="M892 222 L918 213 L937 228 L929 246 L902 246 Z"/>
+      </g>
+      <g fill="none" stroke="rgba(200,169,110,0.24)" stroke-width="0.9" stroke-dasharray="5 10">
+        <path d="M500 158 C600 132 705 142 790 220"/>
+        <path d="M250 220 C374 162 476 154 580 205"/>
+        <path d="M520 210 C590 250 670 278 780 350"/>
+      </g>
     </svg>
 
     <!-- Hotspots -->
