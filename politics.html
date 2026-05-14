@@ -885,6 +885,414 @@ nav.scrolled {
 
 .hero-right .play-btn { display: none; }
 
+.politics-dashboard {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at 85% 10%, rgba(200,169,110,0.12), transparent 28%),
+    radial-gradient(circle at 4% 82%, rgba(74,144,217,0.13), transparent 32%),
+    linear-gradient(145deg, rgba(13,18,30,0.72), rgba(8,10,15,0.84));
+  border-left: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden auto;
+  scrollbar-width: none;
+}
+
+.politics-dashboard::-webkit-scrollbar { display: none; }
+
+.politics-dashboard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.026) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255,255,255,0.026) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 82%);
+}
+
+.politics-dashboard::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 46%;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(8,10,15,0.72), transparent);
+}
+
+.pd-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  opacity: 0.18;
+}
+
+.pd-glow.gold {
+  width: 320px;
+  height: 220px;
+  top: -70px;
+  right: -90px;
+  background: rgba(200,169,110,0.4);
+}
+
+.pd-glow.blue {
+  width: 260px;
+  height: 260px;
+  bottom: 18%;
+  left: -110px;
+  background: rgba(74,144,217,0.34);
+}
+
+.pd-head,
+.pd-feature,
+.pd-grid,
+.pd-updates,
+.pd-follow {
+  position: relative;
+  z-index: 2;
+}
+
+.pd-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: clamp(18px, 2.2vw, 28px) clamp(22px, 3vw, 42px);
+  border-bottom: 1px solid rgba(255,255,255,0.075);
+}
+
+.pd-title,
+.pd-time,
+.pd-kicker,
+.pd-card-cat,
+.pd-updates-head,
+.pd-follow-head {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.pd-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--accent);
+  font-size: 10px;
+}
+
+.pd-title::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ab87a;
+  box-shadow: 0 0 14px rgba(74,184,122,0.58);
+  animation: pulse-dot 1.4s ease-in-out infinite;
+}
+
+.pd-time {
+  color: var(--text3);
+  font-size: 10px;
+}
+
+.pd-feature {
+  display: block;
+  margin: clamp(18px, 2vw, 28px) clamp(22px, 3vw, 42px) 14px;
+  padding: clamp(20px, 2.6vw, 34px);
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid rgba(200,169,110,0.16);
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(200,169,110,0.13), rgba(74,144,217,0.07) 48%, rgba(255,255,255,0.035)),
+    rgba(255,255,255,0.035);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.28);
+  overflow: hidden;
+  transition: transform 0.28s var(--ease-out), border-color 0.28s var(--ease-out), box-shadow 0.28s var(--ease-out);
+}
+
+.pd-feature::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), transparent);
+}
+
+.pd-feature:hover {
+  transform: translateY(-4px);
+  border-color: rgba(200,169,110,0.34);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.38);
+}
+
+.pd-kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: var(--accent);
+  font-size: 10px;
+}
+
+.pd-kicker::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.pd-feature-title {
+  max-width: 650px;
+  margin-bottom: 12px;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3vw, 44px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+.pd-feature-desc {
+  max-width: 640px;
+  margin-bottom: 18px;
+  color: var(--text2);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.pd-feature-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.pd-chips,
+.pd-follow-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.pd-chip,
+.pd-follow-chip {
+  border: 1px solid rgba(255,255,255,0.09);
+  background: rgba(255,255,255,0.055);
+  color: var(--text2);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pd-chip {
+  padding: 5px 9px;
+}
+
+.pd-cta {
+  color: var(--bg);
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 10px 15px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pd-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0 clamp(22px, 3vw, 42px) 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.032);
+}
+
+.pd-card {
+  position: relative;
+  min-height: 118px;
+  padding: 16px;
+  color: var(--text);
+  text-decoration: none;
+  border-right: 1px solid rgba(255,255,255,0.075);
+  border-bottom: 1px solid rgba(255,255,255,0.075);
+  transition: background 0.24s var(--ease-out), transform 0.24s var(--ease-out);
+}
+
+.pd-card:nth-child(3n) { border-right: 0; }
+.pd-card:nth-child(n+4) { border-bottom: 0; }
+
+.pd-card:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+.pd-card::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: var(--pd-color, var(--accent));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.pd-card:hover::after { opacity: 1; }
+
+.pd-card-cat {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 9px;
+  color: var(--pd-color, var(--accent));
+  font-size: 9px;
+}
+
+.pd-card-dot {
+  width: 6px;
+  height: 6px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: var(--pd-color, var(--accent));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--pd-color, var(--accent)) 45%, transparent);
+}
+
+.pd-card-title {
+  display: block;
+  margin-bottom: 9px;
+  font-family: var(--font-display);
+  font-size: clamp(19px, 1.45vw, 24px);
+  line-height: 1.05;
+}
+
+.pd-card-meta {
+  color: var(--text3);
+  font-size: 12px;
+}
+
+.pd-bottom {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(210px, 0.75fr);
+  gap: 14px;
+  margin: 0 clamp(22px, 3vw, 42px) clamp(22px, 3vw, 42px);
+  min-height: 0;
+}
+
+.pd-updates,
+.pd-follow {
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.038);
+  overflow: hidden;
+}
+
+.pd-updates-head,
+.pd-follow-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.075);
+  color: var(--accent);
+  font-size: 9px;
+}
+
+.pd-updates-head span:last-child {
+  color: #4ab87a;
+}
+
+.pd-update {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) auto;
+  gap: 11px;
+  align-items: center;
+  padding: 11px 16px;
+  border-top: 1px solid rgba(255,255,255,0.055);
+}
+
+.pd-update:first-of-type { border-top: 0; }
+
+.pd-update-time {
+  color: var(--text3);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.pd-update-title {
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.pd-update-cat {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pd-follow {
+  padding-bottom: 16px;
+}
+
+.pd-follow-head {
+  margin-bottom: 14px;
+}
+
+.pd-follow-chips {
+  padding: 0 16px;
+}
+
+.pd-follow-chip {
+  padding: 7px 11px;
+}
+
+.pd-follow-chip.active {
+  color: var(--accent);
+  border-color: rgba(200,169,110,0.3);
+  background: rgba(200,169,110,0.1);
+}
+
+.pd-sponsor {
+  margin: 14px 16px 0;
+  padding: 14px;
+  border: 1px solid rgba(200,169,110,0.13);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(74,144,217,0.045));
+}
+
+.pd-sponsor-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text3);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.pd-sponsor-title {
+  margin-bottom: 5px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1.08;
+}
+
+.pd-sponsor-copy {
+  color: var(--text2);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
 .hero-video-thumb {
   position: absolute;
   inset: 0;
@@ -2142,6 +2550,12 @@ footer {
   .hero-right { height: auto; position: relative; }
   .hero-video-wrap { position: relative; inset: auto; padding: 0 40px 56px; }
   .hero-intel-panel { position: relative; inset: auto; max-width: none; }
+  .politics-dashboard { position: relative; min-height: auto; border-left: 0; border-top: 1px solid rgba(255,255,255,0.08); border-radius: 24px; }
+  .pd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pd-card:nth-child(3n) { border-right: 1px solid rgba(255,255,255,0.075); }
+  .pd-card:nth-child(even) { border-right: 0; }
+  .pd-card:nth-child(n+4) { border-bottom: 1px solid rgba(255,255,255,0.075); }
+  .pd-card:nth-child(n+5) { border-bottom: 0; }
   .hero-left { padding: 60px 40px; }
   .news-section { padding: 60px 40px; }
   .card-feature { grid-column: span 12; min-height: 360px; }
@@ -2161,6 +2575,16 @@ footer {
   .hero-headline { font-size: 30px; }
   .hero-video-wrap { padding: 0 20px 44px; }
   .hero-intel-panel { gap: 12px; padding: 16px; border-radius: 22px; }
+  .politics-dashboard { border-radius: 20px; }
+  .pd-head { padding: 16px; }
+  .pd-feature { margin: 16px 16px 12px; padding: 18px; border-radius: 18px; }
+  .pd-feature-title { font-size: 28px; }
+  .pd-grid { grid-template-columns: 1fr; margin: 0 16px 12px; border-radius: 18px; }
+  .pd-card, .pd-card:nth-child(even), .pd-card:nth-child(3n), .pd-card:nth-child(n+5) { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.075); }
+  .pd-card:last-child { border-bottom: 0; }
+  .pd-bottom { grid-template-columns: 1fr; margin: 0 16px 16px; }
+  .pd-update { grid-template-columns: 42px minmax(0,1fr); }
+  .pd-update-cat { display: none; }
   .hero-day-brief { min-height: 0; border-radius: 18px; }
   .hero-brief-title { font-size: 28px; }
   .hero-topic-grid { grid-template-columns: 1fr; }
@@ -2345,68 +2769,84 @@ footer {
     <div class="hero-video-wrap">
       <div class="hero-img-placeholder"></div>
       <div class="hero-city-lines" id="city-lines"></div>
-        <div class="hero-intel-panel" aria-label="Редакционная сводка">
-          <div class="hero-intel-eyebrow"><span>Политический радар</span><span>обновляется сегодня</span></div>
-          <a class="hero-day-brief" href="politics/world-main-may-14-2026.html">
-            <span class="hero-brief-kicker">Главная картина дня</span>
-            <span class="hero-brief-title">США, Китай, Иран, Украина и AI сошлись в одной повестке</span>
-            <span class="hero-brief-desc">Редакционный обзор Pereuloq о том, почему саммит Trump и Xi, визит Elon Musk, нефть и борьба за ИИ стали одной мировой историей.</span>
-            <span class="hero-brief-bottom">
-              <span class="hero-brief-tags"><span>США</span><span>Китай</span><span>AI</span></span>
-              <span class="hero-brief-cta">Открыть обзор</span>
-            </span>
-          </a>
-          <div class="hero-topic-grid" aria-label="Коротко по главным направлениям">
-            <a class="hero-topic-card" href="politics/world-main-may-14-2026.html" style="--topic-color:#e05555">
-              <span class="hero-topic-label">Геополитика</span>
-              <span class="hero-topic-title">США и Китай начали крупнейшие переговоры года</span>
-              <span class="hero-topic-meta">14 мая</span>
-            </a>
-            <a class="hero-topic-card" href="politics/global-bond-markets-pressure-2026.html" style="--topic-color:#c8a96e">
-              <span class="hero-topic-label">Экономика</span>
-              <span class="hero-topic-title">Brent выше $107 на фоне Ирана</span>
-              <span class="hero-topic-meta">4 сигнала</span>
-            </a>
-            <a class="hero-topic-card" href="politics/middle-east-ceasefire-oil-pressure-2026.html" style="--topic-color:#4a90d9">
-              <span class="hero-topic-label">Регионы</span>
-              <span class="hero-topic-title">Украина и Россия снова в центре повестки</span>
-              <span class="hero-topic-meta">обновляется</span>
-            </a>
-            <a class="hero-topic-card" href="politics/us-china-ai-future.html" style="--topic-color:#8bc4a3">
-              <span class="hero-topic-label">Энергетика</span>
-              <span class="hero-topic-title">Борьба за будущее ИИ ускоряется</span>
-              <span class="hero-topic-meta">6 мин чтения</span>
-            </a>
+      <aside class="politics-dashboard" aria-label="Политический радар Pereuloq">
+        <div class="pd-glow gold"></div>
+        <div class="pd-glow blue"></div>
+
+        <div class="pd-head">
+          <div class="pd-title">Политический радар</div>
+          <div class="pd-time">обновляется сегодня</div>
+        </div>
+
+        <a class="pd-feature" href="politics/world-main-may-14-2026.html">
+          <div class="pd-kicker">Главная картина дня</div>
+          <div class="pd-feature-title">США, Китай, Иран, Украина и AI сошлись в одной повестке</div>
+          <div class="pd-feature-desc">Редакционный обзор Pereuloq о том, почему саммит Trump и Xi, визит Elon Musk, нефть и борьба за ИИ стали одной мировой историей.</div>
+          <div class="pd-feature-bottom">
+            <div class="pd-chips"><span class="pd-chip">США</span><span class="pd-chip">Китай</span><span class="pd-chip">AI</span><span class="pd-chip">Нефть</span></div>
+            <span class="pd-cta">Открыть обзор</span>
           </div>
-          <div class="hero-media-grid">
-            <div class="hero-updates">
-              <div class="hero-block-head"><span>Последние обновления</span><span>live</span></div>
-              <div class="hero-update-list">
-                <div class="hero-update"><span class="hero-update-time">16:00</span><span class="hero-update-title">Переговоры Trump и Xi начались в Пекине</span><span class="hero-update-cat">дипломатия</span></div>
-                <div class="hero-update"><span class="hero-update-time">15:24</span><span class="hero-update-title">Elon Musk участвует во встречах в Китае</span><span class="hero-update-cat">экономика</span></div>
-                <div class="hero-update"><span class="hero-update-time">14:52</span><span class="hero-update-title">Brent поднялась выше $107 за баррель</span><span class="hero-update-cat">регион</span></div>
-              </div>
+        </a>
+
+        <div class="pd-grid" aria-label="Ключевые темы">
+          <a class="pd-card" href="politics/world-main-may-14-2026.html" style="--pd-color:#4a90d9">
+            <span class="pd-card-cat">Геополитика <span class="pd-card-dot"></span></span>
+            <span class="pd-card-title">США и Китай начали крупнейшие переговоры года</span>
+            <span class="pd-card-meta">14 мая · главный сигнал</span>
+          </a>
+          <a class="pd-card" href="politics/middle-east-ceasefire-oil-pressure-2026.html" style="--pd-color:#e05555">
+            <span class="pd-card-cat">Иран <span class="pd-card-dot"></span></span>
+            <span class="pd-card-title">Brent выше $107 на фоне новой эскалации</span>
+            <span class="pd-card-meta">энергия · рынки</span>
+          </a>
+          <a class="pd-card" href="politics/us-business-leaders-trump-china.html" style="--pd-color:#c8a96e">
+            <span class="pd-card-cat">Бизнес <span class="pd-card-dot"></span></span>
+            <span class="pd-card-title">Elon Musk и CEO Big Tech приехали в Пекин</span>
+            <span class="pd-card-meta">корпорации · Китай</span>
+          </a>
+          <a class="pd-card" href="politics/putin-zelensky-final-talks.html" style="--pd-color:#9b7de8">
+            <span class="pd-card-cat">Дипломатия <span class="pd-card-dot"></span></span>
+            <span class="pd-card-title">Украина и Россия остаются в центре переговоров</span>
+            <span class="pd-card-meta">обновляется</span>
+          </a>
+          <a class="pd-card" href="politics/us-china-ai-future.html" style="--pd-color:#4ab87a">
+            <span class="pd-card-cat">AI & Tech <span class="pd-card-dot"></span></span>
+            <span class="pd-card-title">Чипы становятся главным оружием влияния</span>
+            <span class="pd-card-meta">AI · санкции</span>
+          </a>
+          <a class="pd-card" href="politics/europe-energy-crisis-2026.html" style="--pd-color:#e08c44">
+            <span class="pd-card-cat">Европа <span class="pd-card-dot"></span></span>
+            <span class="pd-card-title">Энергетический риск снова давит на регион</span>
+            <span class="pd-card-meta">инфляция · газ</span>
+          </a>
+        </div>
+
+        <div class="pd-bottom">
+          <div class="pd-updates">
+            <div class="pd-updates-head"><span>Последние обновления</span><span>live</span></div>
+            <div class="pd-update"><span class="pd-update-time">16:30</span><span class="pd-update-title">Саммит Trump и Xi стал центральным событием дня</span><span class="pd-update-cat">дипломатия</span></div>
+            <div class="pd-update"><span class="pd-update-time">16:10</span><span class="pd-update-title">Elon Musk участвует во встречах американской делегации</span><span class="pd-update-cat">бизнес</span></div>
+            <div class="pd-update"><span class="pd-update-time">15:45</span><span class="pd-update-title">Нефть растет из-за нестабильного перемирия вокруг Ирана</span><span class="pd-update-cat">энергия</span></div>
+          </div>
+
+          <div class="pd-follow">
+            <div class="pd-follow-head"><span>Следить за темой</span><span>8</span></div>
+            <div class="pd-follow-chips">
+              <span class="pd-follow-chip active">США — Китай</span>
+              <span class="pd-follow-chip">AI</span>
+              <span class="pd-follow-chip">Иран</span>
+              <span class="pd-follow-chip">Нефть</span>
+              <span class="pd-follow-chip">Чипы</span>
+              <span class="pd-follow-chip">Европа</span>
             </div>
-            <div class="hero-side-stack">
-              <div class="hero-watch">
-                <div class="hero-block-head"><span>Следить за темой</span><span>3</span></div>
-                <div class="hero-watch-list">
-                  <div class="hero-watch-item"><strong>США — Китай</strong><span>саммит</span></div>
-                  <div class="hero-watch-item"><strong>Иран</strong><span>нефть</span></div>
-                  <div class="hero-watch-item"><strong>AI</strong><span>чипы</span></div>
-                </div>
-              </div>
-              <div class="hero-sponsor">
-                <span class="hero-sponsor-label">Партнерский блок</span>
-                <div class="hero-sponsor-title">Pereuloq Brief</div>
-                <div class="hero-sponsor-copy">Ежедневная картина дня: дипломатия, рынки, энергия и технологии в одном коротком обзоре.</div>
-              </div>
+            <div class="pd-sponsor">
+              <span class="pd-sponsor-label">Pereuloq Brief</span>
+              <div class="pd-sponsor-title">Коротко о важном</div>
+              <div class="pd-sponsor-copy">Дипломатия, рынки, энергия и технологии в одном вечернем обзоре.</div>
             </div>
           </div>
         </div>
-      <button class="play-btn" aria-label="Смотреть видео">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      </button>
+      </aside>
     </div>
   </div>
 
