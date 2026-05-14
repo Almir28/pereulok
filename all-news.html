@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Все новости спорта | Pereuloq</title>
-<meta name="description" content="Главные новости спорта Pereuloq: футбол, ЧМ-2026, волейбол, трансферы и результаты недели.">
+<title>Все спортивные новости — Pereuloq</title>
+<meta name="description" content="Все спортивные новости — актуальные материалы о футболе, Формуле 1, НБА, UFC, теннисе и других видах спорта на Pereuloq.">
+<meta property="og:title" content="Все спортивные новости — Pereuloq">
+<meta property="og:description" content="Последние спортивные новости, репортажи, аналитика и эксклюзивные материалы.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1200">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Все спортивные новости — Pereuloq">
+<meta name="twitter:description" content="Последние спортивные новости и эксклюзивные материалы.">
 <link rel="canonical" href="https://pereuloq.ru/all-news.html">
 <link rel="alternate" hreflang="ru" href="https://pereuloq.ru/all-news.html">
 <link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/all-news.html">
 <link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/all-news.html">
-<meta property="og:title" content="Все новости спорта | Pereuloq">
-<meta property="og:description" content="Главные новости спорта Pereuloq: футбол, ЧМ-2026, волейбол, трансферы и результаты недели.">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://pereuloq.ru/all-news.html">
 <meta name="theme-color" content="#080808">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
@@ -20,36 +24,587 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/sport-listing.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#FF9F0A;--accent-dim:rgba(255,159,10,0.15);--accent-glow:rgba(255,159,10,0.4);--bg:#080808;--bg2:#0f0f0f;--bg3:#141414;--bg4:#1a1a1a;--glass:rgba(255,255,255,0.04);--glass-border:rgba(255,255,255,0.08);--text:#fff;--text-dim:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--live:#ff3b30;--live-glow:rgba(255,59,48,0.4);--radius:12px;--radius-lg:18px}
+[data-theme="light"]{--bg:#f2f2f7;--bg2:#fff;--bg3:#e5e5ea;--bg4:#d1d1d6;--glass:rgba(0,0,0,0.03);--glass-border:rgba(0,0,0,0.09);--text:#0d0d0d;--text-dim:rgba(0,0,0,0.55);--text-muted:rgba(0,0,0,0.35)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px);background:rgba(8,8,8,.8);border-bottom:1px solid var(--glass-border);transition:background .3s}
+[data-theme="light"] .navbar{background:rgba(242,242,247,.9)}
+.navbar.scrolled{background:rgba(8,8,8,.97)}
+[data-theme="light"] .navbar.scrolled{background:rgba(242,242,247,.98)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-badge{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--text)}
+.nav-logo-badge span{color:var(--accent)}
+.nav-live-dot{display:flex;align-items:center;gap:6px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:2px;color:var(--live);font-weight:600}
+.pulse-dot{width:7px;height:7px;background:var(--live);border-radius:50%;animation:pulse 1.5s infinite;box-shadow:0 0 6px var(--live-glow);flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:1.5px;font-weight:600;color:var(--text-dim);text-decoration:none;text-transform:uppercase;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transition:transform .3s}
+.nav-links a:hover{color:var(--text)}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}.nav-links a.active{color:var(--accent)}
+.nav-cta{background:var(--accent)!important;color:#000!important;padding:8px 18px;border-radius:6px;font-weight:700!important}
+.nav-cta::after{display:none!important}
+.nav-right{display:flex;align-items:center;gap:12px}
+.sport-lang{display:flex;align-items:center;gap:4px;border:1px solid var(--glass-border);background:var(--glass);border-radius:8px;padding:3px}
+.sport-lang a{font-family:'Barlow Condensed',sans-serif;font-size:11px;line-height:1;letter-spacing:1px;color:var(--text-muted);text-decoration:none;padding:7px 8px;border-radius:5px;transition:color .2s,background .2s}
+.sport-lang a:hover{color:var(--text)}
+.sport-lang a.active{background:var(--accent);color:#000}
+.theme-toggle{background:var(--glass);border:1px solid var(--glass-border);border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:all .2s}
+.theme-toggle:hover{border-color:var(--accent)}
+.hamburger{display:none!important;background:none;border:none;cursor:pointer;padding:6px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;transition:all .3s;border-radius:1px}
+
+/* TICKER */
+.ticker-bar{position:fixed;top:64px;left:0;right:0;z-index:999;background:var(--accent);height:30px;display:flex;align-items:center;overflow:hidden}
+.ticker-label{background:#000;color:var(--accent);font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;padding:0 14px;height:100%;display:flex;align-items:center;flex-shrink:0}
+.ticker-track{display:flex;gap:60px;white-space:nowrap;animation:ticker 40s linear infinite}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-item{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:#000;letter-spacing:.5px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+
+/* PAGE HEADER */
+.page-header{margin-top:94px;padding:52px 60px 40px;background:var(--bg2);border-bottom:1px solid var(--glass-border);position:relative;overflow:hidden}
+.page-header-glow{position:absolute;top:-80px;right:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--accent-dim) 0%,transparent 70%);pointer-events:none}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px}
+.breadcrumb a{color:var(--text-muted);text-decoration:none;transition:color .2s}.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{color:var(--accent)}
+.page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,76px);letter-spacing:3px;line-height:1;margin-bottom:10px}
+.page-title .accent{color:var(--accent)}
+.page-subtitle{font-size:15px;color:var(--text-dim);font-weight:300;max-width:480px}
+.header-meta{display:flex;align-items:center;gap:20px;margin-top:20px}
+.header-meta-item{display:flex;align-items:center;gap:7px;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:1px;color:var(--text-muted);text-transform:uppercase}
+.header-meta-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--accent)}
+
+/* FILTER BAR */
+.filter-bar{padding:16px 60px;background:var(--bg2);border-bottom:1px solid var(--glass-border);display:flex;align-items:center;gap:10px;flex-wrap:wrap;position:sticky;top:94px;z-index:100;backdrop-filter:blur(20px)}
+.filter-btn{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:8px 15px;border-radius:6px;border:1px solid var(--glass-border);background:var(--glass);color:var(--text-dim);cursor:pointer;transition:all .2s;white-space:nowrap}
+.filter-btn:hover{border-color:var(--accent-glow);color:var(--text)}
+.filter-btn.active{background:var(--accent);color:#000;border-color:var(--accent)}
+.filter-search{margin-left:auto;display:flex;align-items:center;gap:8px;background:var(--glass);border:1px solid var(--glass-border);border-radius:8px;padding:8px 14px;transition:border-color .2s}
+.filter-search:focus-within{border-color:var(--accent-glow)}
+.filter-search input{background:none;border:none;outline:none;font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--text);letter-spacing:.5px;width:160px}
+.filter-search input::placeholder{color:var(--text-muted)}
+
+/* PAGE CONTENT */
+.page-content{padding:40px 60px 80px}
+
+/* FEATURED ROW */
+.featured-row{display:grid;grid-template-columns:1.6fr 1fr;gap:20px;margin-bottom:48px}
+
+/* NEWS CARD */
+.news-card{position:relative;border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;background:var(--bg3);border:1px solid var(--glass-border);transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .3s}
+.news-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 24px 64px rgba(0,0,0,.5);border-color:var(--accent-glow)}
+.news-card-img{overflow:hidden;aspect-ratio:16/9;position:relative}
+.news-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.news-card:hover .news-card-img img{transform:scale(1.06)}
+.news-card.featured .news-card-img{aspect-ratio:unset;height:100%;min-height:440px}
+.news-card.featured{display:flex;flex-direction:column}
+.news-card.featured .news-card-img{flex:1}
+.overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.4) 55%,transparent 100%);padding:24px;display:flex;flex-direction:column;justify-content:flex-end}
+.news-category-tag{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent-glow);border-radius:4px;padding:3px 8px;margin-bottom:10px;align-self:flex-start}
+.news-headline{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;line-height:1.25;color:#fff;margin-bottom:8px}
+.news-card.featured .news-headline{font-size:28px;line-height:1.15}
+.news-meta-row{display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:1px;color:rgba(255,255,255,.5);text-transform:uppercase}
+.news-meta-dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.3)}
+
+/* SPORT GROUP */
+.sport-group{margin-bottom:56px}
+.sport-group-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--glass-border)}
+.sport-group-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;display:flex;align-items:center;gap:10px}
+.sport-group-count{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase}
+.sport-group-more{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+.sport-group-more:hover{border-color:var(--accent)}
+
+/* NEWS GRID */
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+
+/* SMALL NEWS CARD */
+.news-small{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.16,1,.3,1),border-color .25s,box-shadow .3s}
+.news-small:hover{transform:translateY(-5px);border-color:var(--accent-glow);box-shadow:0 16px 48px rgba(0,0,0,.4)}
+.news-small-img{overflow:hidden;aspect-ratio:16/9}
+.news-small-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.news-small:hover .news-small-img img{transform:scale(1.06)}
+.news-small-body{padding:16px;flex:1;display:flex;flex-direction:column;gap:8px}
+.news-small-cat{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent)}
+.news-small-title{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;line-height:1.3;flex:1}
+.news-small-meta{display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:1px;color:var(--text-muted);text-transform:uppercase;margin-top:auto}
+
+/* LIST NEWS (horizontal) */
+.news-list-item{display:flex;align-items:center;gap:16px;padding:16px;background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);cursor:pointer;transition:border-color .25s,transform .3s,box-shadow .3s}
+.news-list-item:hover{border-color:var(--accent-glow);transform:translateX(6px);box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.news-list-thumb{width:80px;height:60px;border-radius:8px;overflow:hidden;flex-shrink:0}
+.news-list-thumb img{width:100%;height:100%;object-fit:cover}
+.news-list-body{flex:1}
+.news-list-cat{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
+.news-list-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;line-height:1.3;margin-bottom:6px}
+.news-list-meta{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:1px;color:var(--text-muted);text-transform:uppercase}
+.news-list-arrow{font-size:20px;color:var(--text-muted);flex-shrink:0;transition:transform .2s}
+.news-list-item:hover .news-list-arrow{transform:translateX(4px);color:var(--accent)}
+
+/* SKELETON */
+.skeleton{background:linear-gradient(90deg,var(--bg3) 25%,var(--bg4) 50%,var(--bg3) 75%);background-size:400% 100%;animation:skel 1.5s ease infinite;border-radius:6px}
+@keyframes skel{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skel-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius-lg);overflow:hidden}
+.skel-img{aspect-ratio:16/9}
+.skel-body{padding:16px;display:flex;flex-direction:column;gap:10px}
+.skel-line{height:13px}.skel-line.s{width:35%}.skel-line.l{width:88%}.skel-line.m{width:60%}
+
+/* LOAD MORE */
+.load-more-wrap{text-align:center;margin-top:48px}
+.btn-load-more{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px 40px;border-radius:8px;border:1px solid var(--glass-border);background:var(--glass);color:var(--text);cursor:pointer;transition:all .3s}
+.btn-load-more:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 24px var(--accent-glow)}
+
+/* TOAST */
+.toast-container{position:fixed;bottom:80px;right:24px;z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{background:var(--bg4);border:1px solid var(--glass-border);border-left:3px solid var(--accent);border-radius:10px;padding:12px 16px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.5px;color:var(--text);max-width:270px;backdrop-filter:blur(16px);box-shadow:0 8px 32px rgba(0,0,0,.4);animation:toastIn .35s cubic-bezier(.16,1,.3,1) both;pointer-events:all}
+.toast.leaving{animation:toastOut .3s ease forwards}
+@keyframes toastIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes toastOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(40px)}}
+
+/* FADE UP */
+.fade-up{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* FOOTER */
+footer{background:#050505;border-top:1px solid var(--glass-border);padding:48px 60px 36px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;margin-bottom:8px}
+.footer-brand span{color:var(--accent)}
+.footer-desc{font-size:12px;color:var(--text-muted);line-height:1.6;max-width:240px}
+.footer-col-title{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:14px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-links a{font-size:12px;color:var(--text-muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--glass-border);font-size:12px;color:var(--text-muted)}
+
+/* MOBILE NAV */
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:1000;background:rgba(8,8,8,.97);backdrop-filter:blur(20px);border-top:1px solid var(--glass-border);padding:10px 0;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+[data-theme="light"] .mobile-nav{background:rgba(242,242,247,.98)}
+.mobile-nav-items{display:flex;justify-content:space-around}
+.mobile-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:var(--text-muted);transition:color .2s;padding:4px 10px}
+.mobile-nav-item.active{color:var(--accent)}
+.mobile-nav-icon{font-size:20px}
+.mobile-nav-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:.5px;text-transform:uppercase}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.page-header,.filter-bar,.page-content,footer{padding-left:30px;padding-right:30px}.footer-grid{grid-template-columns:1fr 1fr}.featured-row{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links,.filter-search{display:none}.hamburger{display:none!important}.page-header,.filter-bar,.page-content{padding-left:20px;padding-right:20px}footer{padding:32px 20px}.footer-grid{grid-template-columns:1fr;gap:24px}.footer-bottom{flex-direction:column;gap:8px;text-align:center}.mobile-nav{display:block}body{padding-bottom:70px}.news-grid{grid-template-columns:1fr}.featured-row{grid-template-columns:1fr}.filter-bar{overflow-x:auto;flex-wrap:nowrap}.filter-bar::-webkit-scrollbar{display:none}}
+</style>
 </head>
-<body class="sport-page">
-<header class="sport-top">
-  <a class="brand" href="world-sport.html">PEREULOQ <span>SPORT</span></a>
-  <nav class="sport-nav" aria-label="Спортивная навигация">
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="world-sport.html" class="nav-logo">
+    <span class="nav-logo-badge">PEREULOQ <span>СПОРТ</span></span>
+  </a>
+  <div class="nav-live-dot"><span class="pulse-dot"></span> LIVE</div>
+  <ul class="nav-links">
+    <li><a href="all-results.html">Результаты</a></li>
+    <li><a href="all-news.html" class="active">Новости</a></li>
+    <li><a href="all-trends.html">Тренды</a></li>
+    <li><a href="world-sport.html" class="nav-cta">← На главную</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="sport-lang" aria-label="Переключатель языка"><a href="all-news.html" hreflang="ru" class="active">RU</a><a href="en/all-news.html" hreflang="en">EN</a></div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">🌙</button>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-label">📰 NEWS</div>
+  <div class="ticker-track">
+    <span class="ticker-item">⚽ Реал Мадрид 2:1 Ман.Сити — исторический счёт</span>
+    <span class="ticker-item">🏎 Верстаппен побил рекорд квалификации в Монако</span>
+    <span class="ticker-item">🥊 Фьюри vs Усик 2 — официально объявлен дата</span>
+    <span class="ticker-item">🏀 ЛеБрон Джеймс — 40 очков в овертайме</span>
+    <span class="ticker-item">🎾 Джокович вышел в финал Roland Garros</span>
+    <span class="ticker-item">⚽ Реал Мадрид 2:1 Ман.Сити — исторический счёт</span>
+    <span class="ticker-item">🏎 Верстаппен побил рекорд квалификации в Монако</span>
+    <span class="ticker-item">🥊 Фьюри vs Усик 2 — официально объявлен дата</span>
+    <span class="ticker-item">🏀 ЛеБрон Джеймс — 40 очков в овертайме</span>
+    <span class="ticker-item">🎾 Джокович вышел в финал Roland Garros</span>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-glow"></div>
+  <nav class="breadcrumb" aria-label="Навигация">
     <a href="world-sport.html">Спорт</a>
-    <a class="" href="all-results.html">Результаты</a>
-    <a class="active" href="all-news.html">Новости</a>
-    <a class="" href="all-trends.html">Тренды</a>
+    <span>›</span>
+    <span>Все новости</span>
   </nav>
-  <div class="lang"><a class="active" href="all-news.html">RU</a><a class="" href="en/all-news.html">EN</a></div>
+  <h1 class="page-title">ВСЕ <span class="accent">НОВОСТИ</span></h1>
+  <p class="page-subtitle">Последние материалы, репортажи и аналитика со всего мира спорта</p>
+  <div class="header-meta">
+    <div class="header-meta-item"><span class="header-meta-val">148</span> новостей сегодня</div>
+    <div class="header-meta-item"><span class="header-meta-val">8</span> видов спорта</div>
+    <div class="header-meta-item"><span class="header-meta-val">24/7</span> обновления</div>
+  </div>
 </header>
-<main>
-<section class="sport-hero">
-  <div><div class="kicker">Pereuloq Sport</div><h1>ВСЕ НОВОСТИ</h1><p class="lead">Главные спортивные материалы Pereuloq без попадания в общую главную ленту.</p></div>
-  <aside class="hero-panel"><h2>Редакция</h2><div class="pulse-row"><div class="pulse-item"><strong>Материалов</strong><span>5</span></div><div class="pulse-item"><strong>Фокус</strong><span>спорт</span></div><div class="pulse-item"><strong>Обновлено</strong><span>сегодня</span></div></div></aside>
-</section>
-<section class="toolbar">
-  <label class="search"><span>⌕</span><input data-sport-filter type="search" placeholder="Поиск по этой спортивной странице"></label>
-  <div class="chips"><button class="chip active" data-chip="all">Все</button><button class="chip" data-chip="football">Футбол</button><button class="chip" data-chip="basketball">NBA</button><button class="chip" data-chip="results">Результаты</button></div>
-</section>
-<section class="content"><div class="grid"><a class="card skeleton wide" data-card data-cat="football" data-search="Футбол Легенда NBA призывает ехать на Чемпионат мира — Лос-Анджелес как новый центр футбола Magic Johnson хочет сделать Los Angeles главным туристическим центром ЧМ-2026. sport/magic-johnson-la-world-cup-2026.html football" href="sport/magic-johnson-la-world-cup-2026.html"><div class="meta"><span class="badge">Футбол</span><span>13.05.2026</span></div><div><h3>Легенда NBA призывает ехать на Чемпионат мира — Лос-Анджелес как новый центр футбола</h3><p>Magic Johnson хочет сделать Los Angeles главным туристическим центром ЧМ-2026.</p></div></a>
-<a class="card skeleton " data-card data-cat="football" data-search="Футбол Названы первые сборные на ЧМ-2026 — поворотные шаги перед турниром Команды начинают финальную сборку заявок перед крупнейшим чемпионатом мира. sport/world-cup-2026-first-squads.html football" href="sport/world-cup-2026-first-squads.html"><div class="meta"><span class="badge">Футбол</span><span>13.05.2026</span></div><div><h3>Названы первые сборные на ЧМ-2026 — поворотные шаги перед турниром</h3><p>Команды начинают финальную сборку заявок перед крупнейшим чемпионатом мира.</p></div></a>
-<a class="card skeleton " data-card data-cat="volleyball" data-search="Волейбол Волейбол продолжает динамично жить — сборные, тренировки, турниры Сборные и клубы входят в активный майский календарь международных событий. sport/volleyball-may-2026-teams-tournaments.html volleyball" href="sport/volleyball-may-2026-teams-tournaments.html"><div class="meta"><span class="badge">Волейбол</span><span>13.05.2026</span></div><div><h3>Волейбол продолжает динамично жить — сборные, тренировки, турниры</h3><p>Сборные и клубы входят в активный майский календарь международных событий.</p></div></a>
-<a class="card skeleton " data-card data-cat="football" data-search="Футбол Футбол: крупный трансфер и турнирные битвы Кайрат расстался с Рикардиньо, а клубные турниры входят в решающую фазу. sport/kairat-ricardinho-transfer-2026.html football" href="sport/kairat-ricardinho-transfer-2026.html"><div class="meta"><span class="badge">Футбол</span><span>13.05.2026</span></div><div><h3>Футбол: крупный трансфер и турнирные битвы</h3><p>Кайрат расстался с Рикардиньо, а клубные турниры входят в решающую фазу.</p></div></a>
-<a class="card skeleton " data-card data-cat="results" data-search="Результаты Счёты недели 6-12 мая 2026 Футбол, NBA, теннис, Формула 1, бокс и UFC в одной спортивной сводке. sport/sports-results-may-6-12-2026.html results" href="sport/sports-results-may-6-12-2026.html"><div class="meta"><span class="badge">Результаты</span><span>13.05.2026</span></div><div><h3>Счёты недели 6-12 мая 2026</h3><p>Футбол, NBA, теннис, Формула 1, бокс и UFC в одной спортивной сводке.</p></div></a><div class="empty" data-empty style="display:none">Ничего не найдено.</div></div></section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" role="toolbar">
+  <button class="filter-btn active" data-filter="all">Все</button>
+  <button class="filter-btn" data-filter="football">⚽ Футбол</button>
+  <button class="filter-btn" data-filter="f1">🏎 Формула 1</button>
+  <button class="filter-btn" data-filter="nba">🏀 НБА</button>
+  <button class="filter-btn" data-filter="boxing">🥊 Бокс / UFC</button>
+  <button class="filter-btn" data-filter="tennis">🎾 Теннис</button>
+  <button class="filter-btn" data-filter="esports">🎮 eSports</button>
+  <button class="filter-btn" data-filter="olympics">🏅 Олимпиада</button>
+  <div class="filter-search">
+    <span>🔍</span>
+    <input type="search" placeholder="Поиск новости..." aria-label="Поиск новости">
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="page-content" id="mainContent">
+
+  <!-- Skeleton -->
+  <div id="skeletonWrap">
+    <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:20px;margin-bottom:40px">
+      <div class="skel-card"><div class="skel-img skeleton"></div><div class="skel-body"><div class="skeleton skel-line s"></div><div class="skeleton skel-line l"></div><div class="skeleton skel-line m"></div></div></div>
+      <div class="skel-card"><div class="skel-img skeleton"></div><div class="skel-body"><div class="skeleton skel-line s"></div><div class="skeleton skel-line l"></div></div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      <div class="skel-card"><div class="skel-img skeleton"></div><div class="skel-body"><div class="skeleton skel-line s"></div><div class="skeleton skel-line l"></div><div class="skeleton skel-line m"></div></div></div>
+      <div class="skel-card"><div class="skel-img skeleton"></div><div class="skel-body"><div class="skeleton skel-line s"></div><div class="skeleton skel-line l"></div><div class="skeleton skel-line m"></div></div></div>
+      <div class="skel-card"><div class="skel-img skeleton"></div><div class="skel-body"><div class="skeleton skel-line s"></div><div class="skeleton skel-line l"></div><div class="skeleton skel-line m"></div></div></div>
+    </div>
+  </div>
+
+  <!-- REAL CONTENT -->
+  <div id="realContent" style="display:none">
+
+    <!-- FEATURED -->
+    <section class="sport-group fade-up" data-sport="football" style="margin-bottom:56px">
+      <div class="sport-group-header">
+        <h2 class="sport-group-title">🔥 Главные новости</h2>
+      </div>
+      <div class="featured-row">
+        <article class="news-card featured" onclick="toast('Открываем: Реал Мадрид — победная серия')">
+          <div class="news-card-img">
+            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&q=80&auto=format" alt="Футболист выполняет удар на стадионе" loading="lazy">
+            <div class="overlay">
+              <span class="news-category-tag">⚽ Лига Чемпионов</span>
+              <h2 class="news-headline">Реал Мадрид — 11 матчей без пропущенных голов: тактика Анчелотти раскрыта</h2>
+              <div class="news-meta-row"><span>Сегодня, 20:15</span><span class="news-meta-dot"></span><span>8 мин чтения</span><span class="news-meta-dot"></span><span>47K просмотров</span></div>
+            </div>
+          </div>
+        </article>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <article class="news-card" onclick="toast('Открываем: Верстаппен — Монако')" style="flex:1">
+            <div class="news-card-img" style="aspect-ratio:16/8">
+              <img src="https://images.unsplash.com/photo-1568376794508-ae52c6ab3929?w=600&q=80&auto=format" alt="Болид Формулы 1 на трассе" loading="lazy">
+              <div class="overlay">
+                <span class="news-category-tag">🏎 Формула 1</span>
+                <h3 class="news-headline">Верстаппен — рекорд трассы в Монако: +0.8с к прошлому поулу</h3>
+                <div class="news-meta-row"><span>19:42</span><span class="news-meta-dot"></span><span>4 мин</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="news-card" onclick="toast('Открываем: Фьюри vs Усик 2')" style="flex:1">
+            <div class="news-card-img" style="aspect-ratio:16/8">
+              <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=600&q=80&auto=format" alt="Боксёр на ринге" loading="lazy">
+              <div class="overlay">
+                <span class="news-category-tag">🥊 Бокс</span>
+                <h3 class="news-headline">Фьюри vs Усик 2 — лондонский O2 Arena, 12 июля</h3>
+                <div class="news-meta-row"><span>18:30</span><span class="news-meta-dot"></span><span>3 мин</span></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTBALL -->
+    <section class="sport-group fade-up" data-sport="football">
+      <div class="sport-group-header">
+        <h2 class="sport-group-title">⚽ Футбол <span class="sport-group-count">48 новостей</span></h2>
+        <a href="#" class="sport-group-more" onclick="toast('Все новости футбола');return false">Все →</a>
+      </div>
+      <div class="news-grid">
+        <article class="news-small" onclick="toast('Барселона: переход Льямини')">
+          <div class="news-small-img"><img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=500&q=75&auto=format" alt="Футбольный стадион ночью" loading="lazy"></div>
+          <div class="news-small-body">
+            <div class="news-small-cat">⚽ Трансферы</div>
+            <div class="news-small-title">Барселона согласовала 5-летний контракт с Льяминем Ямалем — рекордная зарплата</div>
+            <div class="news-small-meta"><span>18:05</span><span>·</span><span>5 мин</span></div>
+          </div>
+        </article>
+        <article class="news-small" onclick="toast('АПЛ: итоги тура')">
+          <div class="news-small-img"><img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=500&q=75&auto=format" alt="Матч АПЛ на стадионе" loading="lazy"></div>
+          <div class="news-small-body">
+            <div class="news-small-cat">⚽ АПЛ</div>
+            <div class="news-small-title">Итоги тура АПЛ: Ливерпуль потерял очки, Арсенал вышел в лидеры</div>
+            <div class="news-small-meta"><span>16:40</span><span>·</span><span>7 мин</span></div>
+          </div>
+        </article>
+        <article class="news-small" onclick="toast('Чемпионат мира 2026')">
+          <div class="news-small-img"><img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&q=75&auto=format" alt="Сборная на матче" loading="lazy"></div>
+          <div class="news-small-body">
+            <div class="news-small-cat">⚽ ЧМ 2026</div>
+            <div class="news-small-title">Состав сборной России на отборочные матчи ЧМ 2026 объявлен</div>
+            <div class="news-small-meta"><span>15:20</span><span>·</span><span>4 мин</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- NBA -->
+    <section class="sport-group fade-up" data-sport="nba">
+      <div class="sport-group-header">
+        <h2 class="sport-group-title">🏀 НБА <span class="sport-group-count">32 новости</span></h2>
+        <a href="#" class="sport-group-more" onclick="toast('Все новости НБА');return false">Все →</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <article class="news-list-item" onclick="toast('ЛеБрон — 40 очков')">
+          <div class="news-list-thumb"><img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=200&q=75&auto=format" alt="Баскетбольный матч" loading="lazy"></div>
+          <div class="news-list-body">
+            <div class="news-list-cat">🏀 Плей-офф</div>
+            <div class="news-list-title">ЛеБрон Джеймс: 40 очков и победный бросок — Лейкерс в финале Запада</div>
+            <div class="news-list-meta">Сегодня, 18:55 · 5 мин чтения</div>
+          </div>
+          <span class="news-list-arrow">→</span>
+        </article>
+        <article class="news-list-item" onclick="toast('Карри — травма')">
+          <div class="news-list-thumb"><img src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=200&q=75&auto=format" alt="Баскетболист в прыжке" loading="lazy"></div>
+          <div class="news-list-body">
+            <div class="news-list-cat">🏀 Травмы</div>
+            <div class="news-list-title">Стеф Карри пропустит 2 игры из-за травмы лодыжки — официальное заявление</div>
+            <div class="news-list-meta">Сегодня, 17:00 · 2 мин чтения</div>
+          </div>
+          <span class="news-list-arrow">→</span>
+        </article>
+        <article class="news-list-item" onclick="toast('Драфт НБА 2026')">
+          <div class="news-list-thumb"><img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?w=200&q=75&auto=format" alt="Баскетбольный зал" loading="lazy"></div>
+          <div class="news-list-body">
+            <div class="news-list-cat">🏀 Драфт</div>
+            <div class="news-list-title">Драфт НБА 2026: топ-5 кандидатов по версии ESPN и The Athletic</div>
+            <div class="news-list-meta">Вчера, 22:30 · 9 мин чтения</div>
+          </div>
+          <span class="news-list-arrow">→</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- F1 -->
+    <section class="sport-group fade-up" data-sport="f1">
+      <div class="sport-group-header">
+        <h2 class="sport-group-title">🏎 Формула 1 <span class="sport-group-count">21 новость</span></h2>
+        <a href="#" class="sport-group-more" onclick="toast('Все новости Ф1');return false">Все →</a>
+      </div>
+      <div class="news-grid">
+        <article class="news-small" onclick="toast('Верстаппен — Монако')">
+          <div class="news-small-img"><img src="https://images.unsplash.com/photo-1568376794508-ae52c6ab3929?w=500&q=75&auto=format" alt="Формула 1: болид на трассе" loading="lazy"></div>
+          <div class="news-small-body">
+            <div class="news-small-cat">🏎 Квалификация</div>
+            <div class="news-small-title">Верстаппен с рекордом поула в Монако: «Был идеальным круг»</div>
+            <div class="news-small-meta"><span>19:42</span><span>·</span><span>4 мин</span></div>
+          </div>
+        </article>
+        <article class="news-small" onclick="toast('Хэмилтон — Феррари')">
+          <div class="news-small-img"><img src="https://images.unsplash.com/photo-1614200187524-dc4b892acf16?w=500&q=75&auto=format" alt="Болид на пит-стопе" loading="lazy"></div>
+          <div class="news-small-body">
+            <div class="news-small-cat">🏎 Феррари</div>
+            <div class="news-small-title">Хэмилтон признался: «Я всё ещё адаптируюсь к Ferrari после трёх гонок»</div>
+            <div class="news-small-meta"><span>14:10</span><span>·</span><span>6 мин</span></div>
+          </div>
+        </article>
+        <article class="news-small" onclick="toast('Новые правила 2027')">
+          <div class="news-small-img"><img src="https://images.unsplash.com/photo-1541447270886-6b1c37fd7600?w=500&q=75&auto=format" alt="Болид крупным планом" loading="lazy"></div>
+          <div class="news-small-body">
+            <div class="news-small-cat">🏎 Регламент</div>
+            <div class="news-small-title">FIA утвердила технический регламент Ф1 на 2027 год: ключевые изменения</div>
+            <div class="news-small-meta"><span>11:30</span><span>·</span><span>8 мин</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TENNIS & BOXING -->
+    <section class="sport-group fade-up" data-sport="tennis">
+      <div class="sport-group-header">
+        <h2 class="sport-group-title">🎾 Теннис <span class="sport-group-count">15 новостей</span></h2>
+        <a href="#" class="sport-group-more" onclick="toast('Все новости тенниса');return false">Все →</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <article class="news-list-item" onclick="toast('Джокович — Roland Garros')">
+          <div class="news-list-thumb"><img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=200&q=75&auto=format" alt="Теннисист на корте" loading="lazy"></div>
+          <div class="news-list-body">
+            <div class="news-list-cat">🎾 Roland Garros</div>
+            <div class="news-list-title">Джокович в финале: «Это моя лучшая игра за последние два года»</div>
+            <div class="news-list-meta">Сегодня, 16:00 · 6 мин чтения</div>
+          </div>
+          <span class="news-list-arrow">→</span>
+        </article>
+        <article class="news-list-item" onclick="toast('Свёнтек — мировой рейтинг')">
+          <div class="news-list-thumb"><img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=200&q=75&auto=format" alt="Подача на корте" loading="lazy"></div>
+          <div class="news-list-body">
+            <div class="news-list-cat">🎾 WTA</div>
+            <div class="news-list-title">Свёнтек сохраняет первое место в рейтинге WTA несмотря на поражение</div>
+            <div class="news-list-meta">Сегодня, 13:15 · 3 мин чтения</div>
+          </div>
+          <span class="news-list-arrow">→</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ESPORTS -->
+    <section class="sport-group fade-up" data-sport="esports">
+      <div class="sport-group-header">
+        <h2 class="sport-group-title">🎮 eSports <span class="sport-group-count">19 новостей</span></h2>
+        <a href="#" class="sport-group-more" onclick="toast('Все новости eSports');return false">Все →</a>
+      </div>
+      <div class="news-grid">
+        <article class="news-small" onclick="toast('NAVI — финал ESL')">
+          <div class="news-small-img"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&q=75&auto=format" alt="Киберспортист за компьютером" loading="lazy"></div>
+          <div class="news-small-body">
+            <div class="news-small-cat">🎮 CS2</div>
+            <div class="news-small-title">NAVI vs Vitality — решающая карта финала ESL Pro League сегодня в 21:00</div>
+            <div class="news-small-meta"><span>17:00</span><span>·</span><span>3 мин</span></div>
+          </div>
+        </article>
+        <article class="news-small" onclick="toast('Faker — T1')">
+          <div class="news-small-img"><img src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?w=500&q=75&auto=format" alt="Игровой турнир" loading="lazy"></div>
+          <div class="news-small-body">
+            <div class="news-small-cat">🎮 League of Legends</div>
+            <div class="news-small-title">Faker продлил контракт с T1 до 2028 года — рекордная сумма в истории eSports</div>
+            <div class="news-small-meta"><span>12:00</span><span>·</span><span>5 мин</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="load-more-wrap">
+      <button class="btn-load-more" onclick="toast('Загружаем ещё новости...')">Загрузить ещё новости</button>
+    </div>
+
+  </div><!-- /realContent -->
 </main>
-<footer><span>© 2026 Pereuloq Sport</span><span>Pereuloq — основан <a href="almir-khialov.html">Almir Khialov</a></span></footer>
-<script src="js/sport-listing.js" defer></script>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">PEREULOQ <span>СПОРТ</span></div>
+      <p class="footer-desc">Все спортивные новости мира — свежие материалы каждый час.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Страницы</div>
+      <ul class="footer-links">
+        <li><a href="world-sport.html">Главная</a></li>
+        <li><a href="all-results.html">Результаты</a></li>
+        <li><a href="all-news.html">Новости</a></li>
+        <li><a href="all-trends.html">Тренды</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Рубрики</div>
+      <ul class="footer-links">
+        <li><a href="world-sport.html#news">Футбол</a></li><li><a href="world-sport.html#news">Формула 1</a></li>
+        <li><a href="world-sport.html#news">НБА</a></li><li><a href="world-sport.html#news">UFC / ММА</a></li>
+        <li><a href="world-sport.html#news">Теннис</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Сервис</div>
+      <ul class="footer-links">
+        <li><a href="about.html">О нас</a></li>
+        <li><a href="store.html">Реклама</a></li>
+        <li><a href="about.html">Контакты</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Pereuloq. Все права защищены.</span>
+    <span>Pereuloq — основан <a href="almir-khialov.html" style="color:var(--accent);text-decoration:none">Almir Khialov</a></span>
+  </div>
+</footer>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav">
+  <div class="mobile-nav-items">
+    <a href="world-sport.html" class="mobile-nav-item"><span class="mobile-nav-icon">🏠</span><span class="mobile-nav-label">Главная</span></a>
+    <a href="all-results.html" class="mobile-nav-item"><span class="mobile-nav-icon">⚡</span><span class="mobile-nav-label">Результаты</span></a>
+    <a href="all-news.html" class="mobile-nav-item active"><span class="mobile-nav-icon">📰</span><span class="mobile-nav-label">Новости</span></a>
+    <a href="all-trends.html" class="mobile-nav-item"><span class="mobile-nav-icon">🔥</span><span class="mobile-nav-label">Тренды</span></a>
+  </div>
+</nav>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+(function(){
+  const saved = localStorage.getItem('pq-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  const btn = document.getElementById('themeToggle');
+  btn.textContent = saved === 'dark' ? '☀️' : '🌙';
+  btn.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('pq-theme', next);
+    btn.textContent = next === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+}, {passive:true});
+
+function toast(msg) {
+  const c = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  c.appendChild(t);
+  setTimeout(() => { t.classList.add('leaving'); setTimeout(() => t.remove(), 350); }, 3000);
+}
+
+setTimeout(() => {
+  document.getElementById('skeletonWrap').style.display = 'none';
+  document.getElementById('realContent').style.display = 'block';
+  document.querySelectorAll('.fade-up').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), i * 100);
+  });
+}, 1100);
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, {threshold:.08});
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+const sportSearchInput = document.querySelector('.filter-search input');
+if (sportSearchInput) {
+  sportSearchInput.addEventListener('input', () => {
+    const q = sportSearchInput.value.trim().toLowerCase();
+    document.querySelectorAll('.sport-group, .news-small, .news-list-item, .result-card').forEach(el => {
+      const text = el.textContent.toLowerCase();
+      el.style.display = !q || text.includes(q) ? '' : 'none';
+    });
+  });
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.sport-group').forEach(g => {
+      g.style.display = (f === 'all' || g.dataset.sport === f) ? '' : 'none';
+    });
+    toast(f === 'all' ? 'Все новости' : `Фильтр: ${btn.textContent}`);
+  });
+});
+</script>
 </body>
 </html>

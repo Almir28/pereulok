@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Все результаты спорта | Pereuloq</title>
-<meta name="description" content="Футбольные и спортивные результаты недели: ЧМ-2026, РПЛ, Ла Лига, NBA, теннис, F1, бокс и UFC.">
+<title>Все спортивные результаты — Pereuloq</title>
+<meta name="description" content="Все спортивные результаты в реальном времени — футбол, Формула 1, НБА, UFC, теннис и другие виды спорта на Pereuloq.">
+<meta property="og:title" content="Все спортивные результаты — Pereuloq">
+<meta property="og:description" content="Live результаты матчей, счёт в реальном времени по всем видам спорта.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Все спортивные результаты — Pereuloq">
+<meta name="twitter:description" content="Live результаты матчей по всем видам спорта.">
 <link rel="canonical" href="https://pereuloq.ru/all-results.html">
 <link rel="alternate" hreflang="ru" href="https://pereuloq.ru/all-results.html">
 <link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/all-results.html">
 <link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/all-results.html">
-<meta property="og:title" content="Все результаты спорта | Pereuloq">
-<meta property="og:description" content="Футбольные и спортивные результаты недели: ЧМ-2026, РПЛ, Ла Лига, NBA, теннис, F1, бокс и UFC.">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://pereuloq.ru/all-results.html">
 <meta name="theme-color" content="#080808">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
@@ -20,45 +24,628 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/sport-listing.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS ===== */
+:root {
+  --accent:#FF9F0A; --accent-dim:rgba(255,159,10,0.15); --accent-glow:rgba(255,159,10,0.4);
+  --bg:#080808; --bg2:#0f0f0f; --bg3:#141414; --bg4:#1a1a1a;
+  --glass:rgba(255,255,255,0.04); --glass-border:rgba(255,255,255,0.08);
+  --text:#fff; --text-dim:rgba(255,255,255,0.55); --text-muted:rgba(255,255,255,0.3);
+  --live:#ff3b30; --live-glow:rgba(255,59,48,0.4);
+  --radius:12px; --radius-lg:18px;
+}
+[data-theme="light"] {
+  --bg:#f2f2f7; --bg2:#fff; --bg3:#e5e5ea; --bg4:#d1d1d6;
+  --glass:rgba(0,0,0,0.03); --glass-border:rgba(0,0,0,0.09);
+  --text:#0d0d0d; --text-dim:rgba(0,0,0,0.55); --text-muted:rgba(0,0,0,0.35);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+
+/* ===== NAVBAR ===== */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);background:rgba(8,8,8,.8);border-bottom:1px solid var(--glass-border);transition:background .3s}
+[data-theme="light"] .navbar{background:rgba(242,242,247,.9)}
+.navbar.scrolled{background:rgba(8,8,8,.97)}
+[data-theme="light"] .navbar.scrolled{background:rgba(242,242,247,.98)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-badge{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--text)}
+.nav-logo-badge span{color:var(--accent)}
+.nav-live-dot{display:flex;align-items:center;gap:6px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:2px;color:var(--live);font-weight:600}
+.pulse-dot{width:7px;height:7px;background:var(--live);border-radius:50%;animation:pulse 1.5s infinite;box-shadow:0 0 6px var(--live-glow);flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:1.5px;font-weight:600;color:var(--text-dim);text-decoration:none;text-transform:uppercase;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transition:transform .3s}
+.nav-links a:hover{color:var(--text)}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-links a.active{color:var(--accent)}
+.nav-cta{background:var(--accent)!important;color:#000!important;padding:8px 18px;border-radius:6px;font-weight:700!important}
+.nav-cta::after{display:none!important}
+.nav-right{display:flex;align-items:center;gap:12px}
+.sport-lang{display:flex;align-items:center;gap:4px;border:1px solid var(--glass-border);background:var(--glass);border-radius:8px;padding:3px}
+.sport-lang a{font-family:'Barlow Condensed',sans-serif;font-size:11px;line-height:1;letter-spacing:1px;color:var(--text-muted);text-decoration:none;padding:7px 8px;border-radius:5px;transition:color .2s,background .2s}
+.sport-lang a:hover{color:var(--text)}
+.sport-lang a.active{background:var(--accent);color:#000}
+.theme-toggle{background:var(--glass);border:1px solid var(--glass-border);border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:all .2s}
+.theme-toggle:hover{border-color:var(--accent)}
+.hamburger{display:none!important;background:none;border:none;cursor:pointer;padding:6px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;transition:all .3s;border-radius:1px}
+
+/* ===== TICKER ===== */
+.ticker-bar{position:fixed;top:64px;left:0;right:0;z-index:999;background:var(--accent);height:30px;display:flex;align-items:center;overflow:hidden}
+.ticker-label{background:#000;color:var(--accent);font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;padding:0 14px;height:100%;display:flex;align-items:center;flex-shrink:0}
+.ticker-track{display:flex;gap:60px;white-space:nowrap;animation:ticker 40s linear infinite}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-item{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:#000;letter-spacing:.5px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+
+/* ===== PAGE HEADER ===== */
+.page-header{margin-top:94px;padding:52px 60px 40px;background:var(--bg2);border-bottom:1px solid var(--glass-border);position:relative;overflow:hidden}
+.page-header-glow{position:absolute;top:-80px;right:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--accent-dim) 0%,transparent 70%);pointer-events:none}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px}
+.breadcrumb a{color:var(--text-muted);text-decoration:none;transition:color .2s}.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb span{color:var(--accent)}
+.page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,76px);letter-spacing:3px;line-height:1;margin-bottom:10px}
+.page-title .accent{color:var(--accent)}
+.page-subtitle{font-size:15px;color:var(--text-dim);font-weight:300;max-width:480px}
+.header-meta{display:flex;align-items:center;gap:20px;margin-top:20px}
+.header-meta-item{display:flex;align-items:center;gap:7px;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:1px;color:var(--text-muted);text-transform:uppercase}
+.header-meta-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--accent)}
+
+/* ===== FILTER BAR ===== */
+.filter-bar{padding:16px 60px;background:var(--bg2);border-bottom:1px solid var(--glass-border);display:flex;align-items:center;gap:10px;flex-wrap:wrap;position:sticky;top:94px;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.filter-btn{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:8px 15px;border-radius:6px;border:1px solid var(--glass-border);background:var(--glass);color:var(--text-dim);cursor:pointer;transition:all .2s;white-space:nowrap}
+.filter-btn:hover{border-color:var(--accent-glow);color:var(--text)}
+.filter-btn.active{background:var(--accent);color:#000;border-color:var(--accent)}
+.filter-search{margin-left:auto;display:flex;align-items:center;gap:8px;background:var(--glass);border:1px solid var(--glass-border);border-radius:8px;padding:8px 14px;transition:border-color .2s}
+.filter-search:focus-within{border-color:var(--accent-glow)}
+.filter-search input{background:none;border:none;outline:none;font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--text);letter-spacing:.5px;width:160px}
+.filter-search input::placeholder{color:var(--text-muted)}
+
+/* ===== MAIN CONTENT ===== */
+.page-content{padding:40px 60px 80px}
+
+/* ===== SPORT GROUP ===== */
+.sport-group{margin-bottom:56px}
+.sport-group-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--glass-border)}
+.sport-group-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;display:flex;align-items:center;gap:10px}
+.sport-group-count{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase}
+.sport-group-more{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+.sport-group-more:hover{border-color:var(--accent)}
+
+/* ===== RESULT CARDS ===== */
+.results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+
+/* horizontal scroll wrapper on mobile */
+.results-scroll-outer{overflow-x:auto;padding-bottom:10px;scrollbar-width:none;-ms-overflow-style:none}
+.results-scroll-outer::-webkit-scrollbar{display:none}
+.results-scroll-inner{display:flex;gap:14px}
+.results-scroll-inner .result-card{width:280px;flex-shrink:0}
+
+.result-card{padding:20px 22px;background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);cursor:pointer;position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.16,1,.3,1),border-color .25s,box-shadow .3s}
+.result-card:hover{transform:translateY(-5px);border-color:var(--accent-glow);box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.result-card.live-card{border-color:rgba(255,59,48,.25)}
+.result-card.live-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--live),transparent)}
+.result-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.competition-name{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted)}
+.live-badge{display:flex;align-items:center;gap:5px;background:rgba(255,59,48,.12);border:1px solid rgba(255,59,48,.28);border-radius:20px;padding:3px 9px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--live)}
+.finished-badge{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase}
+.upcoming-badge{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;color:#64d2ff;text-transform:uppercase;background:rgba(100,210,255,.1);border:1px solid rgba(100,210,255,.25);border-radius:20px;padding:3px 9px}
+.match-row{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.result-team{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1}
+.team-logo{width:44px;height:44px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:22px;border:1px solid var(--glass-border)}
+.team-label{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;text-align:center}
+.scoreline{display:flex;align-items:center;gap:3px}
+.score-dig{font-family:'Bebas Neue',sans-serif;font-size:44px;line-height:1;min-width:28px;text-align:center}
+.score-col{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--text-muted)}
+.result-time{text-align:center;margin-top:12px;font-family:'Barlow Condensed',sans-serif;font-size:12px;color:var(--text-dim);font-weight:500}
+.result-time .min{color:var(--accent);font-weight:700}
+
+/* F1 style card */
+.f1-card .match-row{flex-direction:column;align-items:flex-start;gap:8px}
+.f1-row{display:flex;align-items:center;gap:12px;width:100%}
+.f1-pos{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--accent);min-width:32px}
+.f1-driver{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase}
+.f1-team{font-size:11px;color:var(--text-muted);font-family:'Barlow Condensed';letter-spacing:1px;text-transform:uppercase}
+.f1-gap{font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--text-dim);margin-left:auto;font-weight:600}
+
+/* ===== SKELETON ===== */
+.skeleton{background:linear-gradient(90deg,var(--bg3) 25%,var(--bg4) 50%,var(--bg3) 75%);background-size:400% 100%;animation:skel 1.5s ease infinite;border-radius:6px}
+@keyframes skel{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skel-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:12px}
+.skel-line{height:12px}.skel-line.s{width:40%}.skel-line.l{width:80%}.skel-line.m{width:60%}
+.skel-score{height:44px;width:100%;border-radius:8px;margin:4px 0}
+
+/* ===== LOAD MORE ===== */
+.load-more-wrap{text-align:center;margin-top:48px}
+.btn-load-more{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px 40px;border-radius:8px;border:1px solid var(--glass-border);background:var(--glass);color:var(--text);cursor:pointer;transition:all .3s}
+.btn-load-more:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 24px var(--accent-glow)}
+
+/* ===== TOAST ===== */
+.toast-container{position:fixed;bottom:80px;right:24px;z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{background:var(--bg4);border:1px solid var(--glass-border);border-left:3px solid var(--accent);border-radius:10px;padding:12px 16px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.5px;color:var(--text);max-width:270px;backdrop-filter:blur(16px);box-shadow:0 8px 32px rgba(0,0,0,.4);animation:toastIn .35s cubic-bezier(.16,1,.3,1) both;pointer-events:all}
+.toast.leaving{animation:toastOut .3s ease forwards}
+@keyframes toastIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes toastOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(40px)}}
+
+/* ===== FADE UP ===== */
+.fade-up{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ===== FOOTER ===== */
+footer{background:#050505;border-top:1px solid var(--glass-border);padding:48px 60px 36px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;margin-bottom:8px}
+.footer-brand span{color:var(--accent)}
+.footer-desc{font-size:12px;color:var(--text-muted);line-height:1.6;max-width:240px}
+.footer-col-title{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:14px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-links a{font-size:12px;color:var(--text-muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--glass-border);font-size:12px;color:var(--text-muted)}
+
+/* ===== MOBILE NAV ===== */
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:1000;background:rgba(8,8,8,.97);backdrop-filter:blur(20px);border-top:1px solid var(--glass-border);padding:10px 0;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+[data-theme="light"] .mobile-nav{background:rgba(242,242,247,.98)}
+.mobile-nav-items{display:flex;justify-content:space-around}
+.mobile-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:var(--text-muted);transition:color .2s;padding:4px 10px}
+.mobile-nav-item.active{color:var(--accent)}
+.mobile-nav-icon{font-size:20px}
+.mobile-nav-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:.5px;text-transform:uppercase}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){.page-header,.filter-bar,.page-content,footer{padding-left:30px;padding-right:30px}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.nav-links,.filter-search{display:none}.hamburger{display:none!important}.page-header,.filter-bar,.page-content{padding-left:20px;padding-right:20px}footer{padding:32px 20px}.footer-grid{grid-template-columns:1fr;gap:24px}.footer-bottom{flex-direction:column;gap:8px;text-align:center}.mobile-nav{display:block}body{padding-bottom:70px}.results-grid{display:none}.filter-bar{overflow-x:auto;flex-wrap:nowrap}.filter-bar::-webkit-scrollbar{display:none}}
+@media(min-width:769px){.results-scroll-outer{display:none}.results-grid{display:grid}}
+</style>
 </head>
-<body class="sport-page">
-<header class="sport-top">
-  <a class="brand" href="world-sport.html">PEREULOQ <span>SPORT</span></a>
-  <nav class="sport-nav" aria-label="Спортивная навигация">
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="world-sport.html" class="nav-logo">
+    <span class="nav-logo-badge">PEREULOQ <span>СПОРТ</span></span>
+  </a>
+  <div class="nav-live-dot"><span class="pulse-dot"></span> LIVE</div>
+  <ul class="nav-links">
+    <li><a href="all-results.html" class="active">Результаты</a></li>
+    <li><a href="all-news.html">Новости</a></li>
+    <li><a href="all-trends.html">Тренды</a></li>
+    <li><a href="world-sport.html" class="nav-cta">← На главную</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="sport-lang" aria-label="Переключатель языка"><a href="all-results.html" hreflang="ru" class="active">RU</a><a href="en/all-results.html" hreflang="en">EN</a></div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">🌙</button>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-label">⚡ LIVE</div>
+  <div class="ticker-track">
+    <span class="ticker-item">⚽ Реал Мадрид 2:1 Манчестер Сити | 74'</span>
+    <span class="ticker-item">🏎 Верстаппен лидирует в Монако | 38/78</span>
+    <span class="ticker-item">🏀 Лейкерс 108:102 Бостон | 3Q 4:12</span>
+    <span class="ticker-item">🎾 Джокович — финал Roland Garros</span>
+    <span class="ticker-item">⚽ ПСЖ 0:0 Бавария | 61'</span>
+    <span class="ticker-item">⚽ Барселона 1:1 Атлетико | 88'</span>
+    <span class="ticker-item">⚽ Реал Мадрид 2:1 Манчестер Сити | 74'</span>
+    <span class="ticker-item">🏎 Верстаппен лидирует в Монако | 38/78</span>
+    <span class="ticker-item">🏀 Лейкерс 108:102 Бостон | 3Q 4:12</span>
+    <span class="ticker-item">🎾 Джокович — финал Roland Garros</span>
+    <span class="ticker-item">⚽ ПСЖ 0:0 Бавария | 61'</span>
+    <span class="ticker-item">⚽ Барселона 1:1 Атлетико | 88'</span>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-glow"></div>
+  <nav class="breadcrumb" aria-label="Навигация">
     <a href="world-sport.html">Спорт</a>
-    <a class="active" href="all-results.html">Результаты</a>
-    <a class="" href="all-news.html">Новости</a>
-    <a class="" href="all-trends.html">Тренды</a>
+    <span>›</span>
+    <span>Все результаты</span>
   </nav>
-  <div class="lang"><a class="active" href="all-results.html">RU</a><a class="" href="en/all-results.html">EN</a></div>
+  <h1 class="page-title">ВСЕ <span class="accent">РЕЗУЛЬТАТЫ</span></h1>
+  <p class="page-subtitle">Счёт в реальном времени, завершённые матчи и предстоящие события по всем видам спорта</p>
+  <div class="header-meta">
+    <div class="header-meta-item"><span class="header-meta-val" id="liveCount">8</span> матчей live</div>
+    <div class="header-meta-item"><span class="header-meta-val">24</span> завершено сегодня</div>
+    <div class="header-meta-item"><span class="header-meta-val">12</span> предстоит</div>
+  </div>
 </header>
-<main>
-<section class="sport-hero">
-  <div><div class="kicker">Pereuloq Sport</div><h1>ВСЕ РЕЗУЛЬТАТЫ</h1><p class="lead">Сводка счётов и ключевых спортивных итогов недели в аккуратном live-формате.</p></div>
-  <aside class="hero-panel"><h2>Ритм недели</h2><div class="pulse-row"><div class="pulse-item"><strong>Матчей</strong><span>14</span></div><div class="pulse-item"><strong>Видов спорта</strong><span>6</span></div><div class="pulse-item"><strong>Период</strong><span>6-12 мая</span></div></div></aside>
-</section>
-<section class="toolbar">
-  <label class="search"><span>⌕</span><input data-sport-filter type="search" placeholder="Поиск по этой спортивной странице"></label>
-  <div class="chips"><button class="chip active" data-chip="all">Все</button><button class="chip" data-chip="football">Футбол</button><button class="chip" data-chip="basketball">NBA</button><button class="chip" data-chip="results">Результаты</button></div>
-</section>
-<section class="content"><div class="grid"><article class="card skeleton" data-card data-cat="results football" data-search="Лига чемпионов 06.05 Бавария BAY 1:1 Пари Сен-Жермен PSG PSG проходит в финал 6:5 по сумме двух матчей football"><div class="meta"><span class="badge">Лига чемпионов</span><span>06.05</span></div><div><div class="scoreline"><div class="team"><span class="logo">BAY</span><strong>Бавария</strong></div><div class="score">1:1</div><div class="team right"><strong>Пари Сен-Жермен</strong><span class="logo">PSG</span></div></div><p>PSG проходит в финал 6:5 по сумме двух матчей</p></div></article>
-<article class="card skeleton" data-card data-cat="results football" data-search="Кубок России 06.05 Спартак Москва SPA 1:0 ЦСКА Москва CSK Финал Пути регионов football"><div class="meta"><span class="badge">Кубок России</span><span>06.05</span></div><div><div class="scoreline"><div class="team"><span class="logo">SPA</span><strong>Спартак Москва</strong></div><div class="score">1:0</div><div class="team right"><strong>ЦСКА Москва</strong><span class="logo">CSK</span></div></div><p>Финал Пути регионов</p></div></article>
-<article class="card skeleton" data-card data-cat="results football" data-search="РПЛ 10-11.05 Зенит ZEN 2:1 Сочи SOC Премьер-лига России football"><div class="meta"><span class="badge">РПЛ</span><span>10-11.05</span></div><div><div class="scoreline"><div class="team"><span class="logo">ZEN</span><strong>Зенит</strong></div><div class="score">2:1</div><div class="team right"><strong>Сочи</strong><span class="logo">SOC</span></div></div><p>Премьер-лига России</p></div></article>
-<article class="card skeleton" data-card data-cat="results football" data-search="РПЛ 10-11.05 Локомотив LOK 1:0 Балтика BAL Премьер-лига России football"><div class="meta"><span class="badge">РПЛ</span><span>10-11.05</span></div><div><div class="scoreline"><div class="team"><span class="logo">LOK</span><strong>Локомотив</strong></div><div class="score">1:0</div><div class="team right"><strong>Балтика</strong><span class="logo">BAL</span></div></div><p>Премьер-лига России</p></div></article>
-<article class="card skeleton" data-card data-cat="results football" data-search="РПЛ 10-11.05 Спартак SPA 2:1 Рубин RUB Премьер-лига России football"><div class="meta"><span class="badge">РПЛ</span><span>10-11.05</span></div><div><div class="scoreline"><div class="team"><span class="logo">SPA</span><strong>Спартак</strong></div><div class="score">2:1</div><div class="team right"><strong>Рубин</strong><span class="logo">RUB</span></div></div><p>Премьер-лига России</p></div></article>
-<article class="card skeleton" data-card data-cat="results football" data-search="РПЛ 10-11.05 Динамо Москва DYN 2:1 Краснодар KRA Премьер-лига России football"><div class="meta"><span class="badge">РПЛ</span><span>10-11.05</span></div><div><div class="scoreline"><div class="team"><span class="logo">DYN</span><strong>Динамо Москва</strong></div><div class="score">2:1</div><div class="team right"><strong>Краснодар</strong><span class="logo">KRA</span></div></div><p>Премьер-лига России</p></div></article>
-<article class="card skeleton" data-card data-cat="results football" data-search="РПЛ 10-11.05 Пари НН PNN 1:2 ЦСКА CSK Премьер-лига России football"><div class="meta"><span class="badge">РПЛ</span><span>10-11.05</span></div><div><div class="scoreline"><div class="team"><span class="logo">PNN</span><strong>Пари НН</strong></div><div class="score">1:2</div><div class="team right"><strong>ЦСКА</strong><span class="logo">CSK</span></div></div><p>Премьер-лига России</p></div></article>
-<article class="card skeleton" data-card data-cat="results football" data-search="РПЛ 10-11.05 Акрон AKR 1:3 Ростов ROS Премьер-лига России football"><div class="meta"><span class="badge">РПЛ</span><span>10-11.05</span></div><div><div class="scoreline"><div class="team"><span class="logo">AKR</span><strong>Акрон</strong></div><div class="score">1:3</div><div class="team right"><strong>Ростов</strong><span class="logo">ROS</span></div></div><p>Премьер-лига России</p></div></article>
-<article class="card skeleton" data-card data-cat="results football" data-search="Ла Лига 12.05 Сельта CEL 2:3 Леванте LEV 36-й тур football"><div class="meta"><span class="badge">Ла Лига</span><span>12.05</span></div><div><div class="scoreline"><div class="team"><span class="logo">CEL</span><strong>Сельта</strong></div><div class="score">2:3</div><div class="team right"><strong>Леванте</strong><span class="logo">LEV</span></div></div><p>36-й тур</p></div></article>
-<article class="card skeleton" data-card data-cat="results basketball" data-search="NBA 06-11.05 Pistons DET 2:2 Cavaliers CLE Серия сравнялась после четырёх матчей basketball"><div class="meta"><span class="badge">NBA</span><span>06-11.05</span></div><div><div class="scoreline"><div class="team"><span class="logo">DET</span><strong>Pistons</strong></div><div class="score">2:2</div><div class="team right"><strong>Cavaliers</strong><span class="logo">CLE</span></div></div><p>Серия сравнялась после четырёх матчей</p></div></article>
-<article class="card skeleton" data-card data-cat="results basketball" data-search="NBA 12.05 Spurs SAS 126:97 Timberwolves MIN Spurs ведут серию 3:2 basketball"><div class="meta"><span class="badge">NBA</span><span>12.05</span></div><div><div class="scoreline"><div class="team"><span class="logo">SAS</span><strong>Spurs</strong></div><div class="score">126:97</div><div class="team right"><strong>Timberwolves</strong><span class="logo">MIN</span></div></div><p>Spurs ведут серию 3:2</p></div></article>
-<article class="card skeleton" data-card data-cat="results tennis" data-search="Теннис Rome 12.05 Sinner SIN 6:0 6:0 Pellegrino PEL Ключевой результат дня tennis"><div class="meta"><span class="badge">Теннис Rome</span><span>12.05</span></div><div><div class="scoreline"><div class="team"><span class="logo">SIN</span><strong>Sinner</strong></div><div class="score">6:0 6:0</div><div class="team right"><strong>Pellegrino</strong><span class="logo">PEL</span></div></div><p>Ключевой результат дня</p></div></article>
-<article class="card skeleton" data-card data-cat="results racing" data-search="Formula 1 03.05 Antonelli ANT P1 Miami GP MIA Norris, Piastri, Russell следом racing"><div class="meta"><span class="badge">Formula 1</span><span>03.05</span></div><div><div class="scoreline"><div class="team"><span class="logo">ANT</span><strong>Antonelli</strong></div><div class="score">P1</div><div class="team right"><strong>Miami GP</strong><span class="logo">MIA</span></div></div><p>Norris, Piastri, Russell следом</p></div></article>
-<article class="card skeleton" data-card data-cat="results fight" data-search="UFC 328 10.05 Strickland STR SD Chimaev CHI Split decision в главном бою fight"><div class="meta"><span class="badge">UFC 328</span><span>10.05</span></div><div><div class="scoreline"><div class="team"><span class="logo">STR</span><strong>Strickland</strong></div><div class="score">SD</div><div class="team right"><strong>Chimaev</strong><span class="logo">CHI</span></div></div><p>Split decision в главном бою</p></div></article><div class="empty" data-empty style="display:none">Ничего не найдено.</div></div></section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" role="toolbar" aria-label="Фильтры по видам спорта">
+  <button class="filter-btn active" data-filter="all">Все виды</button>
+  <button class="filter-btn" data-filter="football">⚽ Футбол</button>
+  <button class="filter-btn" data-filter="f1">🏎 Формула 1</button>
+  <button class="filter-btn" data-filter="nba">🏀 НБА</button>
+  <button class="filter-btn" data-filter="tennis">🎾 Теннис</button>
+  <button class="filter-btn" data-filter="ufc">🥊 UFC</button>
+  <button class="filter-btn" data-filter="esports">🎮 eSports</button>
+  <div class="filter-search">
+    <span class="filter-search-icon">🔍</span>
+    <input type="search" placeholder="Поиск матча..." aria-label="Поиск матча">
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="page-content" id="mainContent">
+
+  <!-- Skeleton loading -->
+  <div id="skeletonWrap">
+    <div style="margin-bottom:48px">
+      <div class="sport-group-header" style="margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--glass-border)">
+        <div class="skeleton skel-line l" style="height:28px;width:200px"></div>
+        <div class="skeleton skel-line" style="height:14px;width:80px"></div>
+      </div>
+      <div class="results-grid">
+        <div class="skel-card"><div class="skeleton skel-line s"></div><div class="skeleton skel-score"></div><div class="skeleton skel-line m"></div></div>
+        <div class="skel-card"><div class="skeleton skel-line s"></div><div class="skeleton skel-score"></div><div class="skeleton skel-line m"></div></div>
+        <div class="skel-card"><div class="skeleton skel-line s"></div><div class="skeleton skel-score"></div><div class="skeleton skel-line m"></div></div>
+        <div class="skel-card"><div class="skeleton skel-line s"></div><div class="skeleton skel-score"></div><div class="skeleton skel-line m"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Real content (hidden until loaded) -->
+  <div id="realContent" style="display:none">
+
+    <!-- FOOTBALL -->
+    <section class="sport-group fade-up" data-sport="football">
+      <div class="sport-group-header">
+        <h2 class="sport-group-title">⚽ Футбол <span class="sport-group-count">9 матчей</span></h2>
+        <a href="#" class="sport-group-more" onclick="toast('Страница футбола открывается...');return false">Все →</a>
+      </div>
+
+      <!-- Desktop grid -->
+      <div class="results-grid">
+        <article class="result-card live-card" onclick="toast('Реал Мадрид — Ман. Сити: детали матча')">
+          <div class="result-card-top"><span class="competition-name">Лига Чемпионов</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div>
+          <div class="match-row">
+            <div class="result-team"><div class="team-logo" aria-hidden="true">🏟️</div><div class="team-label">Реал Мадрид</div></div>
+            <div class="scoreline"><span class="score-dig">2</span><span class="score-col">:</span><span class="score-dig">1</span></div>
+            <div class="result-team"><div class="team-logo" aria-hidden="true">🌆</div><div class="team-label">Ман. Сити</div></div>
+          </div>
+          <div class="result-time"><span class="min" id="t1">74'</span> &nbsp;2-й тайм</div>
+        </article>
+
+        <article class="result-card live-card" onclick="toast('ПСЖ — Бавария: детали матча')">
+          <div class="result-card-top"><span class="competition-name">Лига Чемпионов</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div>
+          <div class="match-row">
+            <div class="result-team"><div class="team-logo">⚫🔴</div><div class="team-label">ПСЖ</div></div>
+            <div class="scoreline"><span class="score-dig">0</span><span class="score-col">:</span><span class="score-dig">0</span></div>
+            <div class="result-team"><div class="team-logo">🔴⚪</div><div class="team-label">Бавария</div></div>
+          </div>
+          <div class="result-time"><span class="min">61'</span> &nbsp;2-й тайм</div>
+        </article>
+
+        <article class="result-card live-card" onclick="toast('Барселона — Атлетико: детали матча')">
+          <div class="result-card-top"><span class="competition-name">Ла Лига</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div>
+          <div class="match-row">
+            <div class="result-team"><div class="team-logo">🔵🔴</div><div class="team-label">Барселона</div></div>
+            <div class="scoreline"><span class="score-dig">1</span><span class="score-col">:</span><span class="score-dig">1</span></div>
+            <div class="result-team"><div class="team-logo">🔴⚫</div><div class="team-label">Атлетико</div></div>
+          </div>
+          <div class="result-time"><span class="min">88'</span> &nbsp;2-й тайм</div>
+        </article>
+
+        <article class="result-card" onclick="toast('Челси — Арсенал: детали матча')">
+          <div class="result-card-top"><span class="competition-name">АПЛ</span><span class="finished-badge">Завершён</span></div>
+          <div class="match-row">
+            <div class="result-team"><div class="team-logo">🔵</div><div class="team-label">Челси</div></div>
+            <div class="scoreline"><span class="score-dig">3</span><span class="score-col">:</span><span class="score-dig">1</span></div>
+            <div class="result-team"><div class="team-logo">🔴</div><div class="team-label">Арсенал</div></div>
+          </div>
+          <div class="result-time">Финальный свисток</div>
+        </article>
+
+        <article class="result-card" onclick="toast('Ювентус — Интер: детали матча')">
+          <div class="result-card-top"><span class="competition-name">Серия А</span><span class="finished-badge">Завершён</span></div>
+          <div class="match-row">
+            <div class="result-team"><div class="team-logo">⚫⚪</div><div class="team-label">Ювентус</div></div>
+            <div class="scoreline"><span class="score-dig">2</span><span class="score-col">:</span><span class="score-dig">2</span></div>
+            <div class="result-team"><div class="team-logo">🖤💙</div><div class="team-label">Интер</div></div>
+          </div>
+          <div class="result-time">Финальный свисток</div>
+        </article>
+
+        <article class="result-card" onclick="toast('Манчестер Юнайтед — Ливерпуль: детали')">
+          <div class="result-card-top"><span class="competition-name">АПЛ</span><span class="upcoming-badge">Сегодня 22:00</span></div>
+          <div class="match-row">
+            <div class="result-team"><div class="team-logo">🔴⚫</div><div class="team-label">Ман. Юнайтед</div></div>
+            <div class="scoreline"><span class="score-dig" style="color:var(--text-muted)">-</span><span class="score-col">:</span><span class="score-dig" style="color:var(--text-muted)">-</span></div>
+            <div class="result-team"><div class="team-logo">🔴</div><div class="team-label">Ливерпуль</div></div>
+          </div>
+          <div class="result-time">Начало через 2ч 15мин</div>
+        </article>
+      </div>
+
+      <!-- Mobile scroll -->
+      <div class="results-scroll-outer">
+        <div class="results-scroll-inner">
+          <article class="result-card live-card"><div class="result-card-top"><span class="competition-name">Лига Чемпионов</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div><div class="match-row"><div class="result-team"><div class="team-logo">🏟️</div><div class="team-label">Реал</div></div><div class="scoreline"><span class="score-dig">2</span><span class="score-col">:</span><span class="score-dig">1</span></div><div class="result-team"><div class="team-logo">🌆</div><div class="team-label">Ман.Сити</div></div></div><div class="result-time"><span class="min">74'</span></div></article>
+          <article class="result-card live-card"><div class="result-card-top"><span class="competition-name">Лига Чемпионов</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div><div class="match-row"><div class="result-team"><div class="team-logo">⚫🔴</div><div class="team-label">ПСЖ</div></div><div class="scoreline"><span class="score-dig">0</span><span class="score-col">:</span><span class="score-dig">0</span></div><div class="result-team"><div class="team-logo">🔴⚪</div><div class="team-label">Бавария</div></div></div><div class="result-time"><span class="min">61'</span></div></article>
+          <article class="result-card live-card"><div class="result-card-top"><span class="competition-name">Ла Лига</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div><div class="match-row"><div class="result-team"><div class="team-logo">🔵🔴</div><div class="team-label">Барса</div></div><div class="scoreline"><span class="score-dig">1</span><span class="score-col">:</span><span class="score-dig">1</span></div><div class="result-team"><div class="team-logo">🔴⚫</div><div class="team-label">Атлетико</div></div></div><div class="result-time"><span class="min">88'</span></div></article>
+          <article class="result-card"><div class="result-card-top"><span class="competition-name">АПЛ</span><span class="finished-badge">Завершён</span></div><div class="match-row"><div class="result-team"><div class="team-logo">🔵</div><div class="team-label">Челси</div></div><div class="scoreline"><span class="score-dig">3</span><span class="score-col">:</span><span class="score-dig">1</span></div><div class="result-team"><div class="team-logo">🔴</div><div class="team-label">Арсенал</div></div></div><div class="result-time">ФТ</div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULA 1 -->
+    <section class="sport-group fade-up" data-sport="f1">
+      <div class="sport-group-header">
+        <h2 class="sport-group-title">🏎 Формула 1 <span class="sport-group-count">1 гонка</span></h2>
+        <a href="#" class="sport-group-more" onclick="toast('Страница Формулы 1...');return false">Все →</a>
+      </div>
+      <div class="results-grid">
+        <article class="result-card live-card f1-card" style="grid-column:span 2" onclick="toast('Гран-при Монако: детали гонки')">
+          <div class="result-card-top"><span class="competition-name">Гран-при Монако 2026</span><span class="live-badge"><span class="pulse-dot"></span>ГОНКА</span></div>
+          <div class="match-row">
+            <div class="f1-row"><div class="f1-pos">1.</div><div><div class="f1-driver">М. Верстаппен</div><div class="f1-team">Ред Булл</div></div><div class="f1-gap">Лидер</div></div>
+            <div class="f1-row"><div class="f1-pos">2.</div><div><div class="f1-driver">Л. Хэмилтон</div><div class="f1-team">Феррари</div></div><div class="f1-gap">+4.2с</div></div>
+            <div class="f1-row"><div class="f1-pos">3.</div><div><div class="f1-driver">Ш. Леклер</div><div class="f1-team">Феррари</div></div><div class="f1-gap">+8.7с</div></div>
+            <div class="f1-row"><div class="f1-pos">4.</div><div><div class="f1-driver">Л. Норрис</div><div class="f1-team">Макларен</div></div><div class="f1-gap">+12.1с</div></div>
+          </div>
+          <div class="result-time"><span class="min">38/78 кругов</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- NBA -->
+    <section class="sport-group fade-up" data-sport="nba">
+      <div class="sport-group-header">
+        <h2 class="sport-group-title">🏀 НБА <span class="sport-group-count">4 матча</span></h2>
+        <a href="#" class="sport-group-more" onclick="toast('Страница НБА...');return false">Все →</a>
+      </div>
+      <div class="results-grid">
+        <article class="result-card live-card" onclick="toast('Лейкерс — Бостон: детали')">
+          <div class="result-card-top"><span class="competition-name">НБА · Плей-офф</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div>
+          <div class="match-row">
+            <div class="result-team"><div class="team-logo">💜💛</div><div class="team-label">Лейкерс</div></div>
+            <div class="scoreline"><span class="score-dig">108</span><span class="score-col">:</span><span class="score-dig">102</span></div>
+            <div class="result-team"><div class="team-logo">💚⚪</div><div class="team-label">Бостон</div></div>
+          </div>
+          <div class="result-time"><span class="min">3Q 4:12</span></div>
+        </article>
+
+        <article class="result-card" onclick="toast('Голден Стэйт — Финикс: детали')">
+          <div class="result-card-top"><span class="competition-name">НБА · Плей-офф</span><span class="finished-badge">Завершён</span></div>
+          <div class="match-row">
+            <div class="result-team"><div class="team-logo">💛🔵</div><div class="team-label">Голден Стэйт</div></div>
+            <div class="scoreline"><span class="score-dig">119</span><span class="score-col">:</span><span class="score-dig">107</span></div>
+            <div class="result-team"><div class="team-logo">🟣🟠</div><div class="team-label">Финикс</div></div>
+          </div>
+          <div class="result-time">Финальная сирена</div>
+        </article>
+
+        <article class="result-card" onclick="toast('Чикаго — Майами: детали')">
+          <div class="result-card-top"><span class="competition-name">НБА · Регулярный</span><span class="upcoming-badge">21:30</span></div>
+          <div class="match-row">
+            <div class="result-team"><div class="team-logo">🔴⚫</div><div class="team-label">Чикаго</div></div>
+            <div class="scoreline"><span class="score-dig" style="color:var(--text-muted)">-</span><span class="score-col">:</span><span class="score-dig" style="color:var(--text-muted)">-</span></div>
+            <div class="result-team"><div class="team-logo">🔴⚫🌴</div><div class="team-label">Майами</div></div>
+          </div>
+          <div class="result-time">Через 3 часа</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TENNIS -->
+    <section class="sport-group fade-up" data-sport="tennis">
+      <div class="sport-group-header">
+        <h2 class="sport-group-title">🎾 Теннис <span class="sport-group-count">3 матча</span></h2>
+        <a href="#" class="sport-group-more" onclick="toast('Страница тенниса...');return false">Все →</a>
+      </div>
+      <div class="results-grid">
+        <article class="result-card live-card" onclick="toast('Roland Garros — полуфинал: детали')">
+          <div class="result-card-top"><span class="competition-name">Roland Garros · Полуфинал</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div>
+          <div class="match-row">
+            <div class="result-team"><div class="team-logo">🇷🇸</div><div class="team-label">Джокович</div></div>
+            <div class="scoreline"><span class="score-dig" style="font-size:32px">3:1</span></div>
+            <div class="result-team"><div class="team-logo">🇮🇹</div><div class="team-label">Синнер</div></div>
+          </div>
+          <div class="result-time"><span class="min">4-й сет</span> · 6:4 6:2 3:6 2:1</div>
+        </article>
+
+        <article class="result-card" onclick="toast('Roland Garros — женщины: детали')">
+          <div class="result-card-top"><span class="competition-name">Roland Garros · 1/4 финала</span><span class="finished-badge">Завершён</span></div>
+          <div class="match-row">
+            <div class="result-team"><div class="team-logo">🇵🇱</div><div class="team-label">Свёнтек</div></div>
+            <div class="scoreline"><span class="score-dig" style="font-size:32px">2:0</span></div>
+            <div class="result-team"><div class="team-logo">🇨🇿</div><div class="team-label">Кудерметова</div></div>
+          </div>
+          <div class="result-time">6:3 6:2 · Завершён</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- UFC -->
+    <section class="sport-group fade-up" data-sport="ufc">
+      <div class="sport-group-header">
+        <h2 class="sport-group-title">🥊 UFC / ММА <span class="sport-group-count">1 турнир</span></h2>
+        <a href="#" class="sport-group-more" onclick="toast('Страница UFC...');return false">Все →</a>
+      </div>
+      <div class="results-grid">
+        <article class="result-card" onclick="toast('UFC 315: детали')">
+          <div class="result-card-top"><span class="competition-name">UFC 315 · Главный бой</span><span class="upcoming-badge">Суббота 03:00</span></div>
+          <div class="match-row">
+            <div class="result-team"><div class="team-logo">🥊</div><div class="team-label">Ислам Махачев</div></div>
+            <div class="scoreline"><span class="score-dig" style="color:var(--text-muted);font-size:32px">vs</span></div>
+            <div class="result-team"><div class="team-logo">🦅</div><div class="team-label">Чарльз Оливейра</div></div>
+          </div>
+          <div class="result-time">Лёгкий вес · Чемпионский бой</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ESPORTS -->
+    <section class="sport-group fade-up" data-sport="esports">
+      <div class="sport-group-header">
+        <h2 class="sport-group-title">🎮 eSports <span class="sport-group-count">2 матча</span></h2>
+        <a href="#" class="sport-group-more" onclick="toast('Страница eSports...');return false">Все →</a>
+      </div>
+      <div class="results-grid">
+        <article class="result-card live-card" onclick="toast('ESL Pro League: детали')">
+          <div class="result-card-top"><span class="competition-name">ESL Pro League · Финал CS2</span><span class="live-badge"><span class="pulse-dot"></span>LIVE</span></div>
+          <div class="match-row">
+            <div class="result-team"><div class="team-logo">🇺🇦</div><div class="team-label">NAVI</div></div>
+            <div class="scoreline"><span class="score-dig">1</span><span class="score-col">:</span><span class="score-dig">1</span></div>
+            <div class="result-team"><div class="team-logo">🇫🇷</div><div class="team-label">Vitality</div></div>
+          </div>
+          <div class="result-time"><span class="min">Карта 3</span> · Inferno</div>
+        </article>
+
+        <article class="result-card" onclick="toast('League of Legends: детали')">
+          <div class="result-card-top"><span class="competition-name">LoL Worlds · Полуфинал</span><span class="finished-badge">Завершён</span></div>
+          <div class="match-row">
+            <div class="result-team"><div class="team-logo">🇰🇷</div><div class="team-label">T1</div></div>
+            <div class="scoreline"><span class="score-dig">3</span><span class="score-col">:</span><span class="score-dig">1</span></div>
+            <div class="result-team"><div class="team-logo">🇨🇳</div><div class="team-label">BLG</div></div>
+          </div>
+          <div class="result-time">Серия до 3 побед</div>
+        </article>
+      </div>
+    </section>
+
+    <div class="load-more-wrap">
+      <button class="btn-load-more" onclick="toast('Загружаем ещё результаты...')">Загрузить ещё</button>
+    </div>
+
+  </div><!-- /realContent -->
 </main>
-<footer><span>© 2026 Pereuloq Sport</span><span>Pereuloq — основан <a href="almir-khialov.html">Almir Khialov</a></span></footer>
-<script src="js/sport-listing.js" defer></script>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">PEREULOQ <span>СПОРТ</span></div>
+      <p class="footer-desc">Премиальный спортивный медиа-хаб. Результаты в реальном времени и аналитика со всего мира.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Страницы</div>
+      <ul class="footer-links">
+        <li><a href="world-sport.html">Главная</a></li>
+        <li><a href="all-results.html">Результаты</a></li>
+        <li><a href="all-news.html">Новости</a></li>
+        <li><a href="all-trends.html">Тренды</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Спорт</div>
+      <ul class="footer-links">
+        <li><a href="world-sport.html#news">Футбол</a></li>
+        <li><a href="world-sport.html#news">Формула 1</a></li>
+        <li><a href="world-sport.html#news">НБА</a></li>
+        <li><a href="world-sport.html#news">UFC / ММА</a></li>
+        <li><a href="world-sport.html#news">Теннис</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Компания</div>
+      <ul class="footer-links">
+        <li><a href="about.html">О нас</a></li>
+        <li><a href="store.html">Реклама</a></li>
+        <li><a href="about.html">Контакты</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Pereuloq. Все права защищены.</span>
+    <span>Pereuloq — основан <a href="almir-khialov.html" style="color:var(--accent);text-decoration:none">Almir Khialov</a></span>
+  </div>
+</footer>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav">
+  <div class="mobile-nav-items">
+    <a href="world-sport.html" class="mobile-nav-item"><span class="mobile-nav-icon">🏠</span><span class="mobile-nav-label">Главная</span></a>
+    <a href="all-results.html" class="mobile-nav-item active"><span class="mobile-nav-icon">⚡</span><span class="mobile-nav-label">Результаты</span></a>
+    <a href="all-news.html" class="mobile-nav-item"><span class="mobile-nav-icon">📰</span><span class="mobile-nav-label">Новости</span></a>
+    <a href="all-trends.html" class="mobile-nav-item"><span class="mobile-nav-icon">🔥</span><span class="mobile-nav-label">Тренды</span></a>
+  </div>
+</nav>
+
+<!-- TOAST -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+/* ===== THEME ===== */
+(function(){
+  const saved = localStorage.getItem('pq-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  const btn = document.getElementById('themeToggle');
+  btn.textContent = saved === 'dark' ? '☀️' : '🌙';
+  btn.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('pq-theme', next);
+    btn.textContent = next === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+/* ===== NAVBAR SCROLL ===== */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+}, {passive:true});
+
+/* ===== TOAST ===== */
+function toast(msg) {
+  const c = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  c.appendChild(t);
+  setTimeout(() => { t.classList.add('leaving'); setTimeout(() => t.remove(), 350); }, 3000);
+}
+
+/* ===== SKELETON → CONTENT ===== */
+setTimeout(() => {
+  document.getElementById('skeletonWrap').style.display = 'none';
+  document.getElementById('realContent').style.display = 'block';
+  // trigger fade-ups
+  document.querySelectorAll('.fade-up').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), i * 120);
+  });
+}, 1200);
+
+/* ===== INTERSECTION OBSERVER ===== */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, {threshold:.1, rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+/* ===== FILTERS ===== */
+const sportSearchInput = document.querySelector('.filter-search input');
+if (sportSearchInput) {
+  sportSearchInput.addEventListener('input', () => {
+    const q = sportSearchInput.value.trim().toLowerCase();
+    document.querySelectorAll('.sport-group, .news-small, .news-list-item, .result-card').forEach(el => {
+      const text = el.textContent.toLowerCase();
+      el.style.display = !q || text.includes(q) ? '' : 'none';
+    });
+  });
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.sport-group').forEach(g => {
+      g.style.display = (f === 'all' || g.dataset.sport === f) ? '' : 'none';
+    });
+    toast(f === 'all' ? 'Показаны все виды спорта' : `Фильтр: ${btn.textContent}`);
+  });
+});
+
+/* ===== LIVE MINUTE COUNTER ===== */
+let min = 74;
+setInterval(() => {
+  if(min < 90) { min++; const el = document.getElementById('t1'); if(el) el.textContent = min + "'"; }
+}, 7000);
+</script>
 </body>
 </html>

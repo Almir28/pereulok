@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Спортивные тренды | Pereuloq</title>
-<meta name="description" content="Самые обсуждаемые спортивные тренды недели: ЧМ-2026, NBA, трансферы, F1 и футбольные результаты.">
+<title>Тренды спорта — Pereuloq</title>
+<meta name="description" content="Тренды спорта — самые обсуждаемые события, вирусные моменты и горячие матчи прямо сейчас на Pereuloq.">
+<meta property="og:title" content="Тренды спорта — Pereuloq">
+<meta property="og:description" content="Самые обсуждаемые спортивные события, вирусные моменты и горячие матчи.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1540747913346-19212a4f89f5?w=1200">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Тренды спорта — Pereuloq">
+<meta name="twitter:description" content="Самые обсуждаемые матчи и события мирового спорта.">
 <link rel="canonical" href="https://pereuloq.ru/all-trends.html">
 <link rel="alternate" hreflang="ru" href="https://pereuloq.ru/all-trends.html">
 <link rel="alternate" hreflang="en" href="https://pereuloq.ru/en/all-trends.html">
 <link rel="alternate" hreflang="x-default" href="https://pereuloq.ru/all-trends.html">
-<meta property="og:title" content="Спортивные тренды | Pereuloq">
-<meta property="og:description" content="Самые обсуждаемые спортивные тренды недели: ЧМ-2026, NBA, трансферы, F1 и футбольные результаты.">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://pereuloq.ru/all-trends.html">
 <meta name="theme-color" content="#080808">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
@@ -20,37 +24,592 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/sport-listing.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#FF9F0A;--accent-dim:rgba(255,159,10,0.15);--accent-glow:rgba(255,159,10,0.4);--bg:#080808;--bg2:#0f0f0f;--bg3:#141414;--bg4:#1a1a1a;--glass:rgba(255,255,255,0.04);--glass-border:rgba(255,255,255,0.08);--text:#fff;--text-dim:rgba(255,255,255,0.55);--text-muted:rgba(255,255,255,0.3);--live:#ff3b30;--live-glow:rgba(255,59,48,0.4);--radius:12px;--radius-lg:18px}
+[data-theme="light"]{--bg:#f2f2f7;--bg2:#fff;--bg3:#e5e5ea;--bg4:#d1d1d6;--glass:rgba(0,0,0,0.03);--glass-border:rgba(0,0,0,0.09);--text:#0d0d0d;--text-dim:rgba(0,0,0,0.55);--text-muted:rgba(0,0,0,0.35)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px);background:rgba(8,8,8,.8);border-bottom:1px solid var(--glass-border);transition:background .3s}
+[data-theme="light"] .navbar{background:rgba(242,242,247,.9)}
+.navbar.scrolled{background:rgba(8,8,8,.97)}[data-theme="light"] .navbar.scrolled{background:rgba(242,242,247,.98)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-badge{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--text)}
+.nav-logo-badge span{color:var(--accent)}
+.nav-live-dot{display:flex;align-items:center;gap:6px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:2px;color:var(--live);font-weight:600}
+.pulse-dot{width:7px;height:7px;background:var(--live);border-radius:50%;animation:pulse 1.5s infinite;box-shadow:0 0 6px var(--live-glow);flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:1.5px;font-weight:600;color:var(--text-dim);text-decoration:none;text-transform:uppercase;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transition:transform .3s}
+.nav-links a:hover{color:var(--text)}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}.nav-links a.active{color:var(--accent)}
+.nav-cta{background:var(--accent)!important;color:#000!important;padding:8px 18px;border-radius:6px;font-weight:700!important}.nav-cta::after{display:none!important}
+.nav-right{display:flex;align-items:center;gap:12px}
+.sport-lang{display:flex;align-items:center;gap:4px;border:1px solid var(--glass-border);background:var(--glass);border-radius:8px;padding:3px}
+.sport-lang a{font-family:'Barlow Condensed',sans-serif;font-size:11px;line-height:1;letter-spacing:1px;color:var(--text-muted);text-decoration:none;padding:7px 8px;border-radius:5px;transition:color .2s,background .2s}
+.sport-lang a:hover{color:var(--text)}
+.sport-lang a.active{background:var(--accent);color:#000}
+.theme-toggle{background:var(--glass);border:1px solid var(--glass-border);border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:all .2s}
+.theme-toggle:hover{border-color:var(--accent)}
+.hamburger{display:none!important;background:none;border:none;cursor:pointer;padding:6px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;border-radius:1px}
+
+/* TICKER */
+.ticker-bar{position:fixed;top:64px;left:0;right:0;z-index:999;background:var(--accent);height:30px;display:flex;align-items:center;overflow:hidden}
+.ticker-label{background:#000;color:var(--accent);font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;padding:0 14px;height:100%;display:flex;align-items:center;flex-shrink:0}
+.ticker-track{display:flex;gap:60px;white-space:nowrap;animation:ticker 40s linear infinite}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-item{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:#000;flex-shrink:0}
+
+/* PAGE HEADER */
+.page-header{margin-top:94px;padding:52px 60px 40px;background:var(--bg2);border-bottom:1px solid var(--glass-border);position:relative;overflow:hidden}
+.page-header-glow{position:absolute;top:-80px;right:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,59,48,.1) 0%,transparent 70%);pointer-events:none}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px}
+.breadcrumb a{color:var(--text-muted);text-decoration:none;transition:color .2s}.breadcrumb a:hover{color:var(--accent)}.breadcrumb span{color:var(--accent)}
+.page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,76px);letter-spacing:3px;line-height:1;margin-bottom:10px}
+.page-title .accent{color:var(--accent)}
+.page-subtitle{font-size:15px;color:var(--text-dim);font-weight:300;max-width:480px}
+.header-meta{display:flex;align-items:center;gap:20px;margin-top:20px}
+.header-meta-item{display:flex;align-items:center;gap:7px;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:1px;color:var(--text-muted);text-transform:uppercase}
+.header-meta-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--live)}
+
+/* FILTER BAR */
+.filter-bar{padding:16px 60px;background:var(--bg2);border-bottom:1px solid var(--glass-border);display:flex;align-items:center;gap:10px;position:sticky;top:94px;z-index:100;backdrop-filter:blur(20px);overflow-x:auto}
+.filter-bar::-webkit-scrollbar{display:none}
+.filter-btn{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:8px 15px;border-radius:6px;border:1px solid var(--glass-border);background:var(--glass);color:var(--text-dim);cursor:pointer;transition:all .2s;white-space:nowrap}
+.filter-btn:hover{border-color:var(--accent-glow);color:var(--text)}
+.filter-btn.active{background:var(--accent);color:#000;border-color:var(--accent)}
+
+/* PAGE CONTENT */
+.page-content{padding:40px 60px 80px}
+
+/* TWO-COL LAYOUT */
+.trends-layout{display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start}
+
+/* HERO TREND */
+.trend-hero{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;margin-bottom:20px;transition:border-color .3s,box-shadow .3s}
+.trend-hero:hover{border-color:var(--accent-glow);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.trend-hero-img{position:relative;overflow:hidden;aspect-ratio:16/7}
+.trend-hero-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.trend-hero:hover .trend-hero-img img{transform:scale(1.04)}
+.trend-hero-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.3) 55%,transparent 100%);padding:28px;display:flex;flex-direction:column;justify-content:flex-end}
+.trend-rank-big{position:absolute;top:16px;left:20px;font-family:'Bebas Neue',sans-serif;font-size:80px;color:rgba(255,255,255,.12);line-height:1}
+.trend-hot-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,59,48,.15);border:1px solid rgba(255,59,48,.3);border-radius:20px;padding:4px 12px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--live);text-transform:uppercase;margin-bottom:10px;align-self:flex-start}
+.trend-hero-title{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;line-height:1.2;color:#fff;margin-bottom:10px}
+.trend-hero-meta{display:flex;align-items:center;gap:16px}
+.trend-hero-stat{display:flex;align-items:center;gap:5px;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:1px;color:rgba(255,255,255,.55);text-transform:uppercase}
+.trend-hero-stat strong{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--accent);font-weight:400}
+
+/* TREND CARD MEDIUM */
+.trend-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.trend-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .25s,box-shadow .3s}
+.trend-card:hover{transform:translateY(-5px);border-color:var(--accent-glow);box-shadow:0 16px 48px rgba(0,0,0,.45)}
+.trend-card-img{overflow:hidden;aspect-ratio:16/9;position:relative}
+.trend-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.trend-card:hover .trend-card-img img{transform:scale(1.06)}
+.trend-rank-badge{position:absolute;top:10px;left:10px;font-family:'Bebas Neue',sans-serif;font-size:36px;color:rgba(255,255,255,.18);line-height:1}
+.trend-card-body{padding:14px}
+.trend-card-cat{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.trend-card-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;line-height:1.3;margin-bottom:10px}
+.trend-card-stats{display:flex;align-items:center;gap:12px;border-top:1px solid var(--glass-border);padding-top:10px}
+.trend-stat-item{display:flex;align-items:center;gap:4px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:1px;color:var(--text-muted);text-transform:uppercase}
+.trend-stat-item strong{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--accent);font-weight:400}
+
+/* INTEREST BAR */
+.interest-wrap{flex:1}
+.interest-bar{height:3px;background:var(--bg4);border-radius:2px;overflow:hidden;margin-top:4px}
+.interest-fill{height:100%;background:linear-gradient(90deg,var(--live),var(--accent));border-radius:2px;transition:width 1.5s cubic-bezier(.16,1,.3,1)}
+
+/* SIDEBAR */
+.trends-sidebar{display:flex;flex-direction:column;gap:14px;position:sticky;top:160px}
+.sidebar-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.sidebar-subtitle{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px}
+
+.trend-list-item{display:flex;align-items:center;gap:14px;padding:14px;background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);cursor:pointer;transition:border-color .25s,transform .3s,box-shadow .3s}
+.trend-list-item:hover{border-color:var(--accent-glow);transform:translateX(5px);box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.trend-list-num{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--accent-dim);min-width:36px;line-height:1}
+.trend-list-body{flex:1}
+.trend-list-cat{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.trend-list-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;line-height:1.3;margin-bottom:5px}
+.trend-list-views{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--text-dim)}
+.trend-list-meta{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:1px;color:var(--text-muted);text-transform:uppercase}
+
+/* TWITTER-STYLE TRENDING TAGS */
+.tags-section{margin-top:24px;padding-top:20px;border-top:1px solid var(--glass-border)}
+.tags-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px}
+.tags-wrap{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;padding:6px 12px;border-radius:20px;background:var(--glass);border:1px solid var(--glass-border);color:var(--text-dim);cursor:pointer;transition:all .2s;text-transform:uppercase}
+.tag:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+
+/* SPORT GROUP SECTION */
+.sport-group{margin-bottom:40px}
+.sport-group-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--glass-border)}
+.sport-group-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px}
+.sport-group-more{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+.sport-group-more:hover{border-color:var(--accent)}
+
+/* SKELETON */
+.skeleton{background:linear-gradient(90deg,var(--bg3) 25%,var(--bg4) 50%,var(--bg3) 75%);background-size:400% 100%;animation:skel 1.5s ease infinite;border-radius:6px}
+@keyframes skel{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skel-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius-lg);overflow:hidden}
+.skel-img{aspect-ratio:16/9}
+.skel-body{padding:16px;display:flex;flex-direction:column;gap:10px}
+.skel-line{height:13px}.skel-line.s{width:35%}.skel-line.l{width:88%}.skel-line.m{width:60%}
+
+/* LOAD MORE */
+.load-more-wrap{text-align:center;margin-top:48px}
+.btn-load-more{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px 40px;border-radius:8px;border:1px solid var(--glass-border);background:var(--glass);color:var(--text);cursor:pointer;transition:all .3s}
+.btn-load-more:hover{border-color:var(--live);color:var(--live);box-shadow:0 0 24px var(--live-glow)}
+
+/* TOAST */
+.toast-container{position:fixed;bottom:80px;right:24px;z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{background:var(--bg4);border:1px solid var(--glass-border);border-left:3px solid var(--live);border-radius:10px;padding:12px 16px;font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:.5px;color:var(--text);max-width:270px;backdrop-filter:blur(16px);box-shadow:0 8px 32px rgba(0,0,0,.4);animation:toastIn .35s cubic-bezier(.16,1,.3,1) both;pointer-events:all}
+.toast.leaving{animation:toastOut .3s ease forwards}
+@keyframes toastIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes toastOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(40px)}}
+
+/* FADE UP */
+.fade-up{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* FOOTER */
+footer{background:#050505;border-top:1px solid var(--glass-border);padding:48px 60px 36px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;margin-bottom:8px}
+.footer-brand span{color:var(--accent)}
+.footer-desc{font-size:12px;color:var(--text-muted);line-height:1.6;max-width:240px}
+.footer-col-title{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:14px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-links a{font-size:12px;color:var(--text-muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--glass-border);font-size:12px;color:var(--text-muted)}
+
+/* MOBILE NAV */
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:1000;background:rgba(8,8,8,.97);backdrop-filter:blur(20px);border-top:1px solid var(--glass-border);padding:10px 0;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+[data-theme="light"] .mobile-nav{background:rgba(242,242,247,.98)}
+.mobile-nav-items{display:flex;justify-content:space-around}
+.mobile-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:var(--text-muted);transition:color .2s;padding:4px 10px}
+.mobile-nav-item.active{color:var(--accent)}.mobile-nav-icon{font-size:20px}
+.mobile-nav-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:.5px;text-transform:uppercase}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.trends-layout{grid-template-columns:1fr}.trends-sidebar{position:static;display:grid;grid-template-columns:repeat(2,1fr)}.sidebar-title,.sidebar-subtitle{grid-column:1/-1}}
+@media(max-width:1024px){.page-header,.filter-bar,.page-content,footer{padding-left:30px;padding-right:30px}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:none!important}.page-header,.filter-bar,.page-content{padding-left:20px;padding-right:20px}footer{padding:32px 20px}.footer-grid{grid-template-columns:1fr;gap:24px}.footer-bottom{flex-direction:column;gap:8px;text-align:center}.mobile-nav{display:block}body{padding-bottom:70px}.trend-grid{grid-template-columns:1fr}.trends-sidebar{grid-template-columns:1fr}}
+</style>
 </head>
-<body class="sport-page">
-<header class="sport-top">
-  <a class="brand" href="world-sport.html">PEREULOQ <span>SPORT</span></a>
-  <nav class="sport-nav" aria-label="Спортивная навигация">
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="world-sport.html" class="nav-logo">
+    <span class="nav-logo-badge">PEREULOQ <span>СПОРТ</span></span>
+  </a>
+  <div class="nav-live-dot"><span class="pulse-dot"></span> LIVE</div>
+  <ul class="nav-links">
+    <li><a href="all-results.html">Результаты</a></li>
+    <li><a href="all-news.html">Новости</a></li>
+    <li><a href="all-trends.html" class="active">Тренды</a></li>
+    <li><a href="world-sport.html" class="nav-cta">← На главную</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="sport-lang" aria-label="Переключатель языка"><a href="all-trends.html" hreflang="ru" class="active">RU</a><a href="en/all-trends.html" hreflang="en">EN</a></div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Тема">🌙</button>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-label">🔥 HOT</div>
+  <div class="ticker-track">
+    <span class="ticker-item">🔥 #РеалМадрид в тренде — 2.4M обсуждений &nbsp;·&nbsp; 🔥 Верстаппен — 1.1M &nbsp;·&nbsp; 🔥 #ЛеБрон40очков — 890K &nbsp;·&nbsp; 🔥 Фьюри vs Усик 2 — 760K &nbsp;·&nbsp; 🔥 #RolandGarros — 540K</span>
+    <span class="ticker-item">🔥 #РеалМадрид в тренде — 2.4M обсуждений &nbsp;·&nbsp; 🔥 Верстаппен — 1.1M &nbsp;·&nbsp; 🔥 #ЛеБрон40очков — 890K &nbsp;·&nbsp; 🔥 Фьюри vs Усик 2 — 760K &nbsp;·&nbsp; 🔥 #RolandGarros — 540K</span>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-glow"></div>
+  <nav class="breadcrumb" aria-label="Навигация">
     <a href="world-sport.html">Спорт</a>
-    <a class="" href="all-results.html">Результаты</a>
-    <a class="" href="all-news.html">Новости</a>
-    <a class="active" href="all-trends.html">Тренды</a>
+    <span>›</span>
+    <span>Тренды</span>
   </nav>
-  <div class="lang"><a class="active" href="all-trends.html">RU</a><a class="" href="en/all-trends.html">EN</a></div>
+  <h1 class="page-title">ТРЕНДЫ <span class="accent">СПОРТА</span></h1>
+  <p class="page-subtitle">Самые обсуждаемые события, вирусные моменты и горячие матчи прямо сейчас</p>
+  <div class="header-meta">
+    <div class="header-meta-item"><span class="header-meta-val">7.2M</span> обсуждений</div>
+    <div class="header-meta-item"><span class="header-meta-val">42</span> горячих темы</div>
+    <div class="header-meta-item"><span class="header-meta-val">Live</span> обновление</div>
+  </div>
 </header>
-<main>
-<section class="sport-hero">
-  <div><div class="kicker">Pereuloq Sport</div><h1>ВСЕ ТРЕНДЫ</h1><p class="lead">Что обсуждают болельщики и медиа: от ЧМ-2026 до плей-офф NBA и трансферов.</p></div>
-  <aside class="hero-panel"><h2>Тренды</h2><div class="pulse-row"><div class="pulse-item"><strong>Сигналов</strong><span>6</span></div><div class="pulse-item"><strong>Горячее</strong><span>ЧМ-2026</span></div><div class="pulse-item"><strong>Формат</strong><span>cards</span></div></div></aside>
-</section>
-<section class="toolbar">
-  <label class="search"><span>⌕</span><input data-sport-filter type="search" placeholder="Поиск по этой спортивной странице"></label>
-  <div class="chips"><button class="chip active" data-chip="all">Все</button><button class="chip" data-chip="football">Футбол</button><button class="chip" data-chip="basketball">NBA</button><button class="chip" data-chip="results">Результаты</button></div>
-</section>
-<section class="content"><div class="grid"><article class="card skeleton wide" data-card data-cat="worldcup" data-search="HOT ЧМ-2026 и Лос-Анджелес LA усиливает спортивный имидж перед турниром: фестивали, транспорт, знаменитости и фан-зоны. worldcup"><div class="meta"><span class="badge">HOT</span><span>#01</span></div><div><h3>ЧМ-2026 и Лос-Анджелес</h3><p>LA усиливает спортивный имидж перед турниром: фестивали, транспорт, знаменитости и фан-зоны.</p></div></article>
-<article class="card skeleton " data-card data-cat="football" data-search="FOOTBALL Составы сборных Первые финальные заявки меняют ожидания перед самым большим чемпионатом мира. football"><div class="meta"><span class="badge">FOOTBALL</span><span>#02</span></div><div><h3>Составы сборных</h3><p>Первые финальные заявки меняют ожидания перед самым большим чемпионатом мира.</p></div></article>
-<article class="card skeleton " data-card data-cat="football" data-search="TRANSFER Кайрат и Рикардиньо Уход форварда стал заметным инфоповодом для футбольного рынка региона. football"><div class="meta"><span class="badge">TRANSFER</span><span>#03</span></div><div><h3>Кайрат и Рикардиньо</h3><p>Уход форварда стал заметным инфоповодом для футбольного рынка региона.</p></div></article>
-<article class="card skeleton " data-card data-cat="results" data-search="SCORES Футбольная неделя Ла Лига, РПЛ, Кубок России и Лига чемпионов дали плотный календарь результатов. results"><div class="meta"><span class="badge">SCORES</span><span>#04</span></div><div><h3>Футбольная неделя</h3><p>Ла Лига, РПЛ, Кубок России и Лига чемпионов дали плотный календарь результатов.</p></div></article>
-<article class="card skeleton " data-card data-cat="basketball" data-search="GLOBAL NBA playoffs Серии Pistons-Cavaliers и Spurs-Timberwolves стали главными баскетбольными сюжетами недели. basketball"><div class="meta"><span class="badge">GLOBAL</span><span>#05</span></div><div><h3>NBA playoffs</h3><p>Серии Pistons-Cavaliers и Spurs-Timberwolves стали главными баскетбольными сюжетами недели.</p></div></article>
-<article class="card skeleton " data-card data-cat="racing" data-search="MOTOR Miami GP Kimi Antonelli, Lando Norris, Oscar Piastri и George Russell сформировали главную четвёрку гонки. racing"><div class="meta"><span class="badge">MOTOR</span><span>#06</span></div><div><h3>Miami GP</h3><p>Kimi Antonelli, Lando Norris, Oscar Piastri и George Russell сформировали главную четвёрку гонки.</p></div></article><div class="empty" data-empty style="display:none">Ничего не найдено.</div></div></section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" role="toolbar">
+  <button class="filter-btn active" data-filter="all">🔥 Все тренды</button>
+  <button class="filter-btn" data-filter="football">⚽ Футбол</button>
+  <button class="filter-btn" data-filter="f1">🏎 Формула 1</button>
+  <button class="filter-btn" data-filter="nba">🏀 НБА</button>
+  <button class="filter-btn" data-filter="boxing">🥊 Бокс / UFC</button>
+  <button class="filter-btn" data-filter="tennis">🎾 Теннис</button>
+  <button class="filter-btn" data-filter="esports">🎮 eSports</button>
+</div>
+
+<!-- MAIN -->
+<main class="page-content" id="mainContent">
+
+  <!-- Skeleton -->
+  <div id="skeletonWrap">
+    <div style="display:grid;grid-template-columns:1fr 360px;gap:32px">
+      <div>
+        <div class="skel-card" style="margin-bottom:20px"><div class="skel-img skeleton" style="aspect-ratio:16/7"></div><div class="skel-body"><div class="skeleton skel-line s"></div><div class="skeleton skel-line l"></div><div class="skeleton skel-line m"></div></div></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div class="skel-card"><div class="skel-img skeleton"></div><div class="skel-body"><div class="skeleton skel-line s"></div><div class="skeleton skel-line l"></div></div></div>
+          <div class="skel-card"><div class="skel-img skeleton"></div><div class="skel-body"><div class="skeleton skel-line s"></div><div class="skeleton skel-line l"></div></div></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="skel-card" style="height:80px"></div>
+        <div class="skel-card" style="height:80px"></div>
+        <div class="skel-card" style="height:80px"></div>
+        <div class="skel-card" style="height:80px"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REAL CONTENT -->
+  <div id="realContent" style="display:none">
+    <div class="trends-layout">
+
+      <!-- MAIN COLUMN -->
+      <div>
+
+        <!-- HERO TREND #1 -->
+        <article class="trend-hero fade-up" data-sport="football" onclick="toast('🔥 Реал Мадрид — самое обсуждаемое событие!')">
+          <div class="trend-hero-img">
+            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=900&q=80&auto=format" alt="Футбол: матч Лиги Чемпионов на стадионе" loading="lazy">
+            <div class="trend-hero-img-overlay">
+              <span class="trend-rank-big">01</span>
+              <div class="trend-hot-badge"><span class="pulse-dot"></span> В ТРЕНДЕ</div>
+              <h2 class="trend-hero-title">Реал Мадрид 2:1 Манчестер Сити — самый просматриваемый матч 2026 года</h2>
+              <div class="trend-hero-meta">
+                <div class="trend-hero-stat"><strong>2.4M</strong> просмотров</div>
+                <div class="trend-hero-stat"><strong>187K</strong> реакций</div>
+                <div class="trend-hero-stat" style="flex:1">
+                  <div class="interest-wrap">
+                    <span style="font-family:'Barlow Condensed';font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.4)">Интерес 94%</span>
+                    <div class="interest-bar"><div class="interest-fill" id="bar1" style="width:0%"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- TREND GRID 2-3 -->
+        <div class="trend-grid fade-up">
+
+          <article class="trend-card" data-sport="f1" onclick="toast('🏎 Верстаппен — рекорд в Монако!')">
+            <div class="trend-card-img">
+              <img src="https://images.unsplash.com/photo-1568376794508-ae52c6ab3929?w=500&q=75&auto=format" alt="Болид Формулы 1 на улицах Монако" loading="lazy">
+              <span class="trend-rank-badge">02</span>
+            </div>
+            <div class="trend-card-body">
+              <div class="trend-card-cat">🏎 Формула 1 · Монако</div>
+              <div class="trend-card-title">Верстаппен с рекордом поула — Монако 2026</div>
+              <div class="trend-card-stats">
+                <div class="trend-stat-item"><strong>1.1M</strong> просм.</div>
+                <div class="trend-stat-item"><strong>72K</strong> реакций</div>
+                <div class="interest-wrap">
+                  <div class="interest-bar"><div class="interest-fill" id="bar2" style="width:0%"></div></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="trend-card" data-sport="nba" onclick="toast('🏀 ЛеБрон — 40 очков!')">
+            <div class="trend-card-img">
+              <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=500&q=75&auto=format" alt="Баскетболист атакует кольцо" loading="lazy">
+              <span class="trend-rank-badge">03</span>
+            </div>
+            <div class="trend-card-body">
+              <div class="trend-card-cat">🏀 НБА · Плей-офф</div>
+              <div class="trend-card-title">ЛеБрон 40 очков: «Это один из лучших матчей в жизни»</div>
+              <div class="trend-card-stats">
+                <div class="trend-stat-item"><strong>890K</strong> просм.</div>
+                <div class="trend-stat-item"><strong>65K</strong> реакций</div>
+                <div class="interest-wrap">
+                  <div class="interest-bar"><div class="interest-fill" id="bar3" style="width:0%"></div></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="trend-card" data-sport="boxing" onclick="toast('🥊 Фьюри vs Усик 2 — официально!')">
+            <div class="trend-card-img">
+              <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=500&q=75&auto=format" alt="Боксёры на ринге" loading="lazy">
+              <span class="trend-rank-badge">04</span>
+            </div>
+            <div class="trend-card-body">
+              <div class="trend-card-cat">🥊 Бокс · Тяжёлый вес</div>
+              <div class="trend-card-title">Фьюри vs Усик 2 объявлен официально — 12 июля, Лондон</div>
+              <div class="trend-card-stats">
+                <div class="trend-stat-item"><strong>760K</strong> просм.</div>
+                <div class="trend-stat-item"><strong>48K</strong> реакций</div>
+                <div class="interest-wrap">
+                  <div class="interest-bar"><div class="interest-fill" id="bar4" style="width:0%"></div></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="trend-card" data-sport="tennis" onclick="toast('🎾 Джокович — финал Roland Garros!')">
+            <div class="trend-card-img">
+              <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&q=75&auto=format" alt="Теннисист выполняет подачу" loading="lazy">
+              <span class="trend-rank-badge">05</span>
+            </div>
+            <div class="trend-card-body">
+              <div class="trend-card-cat">🎾 Теннис · Roland Garros</div>
+              <div class="trend-card-title">Джокович в финале: «Это мой лучший Roland Garros»</div>
+              <div class="trend-card-stats">
+                <div class="trend-stat-item"><strong>540K</strong> просм.</div>
+                <div class="trend-stat-item"><strong>34K</strong> реакций</div>
+                <div class="interest-wrap">
+                  <div class="interest-bar"><div class="interest-fill" id="bar5" style="width:0%"></div></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- ESPORTS GROUP -->
+        <section class="sport-group fade-up" data-sport="esports" style="margin-top:40px">
+          <div class="sport-group-header">
+            <h2 class="sport-group-title">🎮 Тренды eSports</h2>
+            <a href="#" class="sport-group-more" onclick="toast('Все тренды eSports');return false">Все →</a>
+          </div>
+          <div class="trend-grid">
+            <article class="trend-card" onclick="toast('NAVI vs Vitality — финал ESL')">
+              <div class="trend-card-img">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&q=75&auto=format" alt="Киберспортивный турнир" loading="lazy">
+                <span class="trend-rank-badge">06</span>
+              </div>
+              <div class="trend-card-body">
+                <div class="trend-card-cat">🎮 CS2 · ESL Pro League</div>
+                <div class="trend-card-title">NAVI vs Vitality — финал года. 3-я карта решит всё</div>
+                <div class="trend-card-stats">
+                  <div class="trend-stat-item"><strong>480K</strong> просм.</div>
+                  <div class="trend-stat-item"><strong>29K</strong> реакций</div>
+                  <div class="interest-wrap">
+                    <div class="interest-bar"><div class="interest-fill" style="width:67%"></div></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="trend-card" onclick="toast('Faker — продление контракта с T1')">
+              <div class="trend-card-img">
+                <img src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?w=500&q=75&auto=format" alt="Игровой турнир LoL" loading="lazy">
+                <span class="trend-rank-badge">07</span>
+              </div>
+              <div class="trend-card-body">
+                <div class="trend-card-cat">🎮 League of Legends</div>
+                <div class="trend-card-title">Faker подписал рекордный контракт с T1 до 2028</div>
+                <div class="trend-card-stats">
+                  <div class="trend-stat-item"><strong>320K</strong> просм.</div>
+                  <div class="trend-stat-item"><strong>21K</strong> реакций</div>
+                  <div class="interest-wrap">
+                    <div class="interest-bar"><div class="interest-fill" style="width:52%"></div></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <div class="load-more-wrap fade-up">
+          <button class="btn-load-more" onclick="toast('Загружаем ещё тренды...')">Загрузить ещё тренды</button>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="trends-sidebar">
+        <div class="sidebar-title">🔥 Топ-10 сейчас</div>
+        <div class="sidebar-subtitle">Обновляется каждые 5 минут</div>
+
+        <article class="trend-list-item" onclick="toast('#1 Реал Мадрид')"><div class="trend-list-num">01</div><div class="trend-list-body"><div class="trend-list-cat">⚽ Футбол</div><div class="trend-list-title">Реал Мадрид — Ман. Сити</div><div class="trend-list-meta">74' · Live</div></div><div class="trend-list-views">2.4M</div></article>
+
+        <article class="trend-list-item" onclick="toast('#2 Верстаппен')"><div class="trend-list-num">02</div><div class="trend-list-body"><div class="trend-list-cat">🏎 Формула 1</div><div class="trend-list-title">Верстаппен — Монако GP</div><div class="trend-list-meta">Гонка · 38/78</div></div><div class="trend-list-views">1.1M</div></article>
+
+        <article class="trend-list-item" onclick="toast('#3 ЛеБрон')"><div class="trend-list-num">03</div><div class="trend-list-body"><div class="trend-list-cat">🏀 НБА</div><div class="trend-list-title">ЛеБрон 40 очков в OT</div><div class="trend-list-meta">45 мин назад</div></div><div class="trend-list-views">890K</div></article>
+
+        <article class="trend-list-item" onclick="toast('#4 Фьюри vs Усик')"><div class="trend-list-num">04</div><div class="trend-list-body"><div class="trend-list-cat">🥊 Бокс</div><div class="trend-list-title">Фьюри vs Усик 2 — анонс</div><div class="trend-list-meta">2 часа назад</div></div><div class="trend-list-views">760K</div></article>
+
+        <article class="trend-list-item" onclick="toast('#5 Джокович')"><div class="trend-list-num">05</div><div class="trend-list-body"><div class="trend-list-cat">🎾 Теннис</div><div class="trend-list-title">Джокович — финал Roland Garros</div><div class="trend-list-meta">3 часа назад</div></div><div class="trend-list-views">540K</div></article>
+
+        <article class="trend-list-item" onclick="toast('#6 NAVI vs Vitality')"><div class="trend-list-num">06</div><div class="trend-list-body"><div class="trend-list-cat">🎮 CS2</div><div class="trend-list-title">NAVI vs Vitality — финал ESL</div><div class="trend-list-meta">Сегодня · Live</div></div><div class="trend-list-views">480K</div></article>
+
+        <article class="trend-list-item" onclick="toast('#7 Свёнтек')"><div class="trend-list-num">07</div><div class="trend-list-body"><div class="trend-list-cat">🎾 WTA</div><div class="trend-list-title">Свёнтек — рейтинг №1</div><div class="trend-list-meta">Вчера</div></div><div class="trend-list-views">390K</div></article>
+
+        <article class="trend-list-item" onclick="toast('#8 Барселона — Ямаль')"><div class="trend-list-num">08</div><div class="trend-list-body"><div class="trend-list-cat">⚽ Трансферы</div><div class="trend-list-title">Ямаль — рекордный контракт</div><div class="trend-list-meta">Сегодня, 18:05</div></div><div class="trend-list-views">310K</div></article>
+
+        <!-- TRENDING TAGS -->
+        <div class="tags-section">
+          <div class="tags-title">🏷 Горячие хэштеги</div>
+          <div class="tags-wrap">
+            <span class="tag" onclick="toast('#UCL')">UCL</span>
+            <span class="tag" onclick="toast('#MonacoGP')">MonacoGP</span>
+            <span class="tag" onclick="toast('#LeBron')">LeBron</span>
+            <span class="tag" onclick="toast('#RolandGarros')">RolandGarros</span>
+            <span class="tag" onclick="toast('#FuryUsyk')">FuryUsyk2</span>
+            <span class="tag" onclick="toast('#NAVI')">NAVI</span>
+            <span class="tag" onclick="toast('#Djokovic')">Djokovic</span>
+            <span class="tag" onclick="toast('#Lakers')">Lakers</span>
+            <span class="tag" onclick="toast('#F1Live')">F1Live</span>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+  </div><!-- /realContent -->
 </main>
-<footer><span>© 2026 Pereuloq Sport</span><span>Pereuloq — основан <a href="almir-khialov.html">Almir Khialov</a></span></footer>
-<script src="js/sport-listing.js" defer></script>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">PEREULOQ <span>СПОРТ</span></div>
+      <p class="footer-desc">Самые горячие тренды мирового спорта — обновляются каждые 5 минут.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Страницы</div>
+      <ul class="footer-links">
+        <li><a href="world-sport.html">Главная</a></li>
+        <li><a href="all-results.html">Результаты</a></li>
+        <li><a href="all-news.html">Новости</a></li>
+        <li><a href="all-trends.html">Тренды</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Спорт</div>
+      <ul class="footer-links">
+        <li><a href="world-sport.html#news">Футбол</a></li><li><a href="world-sport.html#news">Формула 1</a></li>
+        <li><a href="world-sport.html#news">НБА</a></li><li><a href="world-sport.html#news">UFC / ММА</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Компания</div>
+      <ul class="footer-links">
+        <li><a href="about.html">О нас</a></li><li><a href="store.html">Реклама</a></li><li><a href="about.html">Контакты</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Pereuloq. Все права защищены.</span>
+    <span>Pereuloq — основан <a href="almir-khialov.html" style="color:var(--accent);text-decoration:none">Almir Khialov</a></span>
+  </div>
+</footer>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav">
+  <div class="mobile-nav-items">
+    <a href="world-sport.html" class="mobile-nav-item"><span class="mobile-nav-icon">🏠</span><span class="mobile-nav-label">Главная</span></a>
+    <a href="all-results.html" class="mobile-nav-item"><span class="mobile-nav-icon">⚡</span><span class="mobile-nav-label">Результаты</span></a>
+    <a href="all-news.html" class="mobile-nav-item"><span class="mobile-nav-icon">📰</span><span class="mobile-nav-label">Новости</span></a>
+    <a href="all-trends.html" class="mobile-nav-item active"><span class="mobile-nav-icon">🔥</span><span class="mobile-nav-label">Тренды</span></a>
+  </div>
+</nav>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+// THEME
+(function(){
+  const saved = localStorage.getItem('pq-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  const btn = document.getElementById('themeToggle');
+  btn.textContent = saved === 'dark' ? '☀️' : '🌙';
+  btn.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('pq-theme', next);
+    btn.textContent = next === 'dark' ? '☀️' : '🌙';
+  });
+})();
+
+// NAVBAR SCROLL
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+}, {passive:true});
+
+// TOAST
+function toast(msg) {
+  const c = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  c.appendChild(t);
+  setTimeout(() => { t.classList.add('leaving'); setTimeout(() => t.remove(), 350); }, 3000);
+}
+
+// SKELETON → CONTENT + INTEREST BARS
+setTimeout(() => {
+  document.getElementById('skeletonWrap').style.display = 'none';
+  document.getElementById('realContent').style.display = 'block';
+  document.querySelectorAll('.fade-up').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), i * 120);
+  });
+  // animate interest bars
+  const bars = [
+    {id:'bar1', w:'94%'},
+    {id:'bar2', w:'78%'},
+    {id:'bar3', w:'72%'},
+    {id:'bar4', w:'65%'},
+    {id:'bar5', w:'58%'},
+  ];
+  setTimeout(() => {
+    bars.forEach(({id, w}) => {
+      const el = document.getElementById(id);
+      if(el) el.style.width = w;
+    });
+  }, 300);
+}, 1200);
+
+// INTERSECTION OBSERVER
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, {threshold:.08});
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// FILTERS
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('[data-sport]').forEach(el => {
+      el.style.display = (f === 'all' || el.dataset.sport === f) ? '' : 'none';
+    });
+    toast(f === 'all' ? '🔥 Все тренды' : `Фильтр: ${btn.textContent}`);
+  });
+});
+
+// LIVE counter animation for sidebar views
+(function(){
+  const views = document.querySelectorAll('.trend-list-views');
+  setInterval(() => {
+    if(Math.random() > 0.7 && views.length) {
+      const idx = Math.floor(Math.random() * Math.min(3, views.length));
+      views[idx].style.color = 'var(--live)';
+      setTimeout(() => views[idx].style.color = '', 600);
+    }
+  }, 4000);
+})();
+</script>
 </body>
 </html>
