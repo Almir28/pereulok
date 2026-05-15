@@ -58,10 +58,16 @@ function publishedDate(value) {
 
 function readArticles() {
   const code = fs.readFileSync('js/main.js', 'utf8');
-  const sandbox = { window: { addEventListener() {} }, document: {}, console };
+  const sandbox = {
+    window: { addEventListener() {} },
+    document: { documentElement: { lang: 'ru' } },
+    location: { pathname: '/' },
+    console
+  };
   vm.createContext(sandbox);
   vm.runInContext(code, sandbox);
-  return sandbox.window.PEREULOQ_PUBLIC_ARTICLES || sandbox.window.PEREULOQ_ARTICLES || [];
+  const articles = sandbox.window.PEREULOQ_ARTICLES || sandbox.window.PEREULOQ_PUBLIC_ARTICLES || [];
+  return articles.filter((article) => article.href && article.href !== 'store.html');
 }
 
 function readPoliticsArticles() {

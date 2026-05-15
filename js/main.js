@@ -35,6 +35,20 @@ const i18n = {
 
 const ARTICLES = [
   {
+    id: 37,
+    cat: 'Спорт',
+    kind: 'news',
+    title: "Спортивный мир 15 мая 2026: футбол, NBA, UFC и Formula 1 входят в решающую фазу сезона",
+    desc: "Футбол, NBA, Formula 1, Indy 500, UFC и технологии в спорте — главные сюжеты насыщенной спортивной недели.",
+    author: 'Almir Khialov',
+    date: '15 мая 2026',
+    read: '7 мин',
+    img: "https://images.openai.com/static-rsc-4/JIV4e8aE2dUu-q2WcatfGcUH5-1EEZTmdyzsYnQPbke8kUUF4-T2K8SxriL_4ABzYEUOTyoaUbzOTEVxZSEnECkHzLStqOoBn0fnLmH70yRbdbW_VmydrYS2rjdKvIgzIhKlfhpNnAasZUa8O3hbrANdITuXcKQoLuerifz6lErrTUDvYh8iQFcLVY-sh9GD?purpose=fullsize",
+    bg: 'gb2',
+    href: 'sport/sports-world-may-15-2026.html',
+    body: "<p>Мировой спорт входит в один из самых плотных отрезков года: европейский футбол подходит к нервной развязке, NBA живет полуфиналами конференций, Formula 1 растет как глобальная медиа-империя, Indy 500 собирает майскую скорость, а UFC снова меняет иерархию звезд.</p><h2>Главные темы дня</h2><ul><li>драматичная концовка футбольного сезона в Европе</li><li>историческая гонка Hearts и Celtic в Шотландии</li><li>полуфиналы NBA и разговоры о смене поколений</li><li>рост Formula 1 в США и среди молодой аудитории</li><li>подготовка к Indianapolis 500</li><li>новый расклад в среднем весе UFC</li><li>AI-аналитика и технологии в спорте</li></ul><h2>Мнение Pereuloq</h2><p>Спорт 2026 года уже нельзя объяснить только счетом. За каждым матчем стоит медиа-экономика, технологии, глобальная аудитория и борьба за новое поколение фанатов.</p>"
+  },
+  {
     id: 36,
     cat: 'Спорт',
     kind: 'news',
@@ -555,6 +569,14 @@ const ARTICLES = [
 ];
 
 const ARTICLE_TRANSLATIONS = {
+  "sport/sports-world-may-15-2026.html": {
+    "cat": "Sport",
+    "title": "Sports world on May 15, 2026: football, NBA, UFC and Formula 1 enter the decisive phase",
+    "desc": "Football, the NBA, Formula 1, Indy 500, UFC and sports technology define a crowded week across global sport.",
+    "date": "May 15, 2026",
+    "read": "7 min",
+    "body": "<p>Global sport is entering one of the densest stretches of the year: European football is heading into nervous finales, the NBA is deep in conference semifinals, Formula 1 keeps growing as a global media business, Indy 500 preparations are building speed, and UFC is reshaping its star hierarchy.</p><h2>Key themes</h2><ul><li>dramatic football finales in Europe</li><li>the Hearts and Celtic title race in Scotland</li><li>NBA conference semifinals and a generational shift</li><li>Formula 1 growth in the United States and among younger fans</li><li>Indianapolis 500 preparation</li><li>a new UFC middleweight picture</li><li>AI analytics and technology in sport</li></ul><h2>Pereuloq view</h2><p>Sport in 2026 is no longer explained by the score alone. Around every match there is media economics, technology, global audience growth and a fight for the next generation of fans.</p>"
+  },
   "sport/sports-results-may-6-12-2026.html": {
     "cat": "Sport",
     "title": "Scores of the week, May 6–12, 2026 — football, NBA, tennis, F1, boxing and UFC",
