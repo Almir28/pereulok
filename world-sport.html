@@ -1165,48 +1165,6 @@ footer {
 .founder-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .25s; }
 .founder-link:hover { color: #ffb84a; transform: translateY(-1px); }
 .founder-link:hover::after { transform: scaleX(1); }
-
-/* ========== MOBILE NAV ========== */
-.mobile-nav {
-  display: none;
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  z-index: 1000;
-  background: rgba(8,8,8,0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid var(--glass-border);
-  padding: 10px 0;
-  padding-bottom: calc(10px + env(safe-area-inset-bottom));
-}
-
-.mobile-nav-items {
-  display: flex;
-  justify-content: space-around;
-}
-
-.mobile-nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  text-decoration: none;
-  color: var(--text-muted);
-  transition: color 0.2s;
-  padding: 4px 12px;
-}
-
-.mobile-nav-item.active { color: var(--accent); }
-
-.mobile-nav-icon { font-size: 22px; }
-
-.mobile-nav-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
 /* ========== SKELETON ========== */
 .skeleton {
   background: linear-gradient(90deg, var(--bg3) 25%, var(--bg4) 50%, var(--bg3) 75%);
@@ -1295,8 +1253,6 @@ footer {
   .ft-top { grid-template-columns: 1fr; gap: 32px; }
   footer { padding: 40px 20px; }
   .ft-bottom { flex-direction: column; gap: 12px; text-align: center; }
-  .mobile-nav { display: block; }
-  body { padding-bottom: 70px; }
   .ad-section { padding: 24px 20px; }
   .scroll-indicator { display: none; }
   .hero-stats { gap: 24px; }
@@ -1915,33 +1871,6 @@ footer {
     </div>
   </div>
 </footer>
-
-<!-- MOBILE NAV -->
-<nav class="mobile-nav" aria-label="Мобильная навигация">
-  <div class="mobile-nav-items">
-    <a href="#" class="mobile-nav-item active" aria-label="Главная">
-      <span class="mobile-nav-icon">🏠</span>
-      <span class="mobile-nav-label">Главная</span>
-    </a>
-    <a href="#scores" class="mobile-nav-item" aria-label="Счёт">
-      <span class="mobile-nav-icon">⚡</span>
-      <span class="mobile-nav-label">Live</span>
-    </a>
-    <a href="#news" class="mobile-nav-item" aria-label="Новости">
-      <span class="mobile-nav-icon">📰</span>
-      <span class="mobile-nav-label">Новости</span>
-    </a>
-    <a href="#categories" class="mobile-nav-item" aria-label="Виды спорта">
-      <span class="mobile-nav-icon">🏆</span>
-      <span class="mobile-nav-label">Спорт</span>
-    </a>
-    <a href="#trending" class="mobile-nav-item" aria-label="Тренды">
-      <span class="mobile-nav-icon">🔥</span>
-      <span class="mobile-nav-label">Тренды</span>
-    </a>
-  </div>
-</nav>
-
 <script>
 // Navbar scroll effect
 (function() {
@@ -2000,18 +1929,6 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     }
   });
 });
-
-// Mobile nav active state
-(function() {
-  const items = document.querySelectorAll('.mobile-nav-item');
-  items.forEach(item => {
-    item.addEventListener('click', () => {
-      items.forEach(i => i.classList.remove('active'));
-      item.classList.add('active');
-    });
-  });
-})();
-
 // Lazy loading skeleton for score cards
 (function() {
   const cards = document.querySelectorAll('.score-card');
