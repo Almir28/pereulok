@@ -35,6 +35,49 @@ const i18n = {
 
 const ARTICLES = [
   {
+    id: 40,
+    cat: 'Культура',
+    kind: 'news',
+    title: 'Рыба-основатель Америки: история шада и ShadFest',
+    desc: 'Американский шад связывает легенду о Вэлли-Фордж, старые рыбацкие промыслы Делавэра, фестиваль ShadFest и новую гастрономию северо-востока США.',
+    author: 'Almir Khialov',
+    date: '15 мая 2026',
+    read: '7 мин',
+    img: 'https://static01.nyt.com/images/2026/05/20/multimedia/15FD-SHAD-21-bzgw/15FD-SHAD-21-bzgw-superJumbo.jpg?quality=75&auto=webp',
+    bg: 'gb3',
+    href: 'posts/american-shad-founding-fish-shadfest.html',
+    body: `<p>Американский шад — рыба из семейства сельдевых — давно живет на границе истории, еды и мифа. Ее называют “рыбой-основателем Америки” из-за легенды о том, что весенний ход шада помог накормить армию Джорджа Вашингтона после тяжелой зимы в Вэлли-Фордж.</p><p>Сегодня шад снова возвращается в культурный центр северо-востока США через рыбацкие традиции, фестиваль ShadFest в Lambertville и рестораны, которые пытаются заново объяснить вкус этой сложной, костистой и очень символичной рыбы.</p><h3>Почему это важно</h3><p>Шад показывает, как локальная еда становится национальной историей: здесь есть реки, миграция рыбы, семейные промыслы, спорные легенды, экология и новая гастрономия.</p>`
+  },
+  {
+    id: 39,
+    cat: 'Кино',
+    kind: 'video',
+    title: 'Мерил Стрип в «Дьявол носит Prada 2»: новые сцены, критика и власть Runway',
+    desc: 'Видеоразбор новой сцены показывает, как Миранда Пристли и Энди Сакс возвращаются к офисной иерархии, моде и сатире о медиаиндустрии.',
+    author: 'Almir Khialov',
+    date: '16 мая 2026',
+    read: '6 мин',
+    img: 'https://static01.nyt.com/images/2026/05/03/multimedia/03CUL-DEVIL-ROUNDTABLE-03-kzgt/03CUL-DEVIL-ROUNDTABLE-03-kzgt-superJumbo.jpg?auto=webp&quality=90',
+    videoPreview: 'https://www.nytimes.com/video/movies/100000010897447/the-devil-wears-prada-2-scene.html?smid=url-share&autoplay=1&muted=1&mute=1',
+    bg: 'gb2',
+    href: 'posts/devil-wears-prada-2-scene.html',
+    body: `<p>Новый видеоразбор сцены из The Devil Wears Prada 2 снова возвращает зрителя в мир Runway, где власть выражается паузами, интонацией и одним холодным взглядом Миранды Пристли.</p><p>Мерил Стрип и Энн Хэтэуэй возвращают на экран напряжение между наставником и бывшей помощницей, но теперь Энди Сакс сама выросла до редакторской роли и вынуждена играть по правилам, которые когда-то критиковала.</p><h3>Почему сцена важна</h3><p>Сиквел сохраняет комедийный нерв оригинала, но делает офисную динамику взрослее: это уже не только история о моде, а история о власти, лидерстве, страхе ошибиться и цене профессионального статуса.</p>`
+  },
+  {
+    id: 38,
+    cat: 'Здоровье',
+    kind: 'news',
+    title: 'Катастрофа на круизе MV Hondius: вспышка хантавируса и международная тревога',
+    desc: 'Экспедиционный круиз по Южной Атлантике превратился в международный медицинский кризис после вспышки Andes hantavirus.',
+    author: 'Almir Khialov',
+    date: '16 мая 2026',
+    read: '8 мин',
+    img: 'https://static01.nyt.com/images/2026/05/13/multimedia/00int-hantavirus-cruise-top-mwgz/00int-hantavirus-cruise-top-mwgz-superJumbo.jpg?quality=75&auto=webp',
+    bg: 'gb3',
+    href: 'posts/mv-hondius-hantavirus-cruise-crisis.html',
+    body: `<p>Круизное судно MV Hondius, рассчитанное на экспедиционные маршруты и наблюдение за дикой природой, стало символом того, как быстро редкая инфекция может превратить туристическое путешествие в международный медицинский инцидент.</p><p>По данным WHO, к 13 мая было зарегистрировано 11 случаев, включая три смерти: восемь лабораторно подтвержденных, два вероятных и один с неокончательным результатом.</p><h3>Почему это важно</h3><p>Andes hantavirus обычно связан с контактом с грызунами, но в редких ситуациях может передаваться между людьми при длительном тесном контакте. Именно закрытая среда судна и международный маршрут сделали историю глобальной.</p><p>WHO оценивает риск для населения как низкий, но рекомендует активное наблюдение и карантин для высокорисковых контактов до 42 дней после последнего возможного воздействия.</p>`
+  },
+  {
     id: 37,
     cat: 'Спорт',
     kind: 'news',
@@ -569,6 +612,30 @@ const ARTICLES = [
 ];
 
 const ARTICLE_TRANSLATIONS = {
+  "posts/american-shad-founding-fish-shadfest.html": {
+    "cat": "Culture",
+    "title": "America’s founding fish: shad, ShadFest and a living river tradition",
+    "desc": "American shad links the Valley Forge legend, Delaware River fisheries, Lambertville’s ShadFest and the new food culture of the U.S. Northeast.",
+    "date": "May 15, 2026",
+    "read": "7 min",
+    "body": "<p>American shad has long lived between history, food and myth. It is often called America’s founding fish because of the popular Valley Forge legend, where a spring shad run is said to have helped feed George Washington’s exhausted army.</p><p>Today the fish is returning to the cultural center of the U.S. Northeast through river traditions, Lambertville’s ShadFest and chefs who are trying to reintroduce a rich, difficult and deeply symbolic fish to modern diners.</p><h2>Why it matters</h2><p>Shad shows how local food becomes national memory: rivers, migration, family fisheries, disputed legends, ecology and new gastronomy all meet in one seasonal story.</p>"
+  },
+  "posts/devil-wears-prada-2-scene.html": {
+    "cat": "Movies",
+    "title": "Meryl Streep in The Devil Wears Prada 2: new scenes, criticism and Runway power",
+    "desc": "A new scene breakdown shows Miranda Priestly and Andy Sachs returning to office hierarchy, fashion and media-industry satire.",
+    "date": "May 16, 2026",
+    "read": "6 min",
+    "body": "<p>A new scene breakdown from The Devil Wears Prada 2 returns viewers to Runway, where power lives in pauses, tone and Miranda Priestly’s cold precision.</p><p>Meryl Streep and Anne Hathaway bring back the tension between mentor and former assistant, but Andy Sachs has now grown into an editor’s role and must navigate the rules she once resisted.</p><h2>Why it matters</h2><p>The sequel keeps the comic rhythm of the original while making the office dynamic more adult: this is not only about fashion, but about power, leadership and the cost of professional status.</p>"
+  },
+  "posts/mv-hondius-hantavirus-cruise-crisis.html": {
+    "cat": "Health",
+    "title": "MV Hondius cruise crisis: hantavirus outbreak and global health concern",
+    "desc": "A South Atlantic expedition cruise became an international health response after an Andes hantavirus outbreak.",
+    "date": "May 16, 2026",
+    "read": "8 min",
+    "body": "<p>The MV Hondius expedition cruise became a symbol of how quickly a rare infection can turn a wildlife journey into an international health incident.</p><p>According to WHO, by May 13 there were 11 reported cases, including three deaths: eight laboratory-confirmed, two probable and one inconclusive case.</p><h2>Why it matters</h2><p>Andes hantavirus is usually linked to rodent exposure, but limited human-to-human transmission has been documented in close and prolonged contact settings. The ship environment and international route made the response global.</p><h2>Pereuloq view</h2><p>The story shows why expedition travel now sits at the intersection of tourism, public health, biosecurity and international coordination.</p>"
+  },
   "sport/sports-world-may-15-2026.html": {
     "cat": "Sport",
     "title": "Sports world on May 15, 2026: football, NBA, UFC and Formula 1 enter the decisive phase",
@@ -1365,6 +1432,14 @@ async function copyText(value) {
 }
 
 function articleVisual(article, className = '') {
+  const useVideoPreview = article.videoPreview && document.body?.dataset?.page === 'home';
+  if (useVideoPreview) {
+    return `<div class="video-fill ${className}">
+      <img src="${article.img}" alt="${article.title}" loading="lazy" decoding="async">
+      <iframe src="${article.videoPreview}" title="${article.title}" allow="autoplay; encrypted-media; picture-in-picture; web-share" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <span class="video-fill-label">${i18n.lang() === 'en' ? 'Muted video' : 'Видео без звука'}</span>
+    </div>`;
+  }
   return article.img
     ? `<img class="img-fill ${className}" src="${article.img}" alt="${article.title}" loading="lazy" decoding="async">`
     : `<div class="visual-fill ${article.bg} ${className}"></div>`;

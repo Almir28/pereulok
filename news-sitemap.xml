@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://pereuloq.ru/posts/american-shad-founding-fish-shadfest.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Pereuloq</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-15</news:publication_date>
+      <news:title>Рыба-основатель Америки: история шада и ShadFest</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/posts/devil-wears-prada-2-scene.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Pereuloq</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-16</news:publication_date>
+      <news:title>Мерил Стрип в «Дьявол носит Prada 2»: новые сцены, критика и власть Runway</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/posts/mv-hondius-hantavirus-cruise-crisis.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Pereuloq</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-16</news:publication_date>
+      <news:title>Катастрофа на круизе MV Hondius: вспышка хантавируса и международная тревога</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://pereuloq.ru/sport/sports-world-may-15-2026.html</loc>
     <news:news>
       <news:publication>
