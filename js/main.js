@@ -51,14 +51,14 @@ const ARTICLES = [
   {
     id: 39,
     cat: 'Кино',
-    kind: 'video',
+    kind: 'news',
     title: 'Мерил Стрип в «Дьявол носит Prada 2»: новые сцены, критика и власть Runway',
     desc: 'Видеоразбор новой сцены показывает, как Миранда Пристли и Энди Сакс возвращаются к офисной иерархии, моде и сатире о медиаиндустрии.',
     author: 'Almir Khialov',
     date: '16 мая 2026',
     read: '6 мин',
-    img: 'https://static01.nyt.com/images/2026/05/03/multimedia/03CUL-DEVIL-ROUNDTABLE-03-kzgt/03CUL-DEVIL-ROUNDTABLE-03-kzgt-superJumbo.jpg?auto=webp&quality=90',
-    videoPreview: 'https://www.nytimes.com/video/movies/100000010897447/the-devil-wears-prada-2-scene.html?smid=url-share&autoplay=1&muted=1&mute=1',
+    img: 'https://static01.nyt.com/images/2026/05/03/multimedia/03cul-prada-roundtable-02-mqvt/03cul-prada-roundtable-02-mqvt-superJumbo.jpg?auto=webp&quality=90',
+    imgPosition: 'center 18%',
     bg: 'gb2',
     href: 'posts/devil-wears-prada-2-scene.html',
     body: `<p>Новый видеоразбор сцены из The Devil Wears Prada 2 снова возвращает зрителя в мир Runway, где власть выражается паузами, интонацией и одним холодным взглядом Миранды Пристли.</p><p>Мерил Стрип и Энн Хэтэуэй возвращают на экран напряжение между наставником и бывшей помощницей, но теперь Энди Сакс сама выросла до редакторской роли и вынуждена играть по правилам, которые когда-то критиковала.</p><h3>Почему сцена важна</h3><p>Сиквел сохраняет комедийный нерв оригинала, но делает офисную динамику взрослее: это уже не только история о моде, а история о власти, лидерстве, страхе ошибиться и цене профессионального статуса.</p>`
@@ -1440,8 +1440,9 @@ function articleVisual(article, className = '') {
       <span class="video-fill-label">${i18n.lang() === 'en' ? 'Muted video' : 'Видео без звука'}</span>
     </div>`;
   }
+  const imageStyle = article.imgPosition ? ` style="object-position:${article.imgPosition}"` : '';
   return article.img
-    ? `<img class="img-fill ${className}" src="${article.img}" alt="${article.title}" loading="lazy" decoding="async">`
+    ? `<img class="img-fill ${className}" src="${article.img}" alt="${article.title}" loading="lazy" decoding="async"${imageStyle}>`
     : `<div class="visual-fill ${article.bg} ${className}"></div>`;
 }
 
