@@ -105,7 +105,7 @@ body {
 /* ============================================
    NAV
    ============================================ */
-nav {
+.politics-nav-unused {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
@@ -121,7 +121,7 @@ nav {
   transition: all 0.4s var(--ease-out);
 }
 
-nav.scrolled {
+.politics-nav-unused.scrolled {
   background: rgba(8,10,15,0.96);
   box-shadow: 0 1px 40px rgba(0,0,0,0.6);
 }
@@ -171,6 +171,183 @@ nav.scrolled {
 }
 
 .nav-search:hover, .nav-theme:hover { background: var(--surface2); color: var(--text); }
+
+.hdr {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  background: rgba(8,10,15,0.86);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(242,244,255,0.08);
+  transition: background 0.35s, border-color 0.35s, box-shadow 0.35s;
+}
+.hdr.scrolled {
+  background: rgba(8,10,15,0.96);
+  border-color: rgba(242,244,255,0.1);
+  box-shadow: 0 1px 40px rgba(0,0,0,0.55);
+}
+.hdr-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+}
+.logo {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  color: #f2f4ff;
+  text-decoration: none;
+}
+.logo-main {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+.logo-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-bottom: 4px;
+}
+.hdr-inner > nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 1;
+}
+.hdr-inner .nav-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: #9ca3b8;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: color 0.2s, background 0.2s;
+}
+.hdr-inner .nav-link:hover,
+.hdr-inner .nav-link.active,
+.hdr-inner .nav-link.on {
+  color: var(--accent2);
+  background: rgba(200,169,110,0.12);
+}
+.hdr-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 3;
+}
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid rgba(242,244,255,0.1);
+  border-radius: 999px;
+  background: rgba(242,244,255,0.04);
+}
+.lang-switcher a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 28px;
+  border-radius: 999px;
+  color: #8b90a0;
+  font: 800 10px/1 var(--font-mono);
+  text-decoration: none;
+}
+.lang-switcher a.active {
+  background: var(--accent);
+  color: #080a0f;
+}
+.hdr-theme,
+.hdr-search,
+.hdr-menu {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(242,244,255,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(200,208,234,0.72);
+  font-size: 16px;
+  background: rgba(242,244,255,0.04);
+  transition: all 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+}
+.hdr-search svg { width: 14px; height: 14px; }
+.hdr-theme:hover,
+.hdr-search:hover,
+.hdr-menu:hover {
+  color: #f2f4ff;
+  border-color: rgba(242,244,255,0.18);
+  background: rgba(242,244,255,0.08);
+}
+.hdr-btn {
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg,var(--red),#b91c1c);
+  padding: 9px 18px;
+  border-radius: 999px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.25s var(--ease-out);
+  box-shadow: 0 10px 34px rgba(224,85,85,0.22);
+}
+.hdr-btn:hover {
+  background: linear-gradient(135deg,#ff6b6b,#dc2626);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 42px rgba(224,85,85,0.3);
+}
+.hdr-menu { display: none; font-size: 18px; }
+.mobile-panel {
+  position: fixed;
+  inset: 62px 16px auto 16px;
+  z-index: 1200;
+  display: none;
+  background: rgba(8,10,15,0.95);
+  border: 1px solid rgba(242,244,255,0.1);
+  border-radius: 20px;
+  padding: 12px;
+  backdrop-filter: blur(28px) saturate(160%);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.42);
+}
+.mobile-panel.open { display: block; animation: fade-in 0.22s var(--ease-out); }
+.mobile-panel a {
+  display: block;
+  padding: 13px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #c8d0ea;
+  text-decoration: none;
+}
+.mobile-panel a:hover,
+.mobile-panel a.on {
+  background: rgba(200,169,110,0.12);
+  color: var(--accent2);
+}
 
 .search-panel {
   position: fixed;
@@ -2453,94 +2630,25 @@ nav.scrolled {
    FOOTER
    ============================================ */
 footer {
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-  padding: 60px 60px 40px;
+  background: linear-gradient(180deg,#080a0f,#050609);
+  border-top: 1px solid rgba(242,244,255,0.08);
+  padding: 64px 0 36px;
 }
-
-.footer-inner {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.footer-top {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 48px;
-}
-
-.footer-brand-name {
-  font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text);
-  margin-bottom: 12px;
-}
-
-.footer-brand-name span { color: var(--accent); }
-
-.footer-tagline {
-  font-size: 13px;
-  color: var(--text2);
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-
-.footer-col-title {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text3);
-  margin-bottom: 16px;
-}
-
-.footer-links { display: flex; flex-direction: column; gap: 10px; }
-
-.footer-link {
-  font-size: 14px;
-  color: var(--text2);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.footer-link:hover { color: var(--accent); }
-
-.footer-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 28px;
-  border-top: 1px solid var(--border);
-}
-
-.footer-copy {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text3);
-}
-
-.footer-social {
-  display: flex;
-  gap: 8px;
-}
-
-.social-btn {
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text3);
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-decoration: none;
-}
-
-.social-btn:hover { background: var(--surface2); color: var(--accent); border-color: rgba(200,169,110,0.3); }
+.wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+.ft-top { display: grid; grid-template-columns: 1.6fr repeat(3,1fr); gap: 48px; margin-bottom: 48px; }
+.ft-logo-wrap { display: flex; align-items: baseline; gap: 2px; margin-bottom: 12px; }
+.ft-logo-text { font-family: var(--font-display); font-size: 24px; font-weight: 900; color: #f2f4ff; letter-spacing: -0.03em; }
+.ft-logo-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); margin-bottom: 5px; }
+.ft-tagline { font-size: 13px; color: #8b90a0; line-height: 1.65; max-width: 260px; }
+.ft-col-label { font-family: var(--font-mono); font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 18px; }
+.ft-links { display: flex; flex-direction: column; gap: 10px; }
+.ft-link { font-size: 13px; color: #8b90a0; text-decoration: none; transition: color 0.2s; letter-spacing: 0.01em; }
+.ft-link:hover { color: var(--accent2); }
+.ft-bottom { border-top: 1px solid rgba(242,244,255,0.08); padding-top: 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.ft-copy { font-family: var(--font-mono); font-size: 10px; line-height: 1.55; color: #5e6575; }
+.ft-legal { display: flex; gap: 20px; }
+.ft-legal-link { font-family: var(--font-mono); font-size: 10px; color: #5e6575; text-decoration: none; transition: color 0.2s; }
+.ft-legal-link:hover { color: var(--accent2); }
 
 /* ============================================
    REVEAL ANIMATIONS
@@ -2560,39 +2668,6 @@ footer {
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
-
-/* ============================================
-   MOBILE NAV
-   ============================================ */
-.mobile-nav {
-  display: none;
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  z-index: 1000;
-  height: 60px;
-  background: rgba(8,10,15,0.95);
-  backdrop-filter: blur(20px);
-  border-top: 1px solid var(--border);
-  padding: 0 16px;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.mobile-nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text3);
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-.mobile-nav-item.active, .mobile-nav-item:hover { color: var(--accent); }
 
 /* ============================================
    RESPONSIVE
@@ -2616,13 +2691,15 @@ footer {
   .card-wide { grid-column: span 12; }
   .bottom-layout { grid-template-columns: 1fr; padding: 60px 40px; }
   .sidebar-sticky { position: static; }
-  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .ft-top { grid-template-columns: 1fr 1fr; gap: 32px; }
   .video-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 768px) {
-  nav { padding: 0 20px; }
-  .nav-center { display: none; }
+  .hdr-inner { padding: 0 16px; }
+  .hdr-inner > nav { display: none; }
+  .hdr-menu { display: flex; }
+  .hdr-right { margin-left: auto; }
   .hero-left { padding: 48px 24px 40px; }
   .hero-headline { font-size: 30px; }
   .hero-video-wrap { padding: 0 20px 44px; }
@@ -2648,15 +2725,16 @@ footer {
   .worldmap-section { padding: 48px 20px; }
   .video-section { padding: 48px 20px; }
   .bottom-layout { padding: 48px 20px; }
-  footer { padding: 48px 20px 100px; }
-  .footer-top { grid-template-columns: 1fr 1fr; }
+  footer { padding: 48px 0 36px; }
+  .wrap { width: calc(100% - 40px); }
+  .ft-top { grid-template-columns: 1fr; gap: 32px; }
+  .ft-bottom { flex-direction: column; gap: 12px; text-align: center; }
   .card-feature { grid-column: span 12; min-height: 300px; }
   .card-medium { grid-column: span 12; }
   .card-small { grid-column: span 12; }
   .card-wide { grid-column: span 12; }
   .native-ad { flex-wrap: wrap; }
   .video-grid { grid-template-columns: 1fr; }
-  .mobile-nav { display: flex; }
   .news-grid { gap: 16px; }
   .card, .card-feature, .card-medium, .card-small, .card-wide {
     min-height: 0;
@@ -2731,28 +2809,42 @@ footer {
   "inLanguage": "ru-RU"
 }</script>
 </head>
-<body>
-  <div class="lang-switcher" aria-label="Language selector"><a href="./politics.html" hreflang="ru" class="active">RU</a><a href="en/politics.html" hreflang="en">EN</a></div>
+<body data-page="politics">
 
 <!-- ============================================
      NAV
      ============================================ -->
-<nav id="main-nav">
-  <a href="index.html" class="nav-logo">Pereuloq<span>.</span></a>
-  <div class="nav-center">
-    <a href="index.html" class="nav-link">Главная</a>
-    <a href="feed.html" class="nav-link">Лента</a>
-    <a href="politics.html" class="nav-link active">Мировая политика</a><a href="world-sport.html" class="nav-link">Мировой спорт</a>
-    <a href="about.html" class="nav-link">О проекте</a>
-  </div>
-  <div class="nav-right">
-    <a class="nav-search" href="#POLITICS_SEARCH_PANEL" aria-label="Поиск">
+<header class="hdr" id="HDR">
+  <div class="hdr-inner">
+    <a class="logo" href="index.html" aria-label="Pereuloq">
+      <span class="logo-main">Pereuloq</span>
+      <span class="logo-dot"></span>
+    </a>
+    <nav aria-label="Основная навигация">
+      <a class="nav-link" data-nav="home" href="index.html">Главная</a>
+      <a class="nav-link" data-nav="feed" href="feed.html">Лента</a>
+      <a class="nav-link active" data-nav="politics" href="politics.html">Мировая политика</a><a class="nav-link" data-nav="world-sport" href="world-sport.html">Мировой спорт</a>
+      <a class="nav-link" data-nav="about" href="about.html">О проекте</a>
+    </nav>
+    <div class="hdr-right">
+      <div class="lang-switcher" aria-label="Language selector"><a href="./politics.html" hreflang="ru" class="active">RU</a><a href="en/politics.html" hreflang="en">EN</a></div>
+      <a class="hdr-search" href="#POLITICS_SEARCH_PANEL" aria-label="Поиск">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     </a>
-    <button class="nav-theme" id="POLITICS_THEME" type="button" aria-label="Сменить тему">☽</button>
-    <a class="btn-subscribe" href="private.html">Premium</a>
+      <button class="hdr-theme" id="POLITICS_THEME" type="button" aria-label="Сменить тему">☽</button>
+      <a class="hdr-btn" href="private.html">Premium</a>
+      <button class="hdr-menu" id="MOBILE_MENU_BTN" type="button" aria-label="Открыть меню">☰</button>
+    </div>
   </div>
-</nav>
+</header>
+
+<div class="mobile-panel" id="MOBILE_PANEL">
+  <a data-nav="home" href="index.html">Главная</a>
+  <a data-nav="feed" href="feed.html">Лента</a>
+  <a data-nav="politics" href="politics.html" class="on">Мировая политика</a><a data-nav="world-sport" href="world-sport.html">Мировой спорт</a>
+  <a data-nav="about" href="about.html">О проекте</a>
+  <a data-nav="private" href="private.html">Premium</a>
+</div>
 
 <!-- ============================================
      LIVE TICKER
@@ -3473,76 +3565,45 @@ footer {
      FOOTER
      ============================================ -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-top">
+  <div class="wrap">
+    <div class="ft-top">
       <div>
-        <div class="footer-brand-name">Pereuloq<span>.</span></div>
-        <div class="footer-tagline">Современный онлайн-журнал и редакционная лента Pereuloq.</div>
+        <div class="ft-logo-wrap"><span class="ft-logo-text">Pereuloq</span><span class="ft-logo-dot"></span></div>
+        <p class="ft-tagline">Современный онлайн-журнал и редакционная лента Pereuloq.</p>
       </div>
       <div>
-        <div class="footer-col-title">Разделы</div>
-        <div class="footer-links">
-          <a href="index.html" class="footer-link">Главная</a>
-          <a href="feed.html" class="footer-link">Лента</a>
-          <a href="politics.html" class="footer-link">Мировая политика</a>
-          <a href="about.html" class="footer-link">О проекте</a>
+        <div class="ft-col-label">Разделы</div>
+        <div class="ft-links">
+          <a class="ft-link" href="feed.html">Лента</a><a class="ft-link" href="politics.html">Мировая политика</a>
+          <a class="ft-link" href="about.html">О проекте</a>
         </div>
       </div>
       <div>
-        <div class="footer-col-title">Форматы</div>
-        <div class="footer-links">
-          <a href="feed.html" class="footer-link">Новости</a>
-          <a href="feed.html" class="footer-link">Посты</a>
-          <a href="feed.html" class="footer-link">Видео</a>
-          <a href="private.html" class="footer-link">Premium</a>
+        <div class="ft-col-label">Форматы</div>
+        <div class="ft-links">
+          <a class="ft-link" href="feed.html">Новости</a>
+          <a class="ft-link" href="feed.html">Посты</a>
+          <a class="ft-link" href="private.html">Premium</a>
         </div>
       </div>
       <div>
-        <div class="footer-col-title">Контакт</div>
-        <div class="footer-links">
-          <a href="mailto:hello@pereuloq.ru" class="footer-link">hello@pereuloq.ru</a>
-          <a href="https://pereuloq.ru" class="footer-link">pereuloq.ru</a>
-          <a href="privacy.html" class="footer-link">Политика</a>
+        <div class="ft-col-label">Контакт</div>
+        <div class="ft-links">
+          <a class="ft-link" href="mailto:hello@pereuloq.ru">hello@pereuloq.ru</a>
+          <a class="ft-link" href="https://pereuloq.ru">pereuloq.ru</a>
         </div>
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2026 Pereuloq. Pereuloq — основан <a class="founder-link" href="./almir-khialov.html">Almir Khialov</a></div>
-      <div class="footer-social">
-        <a class="social-btn" href="https://t.me/almir328" aria-label="Telegram">T</a>
-        <a class="social-btn" href="https://pereuloq.ru" aria-label="Pereuloq">P</a>
-        <a class="social-btn" href="about.html" aria-label="О проекте">i</a>
+    <div class="ft-bottom">
+      <div class="ft-copy">© 2026 Pereuloq. Pereuloq — основан <a class="founder-link" href="./almir-khialov.html">Almir Khialov</a></div>
+      <div class="ft-legal">
+        <a class="ft-legal-link" href="private.html">Premium</a>
+        <a class="ft-legal-link" href="privacy.html">Политика</a>
       </div>
     </div>
   </div>
 </footer>
-
-<!-- ============================================
-     MOBILE NAV
-     ============================================ -->
-<nav class="mobile-nav" aria-label="Мобильная навигация">
-  <a class="mobile-nav-item" href="index.html">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-    Главная
-  </a>
-  <a class="mobile-nav-item" href="feed.html">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    Лента
-  </a>
-  <a class="mobile-nav-item active" href="politics.html">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-    Политика
-  </a>
-  <a class="mobile-nav-item" href="about.html">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-    О проекте
-  </a>
-  <a class="mobile-nav-item" href="private.html">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    Premium
-  </a>
-</nav>
 
 <div class="search-panel" id="POLITICS_SEARCH_PANEL" aria-hidden="true">
   <div class="search-box" role="dialog" aria-modal="true" aria-label="Поиск по мировой политике">
@@ -3693,10 +3754,22 @@ document.addEventListener('keydown', (event) => {
 });
 
 // ─── NAV SCROLL ───────────────────────────────
-const nav = document.getElementById('main-nav');
+const politicsHeader = document.getElementById('HDR');
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
+  politicsHeader?.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
+
+// ─── MOBILE MENU ──────────────────────────────
+const politicsMobileButton = document.getElementById('MOBILE_MENU_BTN');
+const politicsMobilePanel = document.getElementById('MOBILE_PANEL');
+politicsMobileButton?.addEventListener('click', () => {
+  politicsMobilePanel?.classList.toggle('open');
+});
+document.addEventListener('click', (event) => {
+  if (!politicsMobilePanel?.classList.contains('open')) return;
+  if (event.target.closest('#MOBILE_PANEL, #MOBILE_MENU_BTN')) return;
+  politicsMobilePanel.classList.remove('open');
+});
 
 // ─── INTERSECTION OBSERVER (reveal) ───────────
 const revealEls = document.querySelectorAll('.reveal');
@@ -3793,14 +3866,6 @@ const tickerInner = document.getElementById('ticker-inner');
 if (tickerInner) {
   // already has duplicated content in HTML
 }
-
-// ─── MOBILE NAV ACTIVE ────────────────────────
-document.querySelectorAll('.mobile-nav-item').forEach(item => {
-  item.addEventListener('click', () => {
-    document.querySelectorAll('.mobile-nav-item').forEach(i => i.classList.remove('active'));
-    item.classList.add('active');
-  });
-});
 
 // ─── READ MORE BUTTON HOVER SOUND (visual) ────
 document.querySelectorAll('.btn-read').forEach(btn => {
