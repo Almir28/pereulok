@@ -19,7 +19,8 @@
     const article = meta.article;
     const items = [
       { name: 'Pereuloq', url: '/' },
-      { name: 'Лента', url: '/feed.html' }
+      { name: article?.cat === 'Спорт' || window.location.pathname.includes('/sport/') ? 'Спорт' : article?.cat === 'Мировая политика' || window.location.pathname.includes('/politics/') ? 'Политика' : 'Лента',
+        url: window.location.pathname.includes('/sport/') ? '/world-sport.html' : window.location.pathname.includes('/politics/') ? '/politics.html' : '/feed.html' }
     ];
     if (article) items.push({ name: article.title, url: window.location.pathname });
     else items.push({ name: document.title.replace(' - Pereuloq', '').replace(' — Pereuloq', ''), url: window.location.pathname });

@@ -11,13 +11,24 @@
       '@type': 'Organization',
       name: config.name,
       url: config.url,
-      logo: abs('/assets/icons/android-chrome-512x512.png'),
+      logo: {
+        '@type': 'ImageObject',
+        url: abs('/assets/icons/android-chrome-512x512.png'),
+        width: 512,
+        height: 512
+      },
       founder: {
         '@type': 'Person',
         name: 'Almir Khialov',
         url: `${config.url}/almir-khialov.html`
       },
-      sameAs: [config.url]
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: 'support@pereuloq.ru',
+        contactType: 'customer support',
+        availableLanguage: ['Russian', 'English']
+      },
+      sameAs: [config.url, 'https://t.me/almir328']
     };
   }
 
@@ -28,10 +39,10 @@
       '@type': 'WebSite',
       name: config.name,
       url: config.url,
-      inLanguage: 'ru-RU',
+      inLanguage: window.PereuloqMetaGenerator?.currentLang?.() === 'en' ? 'en-US' : 'ru-RU',
       potentialAction: {
         '@type': 'SearchAction',
-        target: `${config.url}/feed.html?q={search_term_string}`,
+        target: `${config.url}${window.PereuloqMetaGenerator?.currentLang?.() === 'en' ? '/en' : ''}/feed.html?q={search_term_string}`,
         'query-input': 'required name=search_term_string'
       }
     };
@@ -57,7 +68,8 @@
       '@type': articleData.kind === 'news' ? 'NewsArticle' : 'Article',
       headline: articleData.title,
       description: meta.description,
-      image: [abs(articleData.img || meta.image)],
+      image: [abs(articleData.img || articleData.image || meta.image)],
+      thumbnailUrl: abs(articleData.img || articleData.image || meta.image),
       datePublished: articleData.isoDate || articleData.publishedAt || '2026-05-11T09:00:00+03:00',
       dateModified: articleData.modifiedAt || articleData.isoDate || '2026-05-11T09:00:00+03:00',
       author: {
@@ -78,7 +90,10 @@
         '@id': meta.canonical
       },
       articleSection: articleData.cat || 'Новости',
-      inLanguage: 'ru-RU'
+      keywords: Array.isArray(articleData.tags) ? articleData.tags.join(', ') : undefined,
+      isAccessibleForFree: articleData.isPremium ? false : true,
+      wordCount: document.querySelector('article')?.innerText?.split(/\s+/).filter(Boolean).length || undefined,
+      inLanguage: window.PereuloqMetaGenerator?.currentLang?.() === 'en' ? 'en-US' : 'ru-RU'
     };
   }
 

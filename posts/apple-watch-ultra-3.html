@@ -398,18 +398,18 @@
     </div>
   </div>
 </footer>
-
-<script src="../js/main.js" defer></script>
-  <script src="../js/meta-generator.js" defer></script>
-  <script src="../js/schema.js" defer></script>
-  <script src="../js/structured-data.js" defer></script>
   <script src="../js/sitemap-generator.js" defer></script>
-  <script src="../js/seo.js" defer></script>
 <script>
   const fxIO = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); fxIO.unobserve(e.target);} });
   },{threshold:.12});
   document.querySelectorAll('.fx-reveal').forEach(el=>fxIO.observe(el));
 </script>
+  <script src="../js/site-system.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/meta-generator.js" defer></script>
+  <script src="../js/schema.js" defer></script>
+  <script src="../js/structured-data.js" defer></script>
+  <script src="../js/seo.js" defer></script>
 </body>
 </html>

@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+Allow: /data/seo-index.json
 Disallow: /components/
 Disallow: /data/
 Disallow: /images/README.md
@@ -8,3 +12,4 @@ Disallow: /pages/README.md
 Sitemap: https://pereuloq.ru/sitemap.xml
 Sitemap: https://pereuloq.ru/news-sitemap.xml
 Sitemap: https://pereuloq.ru/image-sitemap.xml
+Host: pereuloq.ru

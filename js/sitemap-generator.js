@@ -6,6 +6,9 @@
     '/feed.html',
     '/politics.html',
     '/world-sport.html',
+    '/all-news.html',
+    '/all-results.html',
+    '/all-trends.html',
     '/about.html',
     '/privacy.html',
     '/private.html',
@@ -18,7 +21,9 @@
     '/xbox.html',
     '/xbox-games.html',
     '/xbox-game-pass.html',
-    '/product.html'
+    '/product.html',
+    '/shop.html',
+    '/almir-khialov.html'
   ];
 
   function getUrls() {

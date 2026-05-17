@@ -140,5 +140,11 @@
     </article>
   </main>
   <script>const savedTheme=localStorage.getItem('pereuloq-theme')||'dark';document.documentElement.setAttribute('data-theme',savedTheme);const themeBtn=document.getElementById('POLITICS_THEME');if(themeBtn)themeBtn.textContent=savedTheme==='dark'?'☽':'☀';themeBtn?.addEventListener('click',()=>{const next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',next);localStorage.setItem('pereuloq-theme',next);themeBtn.textContent=next==='dark'?'☽':'☀'});document.getElementById('POLITICS_MENU')?.addEventListener('click',()=>document.getElementById('POLITICS_MOBILE')?.classList.toggle('open'));</script>
+  <script src="../js/site-system.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/meta-generator.js" defer></script>
+  <script src="../js/schema.js" defer></script>
+  <script src="../js/structured-data.js" defer></script>
+  <script src="../js/seo.js" defer></script>
 </body>
 </html>

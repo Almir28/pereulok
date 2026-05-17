@@ -6,6 +6,7 @@
     url: 'https://pereuloq.ru',
     locale: 'ru_RU',
     author: 'Almir Khialov',
+    twitter: '@pereuloq',
     defaultImage: 'https://pereuloq.ru/assets/icons/android-chrome-512x512.png',
     description: 'Pereuloq — современное digital media о технологиях, культуре, AI, моде, кино, успехе и полезных идеях. Главная без политики, войн и продаж.',
     keywords: ['Pereuloq', 'digital media', 'технологии', 'культура', 'AI', 'мода', 'кино', 'медиа']
@@ -124,6 +125,7 @@
   };
   const absoluteUrl = (path) => {
     if (!path || path === '/') return SITE.url + '/';
+    if (path === 'undefined' || path === 'null') return SITE.defaultImage;
     if (/^https?:\/\//i.test(path)) return path;
     return `${SITE.url}${path.startsWith('/') ? path : `/${path}`}`;
   };
@@ -142,28 +144,56 @@
     if (pathname === '/' || pathname.endsWith('/index.html')) return pathname === '/' ? '/' : pathname;
     return pathname;
   };
-  const articlePath = (article) => `/${String(article.href || '').replace(/^\/+/, '')}`;
+  const articlePath = (article) => `/${String(article.href || article.url || '').replace(/^\/+/, '')}`;
   const articleKeywords = (article) => {
     const base = [article.cat, article.title, 'Pereuloq', 'новости'];
     return [...new Set(base.concat(cleanText(article.desc).split(/[,\s]+/).filter((word) => word.length > 4).slice(0, 7)))];
   };
   const getArticles = () => window.PEREULOQ_PUBLIC_ARTICLES || window.PEREULOQ_ARTICLES || [];
+  const firstContentImage = () => document.querySelector('article img[src], main img[src]')?.getAttribute('src');
+  const pageDate = () => {
+    const schema = [...document.querySelectorAll('script[type="application/ld+json"]')]
+      .map((node) => {
+        try { return JSON.parse(node.textContent || '{}'); } catch (_) { return null; }
+      })
+      .find((item) => item && /Article$/.test(item['@type'] || ''));
+    return schema?.datePublished || document.querySelector('time[datetime]')?.getAttribute('datetime') || document.querySelector('[datetime]')?.getAttribute('datetime');
+  };
+  const articleFromDocument = () => {
+    const current = pagePath();
+    if (!/^\/(?:en\/)?(?:posts|politics|sport)\//.test(current)) return null;
+    const title = cleanText(document.querySelector('h1')?.textContent || document.title.replace(/\s+[—-]\s+Pereuloq$/i, ''));
+    if (!title) return null;
+    const description = document.querySelector('meta[name="description"]')?.content || document.querySelector('.post-lead')?.textContent || title;
+    const image = document.querySelector('meta[property="og:image"]')?.content || firstContentImage() || SITE.defaultImage;
+    const section = document.querySelector('.post-kicker')?.textContent || document.body?.dataset.page || 'Новости';
+    return {
+      kind: 'news',
+      title,
+      desc: description,
+      img: image,
+      href: current.replace(/^\//, ''),
+      cat: cleanText(section),
+      author: document.querySelector('meta[name="author"]')?.content || SITE.author,
+      isoDate: pageDate()
+    };
+  };
   const findArticle = () => {
     const current = pagePath().replace(/\/index\.html$/, '/');
     return getArticles().find((article) => {
       const path = articlePath(article);
       return path === current || current.endsWith(path) || article.href === current.replace(/^\//, '');
-    });
+    }) || articleFromDocument();
   };
   const metaByPage = () => {
     const article = findArticle();
     if (article) {
       return {
         type: article.kind === 'news' ? 'article' : 'article',
-        title: `${article.title} - Pereuloq`,
+        title: /Pereuloq/i.test(article.title) ? article.title : `${article.title} — Pereuloq`,
         description: trim(article.desc || article.body || article.title),
         keywords: articleKeywords(article),
-        image: article.img,
+        image: article.img || article.image,
         canonical: absoluteUrl(articlePath(article)),
         article
       };
@@ -260,12 +290,21 @@
     property('og:title', title);
     property('og:description', description);
     property('og:image', image);
+    property('og:image:alt', data.article?.title || title);
     property('og:type', data.type === 'article' ? 'article' : 'website');
     property('og:url', canonical);
+    if (data.type === 'article' && data.article) {
+      property('article:published_time', data.article.isoDate || data.article.publishedAt || '');
+      property('article:modified_time', data.article.modifiedAt || data.article.isoDate || data.article.publishedAt || '');
+      property('article:section', data.article.cat || data.article.category || 'Новости');
+      property('article:author', data.article.author || SITE.author);
+    }
     meta('twitter:card', 'summary_large_image');
+    meta('twitter:site', SITE.twitter);
     meta('twitter:title', title);
     meta('twitter:description', description);
     meta('twitter:image', image);
+    meta('twitter:image:alt', data.article?.title || title);
     link('canonical', canonical);
     return { ...data, title, description, canonical, image, keywords };
   }
