@@ -5,6 +5,7 @@
     '/',
     '/feed.html',
     '/politics.html',
+    '/world-sport.html',
     '/about.html',
     '/privacy.html',
     '/private.html',

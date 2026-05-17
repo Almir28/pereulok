@@ -7,20 +7,20 @@
     locale: 'ru_RU',
     author: 'Almir Khialov',
     defaultImage: 'https://pereuloq.ru/assets/icons/android-chrome-512x512.png',
-    description: 'Pereuloq — современный онлайн-журнал о технологиях, интересных событиях и цифровых сервисах. Новости без политики, войн и лишнего шума. Также доступен магазин подписок, игр и Apple Gift Card.',
-    keywords: ['Pereuloq', 'новости', 'технологии', 'культура', 'бизнес', 'кино', 'здоровье', 'медиа']
+    description: 'Pereuloq — современное digital media о технологиях, культуре, AI, моде, кино, успехе и полезных идеях. Главная без политики, войн и продаж.',
+    keywords: ['Pereuloq', 'digital media', 'технологии', 'культура', 'AI', 'мода', 'кино', 'медиа']
   };
 
   const PAGE_SEO = {
     '/': {
-      title: 'Pereuloq — технологии, события и цифровой магазин',
-      description: 'Pereuloq — современный онлайн-журнал о технологиях, интересных событиях и цифровых сервисах. Новости без политики, войн и лишнего шума. Также доступен магазин подписок, игр и Apple Gift Card.',
-      keywords: ['онлайн журнал', 'новости Pereuloq', 'технологии', 'культура', 'бизнес']
+      title: 'Pereuloq — спокойное digital media о технологиях, культуре и AI',
+      description: 'Pereuloq — современное digital media о технологиях, культуре, AI, моде, кино, успехе и полезных идеях. Главная без политики, войн и продаж.',
+      keywords: ['Pereuloq', 'digital media', 'технологии', 'культура', 'AI', 'мода']
     },
     '/index.html': {
-      title: 'Pereuloq — технологии, события и цифровой магазин',
-      description: 'Pereuloq — современный онлайн-журнал о технологиях, интересных событиях и цифровых сервисах. Новости без политики, войн и лишнего шума. Также доступен магазин подписок, игр и Apple Gift Card.',
-      keywords: ['онлайн журнал', 'новости Pereuloq', 'технологии', 'культура', 'бизнес']
+      title: 'Pereuloq — спокойное digital media о технологиях, культуре и AI',
+      description: 'Pereuloq — современное digital media о технологиях, культуре, AI, моде, кино, успехе и полезных идеях. Главная без политики, войн и продаж.',
+      keywords: ['Pereuloq', 'digital media', 'технологии', 'культура', 'AI', 'мода']
     },
     '/feed.html': {
       title: 'Лента Pereuloq - свежие новости и статьи',
@@ -33,8 +33,8 @@
       keywords: ['мировая политика', 'геополитика', 'международные конфликты', 'санкции', 'кризисы']
     },
     '/about.html': {
-      title: 'О проекте Pereuloq — новости без шума и цифровые сервисы',
-      description: 'Pereuloq — онлайн-журнал о технологиях, интересных событиях и цифровых сервисах без политики, войн и лишнего шума.',
+      title: 'О проекте Pereuloq — founder-led digital media',
+      description: 'Pereuloq — founder-led digital media о технологиях, культуре, AI, спорте, мировой политике, Premium и цифровых сервисах.',
       keywords: ['о Pereuloq', 'онлайн медиа', 'редакционный журнал', 'проект Pereuloq']
     },
     '/privacy.html': {
@@ -43,9 +43,9 @@
       keywords: ['политика конфиденциальности', 'privacy', 'Pereuloq']
     },
     '/private.html': {
-      title: 'Private - Pereuloq',
-      description: 'Приватный раздел Pereuloq для дополнительных материалов, подписок и закрытых обновлений проекта.',
-      keywords: ['Pereuloq Private', 'закрытые материалы', 'подписка']
+      title: 'Pereuloq Premium — закрытые материалы и аналитика',
+      description: 'Pereuloq Premium — закрытые материалы, редакционные мысли, аналитика, longreads, AI и доступ к закрытому Telegram за 99 рублей.',
+      keywords: ['Pereuloq Premium', 'закрытые материалы', 'аналитика', 'подписка']
     },
     '/sport.html': {
       title: 'Спорт онлайн - Pereuloq',
@@ -63,8 +63,8 @@
       keywords: ['матч онлайн', 'статистика матча', 'live score', 'спорт']
     },
     '/store.html': {
-      title: 'Pereuloq Store — подписки, игры и цифровые товары',
-      description: 'Pereuloq Store — цифровой магазин подписок, игр, Apple Gift Card, Xbox Game Pass и других цифровых товаров с быстрым оформлением заказа.',
+      title: 'Pereuloq Store — цифровой concierge-сервис',
+      description: 'Pereuloq Store — premium digital concierge service: Apple Gift Card, Xbox Game Pass, игры и подписки с заказом через Telegram и поддержкой.',
       keywords: ['магазин цифровых товаров', 'Apple Gift Card', 'подписки', 'цифровые коды']
     },
     '/apple-gift-card.html': {
@@ -78,8 +78,8 @@
       keywords: ['Apple Gift Card Turkey', 'Apple Turkey', 'iTunes Turkey', 'подарочная карта Турция']
     },
     '/product.html': {
-      title: 'Цифровой товар - Pereuloq Store',
-      description: 'Страница цифрового товара Pereuloq Store с описанием, ценой, рекомендациями и быстрым переходом к продавцу.',
+      title: 'Цифровой товар — Pereuloq Store',
+      description: 'Страница цифрового товара Pereuloq Store с условиями заказа, Telegram-поддержкой, проверкой доступности и безопасной активацией.',
       keywords: ['цифровой товар', 'Pereuloq Store', 'онлайн покупка']
     },
     '/almir-khialov.html': {
@@ -174,14 +174,14 @@
     const pathWithoutLang = currentPath.replace(/^\/en(?=\/|$)/, '') || '/';
     const config = (isEn ? {
       '/': {
-        title: 'Pereuloq — technology, events and a digital store',
-        description: 'Pereuloq is a modern online magazine about technology, interesting events and digital services. Useful news without unnecessary noise, plus a store for subscriptions, games and Apple Gift Card.',
-        keywords: ['Pereuloq', 'technology', 'digital media', 'digital store', 'subscriptions']
+        title: 'Pereuloq — calm digital media about technology, culture and AI',
+        description: 'Pereuloq is a modern digital media project about technology, culture, AI, fashion, cinema, success and useful ideas. The home page stays calm: no politics, wars or sales.',
+        keywords: ['Pereuloq', 'digital media', 'technology', 'culture', 'AI', 'fashion']
       },
       '/index.html': {
-        title: 'Pereuloq — technology, events and a digital store',
-        description: 'Pereuloq is a modern online magazine about technology, interesting events and digital services. Useful news without unnecessary noise, plus a store for subscriptions, games and Apple Gift Card.',
-        keywords: ['Pereuloq', 'technology', 'digital media', 'digital store', 'subscriptions']
+        title: 'Pereuloq — calm digital media about technology, culture and AI',
+        description: 'Pereuloq is a modern digital media project about technology, culture, AI, fashion, cinema, success and useful ideas. The home page stays calm: no politics, wars or sales.',
+        keywords: ['Pereuloq', 'digital media', 'technology', 'culture', 'AI', 'fashion']
       },
       '/feed.html': {
         title: 'Pereuloq Feed — fresh stories and updates',
@@ -189,9 +189,9 @@
         keywords: ['Pereuloq feed', 'technology stories', 'digital media']
       },
       '/store.html': {
-        title: 'Pereuloq Store — subscriptions, games and digital products',
-        description: 'Pereuloq Store is a digital marketplace for subscriptions, games, Apple Gift Card, Xbox Game Pass and online services.',
-        keywords: ['Pereuloq Store', 'digital products', 'subscriptions', 'Apple Gift Card', 'Xbox Game Pass']
+        title: 'Pereuloq Store — digital concierge service',
+        description: 'Pereuloq Store is a premium digital concierge service for Apple Gift Card, Xbox, games, subscriptions and digital services ordered through Telegram.',
+        keywords: ['Pereuloq Store', 'digital concierge', 'digital products', 'Apple Gift Card', 'Xbox Game Pass']
       },
       '/about.html': {
         title: 'About Pereuloq — useful media, digital services and products',

@@ -2,109 +2,115 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://pereuloq.ru/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/feed.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/politics.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/about.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/privacy.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/private.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/sport.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://pereuloq.ru/world-sport.html</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://pereuloq.ru/pages/sports.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/pages/match.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/store.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/apple-gift-card.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/apple-gift-card-product.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/xbox.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/xbox-games.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/xbox-game-pass.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/product.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/shop.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/blog.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -188,37 +194,37 @@
   </url>
   <url>
     <loc>https://pereuloq.ru/posts/ramit-sethi-money-millennials.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/posts/seven-books-week-pereuloq.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/posts/billie-eilish-james-cameron-3d.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/posts/netflix-freediving-audrey-mestre.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/posts/body-dysmorphic-disorder.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pereuloq.ru/posts/mv-hondius-hantavirus-evacuation.html</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -423,6 +429,12 @@
   <url>
     <loc>https://pereuloq.ru/politics/us-business-leaders-trump-china.html</loc>
     <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pereuloq.ru/politics/trump-xi-friend-summit-no-results.html</loc>
+    <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

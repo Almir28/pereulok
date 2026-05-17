@@ -86,6 +86,7 @@ button{cursor:none;font-family:inherit;border:none;background:none;color:inherit
 input{font-family:inherit}
 img,svg{display:block}
 img{max-width:100%}
+.site-visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--bg-5);border-radius:2px}
@@ -914,8 +915,11 @@ footer{background:linear-gradient(180deg,#080a0f,#050609);border-top:1px solid r
   .xbox-total{align-items:flex-start;flex-direction:column;gap:8px}
 }
 @media(pointer:coarse){
-  body,button{cursor:auto}
+  body,button,a,input,select,textarea{cursor:auto}
   .cursor,.cursor-ring{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
 }
 @media(max-width:480px){
   .hdr-inner{padding:0 12px}
