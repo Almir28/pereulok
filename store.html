@@ -415,6 +415,21 @@ footer{padding:56px 0 30px;margin-top:72px;border-top:1px solid var(--ln)}
 .store-trust span{display:block;color:var(--t3);font-size:11px;font-family:var(--mono);margin-bottom:10px}
 .store-trust a{display:inline-flex;color:#FF9F0A;font:800 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;transition:color .2s,transform .2s}
 .store-trust a:hover{color:#ffb84a;transform:translateY(-1px)}
+.store-concierge{margin:0 0 24px}
+.store-concierge-shell{border:1px solid var(--ln2);border-radius:var(--r-xl);background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));padding:26px;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.4fr);gap:24px;align-items:start}
+.store-concierge .eyebrow{font-family:var(--mono);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#FF9F0A;margin-bottom:12px}
+.store-concierge h2{font-family:var(--grotesk);font-size:clamp(24px,3vw,38px);line-height:1.04;letter-spacing:-.03em;color:var(--t1);margin-bottom:10px}
+.store-concierge p{font-size:13px;line-height:1.75;color:var(--t3);max-width:560px}
+.store-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.store-step{min-height:132px;border:1px solid var(--ln2);border-radius:18px;background:rgba(255,255,255,.035);padding:16px;display:flex;flex-direction:column;gap:10px}
+.store-step b{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#FF9F0A}
+.store-step strong{font-size:14px;color:var(--t1);line-height:1.25}
+.store-step span{font-size:11px;line-height:1.6;color:var(--t3)}
+.store-faq{margin-top:34px}
+.store-faq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.store-faq-card{border:1px solid var(--ln2);border-radius:20px;background:rgba(255,255,255,.035);padding:18px}
+.store-faq-card strong{display:block;color:var(--t1);font-size:14px;margin-bottom:8px}
+.store-faq-card span{display:block;color:var(--t3);font-size:12px;line-height:1.65}
 
 /* ═══════════════════════════════════
    TOAST
@@ -426,8 +441,8 @@ footer{padding:56px 0 30px;margin-top:72px;border-top:1px solid var(--ln)}
    RESPONSIVE
 ═══════════════════════════════════ */
 @media(max-width:1200px){.prod-grid{grid-template-columns:repeat(3,1fr)}.card.wide{grid-column:span 3}.ft-grid{grid-template-columns:1fr 1fr;gap:28px}.stats-row{grid-template-columns:1fr 1fr}.promo-strip{grid-template-columns:1fr 1fr}}
-@media(max-width:900px){.prod-grid{grid-template-columns:repeat(2,1fr)}.card.wide{grid-column:span 2}.modal-layout{grid-template-columns:1fr}.modal-vis{min-height:180px}.nl-inner{flex-direction:column;gap:24px}.nl-form{min-width:auto;width:100%}.hero{height:400px}}
-@media(max-width:600px){nav{display:none}.mob-nav{position:fixed;top:62px;left:0;right:0;z-index:680;display:flex;gap:4px;overflow-x:auto;padding:8px 16px;border-bottom:1px solid var(--ln);background:rgba(8,11,20,.9);backdrop-filter:blur(20px)}.mob-nav a{font-size:11px;font-weight:700;color:var(--t3);font-family:var(--mono);text-transform:uppercase;white-space:nowrap;padding:7px 10px;border:1px solid var(--ln2);border-radius:var(--r-sm)}.mob-nav a.on{color:#fff;background:linear-gradient(135deg,var(--violet),var(--cyan));border-color:transparent}.hero{margin-top:108px;height:360px}.wrap{padding:0 16px}.h-in{padding:0 16px}.prod-grid{grid-template-columns:1fr}.card.wide{grid-column:span 1}.promo-strip{grid-template-columns:1fr}.stats-row{grid-template-columns:1fr 1fr}.hs-arrows{display:none}.ft-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.prod-grid{grid-template-columns:repeat(2,1fr)}.card.wide{grid-column:span 2}.modal-layout{grid-template-columns:1fr}.modal-vis{min-height:180px}.nl-inner{flex-direction:column;gap:24px}.nl-form{min-width:auto;width:100%}.hero{height:400px}.store-concierge-shell{grid-template-columns:1fr}.store-steps{grid-template-columns:repeat(2,1fr)}.store-faq-grid{grid-template-columns:1fr}}
+@media(max-width:600px){nav{display:none}.mob-nav{position:fixed;top:62px;left:0;right:0;z-index:680;display:flex;gap:4px;overflow-x:auto;padding:8px 16px;border-bottom:1px solid var(--ln);background:rgba(8,11,20,.9);backdrop-filter:blur(20px)}.mob-nav a{font-size:11px;font-weight:700;color:var(--t3);font-family:var(--mono);text-transform:uppercase;white-space:nowrap;padding:7px 10px;border:1px solid var(--ln2);border-radius:var(--r-sm)}.mob-nav a.on{color:#fff;background:linear-gradient(135deg,var(--violet),var(--cyan));border-color:transparent}.hero{margin-top:108px;height:360px}.wrap{padding:0 16px}.h-in{padding:0 16px}.prod-grid{grid-template-columns:1fr}.card.wide{grid-column:span 1}.promo-strip{grid-template-columns:1fr}.stats-row{grid-template-columns:1fr 1fr}.hs-arrows{display:none}.ft-grid{grid-template-columns:1fr}.store-concierge-shell{padding:20px;border-radius:22px}.store-steps{grid-template-columns:1fr}.store-step{min-height:auto}}
 </style>
   <!-- Pereuloq SEO -->
   <meta name="keywords" content="магазин цифровых товаров, Apple Gift Card, подписки, цифровые коды">
@@ -554,6 +569,23 @@ footer{padding:56px 0 30px;margin-top:72px;border-top:1px solid var(--ln)}
 <!-- ════ MAIN ════ -->
 <main>
   <h1 class="site-visually-hidden">Pereuloq Store — цифровой concierge-сервис для Gift Card, Xbox, игр и подписок</h1>
+  <section class="store-concierge" aria-labelledby="store-concierge-title">
+    <div class="wrap">
+      <div class="store-concierge-shell">
+        <div>
+          <div class="eyebrow">Pereuloq Store</div>
+          <h2 id="store-concierge-title">Цифровые товары с ручным подтверждением</h2>
+          <p>Мы не прячем процесс: заказ собирается на сайте, а детали подтверждаются в Telegram до оплаты. Так проще проверить регион, наличие, сроки и условия активации.</p>
+        </div>
+        <div class="store-steps" aria-label="Как проходит покупка">
+          <article class="store-step"><b>01</b><strong>Выбор товара</strong><span>Выберите карту, подписку или услугу и сформируйте короткий заказ.</span></article>
+          <article class="store-step"><b>02</b><strong>Проверка</strong><span>Поддержка уточняет регион, наличие, срок обработки и важные условия.</span></article>
+          <article class="store-step"><b>03</b><strong>Оплата</strong><span>Реквизиты отправляются только после подтверждения заказа вручную.</span></article>
+          <article class="store-step"><b>04</b><strong>Передача</strong><span>Код или активация передается цифровым способом, поддержка остается на связи.</span></article>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- TOOLBAR -->
   <div class="toolbar">
     <div class="wrap">
@@ -623,6 +655,21 @@ footer{padding:56px 0 30px;margin-top:72px;border-top:1px solid var(--ln)}
     </div>
   </section>
 
+  <section class="store-faq" aria-labelledby="store-faq-title">
+    <div class="wrap">
+      <div class="sh">
+        <span class="sh-n">FAQ</span>
+        <span id="store-faq-title" class="sh-t">Перед оплатой</span>
+        <span class="sh-line"></span>
+      </div>
+      <div class="store-faq-grid">
+        <article class="store-faq-card"><strong>Почему Telegram?</strong><span>Telegram используется как канал поддержки: там удобно подтвердить регион, сумму, наличие и получить реквизиты без скрытых шагов.</span></article>
+        <article class="store-faq-card"><strong>Сколько ждать?</strong><span>Большинство цифровых заказов обрабатывается после ручной проверки. Точный срок поддержки сообщает до оплаты.</span></article>
+        <article class="store-faq-card"><strong>Можно ли вернуть товар?</strong><span>Невыданный заказ можно отменить. После передачи цифрового кода возврат обычно невозможен, но поддержка помогает с активацией.</span></article>
+      </div>
+    </div>
+  </section>
+
   <!-- NL -->
   <div class="wrap">
     <div class="nl">
@@ -650,7 +697,7 @@ footer{padding:56px 0 30px;margin-top:72px;border-top:1px solid var(--ln)}
       </div>
       <div><div class="ft-col-h">Разделы</div><div class="ft-links"><a class="ft-link" href="index.html">Главная</a><a class="ft-link" href="feed.html">Лента</a><a class="ft-link" href="politics.html">Мировая политика</a><a href="world-sport.html" class="ft-link">Мировой спорт</a><a class="ft-link" href="about.html">О проекте</a></div></div>
       <div><div class="ft-col-h">Категории</div><div class="ft-links"><a class="ft-link" href="apple-gift-card.html">Gift Cards</a><a class="ft-link" href="xbox-game-pass.html">Подписки</a><a class="ft-link" href="xbox-games.html">Игры</a><a class="ft-link" href="store.html">VPN</a></div></div>
-      <div><div class="ft-col-h">Контакты</div><div class="ft-links"><a class="ft-link" href="https://t.me/almir328" target="_blank" rel="noopener">Telegram</a><a class="ft-link" href="mailto:hello@pereuloq.ru">hello@pereuloq.ru</a><a class="ft-link" href="private.html">Поддержка</a></div></div>
+      <div><div class="ft-col-h">Контакты</div><div class="ft-links"><a class="ft-link" href="https://t.me/almir328" target="_blank" rel="noopener">Telegram</a><a class="ft-link" href="mailto:support@pereuloq.ru">support@pereuloq.ru</a><a class="ft-link" href="private.html">Поддержка</a></div></div>
     </div>
     <div class="ft-bottom">
       <span class="ft-copy">© 2026 Pereuloq. Pereuloq — основан <a class="founder-link" href="./almir-khialov.html">Almir Khialov</a></span>
@@ -762,25 +809,25 @@ const CAT_STYLE={
    DATA
 ══════════════════════════════ */
 const SLIDES=[
-  {grad:'linear-gradient(135deg,#0c0620 0%,#1a0845 40%,#0f2060 100%)',tag_icon:'🍎',tag:'Gift Cards',title:'Apple Gift Card<br><em style="background:linear-gradient(135deg,#f472b6,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">от 500 ₽</em>',sub:'Пополни App Store или Apple ID мгновенно. Доставка кода на почту за 1 минуту.',btn1:{l:'Купить сейчас',id:0},grad_btn:'linear-gradient(135deg,#ec4899,#f97316)',glow_btn:'rgba(249,115,22,.35)'},
-  {grad:'linear-gradient(135deg,#050c20 0%,#0d1f40 40%,#0a3060 100%)',tag_icon:'🕹️',tag:'Game Pass',title:'Xbox Game Pass<br><em style="background:linear-gradient(135deg,#22d3ee,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Ultimate 3 мес.</em>',sub:'100+ игр, EA Play и Cloud Gaming. Лучшая подписка для геймеров. Официальный ключ.',btn1:{l:'Оформить заказ',id:3},grad_btn:'linear-gradient(135deg,#06b6d4,#3b82f6)',glow_btn:'rgba(6,182,212,.35)'},
-  {grad:'linear-gradient(135deg,#0a0520 0%,#1f0a40 40%,#380d60 100%)',tag_icon:'🎨',tag:'Adobe CC',title:'Creative Cloud<br><em style="background:linear-gradient(135deg,#c084fc,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Скидка 40%</em>',sub:'Photoshop, Illustrator, Premiere и ещё 20+ приложений. Студенческая лицензия.',btn1:{l:'Забрать скидку',id:6},grad_btn:'linear-gradient(135deg,#7c3aed,#ec4899)',glow_btn:'rgba(124,58,237,.35)'},
+  {grad:'linear-gradient(135deg,#0c0620 0%,#1a0845 40%,#0f2060 100%)',tag_icon:'🍎',tag:'Gift Cards',title:'Apple Gift Card<br><em style="background:linear-gradient(135deg,#f472b6,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">с проверкой региона</em>',sub:'Цифровые карты Apple с ручным подтверждением номинала, региона и наличия до оплаты.',btn1:{l:'Уточнить заказ',id:0},grad_btn:'linear-gradient(135deg,#ec4899,#f97316)',glow_btn:'rgba(249,115,22,.35)'},
+  {grad:'linear-gradient(135deg,#050c20 0%,#0d1f40 40%,#0a3060 100%)',tag_icon:'🕹️',tag:'Game Pass',title:'Xbox Game Pass<br><em style="background:linear-gradient(135deg,#22d3ee,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">аккуратная активация</em>',sub:'Поддержка заранее объясняет способ подключения, сроки и условия аккаунта.',btn1:{l:'Оформить заказ',id:3},grad_btn:'linear-gradient(135deg,#06b6d4,#3b82f6)',glow_btn:'rgba(6,182,212,.35)'},
+  {grad:'linear-gradient(135deg,#0a0520 0%,#1f0a40 40%,#380d60 100%)',tag_icon:'🎨',tag:'Digital services',title:'Подписки и сервисы<br><em style="background:linear-gradient(135deg,#c084fc,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">через поддержку</em>',sub:'Pereuloq помогает с цифровыми сервисами без серого ощущения маркетплейса.',btn1:{l:'Посмотреть',id:6},grad_btn:'linear-gradient(135deg,#7c3aed,#ec4899)',glow_btn:'rgba(124,58,237,.35)'},
 ];
 
 const PROMOS_DATA=[
-  {bg:'linear-gradient(135deg,#1a0830,#3b0868)',glow:'rgba(124,58,237,.6)',tag:'🔥 Хит',title:'NordVPN −46%'},
-  {bg:'linear-gradient(135deg,#001830,#003060)',glow:'rgba(6,182,212,.6)',tag:'⚡ Новинка',title:'ChatGPT Plus'},
-  {bg:'linear-gradient(135deg,#200830,#501060)',glow:'rgba(236,72,153,.6)',tag:'✨ Акция',title:'Spotify 3 мес.'},
+  {bg:'linear-gradient(135deg,#101526,#182036)',glow:'rgba(143,170,255,.22)',tag:'Support',title:'Заказ через Telegram'},
+  {bg:'linear-gradient(135deg,#101526,#172538)',glow:'rgba(6,182,212,.2)',tag:'Check',title:'Регион до оплаты'},
+  {bg:'linear-gradient(135deg,#101526,#221a32)',glow:'rgba(236,72,153,.18)',tag:'Digital',title:'Код или активация'},
 ];
 
 const PRODUCTS=[
   {id:0,cat:'Gift Cards',name:'Apple Gift Card',icon:'🍎',wide:true,desc:'Главная категория подарочных карт Apple: Турция, США, Польша, Индия, Япония, Канада, Европа и Англия.',price:'Выбор страны',rating:5.0,rev:4210,sticker:'HOT',feats:['Выбор региона','Автогенерация заказа','Связь через Telegram'],href:'apple-gift-card.html'},
-  {id:1,cat:'Gift Cards',name:'Google Play Card',icon:'▶️',wide:false,desc:'Пополнение Google Play для приложений, игр, фильмов. Работает в РФ.',opts:['300 ₽','500 ₽','1 000 ₽','2 000 ₽'],prices:{'300 ₽':300,'500 ₽':490,'1 000 ₽':970,'2 000 ₽':1900},was:null,rating:4.8,rev:2140,sticker:'NEW',feats:['Электронный код','Работает в России','Все приложения Play','Без скрытых комиссий'],instr:'1. Откройте Play Market → меню → Платежи\n2. Введите код карты\n3. Баланс зачислится мгновенно',tg:'almir328'},
-  {id:2,cat:'Игры',name:'Xbox Gift Card',icon:'🎮',wide:false,desc:'Microsoft Store, Xbox Live. Для Xbox One, Series и Windows PC.',opts:['500 ₽','1 000 ₽','2 000 ₽','3 000 ₽'],prices:{'500 ₽':510,'1 000 ₽':1020,'2 000 ₽':1980,'3 000 ₽':2900},was:null,rating:4.7,rev:1820,sticker:null,feats:['Для Xbox и PC','Моментальная доставка','Официальный ключ','Все игры Microsoft'],instr:'1. Перейдите xbox.com/redeemcode\n2. Войдите в Microsoft аккаунт\n3. Введите 25-значный код',tg:'almir328'},
-  {id:3,cat:'Подписки',name:'Xbox Game Pass Ultimate',icon:'🕹️',wide:false,desc:'100+ игр, EA Play, Cloud Gaming и Xbox Live Gold. Лучшая подписка.',opts:['1 месяц','3 месяца','6 месяцев','12 месяцев'],prices:{'1 месяц':399,'3 месяца':999,'6 месяцев':1799,'12 месяцев':3199},was:'3 мес = 1499 ₽',rating:4.9,rev:3560,sticker:'SALE',feats:['100+ игр в библиотеке','EA Play включён','Cloud Gaming','Новинки в день релиза'],instr:'1. Получите ключ на email\n2. microsoft.com/redeem\n3. Введите код и активируйте',tg:'almir328'},
-  {id:4,cat:'Подписки',name:'Spotify Premium',icon:'🎵',wide:false,desc:'Музыка без рекламы, офлайн, 320 kbps. Работает в России.',opts:['1 месяц','3 месяца'],prices:{'1 месяц':199,'3 месяца':490},was:null,rating:4.9,rev:5120,sticker:'HOT',feats:['Без рекламы','Офлайн-режим','320 kbps','Работает в РФ'],instr:'1. Получите данные аккаунта\n2. Следуйте инструкции продавца\n3. Наслаждайтесь музыкой',tg:'almir328'},
+  {id:1,cat:'Gift Cards',name:'Google Play Card',icon:'▶️',wide:false,desc:'Пополнение Google Play для приложений, игр и фильмов. Регион и способ активации подтверждаются до оплаты.',opts:['300 ₽','500 ₽','1 000 ₽','2 000 ₽'],prices:{'300 ₽':300,'500 ₽':490,'1 000 ₽':970,'2 000 ₽':1900},was:null,rating:4.8,rev:2140,sticker:'NEW',feats:['Электронный код','Проверка региона','Инструкция по активации','Telegram-поддержка'],instr:'1. Перед оплатой подтвердите регион аккаунта\n2. Получите код после проверки оплаты\n3. Активируйте код по инструкции',tg:'almir328'},
+  {id:2,cat:'Игры',name:'Xbox Gift Card',icon:'🎮',wide:false,desc:'Microsoft Store и Xbox. Наличие, регион и номинал уточняются поддержкой перед оплатой.',opts:['500 ₽','1 000 ₽','2 000 ₽','3 000 ₽'],prices:{'500 ₽':510,'1 000 ₽':1020,'2 000 ₽':1980,'3 000 ₽':2900},was:null,rating:4.7,rev:1820,sticker:null,feats:['Для Xbox и PC','Цифровой код','Проверка региона','Инструкция после заказа'],instr:'1. Перейдите xbox.com/redeemcode\n2. Войдите в Microsoft аккаунт\n3. Введите 25-значный код',tg:'almir328'},
+  {id:3,cat:'Подписки',name:'Xbox Game Pass Ultimate',icon:'🕹️',wide:false,desc:'Game Pass с предварительным объяснением способа подключения, сроков и условий аккаунта.',opts:['1 месяц','3 месяца','6 месяцев','12 месяцев'],prices:{'1 месяц':399,'3 месяца':999,'6 месяцев':1799,'12 месяцев':3199},was:'3 мес = 1499 ₽',rating:4.9,rev:3560,sticker:'SALE',feats:['100+ игр в библиотеке','EA Play включён','Cloud Gaming','Условия до оплаты'],instr:'1. Скопируйте заказ\n2. Отправьте его в Telegram\n3. Поддержка объяснит способ подключения до оплаты',tg:'almir328'},
+  {id:4,cat:'Подписки',name:'Spotify Premium',icon:'🎵',wide:false,desc:'Музыка без рекламы, офлайн, 320 kbps. Условия подключения уточняются в Telegram до оплаты.',opts:['1 месяц','3 месяца'],prices:{'1 месяц':199,'3 месяца':490},was:null,rating:4.9,rev:5120,sticker:'HOT',feats:['Без рекламы','Офлайн-режим','320 kbps','Telegram-поддержка'],instr:'1. Скопируйте заказ\n2. Уточните условия подключения в Telegram\n3. Следуйте инструкции поддержки',tg:'almir328'},
   {id:5,cat:'VPN',name:'NordVPN Premium',icon:'🔒',wide:false,desc:'6 устройств, no-log политика, 5400+ серверов. Скидка 46%.',opts:['1 месяц','6 месяцев','1 год'],prices:{'1 месяц':390,'6 месяцев':1590,'1 год':2590},was:'1 год = 4800 ₽',rating:4.9,rev:5890,sticker:'SALE',feats:['6 устройств','No-log политика','5400+ серверов','Kill Switch'],instr:'1. Получите код активации\n2. nordvpn.com/redeem\n3. Скачайте приложение',tg:'almir328'},
-  {id:6,cat:'Программы',name:'Adobe Creative Cloud',icon:'🎨',wide:false,desc:'Photoshop, Illustrator, Premiere и ещё 20+ приложений. Студенческая лицензия.',opts:['1 год'],prices:{'1 год':2190},was:'3 600 ₽',rating:4.7,rev:920,sticker:'SALE',feats:['20+ приложений Adobe','100 ГБ облако','Официальный ключ','Пошаговая активация'],instr:'1. Создайте Adobe ID\n2. creativecloud.adobe.com\n3. Следуйте инструкции продавца',tg:'almir328'},
+  {id:6,cat:'Программы',name:'Adobe Creative Cloud',icon:'🎨',wide:false,desc:'Photoshop, Illustrator, Premiere и ещё 20+ приложений. Условия лицензии подтверждаются до оплаты.',opts:['1 год'],prices:{'1 год':2190},was:'3 600 ₽',rating:4.7,rev:920,sticker:'SALE',feats:['20+ приложений Adobe','100 ГБ облако','Проверка условий','Пошаговая активация'],instr:'1. Создайте Adobe ID\n2. Подтвердите условия в Telegram\n3. Следуйте инструкции поддержки',tg:'almir328'},
   {id:7,cat:'AI-токены',name:'ChatGPT Plus (GPT-4o)',icon:'🤖',wide:false,desc:'1 месяц ChatGPT Plus. GPT-4o, DALL-E 3, Advanced Analysis.',opts:['1 месяц'],prices:{'1 месяц':890},was:'1 200 ₽',rating:4.8,rev:1340,sticker:'NEW',feats:['GPT-4o доступ','DALL-E 3','Без VPN','Официальный аккаунт'],instr:'1. Получите данные на email\n2. Войдите на chat.openai.com\n3. Смените пароль и пользуйтесь',tg:'almir328'},
   {id:8,cat:'Дизайн',name:'Figma Dashboard UI Kit',icon:'📐',wide:false,desc:'300+ компонентов, Auto Layout, тёмная/светлая тема. Коммерческая лицензия.',opts:['Стандарт','Pro'],prices:{'Стандарт':690,'Pro':1290},was:'Pro = 2 000 ₽',rating:4.8,rev:671,sticker:'SALE',feats:['300+ компонентов','Auto Layout','Тёмная и светлая темы','Коммерческая лицензия'],instr:'1. Получите ссылку на Figma\n2. Скопируйте файл себе\n3. Начните работу',tg:'almir328'},
   {id:200,cat:'Игры',name:'Xbox',icon:'XB',wide:true,desc:'Игры Xbox и подписки Game Pass Ultimate, Premium и PC с автогенерацией заказа.',price:'Game Pass и игры',rating:5.0,rev:410,sticker:'XBOX',feats:['Игры','Game Pass','Telegram-заказ'],href:'xbox.html'},
@@ -883,7 +930,7 @@ function buildPromos(){
    STATS
 ══════════════════════════════ */
 function buildStats(){
-  const stats=[{n:'8 500+',l:'Покупок',g:'linear-gradient(135deg,#7c3aed,#ec4899)'},{n:'4.9 ★',l:'Рейтинг',g:'linear-gradient(135deg,#f97316,#eab308)'},{n:'&lt; 1 мин',l:'Доставка',g:'linear-gradient(135deg,#06b6d4,#10b981)'},{n:'24/7',l:'Поддержка',g:'linear-gradient(135deg,#ec4899,#7c3aed)'}];
+  const stats=[{n:'8 500+',l:'Заказов',g:'linear-gradient(135deg,#7c3aed,#ec4899)'},{n:'4.9 ★',l:'Оценка сервиса',g:'linear-gradient(135deg,#f97316,#eab308)'},{n:'Manual',l:'Проверка до оплаты',g:'linear-gradient(135deg,#06b6d4,#10b981)'},{n:'TG',l:'Поддержка в Telegram',g:'linear-gradient(135deg,#ec4899,#7c3aed)'}];
   document.getElementById('STATS').innerHTML=stats.map(s=>`
     <div class="stat-box">
       <div class="stat-n" style="background:${s.g};-webkit-background-clip:text;background-clip:text">${s.n}</div>
@@ -973,7 +1020,7 @@ function renderGrid(){
             <button class="btn-order" style="background:${cs.grad}" onclick="${p.href?`location.href='${p.href}'`:`copyOrd(${p.id})`}">
               <span class="btn-order-lbl">${p.href?'Открыть':'📋 Заказать'}</span>
             </button>
-            ${p.tg?`<a class="btn-tg" href="https://t.me/${p.tg}" target="_blank" title="Telegram продавца">✈️</a>`:''}
+            ${p.tg?`<a class="btn-tg" href="https://t.me/${p.tg}" target="_blank" title="Telegram support">✈️</a>`:''}
           </div>
         </div>
       </div>
@@ -1040,7 +1087,7 @@ function openModal(id){
       <button class="btn-buy" style="background:${cs.grad}" onclick="copyPrompt(${p.id})">
         <span>📋 Скопировать заказ</span>
       </button>
-      <a class="btn-tg-m" href="https://t.me/${p.tg}" target="_blank">✈️ Написать продавцу в Telegram</a>
+      <a class="btn-tg-m" href="https://t.me/${p.tg}" target="_blank">✈️ Написать в Telegram</a>
     </div>`;
   document.getElementById('MODAL_BG').classList.add('open');
   document.body.style.overflow='hidden';
@@ -1079,7 +1126,7 @@ function buildPrompt(p,opt,price){
 function copyPrompt(id){
   const el=document.getElementById('MPROMPT'+id);
   if(el)clip(el.textContent);
-  toast('📋 Заказ скопирован! Отправьте продавцу в Telegram');
+  toast('📋 Заказ скопирован! Отправьте его в поддержку Pereuloq');
 }
 function copyOrd(id){
   const p=PRODUCTS.find(x=>x.id===id);

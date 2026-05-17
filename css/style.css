@@ -540,8 +540,18 @@ nav{display:flex;align-items:center;gap:6px}
 .xbox-info-card h2{font-family:var(--serif);font-size:28px;letter-spacing:0;color:var(--t1);margin-bottom:14px}
 .xbox-info-card p,.xbox-info-card li{font-size:13px;line-height:1.75;color:var(--t3)}
 .xbox-info-card ol{margin-left:18px;display:grid;gap:6px}
+.store-process{margin:0 0 48px}
+.store-process-grid,.store-faq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);background:var(--ln);border-radius:var(--r-lg);overflow:hidden}
+.store-process-card,.store-faq-card{background:var(--bg-1);padding:24px;min-height:180px;display:flex;flex-direction:column;gap:10px}
+.store-process-card b{width:34px;height:34px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--ln2);font-family:var(--mono);font-size:11px;color:var(--gold-soft);background:rgba(255,159,10,.08)}
+.store-process-card strong,.store-faq-card strong{font-family:var(--serif);font-size:24px;line-height:1.08;color:var(--t1);letter-spacing:0}
+.store-process-card span,.store-faq-card span{font-size:13px;line-height:1.72;color:var(--t3)}
+.store-faq{margin:0 0 48px}
+.store-faq-grid{grid-template-columns:repeat(3,1fr)}
+.store-faq-card{min-height:160px}
+.agc-sticky-cta{display:none}
 [data-theme="light"] .xbox-hero{background:linear-gradient(135deg,#f7fff9,#e8f7ee)}
-[data-theme="light"] .xbox-pass-panel,[data-theme="light"] .xbox-info-card,[data-theme="light"] .xbox-game-card{background:#fff}
+[data-theme="light"] .xbox-pass-panel,[data-theme="light"] .xbox-info-card,[data-theme="light"] .xbox-game-card,[data-theme="light"] .store-process-card,[data-theme="light"] .store-faq-card{background:#fff}
 [data-theme="light"] .store-ad-shade{background:linear-gradient(90deg,rgba(10,12,22,.72),rgba(10,12,22,.26),rgba(10,12,22,.04))}
 
 /* ════════════════
@@ -913,6 +923,15 @@ footer{background:linear-gradient(180deg,#080a0f,#050609);border-top:1px solid r
   .xbox-pass-media{min-height:360px}
   .xbox-pass-panel{padding:24px}
   .xbox-total{align-items:flex-start;flex-direction:column;gap:8px}
+  .store-process-grid,.store-faq-grid{grid-template-columns:1fr}
+  .store-process-card,.store-faq-card{min-height:auto;padding:22px}
+  .agc-product-page,.xbox-page{padding-bottom:116px}
+  .agc-sticky-cta{position:fixed;left:12px;right:12px;bottom:12px;z-index:650;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:8px;padding:10px;border:1px solid rgba(255,255,255,.16);border-radius:22px;background:rgba(8,12,22,.82);box-shadow:0 20px 70px rgba(0,0,0,.34);backdrop-filter:blur(24px)}
+  .agc-sticky-meta{display:flex;flex-direction:column;min-width:0}
+  .agc-sticky-meta span{font-family:var(--mono);font-size:9px;color:var(--t4);text-transform:uppercase;letter-spacing:.12em}
+  .agc-sticky-meta strong{font-size:13px;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .agc-sticky-cta .btn-ab{min-height:42px;padding:0 12px;font-size:11px}
+  .agc-sticky-cta .btn-ab:not(.primary){display:none}
 }
 @media(pointer:coarse){
   body,button,a,input,select,textarea{cursor:auto}

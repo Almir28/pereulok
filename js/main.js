@@ -13,7 +13,7 @@ const runtimeTranslations = {
   ru: {
     searchPlaceholder: 'Поиск по журналу',
     searchEmpty: 'Ничего не найдено',
-    orderCopied: 'Заказ скопирован. Отправьте его продавцу в Telegram',
+    orderCopied: 'Заказ скопирован. Отправьте его в поддержку Pereuloq в Telegram',
     linkCopied: 'Ссылка скопирована',
     subscribed: 'Вы подписаны. Добро пожаловать.',
     emailInvalid: 'Введите корректный email'
@@ -21,7 +21,7 @@ const runtimeTranslations = {
   en: {
     searchPlaceholder: 'Search the journal',
     searchEmpty: 'Nothing found',
-    orderCopied: 'Order copied. Send it to the seller in Telegram',
+    orderCopied: 'Order copied. Send it to Pereuloq support in Telegram',
     linkCopied: 'Link copied',
     subscribed: 'You are subscribed. Welcome.',
     emailInvalid: 'Enter a valid email'
@@ -1227,7 +1227,7 @@ const XBOX_ADS = [
 ];
 
 const XBOX_SUBCATS = [
-  { title: 'Игры', desc: 'Карточки игр, заглушки и быстрый переход к продавцу.', href: 'xbox-games.html', image: 'https://cms-assets.xboxservices.com/assets/42/57/425783a8-1249-447c-9e5b-50fe5ba6ef3d.jpg?n=The-Blood-of-Dawnwalker_Large-tout-0_1083x1222.jpg' },
+  { title: 'Игры', desc: 'Карточки игр, подборки и быстрый переход к Telegram-поддержке.', href: 'xbox-games.html', image: 'https://cms-assets.xboxservices.com/assets/42/57/425783a8-1249-447c-9e5b-50fe5ba6ef3d.jpg?n=The-Blood-of-Dawnwalker_Large-tout-0_1083x1222.jpg' },
   { title: 'Game Pass', desc: 'Ultimate, Premium и PC с выбором срока и автозаказом.', href: 'xbox-game-pass.html', image: 'https://cms-assets.xboxservices.com/assets/6f/34/6f3492d1-06de-47aa-903d-ba942790cb18.jpg?n=1254895_Page-Hero-500_Campaign_767x1175_03.jpg' }
 ];
 
@@ -1412,7 +1412,7 @@ function createXboxOrderId() {
 }
 
 function formatPrice(value) {
-  return value ? `${Number(value).toLocaleString('ru-RU')} RUB` : 'Уточнить у продавца';
+  return value ? `${Number(value).toLocaleString('ru-RU')} RUB` : 'Уточнить в поддержке';
 }
 
 async function copyText(value) {
@@ -1850,7 +1850,7 @@ function buildGiftCardProduct() {
   if (region) region.textContent = country.label;
 
   if (!product) {
-    if (description) description.textContent = 'Номиналы для этого региона скоро появятся. Вы уже можете написать продавцу и уточнить доступность.';
+    if (description) description.textContent = 'Номиналы для этого региона скоро появятся. Вы уже можете написать в поддержку и уточнить доступность.';
     if (warning) warning.textContent = `Промокод можно активировать только на аккаунтах с регионом ${country.label}.`;
     if (selectorWrap) selectorWrap.hidden = true;
     readyBlocks.forEach((block) => { block.hidden = true; });
@@ -1859,8 +1859,8 @@ function buildGiftCardProduct() {
       unavailable.innerHTML = `
         <div class="empty-state agc-empty">
           <div class="agc-loader" aria-hidden="true"></div>
-          Номиналы для региона ${country.label} готовятся. Напишите продавцу, чтобы уточнить наличие.
-          <a class="agc-telegram-inline" href="https://t.me/almir328" target="_blank" rel="noopener">Написать продавцу</a>
+          Номиналы для региона ${country.label} готовятся. Напишите в поддержку, чтобы уточнить наличие.
+          <a class="agc-telegram-inline" href="https://t.me/almir328" target="_blank" rel="noopener">Написать в Telegram</a>
         </div>`;
     }
     return;
@@ -1918,7 +1918,7 @@ ${game.price}
           <div class="xbox-kicker">${game.id}</div>
           <h2>${game.title}</h2>
           <div class="xbox-price">${game.price}</div>
-          <button class="btn-ab primary" type="button" data-copy-static-order="${escapeHtml(order)}" data-contact-seller="https://t.me/almir328">Написать продавцу</button>
+          <button class="btn-ab primary" type="button" data-copy-static-order="${escapeHtml(order)}" data-contact-seller="https://t.me/almir328">Написать в Telegram</button>
         </div>
       </article>`;
   }).join('');
@@ -1953,17 +1953,19 @@ ${formatPrice(term.price)}
 ✅ Количество месяцев выбрано верно
 ✅ На аккаунте нет активной подписки
 ✅ Регион аккаунта подходит для подключения
-✅ После оплаты покупатель предоставит данные Xbox-аккаунта продавцу
+✅ Способ подключения и возможные действия с аккаунтом будут подтверждены в Telegram до оплаты
 --------------------------------`;
 }
 
 function renderXboxGamePassOrder() {
   const order = $('#XBOX_ORDER_TEXT');
   const price = $('#XBOX_PRICE');
+  const stickyPrice = $('#XBOX_STICKY_PRICE');
   const product = $('#XBOX_PRODUCT_NAME');
   if (!order) return;
   const { plan, term } = getXboxGamePassState();
   if (price) price.textContent = formatPrice(term.price);
+  if (stickyPrice) stickyPrice.textContent = formatPrice(term.price);
   if (product) product.textContent = plan.name;
   window.__xboxOrderId = createXboxOrderId();
   order.value = buildXboxGamePassOrder(plan, term, window.__xboxOrderId);
@@ -2034,8 +2036,8 @@ function openProductModal(id) {
       <div class="modal-desc">${product.desc}</div>
       <div class="modal-feats">${product.feats.map((feature) => `<div class="mf"><span class="mf-dot"></span>${feature}</div>`).join('')}</div>
       <div class="modal-price-row"><span class="modal-price">${product.price}</span>${product.was ? `<span class="modal-was">${product.was}</span>` : ''}</div>
-      <a class="btn-modal-buy" href="mailto:hello@pereuloq.ru?subject=${encodeURIComponent(product.name)}">Contact Seller →</a>
-      <a class="btn-modal-wish" href="mailto:hello@pereuloq.ru?subject=${encodeURIComponent('Buy ' + product.name)}">Buy</a>
+      <a class="btn-modal-buy" href="https://t.me/almir328" target="_blank" rel="noopener">Уточнить в Telegram →</a>
+      <a class="btn-modal-wish" href="mailto:support@pereuloq.ru?subject=${encodeURIComponent(product.name)}">Написать на почту</a>
     </div>`;
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
