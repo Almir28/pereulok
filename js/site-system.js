@@ -221,7 +221,9 @@
   function setupInteractions() {
     const panel = document.getElementById('MOBILE_PANEL');
     const menu = document.getElementById('MOBILE_MENU_BTN');
-    menu?.addEventListener('click', () => {
+    menu?.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
       const open = panel?.classList.toggle('open');
       menu.setAttribute('aria-expanded', open ? 'true' : 'false');
     });

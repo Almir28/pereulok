@@ -1519,10 +1519,12 @@ function setupHeader() {
     }
     updateReadProgress();
   }, { passive: true });
-  menuButton?.addEventListener('click', () => mobilePanel?.classList.toggle('open'));
-  mobilePanel?.addEventListener('click', (event) => {
-    if (event.target.closest('a')) mobilePanel.classList.remove('open');
-  });
+  if (!document.body.classList.contains('pereuloq-system')) {
+    menuButton?.addEventListener('click', () => mobilePanel?.classList.toggle('open'));
+    mobilePanel?.addEventListener('click', (event) => {
+      if (event.target.closest('a')) mobilePanel.classList.remove('open');
+    });
+  }
   legacyMenuButton?.addEventListener('click', () => legacyMobileNav?.classList.remove('hidden'));
   legacyClose?.addEventListener('click', () => legacyMobileNav?.classList.add('hidden'));
   legacyMobileNav?.addEventListener('click', (event) => {
